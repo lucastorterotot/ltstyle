@@ -1,0 +1,1017 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Package ltqueststyle                                                  %
+%        Author: Lucas Torterotot                                              %
+%        EMail:  lucas.torterotot at gmail.com                                 %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+
+\def\ltqueststyleversion{1.53}
+\def\ltqueststyleversiondate{29/07/2018}
+
+\ProvidesPackage{ltqueststyle}%
+        [\ltqueststyleversiondate\space Paquet ltqueststyle v \ltqueststyleversion]
+
+\makeatletter
+\@ifpackageloaded{ltstyle}{}{\usepackage[default]{ltstyle}}
+\makeatother
+
+\DeclareOption*{} %si option inconnue
+
+\DeclareOption{cmr}{\AtBeginDocument{\fontfamily{cmr}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{lmr}{\AtBeginDocument{\fontfamily{lmr}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{pbk}{\AtBeginDocument{\let\mathit\relax\newcommand{\mathit}[1]{{\fontfamily{ppl}\selectfont\textit{#1}}}\fontfamily{pbk}\selectfont\renewcommand{\rmdefault}{pbk}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{bch}{\AtBeginDocument{\fontfamily{bch}\selectfont\renewcommand{\rmdefault}{bch}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{pnc}{\AtBeginDocument{\fontfamily{pnc}\selectfont\renewcommand{\rmdefault}{pnc}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{ppl}{\AtBeginDocument{\let\mathit\relax\def\mathit{\textit}\fontfamily{ppl}\selectfont}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{ptm}{\AtBeginDocument{\fontfamily{ptm}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{pag}{\AtBeginDocument{\fontfamily{pag}\selectfont\renewcommand{\rmdefault}{pag}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{phv}{\AtBeginDocument{\fontfamily{phv}\selectfont\renewcommand{\rmdefault}{phv}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{pcr}{\AtBeginDocument{\fontfamily{pcr}\selectfont\renewcommand{\rmdefault}{pcr}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{pzc}{\AtBeginDocument{\fontfamily{pzc}\selectfont\renewcommand{\rmdefault}{pzc}\let\mathit\relax\let\mathcal\relax\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+
+\DeclareOption{Utopia}{\AtBeginDocument{\fontfamily{futs}\selectfont\renewcommand{\rmdefault}{futs}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false} \def\loadutopia{true}}
+
+\DeclareOption{put}{\AtBeginDocument{\fontfamily{put}\selectfont\renewcommand{\rmdefault}{put}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{qcs}{\AtBeginDocument{\fontfamily{qcs}\selectfont\renewcommand{\rmdefault}{qcs}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{fvs}{\AtBeginDocument{\fontfamily{fvs}\selectfont\renewcommand{\rmdefault}{fvs}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Biolinum}{\AtBeginDocument{\let\mathit\relax\def\mathit{\textit}\fontfamily{LinuxBiolinumT-OsF}\selectfont\renewcommand{\rmdefault}{LinuxBiolinumT-OsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{Libertine}{\AtBeginDocument{\fontfamily{LinuxLibertineT-OsF}\selectfont\renewcommand{\rmdefault}{LinuxLibertineT-OsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{lmss}{\AtBeginDocument{\fontfamily{lmss}\selectfont\renewcommand{\rmdefault}{lmss}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+
+\DeclareOption{Accanthis}{\AtBeginDocument{\fontfamily{AccanthisADFStdNoThree-LF}\selectfont\renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Alegreya}{\AtBeginDocument{\fontfamily{AlegreyaSans-LF}\selectfont\renewcommand{\rmdefault}{AlegreyaSans-LF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{antp}{\AtBeginDocument{\fontfamily{antp}\selectfont\renewcommand{\rmdefault}{antp}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{artemisia}{\AtBeginDocument{\fontfamily{artemisiaeuler}\selectfont\renewcommand{\rmdefault}{artemisiaeuler}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Caladea}{\AtBeginDocument{\fontfamily{Caladea-TLF}\selectfont\renewcommand{\rmdefault}{Caladea-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{Crimson}{\AtBeginDocument{\fontfamily{Crimson-TLF}\selectfont\renewcommand{\rmdefault}{Crimson-TLF}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{DejaVuSans}{\AtBeginDocument{\fontfamily{DejaVuSansCondensed-TLF}\selectfont\renewcommand{\rmdefault}{DejaVuSansCondensed-TLF}\let\mathit\relax}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{DejaVu}{\AtBeginDocument{\fontfamily{DejaVuSerifCondensed-TLF}\selectfont\renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}\let\mathit\relax}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{Fira}{\AtBeginDocument{\fontfamily{FiraSans-TLF}\selectfont\renewcommand{\rmdefault}{Fira}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{fla}{\AtBeginDocument{\fontfamily{fla}\selectfont\renewcommand{\rmdefault}{fla}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{fnc}{\AtBeginDocument{\fontfamily{fnc}\selectfont\renewcommand{\rmdefault}{fnc}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+%\DeclareOption{futx}{\AtBeginDocument{\fontfamily{futx}\selectfont\renewcommand{\rmdefault}{futx}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{gentium}{\AtBeginDocument{\fontfamily{gentium}\selectfont\renewcommand{\rmdefault}{gentium}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Gillius}{\AtBeginDocument{\fontfamily{GilliusADFNoTwoCond-LF}\selectfont\renewcommand{\rmdefault}{GilliusADFNoTwoCond-LF}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{jkp}{\AtBeginDocument{\fontfamily{jkp}\selectfont\renewcommand{\rmdefault}{jkp}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{kurier}{\AtBeginDocument{\fontfamily{kurier}\selectfont\renewcommand{\rmdefault}{kurier}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{LibreCaslon}{\AtBeginDocument{\fontfamily{LibreCaslonText-TLF}\selectfont\renewcommand{\rmdefault}{LibreCaslonText-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{mak}{\AtBeginDocument{\fontfamily{mak}\selectfont\renewcommand{\rmdefault}{mak}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{mdput}{\AtBeginDocument{\fontfamily{mdput}\selectfont\renewcommand{\rmdefault}{mdput}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{NimbusSans}{\AtBeginDocument{\fontfamily{NimbusSans}\selectfont\renewcommand{\rmdefault}{NimbusSans}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Nimbus}{\AtBeginDocument{\fontfamily{NimbusSerif}\selectfont\renewcommand{\rmdefault}{NimbusSerif}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{ntxlf}{\AtBeginDocument{\fontfamily{ntxlf}\selectfont\renewcommand{\rmdefault}{ntxlf}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{pxss}{\AtBeginDocument{\fontfamily{pxss}\selectfont\renewcommand{\rmdefault}{pxss}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{Quattrocento}{\AtBeginDocument{\fontfamily{Quattrocento-TLF}\selectfont\renewcommand{\rmdefault}{Quattrocento-TLF}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{QuattrocentoSans}{\AtBeginDocument{\fontfamily{QuattrocentoSans-TLF}\selectfont\renewcommand{\rmdefault}{QuattrocentoSans-TLF}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{Roboto}{\AtBeginDocument{\fontfamily{RobotoCondensed-LF}\selectfont\renewcommand{\rmdefault}{RobotoCondensed-LF}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{Tempora}{\AtBeginDocument{\fontfamily{Tempora-TOsF}\selectfont\renewcommand{\rmdefault}{Tempora-TOsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{Universalis}{\AtBeginDocument{\fontfamily{UniversalisADFStd-LF}\selectfont\renewcommand{\rmdefault}{UniversalisADFStd-LF}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{XCharter}{\AtBeginDocument{\fontfamily{XCharter-TLF}\selectfont\renewcommand{\rmdefault}{XCharter-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
+\DeclareOption{yv2}{\AtBeginDocument{\fontfamily{yv2}\selectfont\renewcommand{\rmdefault}{yv2}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{zpltlf}{\AtBeginDocument{\fontfamily{zpltlf}\selectfont\renewcommand{\rmdefault}{zpltlf}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+
+\def\queststylereset{\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart##1 \theexopart}
+\par\nobreak
+{##2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+\def\theexo{\arabic{exo}}
+\def\thesubexo{\theexo.\arabic{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{##1 \theexo\ \ \ ##2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{##1 \thesubexo \ \ \ ##2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{##1 \thesubsubexo \ \ \ ##2}}
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+\def\squestindent{\hspace{0.45cm}}
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent\squestindent}
+\def\subquestsbox{}
+\def\subquestsnum{\numsubquest}
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\subquestsindent\squestindent}
+\def\subsubquestsbox{}
+\def\subsubquestsnum{\numsubsubquest}
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
+\def\subsubsubquestsbox{}
+\def\subsubsubquestsnum{(\numsubsubsubquest)}
+\def\queststart{}
+\def\questend{.}
+\def\questprevioussep{.}
+\def\questshape{}
+\def\questseries{\bfseries}}
+
+%\renewcommand{\exopart}[2][partie]{
+%\vspace{\baselineskip}\par
+%\refstepcounter{exopart}
+%\begin{center}
+%\Large\bfseries\boldmath\familyfortitles
+%{\letterexopart#1 \theexopart}
+%\par\nobreak
+%{#2}\unboldmath
+%\end{center}
+%\vspace{\baselineskip}\par
+%}
+%
+%\def\theexo{\arabic{exo}}
+%\def\thesubexo{\theexo.\arabic{subexo}}
+%\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+%
+%\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{#1 \theexo\ \ \ #2}}
+%\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{#1 \thesubexo \ \ \ #2}}
+%\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{#1 \thesubsubexo \ \ \ #2}}
+%
+%\def\numquest{\arabic{quest}}
+%\def\numsubquest{\alph{subquest}}
+%\def\numsubsubquest{\roman{subsubquest}}
+%\def\numsubsubsubquest{\arabic{subsubsubquest}}
+%
+%\def\thequest{\numquest}
+%\def\thesubquest{\thequest.\numsubquest}
+%\def\thesubsubquest{\thesubquest.\numsubsubquest}
+%\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+%
+%\def\squestindent{\hspace{0.45cm}}
+%
+%\def\questspar{\par}
+%\def\questsskip{\medskip}
+%\def\questsindent{}
+%\def\questsbox{\ding{111}\hspace{1.25mm}}
+%\def\questsnum{\numquest}
+%
+%\def\subquestspar{\par}
+%\def\subquestsskip{\smallskip}
+%\def\subquestsindent{\questsindent\squestindent}
+%\def\subquestsbox{\ding{109}\hspace{1.25mm}}
+%\def\subquestsnum{\numsubquest}
+%
+%\def\subsubquestspar{\par}
+%\def\subsubquestsskip{\smallskip}
+%\def\subsubquestsindent{\subquestsindent\squestindent}
+%\def\subsubquestsbox{{\tiny\questsbox}\hspace{1.25mm}}
+%\def\subsubquestsnum{\numsubsubquest}
+%
+%\def\subsubsubquestspar{\par}
+%\def\subsubsubquestsskip{\smallskip}
+%\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
+%\def\subsubsubquestsbox{{\tiny\subquestsbox}\hspace{1.25mm}}
+%\def\subsubsubquestsnum{(\numsubsubsubquest)}
+%
+%\def\queststart{}
+%\def\questend{.}
+%
+%\def\questprevioussep{.}
+%
+%\def\questshape{}
+%\def\questseries{\bfseries}
+
+\DeclareOption{Agreg}{\ExecuteOptions{Agreg1}}
+
+\DeclareOption{Agreg1}{
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{#1 \theexo.~#2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\qquad #1 \Alph{subexo}.~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\qquad\qquad #1 \arabic{subsubexo}.~#2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{.}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{}
+}
+
+\DeclareOption{CCP2}{
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexopart{\textbf{\arabic{exopart}}}
+\def\theexo{\textbf{\Alph{exo}}}
+\def\thesubexo{\textbf{\Alph{exo}.\arabic{subexo}-}}
+\def\thesubsubexo{\textbf{\Alph{exo}.\arabic{subexo}.\arabic{subsubexo}-}}
+
+\renewcommand{\exo}[2][Problème]{\vspace{\baselineskip}\par\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\boldmath\familyfortitles #1 \theexo~: #2\end{center}\vspace{\baselineskip}\par}
+\renewcommand{\subexo}[2][\!\!]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{#1 \Alph{exo}.\arabic{subexo}-~#2}\ \medskip\par}
+\renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{#1 \Alph{exo}.\arabic{subexo}.\arabic{subsubexo}-~#2}\ \medskip\par}
+
+\def\numquest{\ifnum \arabic{subexo}>0 \Alph{exo}.\arabic{subexo}.\else \ifnum \arabic{exo}>0 \theexo .\fi \fi \arabic{quest}}
+\def\numsubquest{\arabic{subquest}}
+\def\numsubsubquest{\arabic{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\numquest\questend}}
+\def\thesubquest{\textbf{\numquest.\numsubquest\questend}}
+\def\thesubsubquest{\textbf{\numquest.\numsubquest.\numsubsubquest\questend}}
+\def\thesubsubsubquest{\textbf{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest\questend}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{}
+\def\questend{-}
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries}
+\def\questseries{}
+
+\renewcommand{\sujetcompletend}[1][Fin de l'énoncé]{\bigskip\begin{center}
+\bfseries #1
+\end{center}}
+}
+
+\DeclareOption{CCP3}{
+\renewcommand{\exopart}[2][Partie]{
+\vspace{\baselineskip}\par
+\setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+#1 \theexopart~-~#2
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par
+}
+
+\def\theexopart{\textbf{\Roman{exopart}}}
+\def\theexo{\textbf{\ifnum \arabic{exopart} > 0 \theexopart.\else \fi\arabic{exo}}}
+\def\thesubexo{\textbf{\theexo.\arabic{subexo}}}
+\def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\paragraph*{{\large\theexo~-~#2}}\ \medskip\par}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{{\large #2}}\ \medskip\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{{\large #2}}\ \smallskip\par}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\arabic{subquest}}
+\def\numsubsubquest{\arabic{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\queststart\numquest}}
+\def\thesubquest{\textbf{\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{.}
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries}
+\def\questseries{}
+}
+
+\DeclareOption{CCP4}{
+\renewcommand{\exopart}[2][Section]{
+\vspace{\baselineskip}\par
+\setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
+\begin{center}
+\LARGE\bfseries\boldmath\familyfortitles
+\uppercase{#1 \theexopart~-~#2}
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par
+}
+
+\def\theexopart{\textbf{\arabic{exopart}}}
+\def\theexo{\textbf{\arabic{exo}}}
+\def\thesubexo{\textbf{\Roman{subexo}}}
+\def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
+
+\renewcommand{\exo}[2][Problème]{\vspace{\baselineskip}\par
+\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
+\begin{center}
+\LARGE\bfseries\boldmath\familyfortitles
+\uppercase{#1 \theexo}\\
+#2
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par}
+\renewcommand{\subexo}[2][Partie]{\vspace{\baselineskip}\par
+\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+#1 \thesubexo~--~#2
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par
+}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\large\thesubsubexo~-- #2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\arabic{subquest}}
+\def\numsubsubquest{\arabic{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\queststart\numquest}}
+\def\thesubquest{\textbf{\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{.}
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries}
+\def\questseries{}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+\LARGE\bfseries\familyfortitles #1
+\end{center}}
+}
+
+\DeclareOption{ENS}{\ExecuteOptions{ENS1}}
+
+\DeclareOption{ENS1}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo\ \ \ #2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo \ \ \ #2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo \ \ \ #2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\hphantom{\textbf{\numquest.}}\quad}
+\def\subquestsbox{}
+\def\subquestsnum{\numsubquest}
+
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\subquestsindent\hphantom{\textbf{\numsubquest.}}\quad}
+\def\subsubquestsbox{}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\subsubquestsindent\hphantom{\textbf{\numsubsubquest.}}\quad}
+\def\subsubsubquestsbox{}
+\def\subsubsubquestsnum{(\numsubsubsubquest}
+
+\def\queststart{}
+\def\questend{\ifnum \arabic{subquest} > 0 )\else .\fi}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+$\star$\hspace{5mm}$\star$\\$\star$
+\end{center}}
+}
+
+\DeclareOption{ENS2}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\arabic{exo}}
+\def\thesubexo{\theexo.\arabic{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo\ \ \ #2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo \ \ \ #2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo \ \ \ #2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\numquest}}
+\def\thesubquest{\textbf{\thequest.\numsubquest}}
+\def\thesubsubquest{\textbf{\thesubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\thesubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{.}
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries\sffamily\underline}
+\def\questseries{}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+$\star$\hspace{2mm}$\star$\\$\star$
+\end{center}}
+}
+
+\DeclareOption{Centrale}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo~#2}}
+\renewcommand{\subexo}[2][\!\!]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\itshape\thesubexo~--~~#2}\ }
+\renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{\itshape\thesubsubexo~--~~#2}\ }
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\arabic{subquest}}
+\def\numsubsubquest{\arabic{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q~}
+\def\questend{.\qquad}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip
+\begin{center}
+\hrule\vspace{1mm}
+$\bullet~\bullet~\bullet$ #1 $\bullet~\bullet~\bullet$
+\vspace{1mm}\hrule
+\end{center}}
+}
+
+\DeclareOption{Centrale17}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo~#2}}
+\renewcommand{\subexo}[2][\!\!]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\itshape\thesubexo~--~~#2}\ }
+\renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{\itshape\thesubsubexo~--~~#2}\ }
+
+\def\numquest{\ifnum \arabic{subexo} > 0 \thesubexo.\else\ifnum \arabic{exo} > 0 \theexo.\fi\fi \arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{}
+\def\subquestsnum{\normalfont\itshape\numsubquest}
+
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{}
+\def\subsubquestsnum{\normalfont\itshape\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{}
+\def\subsubsubquestsnum{\normalfont\itshape\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{}
+\def\questend{)}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip
+\begin{center}
+\hrule\vspace{1mm}
+$\bullet~\bullet~\bullet$ #1 $\bullet~\bullet~\bullet$
+\vspace{1mm}\hrule
+\end{center}}
+}
+
+\DeclareOption{e3a}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\shabox{\begin{minipage}{10.9cm}
+\begin{center}
+\bfseries\boldmath {\Large\uppercase{\Letterexopart#1 \theexopart}}\\ \LARGE \uppercase{#2}\unboldmath
+\end{center}
+\end{minipage}}
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Alph{exo}}
+\def\thesubexo{\theexo.\arabic{subexo}}
+\def\thesubsubexo{\thesubexo.\roman{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\familyfortitles #1 \theexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \begin{center}\bfseries\familyfortitles #1 \thesubexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo}\begin{center}\bfseries\familyfortitles #1 \thesubsubexo~/~{#2} \end{center}\par}
+
+\def\numquest{\Alph{exo}\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{(\alph{subsubquest})}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest\numsubquest}
+\def\thesubsubquest{\thesubquest\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest~\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest\numsubquest}
+
+\def\subsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{}\def\questprevioussep{}}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{)}\def\questprevioussep{~}}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\subsubquestsnum~\numsubsubsubquest}
+
+\def\queststart{}
+\def\eTaquestend{.}
+\def\questend{\eTaquestend}
+
+\def\questprevioussep{}
+
+\def\eTaunderline{\underline}
+
+\def\questshape{\bfseries\eTaunderline}
+\def\questseries{}
+
+\renewcommand{\sujetcompletend}[1][Fin de l'épreuve]{\bigskip\begin{center}
+\Large\bfseries\familyfortitles #1
+\end{center}}
+}
+
+\DeclareOption{Mines}{%\queststylereset
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section}\refstepcounter{exo} \section*{\theexo.~---~#2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo.~---~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo.~---~#2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\numquest}}
+\def\thesubquest{\textbf{\thequest.\numsubquest}}
+\def\thesubsubquest{\textbf{\thesubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\thesubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.45cm}}
+
+\def\questspar{\par}
+\def\questsskip{\smallskip}
+\def\questsindent{}
+\def\questsbox{\ding{111}\hspace{2.5mm}}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent\squestindent}
+\def\subquestsbox{\ding{109}\hspace{2.5mm}}
+\def\subquestsnum{\numsubquest}
+
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\subquestsindent\squestindent}
+\def\subsubquestsbox{{\tiny\questsbox}}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
+\def\subsubsubquestsbox{{\tiny\subquestsbox}}
+\def\subsubsubquestsnum{(\numsubsubsubquest)}
+
+\def\queststart{}
+\def\questend{\hspace{1.25mm}---}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN DE L'ÉPREUVE]{\bigskip\begin{center}
+\large\bfseries\familyfortitles #1
+\end{center}}
+}
+
+\DeclareOption{CCP}{\ExecuteOptions{CCP1}}
+
+\DeclareOption{CCP1}{%\queststylereset
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}
+\setcounter{quest}{0}\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{{\letterexopart#1 \theexopart}}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}
+}
+
+\def\theexopart{\textbf{\arabic{exopart}}}
+\def\theexo{\textbf{\Roman{exo}}}
+\def\thesubexo{\textbf{\theexo.\arabic{subexo}}}
+\def\thesubsubexo{\textbf{\thesubexo.\alph{subsubexo}}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo.~#2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo~#2}}
+
+%\def\numquest{\ifnum\arabic{subexo}>0\thesubexo.\else\theexo\fi\arabic{quest}}
+
+\def\numquest{\ifnum \arabic{exopart}>0 \arabic{exopart}.\fi \arabic{quest}}
+%\def\numquest{\arabic{exopart}.\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\queststart\numquest}}
+\def\thesubquest{\textbf{\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{\textbf{)}}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+\Large\bfseries\familyfortitles\slshape #1
+\end{center}}
+}
+
+\newcounter{randomf} \newcounter{randomq}
+\def\randomfOption{\ifcase\therandomf\or lmr\or mak\or ppl\or zpltlf\or ptm\or Xcharter\or Utopia\or Caladea\or Roboto\or lmss\or Alegreya\or fla\or kurier\or Universalis\or fvs\or phv\fi}
+\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or Mines\or Centrale\or Centrale17\or e3a\or ENS1\or ENS2\or Agreg1\fi}
+\def\randomfmax{16} \def\randomqmax{12}
+\addtocounter{randomf}{0} % offset
+\addtocounter{randomf}{\the\day}
+\addtocounter{randomf}{\the\day}
+\addtocounter{randomf}{\the\month}
+\setcounter{randomq}{\therandomf}
+\addtocounter{randomf}{\the\day}
+\addtocounter{randomq}{\the\month}
+
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+\ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
+
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
+
+\DeclareOption{randomf}{\ExecuteOptions{\randomfOption}}
+\DeclareOption{randomq}{\ExecuteOptions{\randomqOption}}
+
+\DeclareOption{random}{\ExecuteOptions{randomf,randomq}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
