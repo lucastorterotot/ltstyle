@@ -1,0 +1,248 @@
+\ifthenelse{\equal{\PackageOption}{chapter}}{\renewcommand{\insertenseignementtype}{\chaptername}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{chapitre}}{\renewcommand{\insertenseignementtype}{\chaptername}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{complet}}{\renewcommand{\insertenseignementtype}{\chaptername}\renewcommand{\insertenseignementnum}{\thechapter}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{colle}}{\renewcommand{\insertenseignementtype}{Colle}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\renewcommand{\insertenseignementtype}{Khôlle}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{DM}}{\renewcommand{\insertenseignementtype}{DM}\renewcommand{\enseignementtype}[1]{}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{DS}}{\renewcommand{\insertenseignementtype}{DS}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{controle}}{\renewcommand{\insertenseignementtype}{DS}}{}
+\ifthenelse{\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\renewcommand{\insertenseignementtype}{TD}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\renewcommand{\insertenseignementtype}{TP}\renewcommand{\enseignementtype}[1]{}}{}
+
+\makeatletter
+\newcommand{\TitleToUse}{}
+\AtBeginDocument{\ifthenelse{\equal{\@title}{}\or\equal{\PackageOption}{complet}}{\renewcommand{\TitleToUse}{\insertenseignementtype~\insertenseignementnum}}{
+\ifthenelse{\equal{\insertenseignementtype}{}}{\renewcommand{\TitleToUse}{\@title}}{\renewcommand{\TitleToUse}{\insertenseignementtype~\insertenseignementnum~--~\@title}}
+}
+\ifthenelse{\equal{\PackageOption}{chapter}\and\equal{\insertenseignementnum}{}}{\renewcommand{\TitleToUse}{\@title}\renewcommand{\insertenseignementtype}{Cours}}{}
+}
+
+\newcommand{\insertclassepagegarde}{\insertlongclasse
+
+\insertinstitute
+
+\ifthenelse{\equal{\insertlongclasse}{}\or\equal{\insertinstitute}{}}{~}{Année \insertanneescol}}
+
+\newcommand{\insertpagegarde}{\thispagestyle{empty}
+{\setlength{\parindent}{0pt}\Large\bfseries\boldmath\color{\covertextcolor}
+~
+
+\vspace{0.06\paperheight}
+
+%\insertlongclasse
+%\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}
+%\hfill
+%\insertinstitute
+
+%\vfill
+
+\ifthenelse{\equal{\PackageOption}{book}}{}{\hrule}
+\begin{center}
+\scshape\Huge\bfseries
+\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{}{\insertmatiere \huge}
+
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{}{\vspace{0.5cm}}
+
+\ifthenelse{\equal{\PackageOption}{complet}}{}{\TitleToUse}
+
+\ifthenelse{\equal{\insertsubtitle}{}}{}{\vspace{0.5cm} {\LARGE \insertsubtitle}}
+\end{center}
+\ifthenelse{\equal{\PackageOption}{book}}{}{\hrule}
+\begin{center}
+
+\vspace{\baselineskip}
+
+\noindent {\ifthenelse{\equal{\inputinnercover}{true}}{\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}}{}{\renewcommand{\thanks}[1]{}}}{}\bfseries \Large \insertshortauthor}
+
+%\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\@thanks\let\thanks\relax}{}
+
+\vfill\insertimgcover\vfill
+
+\insertclassepagegarde
+
+\vspace{0.06\paperheight}
+
+\ifthenelse{\equal{\inserteditionsettings}{}}{~\insertdate~}{\inserteditionsettings}
+
+\vspace{0.06\paperheight}
+
+{\LARGE~\insertpublisher~}
+\end{center}
+\unboldmath}
+\newpage\setcounter{page}{0}}
+
+\makeatother
+
+\AtBeginDocument{\ifthenelse{\equal{\insertenseignementnum}{}\or\equal{\insertenseignementtype}{}}{\renewcommand{\insertenseignementnum}{\!\!}}{}}
+
+\ifthenelse{\equal{\PackageOption}{livret}}{\renewcommand{\insertenseignementnum}{\!\!}\renewcommand{\enseignementnum}[1]{}}{}
+
+\ifthenelse{\equal{\PackageOption}{default}}{\let\defaulttitle\maketitle}{}
+
+\makeatletter
+\ifthenelse{\equal{\isbeamer}{true}}{}{
+\ifthenelse{\equal{\PackageOption}{book}\or\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}}{
+\def\maketitle{\par
+  \begingroup
+    \if@twocolumn
+    \onecolumn\@mymaketitle
+    
+    \twocolumn
+    
+    \else
+      \newpage
+      \global\@topnum\z@   % Prevents figures from going at top of page.
+      \@mymaketitle
+    \fi
+  \endgroup
+}
+}{
+\def\maketitle{\par
+  \begingroup
+    \if@twocolumn
+    \twocolumn[\@mymaketitle]
+    \else
+      \newpage
+      \global\@topnum\z@   % Prevents figures from going at top of page.
+      \@mymaketitle
+    \fi
+  \endgroup
+}}
+\def\@mymaketitle{
+%  \let\footnotesize\small
+{  \let\footnoterule\relax
+  \let \footnote \thanks
+  \renewcommand{\and}{\unskip, }
+  \renewcommand\thefootnote{\@fnsymbol\c@footnote}
+
+\ifthenelse{\equal{\dopagegarde}{true}}{\insertpagegarde
+\thispagestyle{empty}
+\ifthenelse{\equal{\inputdeuxiemedecouv}{false}}{~}{\insertdeuxiemedecouv}}{}
+\def\insertpagegarde{}\cleardoublepage
+
+\ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{plain}\thispagestyle{plaintitle}}{\pagestyle{main}\thispagestyle{maintitle}}
+
+\ifthenelse{\equal{\PackageOption}{book}}{
+\ifthenelse{\equal{\inputinnercover}{true}}{\newpage\thispagestyle{empty}
+
+~
+
+\vspace{0.06\paperheight}
+
+\begin{center}
+\scshape\Huge\bfseries\boldmath
+\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{}{\insertmatiere \huge\vspace{0.5cm}}
+
+\ifthenelse{\equal{\PackageOption}{complet}}{}{\TitleToUse}
+
+\ifthenelse{\equal{\insertsubtitle}{}}{}{\vspace{0.5cm} {\LARGE \insertsubtitle}}\unboldmath
+\end{center}
+
+~
+
+\noindent\insertauthor
+
+\vfill
+
+}{~\newpage\thispagestyle{empty}}
+
+}{
+
+\begin{center}
+%\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}}{}{
+%    \let\classeorig\insertclasse
+%    \ifthenelse{\equal{\insertlongclassefiliere}{}}{}{\def\insertclassefiliere{\insertlongclassefiliere}}
+%    \ifthenelse{\equal{\insertclasse}{}\and\equal{\insertinstitute}{}\and\equal{\insertmatiere}{}}{}{\noindent \insertclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}\and\equal{\insertclasse}{\insertclasselvl\ \insertclassefiliere}}{}{~~~\insertanneescol}}{}~\hfill~\insertinstitute
+%    
+%    }
+%    \def\insertclasse\classeorig}
+
+
+\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TP}}{{\bfseries\boldmath\familyfortitles\huge\vphantom{Àq}\unboldmath\vspace{0.5cm}}}{}}{{\bfseries\boldmath\familyfortitles\huge\insertmatiere\unboldmath\vspace{0.5cm}}}
+
+%\ifthenelse{\equal{\PackageOption}{book}}{\thispagestyle{empty} \noindent \insertauthor}{}
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}}{}{{\bfseries\boldmath\familyfortitles\LARGE \TitleToUse\unboldmath}}
+
+\ifthenelse{\equal{\insertsubtitle}{}}{}{{\bfseries\boldmath\familyfortitles\large \insertsubtitle\unboldmath}}
+
+\ifthenelse{\equal{\PackageOption}{colle}}{Colleur :\!\!}{}
+\ifthenelse{\equal{\PackageOption}{kholle}}{Khôlleur :}{}
+\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{book}}{}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{\insertshortauthor}{\insertauthor}}
+
+
+\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{Groupe~\insertenseignementgpcolle,}}{}
+\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{}{\@date}
+
+\ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}}{\insertenseignementduree
+
+\vspace{\baselineskip}
+
+\begin{minipage}{0.9\linewidth}\setlength{\parindent}{1em}
+
+\emph{\insertenseignementmodalites}
+\end{minipage}
+}{}
+
+\end{center}
+
+}
+  \@thanks
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{}{\global\let\maketitle\relax}
+  \global\let\@thanks\@empty
+  %\global\let\@author\@empty
+  %\global\let\@date\@empty
+  %\global\let\@title\@empty
+  %\global\let\title\relax
+  %\global\let\author\relax
+  %\global\let\date\relax
+  %\global\let\and\relax
+}
+\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{
+\ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{plain}}{\pagestyle{main}}
+\toccontents \gdef\tableofcontents{}
+
+\ifthenelse{\equal{\PackageOption}{TP}}{\bigskip\bigskip}{\vfill\ifthenelse{\equal{\PackageOption}{TDs}}{}{
+\begin{footnotesize}
+\begin{flushright}
+\today
+\end{flushright}
+\end{footnotesize}}
+\newpage}}{}
+\ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{main}}{}
+
+\ifthenelse{\equal{\PackageOption}{book}\and\equal{\inputinnercover}{true}}{
+{{\thispagestyle{empty} \pagestyle{empty} \insertinnercover
+
+\vfill 
+
+\noindent\ifthenelse{\equal{\insertpublisher}{}}{}{\insertpublisher}
+
+\vfill 
+
+\noindent\ifthenelse{\equal{\inserteditionsettings}{}}{}{\inserteditionsettings~--} \today
+
+\vfill 
+}}
+}{}
+
+}
+}
+\makeatother
+
+\ifthenelse{\equal{\PackageOption}{default}}{\renewcommand{\maketitle}{\defaulttitle}}{}
+
+\ifthenelse{\equal{\PackageOption}{corrige}}{\AtEndPreamble{
+\let\originsertenseignementnum\insertenseignementnum
+\renewcommand{\insertenseignementnum}{\originsertenseignementnum~(corrigé)}
+\let\origTitleToUse\TitleToUse
+}}{}
+
+\ifthenelse{\equal{\PackageOption}{book}}{
+\AtEndDocument{
+    \pagestyle{empty}
+    \ifthenelse{\equal{\inputtroisiemedecouv}{false}}{}{\clearpage\ifthenelse{\isodd{\thepage}}{}{~\clearpage} \inserttroisiemedecouv}
+    \ifthenelse{\equal{\inputquatriemedecouv}{false}}{}{\clearpage\ifthenelse{\isodd{\thepage}}{~\clearpage}{} \insertquatriemedecouv}
+}
+}{}

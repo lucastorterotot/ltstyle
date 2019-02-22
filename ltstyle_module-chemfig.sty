@@ -1,0 +1,22 @@
+\RequirePackage{chemfig} \setatomsep{7mm} \setangleincrement{30} \setcrambond{0.75ex}{0.8pt}{1.45pt} \definesubmol\nobond{-[,0.2,,,draw=none]}
+
+\makeatletter
+\newcommand\mylewis[3][1.45ex]{% #1=longueur, #2=atome #3=liste des angles
+\tikzpicture[baseline,anchor=base]%
+\node[inner sep=0pt,outer sep=1pt,circle,overlay](atom@@)at(0,0){\phantom{#2}};%
+\node[inner sep=0pt,outer sep=0pt]at(0,0){#2};%
+\def\list@angle{#3,}%
+\loop
+\expandafter\grab@angle\list@angle\@nil
+\pgfextractx\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimax{\the\CF@dim}%
+\pgfextracty\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimay{\the\CF@dim}%
+\pgfmathparse{#1*sin(\current@angle)/2}\let\offset@xx\pgfmathresult
+\pgfmathparse{#1*cos(\current@angle)/2}\let\offset@yy\pgfmathresult
+\draw[line width=.4pt,overlay]
+(\CF@dimax-\offset@xx,\CF@dimay+\offset@yy)--(\CF@dimax+\offset@xx,\CF@dimay-\offset@yy);%
+\unless\ifx\@empty\list@angle
+\repeat
+\endtikzpicture
+}
+\def\grab@angle#1,#2\@nil{\def\current@angle{#1}\def\list@angle{#2}}
+\makeatother

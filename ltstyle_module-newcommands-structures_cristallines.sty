@@ -1,0 +1,49 @@
+\def\baseradius{.3535533903932}
+\def\octaradius{.1464466094067}
+\def\tetraradius{.0794593112539}
+
+\newcommand{\drawSCbasepoint}[2][ltcolorblue]{\shadedraw [ball color= #1] #2 circle (3pt);}
+\newcommand{\drawSCbasesmallsphere}[2][ltcolorblue]{\shadedraw [ball color= #1] #2 circle (.66*\baseradius cm);}
+\newcommand{\drawSCbasebigsphere}[2][ltcolorblue]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\baseradius cm);}
+\newcommand{\drawSCbasedebug}[2][ltcolorblue]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\baseradius cm) node {\tiny #2};}
+
+\newcommand{\drawSCoctapoint}[2][ltcolorred]{\shadedraw [ball color= #1] #2 circle (2pt);}
+\newcommand{\drawSCoctasmallsphere}[2][ltcolorred]{\shadedraw [ball color= #1] #2 circle (.66*\octaradius cm);}
+\newcommand{\drawSCoctabigsphere}[2][ltcolorred]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\octaradius cm);}
+\newcommand{\drawSCoctadebug}[2][ltcolorred]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\octaradius cm) node {\tiny #2};}
+
+\newcommand{\drawSCtetrapoint}[2][ltcolorgray]{\shadedraw [ball color= #1] #2 circle (1pt);}
+\newcommand{\drawSCtetrasmallsphere}[2][ltcolorgray]{\shadedraw [ball color= #1] #2 circle (.66*\tetraradius cm);}
+\newcommand{\drawSCtetrabigsphere}[2][ltcolorgray]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\tetraradius cm) ;}
+\newcommand{\drawSCtetradebug}[2][ltcolorgray]{\shadedraw [ball color= #1, opacity=0.8] #2 circle (\tetraradius cm) node {\tiny #2};}
+
+\newcommand{\drawSCmf}[3][thick]{\draw [#1] #2 -- #3 ;}
+\newcommand{\drawSCmb}[3][thick, dashed]{\draw [#1] #2 -- #3 ;}
+\newcommand{\drawSCsf}[3][]{\draw [#1] #2 -- #3 ;}
+\newcommand{\drawSCsb}[3][dotted]{\draw [#1] #2 -- #3 ;}
+
+\def\SCpoints{
+\def\drawSCbase{\drawSCbasepoint}
+\def\drawSCocta{\drawSCoctapoint}
+\def\drawSCtetra{\drawSCtetrapoint}
+}
+
+\def\SCbigspheres{
+\def\drawSCbase{\drawSCbasebigsphere}
+\def\drawSCocta{\drawSCoctabigsphere}
+\def\drawSCtetra{\drawSCtetrabigsphere}
+}
+
+\def\SCsmallspheres{
+\def\drawSCbase{\drawSCbasesmallsphere}
+\def\drawSCocta{\drawSCoctasmallsphere}
+\def\drawSCtetra{\drawSCtetrasmallsphere}
+}
+
+\def\SCdebug{
+\def\drawSCbase{\drawSCbasedebug}
+\def\drawSCocta{\drawSCoctadebug}
+\def\drawSCtetra{\drawSCtetradebug}
+}
+
+\SCpoints

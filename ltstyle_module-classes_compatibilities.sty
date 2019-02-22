@@ -1,0 +1,346 @@
+\def\chaptername{Chapter}
+
+\makeatletter
+\@ifclassloaded{book}
+    {\let\frontmatterorig\frontmatter \renewcommand{\frontmatter}{\frontmatterorig\pagestyle{plain}}
+    \let\mainmatterorig\mainmatter \renewcommand{\mainmatter}{\mainmatterorig\pagestyle{main}}
+    \let\backmatterorig\backmatter \renewcommand{\backmatter}{\backmatterorig\pagestyle{plain}}}
+    {\newif\if@mainmatter \@mainmattertrue
+    \newcommand\frontmatter{\cleardoublepage\@mainmatterfalse\pagenumbering{roman}}
+    \newcommand\mainmatter{\cleardoublepage\@mainmattertrue\pagenumbering{arabic}}
+    \newcommand\backmatter{
+        \if@openright
+            \cleardoublepage
+        \else
+            \clearpage
+        \fi
+        \@mainmatterfalse}
+    \def\@chapapp{\chaptername}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\def\@schapter#1{\if@twocolumn
+                   \@topnewpage[\@makeschapterhead{#1}]%
+                 \else
+                   \@makeschapterhead{#1}%
+                   \@afterheading
+                 \fi}
+    }
+
+\newif\ifanappendix
+  \anappendixfalse
+  
+\ifthenelse{\equal{\PackageOption}{book}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{complet}}{
+\def\appendix{\par
+  \setcounter{chapter}{0}%
+  \setcounter{section}{0}%
+  \gdef\chaptername{\appendixname}%
+  \gdef\thechapter{\Alph{chapter}}%
+  \anappendixtrue}
+}{}
+  
+\def\chapterappendix{\par
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \def\thesectionold\thesection
+  \def\thesection{\Alph{section}}
+  \anappendixtrue}
+  
+\def\endchapterappendix{\par
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \def\thesection{\thesectionold}
+  \anappendixfalse}
+
+  \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}%
+  \thispagestyle{empty}%
+  \newpage%
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+
+\@ifclassloaded{article}{\newcommand{\chapter}[1]{\noindent #1~\\}}{}
+
+\@ifclassloaded{book}%
+  {\renewcommand\thesection{\arabic{section}}
+  \ifthenelse{\equal{\PackageOption}{default}}
+      {}
+      {\renewcommand{\PackageOption}{book}}
+  
+  %\renewcommand\thesection{\arabic{section}}
+  
+%  \let\frontmatterorig\frontmatter \renewcommand{\frontmatter}{\frontmatterorig\pagestyle{plain}}
+%  \let\mainmatterorig\mainmatter \renewcommand{\mainmatter}{\mainmatterorig\pagestyle{main}}
+%  \let\backmatterorig\backmatter \renewcommand{\backmatter}{\backmatterorig\pagestyle{plain}}
+  
+    \if@titlepage
+      \newenvironment{abstract}{%
+          \titlepage
+          \null\vfil
+          \@beginparpenalty\@lowpenalty
+          \begin{center}%
+            {\bfseries \abstractname}
+            \@endparpenalty\@M
+          \end{center}}%
+         {\par\vfil\null\endtitlepage}
+    \else
+      \newenvironment{abstract}{%
+          \if@twocolumn
+            \section*{\abstractname}%
+          \else
+            \small
+            \begin{center}%
+              {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+            \end{center}%
+            \quotation
+          \fi}
+          {\if@twocolumn\else\endquotation\fi}
+    \fi
+    
+%    \let\appendixorig\appendix \renewcommand{\appendix}{\cleardoublepage\pagestyle{main}\appendixorig \makeatletter \@mainmattertrue \makeatother \renewcommand{\chaptername}{Annexe}%\let\chapterappendix\chapter\renewcommand{\chapter}[1]{\refstepcounter{chapter}\chapterappendix{\thechapter~~##1}}
+%    }%
+  }%
+  {\@ifclassloaded{report}%
+       {\renewcommand\thesection{\arabic{section}}
+
+        \makeatletter
+            \ifthenelse{\equal{\PackageOption}{fiche}}
+                {\renewcommand{\chapter}[1]{\laterdef{\@title}{#1}\laterdef{\insertshorttitle}{}}
+
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries\boldmath
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\unboldmath\par
+    \endgroup
+  \fi}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{2.3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+\renewcommand*\l@paragraph{\@dottedtocline{4}{7.0em}{4.1em}}
+\renewcommand*\l@subparagraph{\@dottedtocline{5}{10em}{5em}}
+
+                }
+                {}
+        
+       }%
+       { \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{default}\or\equal{\PackageOption}{book}\or\equal{\isbeamer}{true}\or\equal{\PackageOption}{chapter}}
+           {}
+           {\renewcommand{\chapter}[1]{\laterdef{\@title}{#1}\laterdef{\insertshorttitle}{}}}
+       }%
+        
+%\def\frontmatter{\cleardoublepage\pagenumbering{roman}\pagestyle{plain}}
+%\def\mainmatter{\cleardoublepage\pagenumbering{arabic}\pagestyle{main}}
+%\def\backmatter{%
+%  \if@openright\cleardoublepage\else\clearpage\fi
+%  %\let\chaptername\relax
+%  \pagestyle{plain}}
+
+%    \let\appendixorig\appendix \renewcommand{\appendix}{\newpage\appendixorig\gdef\thechapter{\@Alph\c@chapter}\setcounter{chapter}{0}\renewcommand{\chaptername}{Annexe}}
+    
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter settings 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\ifthenelse{\equal{\PackageOption}{default}}{}{
+%\makeatletter
+%\@ifclassloaded{article}{\newcommand\@chapapp{\chaptername}}{}
+%\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+%                       \if@mainmatter
+%                         \refstepcounter{chapter}%
+%                         \typeout{\@chapapp\space\thechapter.}%
+%                         \addcontentsline{toc}{chapter}%
+%                                   {\protect\numberline{\thechapter}#1}%
+%                       \else
+%                         \addcontentsline{toc}{chapter}{#1}%
+%                       \fi
+%                    \else
+%                      \addcontentsline{toc}{chapter}{#1}%
+%                    \fi
+%                    \chaptermark{#1}%
+%                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+%                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+%                    \if@twocolumn
+%                      \@topnewpage[\@makechapterhead{#2}]%
+%                    \else
+%                      \@makechapterhead{#2}%
+%                      \@afterheading
+%                    \fi}
+%\def\@schapter#1{\if@twocolumn
+%                   \@topnewpage[\@makeschapterhead{#1}]%
+%                 \else
+%                   \@makeschapterhead{#1}%
+%                   \@afterheading
+%                 \fi}
+%\def\@makechapterhead#1{%
+%  \vspace*{50\p@}%
+%  {\parindent \z@ \centering \normalfont
+%    \ifnum \c@secnumdepth >\m@ne
+%      \if@mainmatter
+%        \Large\bfseries\boldmath \chaptername\space \thechapter\unboldmath
+%        \par\nobreak
+%      \fi
+%    \fi
+%    \interlinepenalty\@M
+%    \Large \bfseries\boldmath #1\unboldmath\par\nobreak
+%    \vskip 40\p@
+%  }}
+%\def\@makeschapterhead#1{%
+%  \vspace*{50\p@}%
+%  {\parindent \z@ \centering
+%    \normalfont
+%    \interlinepenalty\@M
+%    \Large \bfseries\boldmath  #1\unboldmath\par\nobreak
+%    \vskip 40\p@
+%  }}
+%\makeatother
+%}
+
+\ifthenelse{\equal{\isarticle}{true}}{
+%TODO attention, n'y a-t-il pas un risque en cas d'utilisation de l'option default ici ? Visiblement, non.
+\makeatletter
+\@namedef{ttll@chapter}{0}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \LARGE\familyfortitles\bfseries\boldmath \chaptername\space \thechapter\unboldmath
+        \par\nobreak
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \LARGE \familyfortitles\bfseries\boldmath #1\unboldmath\par\nobreak
+    \vskip 40\p@
+  }}
+
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering
+    \normalfont
+    \interlinepenalty\@M
+    \LARGE \familyfortitles\bfseries\boldmath  #1\unboldmath\par\nobreak
+    \vskip 40\p@
+  }}
+
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{livret}}{
+
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \ifthenelse{\equal{\PackageOption}{complet}}{\thispagestyle{main}}{\thispagestyle{plain}}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+%\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+%                       \if@mainmatter
+%                         \refstepcounter{chapter}%
+%                         \typeout{\@chapapp\space\thechapter.}%
+%                         \addcontentsline{toc}{chapter}%
+%                                   {\protect\numberline{\thechapter}#1}%
+%                       \else
+%                         \addcontentsline{toc}{chapter}{#1}%
+%                       \fi
+%                    \else
+%                      \addcontentsline{toc}{chapter}{#1}%
+%                    \fi
+%                    \chaptermark{#1}%
+%                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+%                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+%                    \if@twocolumn
+%                      \@topnewpage[\@makechapterhead{#2}]%
+%                    \else
+%                      \@makechapterhead{#2}%
+%                      \@afterheading
+%                    \fi}
+%\def\@schapter#1{\if@twocolumn
+%                   \@topnewpage[\@makeschapterhead{#1}]%
+%                 \else
+%                   \@makeschapterhead{#1}%
+%                   \@afterheading
+%                 \fi}
+}{}
+
+\ifthenelse{\equal{\PackageOption}{book}}{
+
+\renewcommand\tableofcontents{%
+%\clearpage\ifodd\value{page}\else\thispagestyle{empty}\mbox{}\clearpage\fi\thispagestyle{plain} ~\vspace{1.3cm}\begin{center}\textbf{{\Large \contentsname\\\vspace{0.6cm}}}\end{center}
+%        \@mkboth{%
+%           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+%    \@starttoc{toc}%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi    
+    }
+%\renewcommand \thesection {\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@section} %% NOT USED
+}{}
+
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{book}}{
+\newcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries\boldmath
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\unboldmath\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
+\renewcommand*\l@paragraph{\@dottedtocline{4}{10em}{5em}}
+\renewcommand*\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
+
+\@addtoreset{section}{chapter}
+\@addtoreset {equation}{chapter}
+\renewcommand\theequation
+  {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
+\@addtoreset {figure}{chapter}
+\renewcommand \thefigure
+     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
+\@addtoreset {table}{chapter}
+\renewcommand \thetable
+     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
+\@addtoreset{footnote}{chapter}
+}{}
+
+\makeatother
+
+}{}

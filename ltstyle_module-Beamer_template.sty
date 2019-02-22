@@ -1,0 +1,111 @@
+\makeatletter
+\@ifclassloaded{beamer}{\ifthenelse{\equal{\PackageOption}{book}}{\renewcommand{\PackageOption}{default}}{}}{}
+\makeatother
+
+\ifthenelse{\equal{\isbeamer}{false}}{}{
+
+%\usefonttheme[onlymath]{serif}
+
+\newcommand{\donotchangesubtitle}{false}
+\newcommand{\forcesubtitle}{\renewcommand{\donotchangesubtitle}{true}}
+ 
+\ifthenelse{\equal{\PackageOption}{default}}
+    {\usetheme{default}}
+    {\ifthenelse{\equal{\PackageOption}{none}}
+        {\usetheme{Boadilla}}
+        {\usetheme{Boadilla}%\usetheme{AnnArbor}\usecolortheme{beaver}\usecolortheme{dolphin}
+        \setbeamertemplate{headline}{%
+        \leavevmode%
+        \hbox{%
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,right]{author in head/foot}%
+        \usebeamerfont{author in head/foot}\secname~~
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,left]{title in head/foot}%
+        \usebeamerfont{title in head/foot}~~\color{black}{\subsecname}
+        \end{beamercolorbox} \hspace{-0.125cm}
+%        \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+%        \usebeamerfont{date in head/foot}~\hfill \today \hfill
+%        ~\hfill \insertframenumber /\inserttotalframenumber\hfill~ %numéro de la slide tout en bas à droite
+%        \end{beamercolorbox}
+        }%
+        \vskip0pt%
+        }        
+        
+        }
+    
+\setbeamertemplate{navigation symbols}{%items présents dans la barre de navigation
+%\insertslidenavigationsymbol
+%\insertframenavigationsymbol
+%\insertsubsectionnavigationsymbol
+%\insertsectionnavigationsymbol
+%\insertdocnavigationsymbol
+%\insertbackfindforwardnavigationsymbol
+}
+
+\AtBeginDocument{
+\ifthenelse{\equal{\PackageOption}{default}}{}{
+\let\originstitute\mybeamerinsertinstitute
+\let\origshortinstitute\mybeamerinsertshortinstitute
+\ifthenelse{\equal{\insertclasse}{}}
+        {}
+        {\ifthenelse{\equal{\originstitute}{}}
+            {\renewcommand{\insertinstitute}{\insertlongclasse}
+             \renewcommand{\insertshortinstitute}{\insertlongclasse}
+            }
+            {\renewcommand{\insertinstitute}{\insertlongclasse~--~\originstitute}
+             \renewcommand{\insertshortinstitute}{\insertclasse~--~\origshortinstitute}
+            }
+        }
+\ifthenelse{\equal{\donotchangesubtitle}{true}}{}{
+\subtitle{\ifthenelse{\equal{\insertenseignementtype}{}}{{\insertmatiere}}{
+\ifthenelse{\equal{\insertmatiere}{}}{{\insertenseignementtype~\insertenseignementnum}}{{\insertmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+}}}
+\ifthenelse{\equal{\PackageOption}{none}}{
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head/foot}\insertshortauthor %nom de l'auteur en bas à gauche
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.45\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle %titre en bas à droite
+\end{beamercolorbox} \hspace{-0.125cm}
+\begin{beamercolorbox}[wd=.05\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+%\usebeamerfont{date in head/foot} %date en bas à droite
+\insertframenumber /\inserttotalframenumber{}\hspace*{2ex} %numéro de la slide tout en bas à droite
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+}{
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head/foot}\insertclasse\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\originstitute}{}}{\hfill}{}\origshortinstitute\ifthenelse{\not\equal{\insertmatiere}{}\and\not\equal{\originstitute}{}}{\hfill}{}\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\insertmatiere}{}\and\equal{\originstitute}{}}{\hfill}{}\insertshortmatiere %\insertshortauthor~(\origshortinstitute) %nom de l'auteur en bas à gauche
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\color{black}{\ifthenelse{\equal{\insertenseignementtype}{}}{}{\insertenseignementtype~\insertenseignementnum\hfill}\insertshorttitle} %titre en bas à droite
+\end{beamercolorbox} \hspace{-0.125cm}
+\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}~\hfill \insertdate \hfill
+~\hfill \insertframenumber /\inserttotalframenumber\hfill~ %numéro de la slide tout en bas à droite
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+}
+}
+}
+}
+
+\def\beamerpar{\bigskip\par\noindent\textbf}
+\def\beamersubpar{\medskip\par\textbf}
+
+\def\paragraph{\secdef\beamerpar\beamerpar}
+\def\subparagraph{\secdef\beamersubpar\beamersubpar}
+
+%% Couleur %%% test DodgerBlue3
+\ifthenelse{\equal{\ltcolortheme}{auto}}{\AtEndPreamble{
+\ifthenelse{\equal{\insertmatiere}{Chimie}\or\equal{\insertmatiere}{chimie}\or\equal{\insertshortmatiere}{Chimie}\or\equal{\insertshortmatiere}{chimie}}{\setbeamercolor{structure}{fg=ltcolorblue4}\renewcommand{\ltcolortheme}{blue}}{}
+\ifthenelse{\equal{\insertmatiere}{Physique}\or\equal{\insertmatiere}{physique}\or\equal{\insertshortmatiere}{Physique}\or\equal{\insertshortmatiere}{physique}}{\setbeamercolor{structure}{fg=ltcolorred4}\renewcommand{\ltcolortheme}{red}}{}
+}}{\setbeamercolor{structure}{fg=ltcolor\ltcolortheme4}}
+}

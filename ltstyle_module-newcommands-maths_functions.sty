@@ -1,0 +1,45 @@
+\RequirePackage{mathtools}
+\DeclarePairedDelimiter\parentheses{\lparen}{\rparen}
+
+%\let\trace\relax
+%\let\tr\relax
+%\let\Trace\relax
+%\let\Tr\relax
+\RenewDocumentCommand\trace{d()}{\operatorname{Tr}\IfValueT{#1}{\parentheses*{#1}}}
+\RenewDocumentCommand\tr{d()}{\operatorname{Tr}\IfValueT{#1}{\parentheses*{#1}}}
+\RenewDocumentCommand\Trace{d()}{\operatorname{Tr}\IfValueT{#1}{\parentheses*{#1}}}
+\RenewDocumentCommand\Tr{d()}{\operatorname{Tr}\IfValueT{#1}{\parentheses*{#1}}}
+
+\NewDocumentCommand\argsinh{d()}{\operatorname{argsinh}\IfValueT{#1}{\parentheses*{#1}}}
+\NewDocumentCommand\argcosh{d()}{\operatorname{argcosh}\IfValueT{#1}{\parentheses*{#1}}}
+\NewDocumentCommand\argtanh{d()}{\operatorname{argtanh}\IfValueT{#1}{\parentheses*{#1}}}
+
+\def\eexp#1{\ensuremath{{\rm e}^{#1}}}
+
+%\let\Re\relax
+%\let\Im\relax
+\RenewDocumentCommand\Re{d()}{\operatorname{\real}\IfValueT{#1}{\parentheses*{#1}}}
+\RenewDocumentCommand\Im{d()}{\operatorname{\imaginary}\IfValueT{#1}{\parentheses*{#1}}}
+
+\def\usenabla{%
+%\let\grad\relax
+%\let\div\relax
+%\let\curl\relax
+\RenewDocumentCommand\grad{d()}{\vec{\operatorname{\nabla}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\div{d()}{\vec{\operatorname{\nabla}}\cdot\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\curl{d()}{\vec{\operatorname{\nabla}}\wedge\IfValueT{##1}{\parentheses*{##1}}}
+\def\rot{\curl}%
+}
+\def\nousenabla{%
+%\let\grad\relax
+%\let\div\relax
+%\let\curl\relax
+\RenewDocumentCommand\grad{d()}{\operatorname{\vec{{\rm grad}}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\div{d()}{\operatorname{{\rm div}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\curl{d()}{\operatorname{\vec{{\rm rot}}}\IfValueT{##1}{\parentheses*{##1}}}
+\def\rot{\curl}%
+}
+
+\ifthenelse{\equal{\nablaOption}{true}}{\usenabla}{\nousenabla}
+
+\NewDocumentCommand\sinc{d()}{\operatorname{sinc}\IfValueT{#1}{\parentheses*{#1}}}

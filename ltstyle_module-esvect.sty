@@ -1,0 +1,15 @@
+\RequirePackage[b]{esvect}
+\makeatletter
+\def\vectfill@{\traitfill@\relbaredd\relbareda{\hspace{-2pt}\fldr\hspace{-1.25pt}}}
+\def\traitfill@#1#2#3#4{%
+  $\m@th\mkern.75mu%\relax#4#1\mkern-6mu%on met \relbaredd au d\'ebut
+   \hspace{1pt}\cleaders\hbox{$\mkern0mu#2\mkern0mu$}\hfill%remplit avec relbareda
+   \mkern-1.5mu#3$%
+}
+\makeatother
+\let\origvec\vec
+%\renewcommand{\vec}[1]{\protect \vv{#1}}
+
+\newlength{\myveclength}
+
+\renewcommand{\vec}[1]{{\protect \vv{\protect \hphantom{#1}\protect \vphantom{#1}}} \protect \settowidth{\myveclength}{$\protect\vv{#1}$} \protect \mathchoice{\hspace{-\myveclength}}{\hspace{-\myveclength}}{\protect\hphantom{{}^{}}\protect \settowidth{\myveclength}{${}^{\protect \vv{#1}}$}\hspace{-\myveclength}}{\protect\hphantom{{}^{{}^{}}}\protect \settowidth{\myveclength}{${}^{{}^{\protect \vv{#1}}}$}\hspace{-\myveclength}}#1}

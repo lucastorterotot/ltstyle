@@ -1,0 +1,147 @@
+\RequirePackage{fancybox}%encadrés
+
+%\RequirePackage{framed}
+
+\usepackage{shadow}\setlength\sboxrule {0.4pt}\setlength\sboxsep{6pt}\setlength\sdim{2pt}
+
+\ifthenelse{\equal{\isbeamer}{true}}{\RequirePackage[tikz]{bclogo}}{\usepackage[breakable,skins]{tcolorbox}}
+
+\newenvironment*{ltremarque}{%
+\noindent\begin{tcolorbox}[enhanced, borderline west={0.6mm}{-1.4mm}{\colorlineremarque}, blank, grow to left by=-9.4mm, %width=\linewidth-3.1mm,
+left=1.4mm,
+breakable]}
+{\end{tcolorbox}}
+
+\newenvironment*{ltencadreepais}{%
+\noindent\begin{tcolorbox}[grow to left by=-8mm, width=\linewidth-16mm,
+bottomrule = 0.6mm,toprule = 0.6mm,rightrule = 0.6mm,leftrule = 0.6mm,
+bottom=.8mm, top=.8mm, left=1.2mm, right=1.2mm,
+colframe=\colorlineremarque, enhanced jigsaw, opacityback = 0,
+breakable]}
+{\end{tcolorbox}}
+
+\newenvironment*{ltencadrefin}{%
+\noindent\begin{tcolorbox}[grow to left by=-8mm, width=\linewidth-16mm,
+bottomrule = 0.4pt,toprule = 0.4pt,rightrule = 0.4pt,leftrule = 0.4pt,
+bottom=.8mm, top=.8mm, left=1.2mm, right=1.2mm,
+sharp corners = all,
+colframe=\colorlineremarque, enhanced jigsaw, opacityback = 0,
+breakable]}
+{\end{tcolorbox}}
+
+\makeatletter
+\@ifclassloaded{beamer}{
+\renewenvironment*{ltremarque}[2][]{%
+   \setkeys{bclogo}{#1}%options
+\def\bcval@nobreak{\ifKV@bclogo@nobreak true\else false\fi}% gestion nobreak
+\def\bcval@shadow{\ifKV@bclogo@ombre true\else false\fi}% gestion ombre
+%
+\mdframed[%
+ style=bc@style,%
+ innerleftmargin={\dimexpr\ifKV@bclogo@avecBarre\logowidth\else\z@\fi+\bcval@framesep\relax},%
+ innertopmargin={\dimexpr\ht\bc@envbox+\dp\bc@envbox+\bcval@framesep\relax},%hauteur titre+framesep
+ innerrightmargin=\bcval@framesep,%
+ innerbottommargin=0.5\bcval@framesep,%
+ rightmargin={\dimexpr\bcval@margeD+\ifKV@bclogo@ombre\bcval@epOmbre cm\else\z@\fi\relax},%
+ leftmargin=\bcval@margeG,%
+ backgroundcolor=\bcval@couleur,%
+ fontcolor=\bcval@couleurTexte,%
+ middlelinewidth=\bcval@borderWidth,%
+ linecolor=\bcval@couleurBord,%
+ roundcorner={\bcval@arrondi cm},%
+ nobreak= false ,%\bcval@nobreak,%l'option nobreak de mdframed vient avec la version 0.9
+ shadow=\bcval@shadow,%
+ shadowsize=\bcval@epOmbre cm,%
+ shadowcolor=\bcval@couleurOmbre,%
+ needspace=3\baselineskip%
+]%
+}%
+{%
+\endmdframed\par%
+}%
+}{}
+\makeatother
+
+
+\def\remarquecouleurchooser#1{
+\ifthenelse{\equal{\remarquecouleur}{}}{ %Mots-clef
+\ifthenelse{\equal{#1}{Important}\or\equal{#1}{danger}\or\equal{#1}{Attention}}{\def\remarquecouleur{red}}{}
+\ifthenelse{\equal{#1}{NB}\or\equal{#1}{Indication}\or\equal{#1}{Indications}}{\def\remarquecouleur{green}}{}}{}
+\ifthenelse{\equal{\remarquecouleur}{}}{\def\colorlineremarque{ltcolor\ltcolortheme}}{\def\colorlineremarque{\remarquecouleur}} %couleur par defaut ou non
+\ifthenelse{\equal{\remarquecouleur}{red}\or\equal{\remarquecouleur}{rouge}}{\def\colorlineremarque{\ltcolorred}}{} 
+\ifthenelse{\equal{\remarquecouleur}{orange}}{\def\colorlineremarque{\ltcolororange}}{} 
+\ifthenelse{\equal{\remarquecouleur}{yellow}\or\equal{\remarquecouleur}{jaune}}{\def\colorlineremarque{\ltcoloryellow}}{} 
+\ifthenelse{\equal{\remarquecouleur}{green}\or\equal{\remarquecouleur}{vert}}{\def\colorlineremarque{\ltcolorgreen}}{} 
+\ifthenelse{\equal{\remarquecouleur}{cyan}}{\def\colorlineremarque{\ltcolorcyan}}{} 
+\ifthenelse{\equal{\remarquecouleur}{blue}\or\equal{\remarquecouleur}{bleu}}{\def\colorlineremarque{\ltcolorblue}}{}
+\ifthenelse{\equal{\remarquecouleur}{violet}}{\def\colorlineremarque{\ltcolorviolet}}{}
+\ifthenelse{\equal{\remarquecouleur}{magenta}}{\def\colorlineremarque{\ltcolormagenta}}{}
+}
+
+\makeatletter
+\newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\remarquecontent}
+\newcommand*\remarquecontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltremarque}
+\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{\textcolor{\ltcolorred}{\large\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}\ }{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}%\vphantom{My}%\vspace{-.725mm}
+\end{ltremarque}
+}
+}
+
+\newcommand*\encadreepais[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\encadreepaiscontent}
+\newcommand*\encadreepaiscontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltencadreepais}
+\ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
+\end{ltencadreepais}
+}
+}
+
+\newcommand*\encadrefin[1][black]{\smallskip\def\remarquecouleur{#1}\encadrefincontent}
+\newcommand*\encadrefincontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltencadrefin}
+\ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
+\end{ltencadrefin}
+}
+}
+\makeatother
+
+\def\encadre{\encadreepais}
+ 
+\newcommand{\miniencadre}[1]{\[\boxed{\text{\vphantom{QÀ}#1}}\]}
+
+
+\makeatletter
+\@ifclassloaded{beamer}{
+\renewcommand*\remarquecontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltremarque}[margeG=0.5,margeD=0,barre = line, couleurBarre=\colorlineremarque, noborder = true, epBarre=1.5,logo=, marge=0 ]{}
+\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{\textcolor{\ltcolorred}{\large\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}\ }{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}\vphantom{My}%\vspace{-.725mm}
+\end{ltremarque}
+}
+}
+
+\renewcommand*\encadreepaiscontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltremarque}[margeG=0.77,margeD=0.77,avecBarre = false,arrondi = .2, epBord=1.5,logo= , marge = 6, couleurBord=\colorlineremarque ]{}
+\ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
+\end{ltremarque}
+}
+}
+
+\renewcommand*\encadrefincontent[2][]{%
+\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{ltremarque}[margeG=0.77,margeD=0.77,avecBarre = false,arrondi = 0.0, epBord=0.4,logo= , marge = 6, couleurBord=\colorlineremarque ]{}
+\ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
+\end{ltremarque}
+}
+}
+}{}
+\makeatother

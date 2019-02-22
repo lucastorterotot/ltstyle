@@ -1,0 +1,152 @@
+%%%% Colors
+
+\newcommand{\covertextcolor}{black}
+
+\newcommand{\ltcolorred}{ltcolorred}
+\newcommand{\ltcolororange}{ltcolororange}
+\newcommand{\ltcoloryellow}{ltcoloryellow}
+\newcommand{\ltcolorgreen}{ltcolorgreen}
+\newcommand{\ltcolorcyan}{ltcolorcyan}
+\newcommand{\ltcolorblue}{ltcolorblue}
+\newcommand{\ltcolorviolet}{ltcolorviolet}
+\newcommand{\ltcolormagenta}{ltcolormagenta}
+
+\newcommand{\ltcolorpart}{black}
+\newcommand{\ltcolorchapter}{black}
+\newcommand{\ltcolorsection}{black}
+\newcommand{\ltcolorsubsection}{black}
+\newcommand{\ltcolorsubsubsection}{black}
+\newcommand{\ltcolorparagraph}{black}
+\newcommand{\ltcolorsubparagraph}{black}
+
+\def\useseccolor{\renewcommand{\ltcolorsection}{ltcolor\ltcolortheme4}\renewcommand{\ltcolorsubsection}{ltcolor\ltcolortheme}\renewcommand{\ltcolorsubsubsection}{ltcolor\ltcolortheme3}}
+\def\nouseseccolor{\renewcommand{\ltcolorsection}{black}\renewcommand{\ltcolorsubsection}{black}\renewcommand{\ltcolorsubsubsection}{black}}
+
+
+%%%% Useful shorcuts
+
+\newcommand{\OK}{\ding{51}}
+\newcommand{\KO}{\ding{55}}
+\newcommand{\OKbox}{\Checkedbox}
+\newcommand{\KObox}{\CrossedBox}
+\newcommand{\Obox}{\HollowBox}
+
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+\def\outref#1#2#3{\ifthenelse{\equal{\ref{#2}}{??}}{}{#1\ref{#2}#3}}
+
+%\makeatletter
+%\def\@newl@bel#1#2#3{%
+%  \@ifundefined{#1@#2}
+%    {\global\@namedef{#1@#2}{#3}}
+%    {\gdef\@multiplelabels{}}%
+%  }
+%\makeatother
+
+\newcommand{\todo}[1]{\colorbox{yellow}{\textcolor{red}{#1}}}
+
+\AtBeginDocument{
+\def\up{\textsuperscript}
+\def\down{\textsubscript}
+\def\doup#1#2{\ensuremath{_{#1\hphantom{#2}}^{\hphantom{#1}#2}}}
+\def\updo#1#2{\ensuremath{^{#1\hphantom{#2}}_{\hphantom{#1}#2}}}
+}
+
+\makeatletter
+\newcommand{\laterdef}[2]{% 
+  \protected@write\@auxout{}{\gdef\string#1{#2}}} %command to define variables later
+\makeatother
+
+\newcommand{\drawat}[3]{\makebox[0pt][l]{\raisebox{#2}{\hspace*{#1}#3}}}
+
+\newcounter{enumTemp}%item count
+\newcommand{\rememberitemcount}{\setcounter{enumi}{\theenumTemp}}
+\newcommand{\saveitemcount}{\setcounter{enumTemp}{\theenumi}}
+%\newcommand{\setitemcount}[1]{\setcounter{enumTemp}{#1} \rememberitemcount}
+
+%%%% Typography
+
+\def\lastname#1{{\sc #1}}
+
+\def\adhoc{\textit{ad~hoc}}
+\def\adlibitum{\textit{ad~libitum}}
+\def\afortiori{\textit{a~fortiori}}
+\def\aposteriori{\textit{a~posteriori}}
+\def\apriori{\textit{a~priori}}
+\def\bis{\textit{bis}}
+\def\grossomodo{\textit{grosso modo}}
+\def\ibidem{\textit{ibidem}}
+\def\idem{\textit{idem}}
+\def\inextenso{\textit{in~extenso}}
+\def\inextremis{\textit{in~extremis}}
+\def\infine{\textit{in~fine}}
+\def\infra{\textit{infra}}
+\def\loccit{\textit{loc.cit.}}
+\def\modusvivendi{\textit{modus vivendi}}
+\def\opcit{\textit{op.cit.}}
+\def\passim{\textit{passim}}
+\def\quater{\textit{quater}}
+\def\sic{\textit{sic}}
+\def\statuquo{\textit{statu quo}}
+\def\supra{\textit{supra}}
+\def\ter{\textit{ter}}
+\def\via{\textit{via}}
+\def\viceversa{\textit{vice versa}}
+
+\def\Adhoc{\textit{Ad~hoc}}
+\def\Adlibitum{\textit{Ad~libitum}}
+\def\Afortiori{\textit{A~fortiori}}
+\def\Aposteriori{\textit{A~posteriori}}
+\def\Apriori{\textit{A~priori}}
+\def\Bis{\textit{Bis}}
+\def\Grossomodo{\textit{Grosso modo}}
+\def\Ibidem{\textit{Ibidem}}
+\def\Idem{\textit{Idem}}
+\def\Inextenso{\textit{In~extenso}}
+\def\Inextremis{\textit{In~extremis}}
+\def\Infine{\textit{In~fine}}
+\def\Infra{\textit{Infra}}
+\def\Loccit{\textit{Loc.cit.}}
+\def\Modusvivendi{\textit{Modus vivendi}}
+\def\Opcit{\textit{Op.cit.}}
+\def\Passim{\textit{Passim}}
+\def\Quater{\textit{Quater}}
+\def\Sic{\textit{Sic}}
+\def\Statuquo{\textit{Statu quo}}
+\def\Supra{\textit{Supra}}
+\def\Ter{\textit{Ter}}
+\def\Via{\textit{Via}}
+\def\Viceversa{\textit{Vice versa}}
+
+%%%% Roman numbers
+\newcommand{\Romannum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\romannum}[1]{\expandafter{\romannumeral #1\relax}}
+
+%%%% Other
+
+\renewcommand{\and}{\unskip, }
+
+% commande d'annulation du correcteur typographique du package [francais]{babel}
+% qui force l'espace avant ':' (parfois utile pour la bibliographie)
+\makeatletter
+\@ifpackageloaded{babel}%
+        {\newcommand{\nospace}[1]{{\NoAutoSpaceBeforeFDP{}#1}}}%
+          % !! double {{}} pour cantonner l'effet à l'argument #1 !!
+        {\newcommand{\nospace}[1]{#1}}
+\makeatother
+
+\newcommand{\includeIRsdbs}[2][14.5cm]{\includegraphics[width=#1, trim=0cm 3.985cm 0cm 3.25cm, clip=true]{#2}\nocite{sdbs}}
+%\newcommand{\includeRMNnmrdb}[2][17cm]{\includegraphics[width=#1, trim = 0cm 0cm 0cm 1.75cm, clip=true]{#2}\nocite{nmrdb}}
+
+\newcommand\IfNonnegative[3]{% 
+    \begingroup%
+    \pgfmathparse{ifthenelse(#1>=0,1,0)}%
+    \if\pgfmathresult 1 \relax%
+            {#2}%
+        \else%
+            {#3}%
+    \fi%
+    \endgroup%
+}%

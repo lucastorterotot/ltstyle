@@ -1,0 +1,255 @@
+\newcommand{\classelvl}{}
+\newcommand{\insertclasselvl}{\classelvl}
+\newcommand{\classefiliere}{}
+\newcommand{\insertclassefiliere}{\classefiliere}
+\newcommand{\insertlongclassefiliere}{\classefiliere}
+\newcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}
+\newcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}
+\newcommand{\insertclasse}{}
+\newcommand{\insertlongclasse}{\insertclasse}
+\newcommand{\insertmatiere}{}
+\newcommand{\insertshortmatiere}{\insertmatiere}
+\newcommand{\insertenseignementtype}{}
+\newcommand{\insertenseignementnum}{}
+\newcommand{\insertenseignementgpcolle}{}
+\newcommand{\insertenseignementduree}{}
+\newcommand{\insertenseignementmodalites}{}
+\newcommand{\insertimgcover}{\begin{center}\vspace{9.5cm}\end{center}}
+\newcommand{\inserteditionsettings}{}
+\newcommand{\insertpublisher}{}
+\newcommand{\insertshortpublisher}{}
+\newcommand{\insertinnercover}{}
+\newcommand{\insertdeuxiemedecouv}{}
+\newcommand{\inserttroisiemedecouv}{}
+\newcommand{\insertquatriemedecouv}{}
+\newcommand{\inputdeuxiemedecouv}{false}
+\newcommand{\inputtroisiemedecouv}{false}
+\newcommand{\inputquatriemedecouv}{false}
+
+\newcounter{debutanneescol}
+\newcounter{finanneescol}
+\newcounter{shortdebutanneescol}
+\newcounter{shortfinanneescol}
+\setcounter{debutanneescol}{\the\year}
+\ifnum\month < 8 \addtocounter{debutanneescol}{-1}\fi
+\AtEndPreamble{
+\setcounter{finanneescol}{\thedebutanneescol}
+\stepcounter{finanneescol}
+\setcounter{shortdebutanneescol}{\thedebutanneescol}
+\setcounter{shortfinanneescol}{\thefinanneescol}
+\addtocounter{shortdebutanneescol}{-2000}
+\addtocounter{shortfinanneescol}{-2000}
+\newcommand{\insertanneescol}{\thedebutanneescol-\thefinanneescol}
+\newcommand{\insertshortanneescol}{\theshortdebutanneescol-\theshortfinanneescol}}
+
+\makeatletter
+\ifthenelse{\equal{\isbeamer}{true}}{}{
+\newcommand{\inserttitle}{}
+\newcommand{\insertshorttitle}{\inserttitle}
+\newcommand{\insertsubtitle}{}
+\newcommand{\insertshortsubtitle}{\insertsubtitle}
+\newcommand{\insertauthor}{}
+\newcommand{\insertshortauthor}{\insertauthor}
+\newcommand{\insertinstitute}{}
+\newcommand{\insertshortinstitute}{\insertinstitute}
+
+\newcommand\Originaldate{}
+\let\Originaldate\date
+\renewcommand*{\date}[1]{%
+  \Originaldate{#1}%
+  \renewcommand*{\insertdate}{#1}%
+}
+\newcommand*{\insertdate}{}
+
+\let\authororig\author
+\def\author{\@dblarg\my@author}
+\long\def\my@author[#1]#2{%
+  \authororig{#2}%
+  \def\insertauthor{#2}%
+  \def\insertshortauthor{#1}%
+  }
+
+\let\titleorig\title
+\def\title{\@dblarg\my@title}
+\long\def\my@title[#1]#2{%
+  \titleorig{#2}%
+  \def\inserttitle{#2}%
+  \def\insertshorttitle{#1}%
+  }
+  
+\def\subtitle{\@dblarg\my@subtitle}
+\long\def\my@subtitle[#1]#2{%
+  \def\insertsubtitle{#2}%
+  \def\insertshortsubtitle{#1}%
+  }
+  
+\def\institute{\@dblarg\my@institute}
+\long\def\my@institute[#1]#2{%
+ \def\insertinstitute{#2}
+ \def\insertshortinstitute{#1}
+ }
+}
+  
+\def\publisher{\@dblarg\my@publisher}
+\long\def\my@publisher[#1]#2{%
+  \def\insertpublisher{#2}%
+  \def\insertshortpublisher{#1}%
+  }
+
+\def\matiere{\@dblarg\my@matiere}
+\long\def\my@matiere[#1]#2{%
+ \def\insertmatiere{#2}
+ \def\insertshortmatiere{#1}
+ }
+ 
+\def\setclassefiliere{\@dblarg\my@setclassefiliere}
+\long\def\my@setclassefiliere[#1]#2{%
+ \def\insertlongclassefiliere{#1}
+ \def\insertclassefiliere{#2}
+ \renewcommand{\classefiliere}{#2}
+ }
+ 
+\def\classe{\@dblarg\my@classe}
+\long\def\my@classe[#1]#2{%
+ \def\insertlongclasse{#1}
+ \def\insertclasse{#2}
+ }
+
+\def\relaxclasselvl{
+    \renewcommand{\setclasselvl}[1]{}
+}
+
+\def\relaxclasse{
+    \def\classe{\@dblarg\my@classe}
+    \long\def\my@classe[##1]##2{%
+%        \def\insertlongclasse{#1}
+%        \def\insertclasse{#2}
+    }
+}
+
+\def\relaxclassefiliere{
+    \def\setclassefiliere{\@dblarg\my@setclassefiliere}
+    \long\def\my@setclassefiliere[##1]##2{%
+%        \def\insertlongclassefiliere{##1}
+%        \def\insertclassefiliere{##2}
+%        \renewcommand{\classefiliere}{##2}
+    }
+}
+
+\def\relaxinstitute{
+    \def\institute{\@dblarg\my@institute}
+    \long\def\my@institute[##1]##2{%
+%        \def\insertinstitute{##2}
+%        \def\insertshortinstitute{##1}
+    }
+}
+
+\def\relaxmatiere{
+\def\matiere{\@dblarg\my@matiere}
+    \long\def\my@matiere[##1]##2{%
+%        \def\insertmatiere{##2}
+%        \def\insertshortmatiere{##1}
+    }
+}
+
+\makeatother
+
+\newcommand{\innercover}[1]{\renewcommand{\insertinnercover}{#1}}
+\newcommand{\deuxiemedecouv}[1]{\renewcommand{\insertdeuxiemedecouv}{#1}\renewcommand{\inputdeuxiemedecouv}{true}}
+\newcommand{\troisiemedecouv}[1]{\renewcommand{\inserttroisiemedecouv}{#1}\renewcommand{\inputtroisiemedecouv}{true}}
+\newcommand{\quatriemedecouv}[1]{\renewcommand{\insertquatriemedecouv}{#1}\renewcommand{\inputquatriemedecouv}{true}}
+\newcommand{\inputinnercover}{true}
+\newcommand{\noinnercover}{\renewcommand{\inputinnercover}{false}}
+\newcommand{\setclasselvl}[1]{\renewcommand{\classelvl}{#1}\renewcommand{\insertclasselvl}{#1}}
+%\newcommand{\setclassefiliere}[1]{\renewcommand{\classefiliere}{#1}\renewcommand{\insertclassefiliere}{#1}}
+\makeatletter \@ifclassloaded{beamer}{
+\def\institute{\@dblarg\beamer@institute}
+\long\def\beamer@institute[#1]#2{%
+  \def\beamer@temp{#2}%
+  \ifx\beamer@temp\@empty
+    \def\insertinstitute{}
+  \else
+    \def\insertinstitute{\def\inst{\beamer@instinst}\def\and{\beamer@andinst}#2}%
+  \fi
+ \def\beamer@shortinstitute{#1}
+\def\mybeamerinsertinstitute{#2}
+\def\mybeamerinsertshortinstitute{#1}
+ }
+}{}
+\newcommand{\enseignementtype}[1]{\renewcommand{\insertenseignementtype}{#1}}
+\newcommand{\enseignementnum}[1]{\renewcommand{\insertenseignementnum}{#1}}
+\newcommand{\enseignementgpcolle}[1]{\renewcommand{\insertenseignementgpcolle}{#1}}
+\newcommand{\enseignementduree}[1]{\renewcommand{\insertenseignementduree}{#1}}
+\newcommand{\enseignementmodalites}[1]{\renewcommand{\insertenseignementmodalites}{#1}}
+\newcommand{\imgcover}[1]{\renewcommand{\insertimgcover}{#1}}
+\newcommand{\editionsettings}[1]{\renewcommand{\inserteditionsettings}{#1}}
+
+\AtEndPreamble{
+\ifthenelse{\equal{\classelvl}{6}}{\renewcommand{\insertclasselvl}{6\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{5}}{\renewcommand{\insertclasselvl}{5\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{4}}{\renewcommand{\insertclasselvl}{4\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{3}}{\renewcommand{\insertclasselvl}{3\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{2}}{\renewcommand{\insertclasselvl}{2\up{de}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{1}}{\renewcommand{\insertclasselvl}{1\up{re}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{0}\or\equal{\classelvl}{T}}{\renewcommand{\classelvl}{T}\renewcommand{\insertclasselvl}{T\up{le}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+
+     \ifthenelse{\equal{\classefiliere}{BCPST1}}{\renewcommand{\classefiliere}{BCPST}\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{TPC1}}{\renewcommand{\classefiliere}{TPC}\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{TB1}}{\renewcommand{\classefiliere}{TB}\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{TSI1}}{\renewcommand{\classefiliere}{TSI}\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{BCPST2}}{\renewcommand{\classefiliere}{BCPST}\renewcommand{\classelvl}{SPE}}{}
+     \ifthenelse{\equal{\classefiliere}{TPC2}}{\renewcommand{\classefiliere}{TPC}\renewcommand{\classelvl}{SPE}}{}
+     \ifthenelse{\equal{\classefiliere}{TB2}}{\renewcommand{\classefiliere}{TB}\renewcommand{\classelvl}{SPE}}{}
+     \ifthenelse{\equal{\classefiliere}{TSI2}}{\renewcommand{\classefiliere}{TSI}\renewcommand{\classelvl}{SPE}}{}
+\ifthenelse{\equal{\classelvl}{SPE}}
+    {\ifthenelse{\equal{\classefiliere}{PCSI}}{\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{PC}}{\renewcommand{\insertclassefiliere}{PC}}{}
+     \ifthenelse{\equal{\classefiliere}{PCet}}{\renewcommand{\insertclassefiliere}{PC\up{*}}}{}
+     \ifthenelse{\equal{\classefiliere}{MPSI}}{\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{MP}}{\renewcommand{\insertclassefiliere}{MP}}{}
+     \ifthenelse{\equal{\classefiliere}{MPet}}{\renewcommand{\insertclassefiliere}{MP\up{*}}}{}
+     \ifthenelse{\equal{\classefiliere}{PTSI}}{\renewcommand{\classelvl}{SUP}}{}
+     \ifthenelse{\equal{\classefiliere}{PT}}{\renewcommand{\insertclassefiliere}{PT}}{}
+     \ifthenelse{\equal{\classefiliere}{PTet}}{\renewcommand{\insertclassefiliere}{PT\up{*}}}{}
+     \ifthenelse{\equal{\classefiliere}{PSI}}{\renewcommand{\insertclassefiliere}{PSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PSIet}}{\renewcommand{\insertclassefiliere}{PSI\up{*}}}{}
+     \ifthenelse{\equal{\classefiliere}{BCPST}}{\renewcommand{\insertclassefiliere}{BCPST2}}{}
+     \ifthenelse{\equal{\classefiliere}{TPC}}{\renewcommand{\insertclassefiliere}{TPC2}}{}
+     \ifthenelse{\equal{\classefiliere}{TB}}{\renewcommand{\insertclassefiliere}{TB2}}{}
+     \ifthenelse{\equal{\classefiliere}{TSI}}{\renewcommand{\insertclassefiliere}{TSI2}}{}
+     \renewcommand{\insertclassetype}{\insertclassefiliere}
+     \renewcommand{\insertlongclassefiliere}{\insertclassefiliere}
+     \renewcommand{\insertlongclassetype}{\insertlongclassefiliere}
+     \renewcommand{\insertclasselvl}{SPE}
+    }{}
+\ifthenelse{\equal{\classelvl}{SUP}}
+    {\ifthenelse{\equal{\classefiliere}{PCSI}}{\renewcommand{\insertclassefiliere}{PCSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PC}}{\renewcommand{\insertclassefiliere}{PCSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PCet}}{\renewcommand{\insertclassefiliere}{PCSI}}{}
+     \ifthenelse{\equal{\classefiliere}{MPSI}}{\renewcommand{\insertclassefiliere}{MPSI}}{}
+     \ifthenelse{\equal{\classefiliere}{MP}}{\renewcommand{\insertclassefiliere}{MPSI}}{}
+     \ifthenelse{\equal{\classefiliere}{MPet}}{\renewcommand{\insertclassefiliere}{MPSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PTSI}}{\renewcommand{\insertclassefiliere}{PTSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PT}}{\renewcommand{\insertclassefiliere}{PTSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PTet}}{\renewcommand{\insertclassefiliere}{PTSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PSI}}{\renewcommand{\insertclassefiliere}{SUP~PSI}}{}
+     \ifthenelse{\equal{\classefiliere}{PSIet}}{\renewcommand{\insertclassefiliere}{SUP~PSI}}{}
+     \ifthenelse{\equal{\classefiliere}{BCPST}}{\renewcommand{\insertclassefiliere}{BCPST1}}{}
+     \ifthenelse{\equal{\classefiliere}{TPC}}{\renewcommand{\insertclassefiliere}{TPC1}}{}
+     \ifthenelse{\equal{\classefiliere}{TB}}{\renewcommand{\insertclassefiliere}{TB1}}{}
+     \ifthenelse{\equal{\classefiliere}{TSI}}{\renewcommand{\insertclassefiliere}{TSI1}}{}
+     \renewcommand{\insertclassetype}{\insertclassefiliere}
+     \renewcommand{\insertlongclassefiliere}{\insertclassefiliere}
+     \renewcommand{\insertlongclassetype}{\insertlongclassefiliere}
+     \renewcommand{\insertclasselvl}{SUP}
+    }{}
+\ifthenelse{\equal{\classelvl}{ATS}\or\equal{\classefiliere}{ATS}}{
+    \renewcommand{\classelvl}{ATS}
+    \renewcommand{\classefiliere}{ATS}
+    \renewcommand{\insertclasselvl}{ATS}
+    \renewcommand{\insertclassefiliere}{ATS}
+    \renewcommand{\insertlongclassefiliere}{ATS}
+    \renewcommand{\insertclassetype}{ATS}
+    \renewcommand{\insertlongclassetype}{ATS}
+}{}
+}

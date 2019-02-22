@@ -1,0 +1,210 @@
+% based on pas-edt V2.04 created by Stephane Pasquet
+
+% Informations générales
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ltstyle_module-edt}
+
+% <---------------------- Chargement des extensions ----------------------------------->
+\RequirePackage{xkeyval}
+\RequirePackage{multido}
+\RequirePackage{tikz}
+
+% <----------------------------- Paramètres globaux ----------------------------------->
+\newcount\val@cnt
+
+% <-------------------- Macros de stockage des jours ----------------------------------->
+\newcommand*\Jour[1]{\@nameuse{Day#1}}
+
+% <------------------------------- Entrées des jours ----------------------------------->
+% <------------------------------ \jours{j1,j2,...,jn} --------------------------------->
+
+\newcommand*\jours{\val@cnt\z@\val@day}
+\newcommand*\val@day[1]{\jours@day@#1,\jours@day@,}
+\def\jours@day@#1,{%
+   \ifx\jours@day@#1%
+   \else
+      \advance\val@cnt\@ne
+	  \expandafter\xdef\csname Day\number\val@cnt\endcsname{#1}
+      \expandafter\jours@day@
+   \fi
+}
+
+% <------------------------------- Création et affichage du planning ----------------------------------->
+
+\define@cmdkey [PAS] {planning} {bgcolor}{}
+\define@cmdkey [PAS] {planning} {bordercolor}{}
+\define@cmdkey [PAS] {planning} {creneaubordercolor}{}
+\define@cmdkey [PAS] {planning} {dottedcolor}{}
+\define@cmdkey [PAS] {planning} {dashedcolor}{}
+\define@cmdkey [PAS] {planning} {bgdays}{}
+\define@cmdkey [PAS] {planning} {colordays}{}
+\define@cmdkey [PAS] {planning} {borderdays}{}
+\define@cmdkey [PAS] {planning} {lwdays}{}
+\define@boolkey[PAS] {planning} {demiheures}[true]{} 
+\define@boolkey[PAS] {planning} {quartheures}[true]{} 
+\define@cmdkey [PAS] {planning} {start}{}
+\define@cmdkey [PAS] {planning} {end}{}
+\presetkeys    [PAS] {planning} {
+	start=8,
+	end=20,
+	bgcolor=,
+	bordercolor=gray,
+	creneaubordercolor=white,
+	bgdays=gray!10,
+	borderdays=black,
+	dashedcolor=gray,
+	dottedcolor=gray,
+	demiheures=false,
+	colordays=black,
+	lwdays=thin,
+	quartheures=false}{}
+
+\newcommand{\planning}[1][]
+{%
+	\setkeys[PAS]{planning}{#1}
+	\ifx\cmdPAS@planning@bgcolor\@empty
+		\tikzstyle{fond} = [draw=\cmdPAS@planning@bordercolor]
+	\else
+		\tikzstyle{fond} = [draw=\cmdPAS@planning@bordercolor,fill=\cmdPAS@planning@bgcolor]
+	\fi
+	% Cadre extérieur
+	%\draw[fond] (0,0) rectangle +(0.9\textwidth,2*\cmdPAS@planning@start-2*\cmdPAS@planning@end);
+	\pgfmathparse{\cmdPAS@planning@end-1}
+	% Affichage des heures à gauche
+	\foreach \heure in {\cmdPAS@planning@start,...,\pgfmathresult}
+	{
+		% Affichage des heures entières
+		\node[left,text=\cmdPAS@planning@bordercolor] at (0,2*\cmdPAS@planning@start-2*\heure) {\heure :00};
+		% Trait de séparation des heures entières
+		\draw[color=\cmdPAS@planning@bordercolor] (0,2*\cmdPAS@planning@start-2*\heure) -- (.9\textwidth,2*\cmdPAS@planning@start-2*\heure);
+		% Affichage des demi-heures & traits de séparation
+		\ifPAS@planning@demiheures
+			\node[left,text=\cmdPAS@planning@bordercolor] at (0,2*\cmdPAS@planning@start-2*\heure-1) {\tiny\heure :30};
+			\draw[color=\cmdPAS@planning@dashedcolor,dashed] (0,2*\cmdPAS@planning@start-2*\heure-1) -- (0.9\textwidth,2*\cmdPAS@planning@start-2*\heure-1);
+		\fi
+		% Affichage des quarts d'heures & traits de séparation
+		\ifPAS@planning@quartheures
+			\node[left,text=\cmdPAS@planning@bordercolor] at (0,2*\cmdPAS@planning@start-2*\heure-1.5) {\tiny\heure :45};
+			\draw[color=\cmdPAS@planning@dottedcolor,dotted] (0,2*\cmdPAS@planning@start-2*\heure-1.5) -- (.9\textwidth,2*\cmdPAS@planning@start-2*\heure-1.5);
+			\node[left,text=\cmdPAS@planning@bordercolor] at (0,2*\cmdPAS@planning@start-2*\heure-.5) {\tiny\heure :15};
+			\draw[color=\cmdPAS@planning@dottedcolor,dotted] (0,2*\cmdPAS@planning@start-2*\heure-.5) -- (.9\textwidth,2*\cmdPAS@planning@start-2*\heure-.5);
+		\fi
+	}
+	\node[left,text=\cmdPAS@planning@bordercolor] at (0,2*\cmdPAS@planning@start-2*\cmdPAS@planning@end) {\cmdPAS@planning@end :00};
+	\draw[color=\cmdPAS@planning@bordercolor] (0,2*\cmdPAS@planning@start-2*\cmdPAS@planning@end) --+(.9\textwidth,0);
+	% Affichage des jours & séparations entre les jours
+	\draw[\cmdPAS@planning@bordercolor] (0*.9*\textwidth/\val@cnt,0) -- (0*.9*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@planning@end);
+	\multido{\i=1+1}{\val@cnt}
+	{
+		\draw[\cmdPAS@planning@bordercolor] (\i*.9*\textwidth/\val@cnt,0) -- (\i*.9*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@planning@end);
+		\pgfmathparse{.035*.7*\textwidth/\val@cnt}\let\mw\pgfmathresult
+		%\node[rectangle,rounded corners,draw=\cmdPAS@planning@borderdays,fill=\cmdPAS@planning@bgdays,minimum width=\mw cm,text=\cmdPAS@planning@colordays,\cmdPAS@planning@lwdays] at (.45*\textwidth/\val@cnt+\i*0.9*\textwidth/\val@cnt-0.9*\textwidth/\val@cnt,.5) {\Jour{\i}};
+		\node[text=\cmdPAS@planning@colordays,\cmdPAS@planning@lwdays] at (.45*\textwidth/\val@cnt+\i*0.9*\textwidth/\val@cnt-0.9*\textwidth/\val@cnt,.5) {\Jour{\i}};
+	}
+}
+
+% <------------------------------- Création et affichage d'une case  ----------------------------------->
+
+% #1 = nb jour, #2 = start, #3 = end, #4 = text, #5 = name
+\newcommand*\draw@creneau[5]
+{%
+	\draw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
+	(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*#2+2*\cmdPAS@planning@start) 
+	rectangle +(.9*\textwidth/\val@cnt*.9,-2*#3+2*#2+.06);
+	\node (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+.45*\textwidth/\val@cnt*.9,-2*#2+2*\cmdPAS@planning@start+#2-#3) 
+	{\begin{minipage}{\largeur@colonne cm}\centering\noindent #4\end{minipage}};
+}
+\newcommand*\draw@creneau@triangleleft[5]{%
+		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) -- 
+		(#1*.9*\textwidth/\val@cnt*.95								 ,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) --
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06) -- cycle;
+		\node[below right] (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@start) 
+		{\begin{minipage}{\largeur@colonne cm}#4\end{minipage}};
+}
+\newcommand*\draw@creneau@triangleright[5]{%
+		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) -- 
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06) -- 
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end+.06) -- cycle;
+		\node[above left] (#5) at (#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end) 
+		{\begin{minipage}{\largeur@colonne cm}\begin{flushright}#4\end{flushright}\end{minipage}};
+}
+
+\newcommand*\draw@creneau@rectleft[5]{%
+		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06)
+		rectangle 
+		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.055*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start);
+		\node (#5) at 
+		(#1*.9*\textwidth/\val@cnt-.675*\textwidth/\val@cnt-.055/2*\textwidth/\val@cnt,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start)
+		{\begin{minipage}{\largeur@micolonne cm}\centering#4\end{minipage}};
+}
+\newcommand*\draw@creneau@rectright[5]{%
+		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.035*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06)
+		rectangle 
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start);
+		\node (#5) at 
+		(#1*.9*\textwidth/\val@cnt-.225*\textwidth/\val@cnt-.065*\textwidth/\val@cnt,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start)
+		{\begin{minipage}{\largeur@micolonne cm}\centering#4\end{minipage}};
+}
+
+\define@cmdkey [PAS] {creneau} {day}{}
+\define@cmdkey [PAS] {creneau} {start}{}
+\define@cmdkey [PAS] {creneau} {end}{}
+\define@cmdkey [PAS] {creneau} {color}{}
+\define@cmdkey [PAS] {creneau} {opacity}{}
+\define@cmdkey [PAS] {creneau} {week}{}
+\define@cmdkey [PAS] {creneau} {name}{}
+\presetkeys    [PAS] {creneau} {day=,start=,end=,color=gray!10,opacity=1,week=,name=}{}
+
+\newcommand*{\creneau}[2][]{
+	\setkeys[PAS]{creneau}{#1}
+	\def\txt@all{all}
+	\def\week@triangleleft{triangleleft}
+	\def\week@triangleright{triangleright}
+	\def\week@rectleft{rectleft}
+	\def\week@rectright{rectright}
+	% Calcul de la largeur de chaque colonne
+	\pgfmathparse{.035*.9*.9*\textwidth/\val@cnt}\let\largeur@colonne\pgfmathresult
+	\pgfmathparse{.032*.9*.45*\textwidth/\val@cnt}\let\largeur@micolonne\pgfmathresult
+	% Nom de la case par défaut
+	\ifx\cmdPAS@creneau@week\@empty % si week est vide
+		\ifx\cmdPAS@creneau@day\@empty % si aucun jour n'est indiqué 
+		\else
+			\ifx\cmdPAS@creneau@day\txt@all
+				\multido{\i=1+1}\val@cnt{%
+					\ifx\cmdPAS@creneau@name\@empty%
+						\def\name@creneau{c\i\cmdPAS@creneau@start}%
+					\else%
+						\def\name@creneau{\cmdPAS@creneau@name}%
+					\fi%
+					\draw@creneau{\i}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}}
+			\else
+				\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\cmdPAS@creneau@day\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi			\draw@creneau{\cmdPAS@creneau@day}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}
+			\fi
+		\fi
+	\else % if week est informé
+		\ifx\cmdPAS@creneau@week\week@triangleleft
+			\ifx\cmdPAS@creneau@day\@empty\else\ifx\cmdPAS@creneau@day\txt@all\multido{\i=1+1}\val@cnt{\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\i\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@triangleleft{\i}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}}\else\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\cmdPAS@creneau@day\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@triangleleft{\cmdPAS@creneau@day}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}\fi
+			\fi
+		\else % du week
+			\ifx\cmdPAS@creneau@week\week@triangleright
+				\ifx\cmdPAS@creneau@day\@empty\else\ifx\cmdPAS@creneau@day\txt@all\multido{\i=1+1}\val@cnt{\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\i\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@triangleright{\i}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}}\else\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\cmdPAS@creneau@day\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@triangleright{\cmdPAS@creneau@day}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}\fi\fi
+			\else
+			%%%%%%%%%%% modif du 26/01/2013
+			   \ifx\cmdPAS@creneau@week\week@rectleft
+					\ifx\cmdPAS@creneau@day\@empty\else\ifx\cmdPAS@creneau@day\txt@all\multido{\i=1+1}\val@cnt{\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\i\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@rectleft{\i}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}}\else\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\cmdPAS@creneau@day\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@rectleft{\cmdPAS@creneau@day}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}\fi\fi
+				\else
+					\ifx\cmdPAS@creneau@week\week@rectright
+						\ifx\cmdPAS@creneau@day\@empty\else\ifx\cmdPAS@creneau@day\txt@all\multido{\i=1+1}\val@cnt{\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\i\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@rectright{\i}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}}\else\ifx\cmdPAS@creneau@name\@empty\def\name@creneau{c\cmdPAS@creneau@day\cmdPAS@creneau@start}\else\def\name@creneau{\cmdPAS@creneau@name}\fi\draw@creneau@rectright{\cmdPAS@creneau@day}{\cmdPAS@creneau@start}{\cmdPAS@creneau@end}{#2}{\name@creneau}\fi
+					\fi
+				\fi
+			  %%%%%%%%%%% fin de la modif du 26/01/2013
+			\fi
+		\fi
+	\fi
+\fi
+}
+\endinput

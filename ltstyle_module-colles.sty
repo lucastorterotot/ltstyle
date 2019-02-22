@@ -1,0 +1,169 @@
+\newcommand{\collesujets}{}
+\newcommand{\colleshortsujets}{}
+\newcommand{\collecorriges}{}
+\newcommand{\collerapport}{}
+\newcommand{\thelistecollesujets}{}
+\newcommand{\listecollesujets}[1]{\renewcommand{\thelistecollesujets}{#1}}
+
+\newcommand{\collesujet}[4]{}
+
+\newcommand{\elevecolle}[1]{} %used for colles and kholles
+
+\newcounter{elevecompteur}
+\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
+
+\renewcommand{\elevecolle}[1]{%\penalty-500
+%{\setlength{\parindent}{0pt}\hrulefill%\rule{0.25\linewidth}{0pt}\rule{0.5\linewidth}{0.5pt}\rule{0.25\linewidth}{0pt}
+%}
+%\penalty500
+
+%\medskip
+%\noindent
+\refstepcounter{elevecompteur}\section*{{\rm\bfseries #1}}
+}
+
+\def\textheightcolleshortsujets{\paperheight -.93cm} % -.93cm ou -1.05cm
+
+\renewcommand{\colleshortsujets}{
+\renewcommand{\exonocite}[1]{}
+\renewcommand{\exocite}[1]{}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+{\setlength{\topmargin}{0.13cm}
+\setlength{\headheight}{0.0cm}%13.6pt %0.4cm
+\setlength{\textheight}{\textheightcolleshortsujets}%3.45 %26.25 cm
+\setlength{\footskip}{0cm}
+\corrigeOFF\enonceON
+\pagestyle{empty} 
+\renewcommand{\collesujet}[4]{
+
+\penalty-1000
+\ifnum \theelevecompteur > 0 \hrulefill \vspace{.25\baselineskip} \fi
+\par\noindent \refstepcounter{elevecompteur}\large \textbf{##1}~\hfill{\footnotesize
+\ifthenelse{\equal{\insertshortinstitute}{}}{}{\insertshortinstitute}%
+\ifthenelse{\equal{\insertclasse}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}}{}{\,--\,}\insertclasse}%
+\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}}{}{\,--\,}g.~\insertenseignementgpcolle}%
+\ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}\insertenseignementtype~\insertenseignementnum}%
+\ifx\insertdate \empty \else \ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}\and\equal{\insertenseignementnum}{\!\!}}{}{\,--\,}\insertdate\fi}%
+\medskip
+
+%\penalty1000
+##2
+
+%\hrulefill
+\vfill
+
+\penalty1000
+%\noindent\LeftScissors\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine\CuttingLine
+
+}
+\renewcommand{\onlyshortenonce}[1]{##1}
+
+\newpage\thelistecollesujets
+\newpage}}
+
+\renewcommand{\collesujets}{
+\renewcommand{\exonocite}[1]{}
+\renewcommand{\exocite}[1]{}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\corrigeOFF\enonceON
+
+\renewcommand{\collesujet}[4]{
+\refstepcounter{elevecompteur}
+\fancypagestyle{sujet\theelevecompteur}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\fancypagestyle{titlesujet\theelevecompteur}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+
+\pagestyle{sujet\theelevecompteur} \setcounter{page}{1}
+{\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlesujet\theelevecompteur}
+\section*{\rm\bfseries ##1}\label{elevename\theelevecompteur}
+
+##2
+
+\label{sujet\theelevecompteur}
+
+\newpage
+
+}
+
+\thelistecollesujets}
+
+\renewcommand{\collerapport}{
+\renewcommand{\exonocite}[1]{}
+\renewcommand{\exocite}[1]{}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\newpage
+\setcounter{page}{1}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\renewcommand{\insertenseignementtype}{Compte-rendu de khôlle}}{\renewcommand{\insertenseignementtype}{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+\fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+\pagestyle{rapport}
+{\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlerapport}
+
+\renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/20}\par\noindent{Cours (qdc)\quad\qquad/7\hfill (exos)\quad\qquad/3\hfill Savoir-faire\quad\qquad/6\hfill Oral\quad\qquad/4}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill}
+
+{\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles QdC}~~~}
+\def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles QdCs}~~~}
+\renewcommand{\exo}[2][Exercice]{\par\bigskip\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\bfseries\familyfortitles Exo}~~~##2 \endinput\par\vfill}
+\thelistecollesujets
+
+\label{rapport}}
+}
+
+\renewcommand{\collecorriges}{
+\renewcommand{\exonocite}[1]{}
+\renewcommand{\exocite}[1]{}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\enonceON\corrigeONblue
+
+\newpage
+\setcounter{page}{1}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\renewcommand{\insertenseignementtype}{Corrigé de khôlle}}{\renewcommand{\insertenseignementtype}{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\fancypagestyle{corrige}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\fancypagestyle{titlecorrige}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\pagestyle{corrige}
+{\setlength{\parindent}{0pt} \maketitle} \thispagestyle{titlecorrige}
+
+\renewcommand{\collesujet}[2]{
+
+\elevecolle{##1}
+
+##2}
+
+\thelistecollesujets
+
+\label{corrige}
+}
+
+\newcounter{exocolle}[elevecompteur]
+\def\thesubexo{\arabic{subexo}}
+\def\qdc{\par\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles Question de cours}~~~}
+\def\qdcs{\par\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles Questions de cours}~~~}
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}
+\subsection*{#2}}
+%\newcounter{subexocolle}[exocolle]
+\renewcommand{\subexo}[2][Partie]{\refstepcounter{subexo}
+\subsubsection*{#1 \thesubexo~~~#2}}
+%\newcounter{subsubexocolle}[subexocolle]
+\renewcommand{\subsubexo}[2][Partie]{\refstepcounter{subsubexo}
+\subsubsection*{#1 \thesubsubexo~~~#2}}
+
+}{}
+
+%\makeatletter
+%\@addtoreset{equation}{elevecompteur}
+%\@addtoreset{table}{elevecompteur}
+%\@addtoreset{figure}{elevecompteur}
+%\makeatother

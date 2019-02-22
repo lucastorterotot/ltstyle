@@ -1,0 +1,85 @@
+\def\usesffamily{\def\familyforhf{\sffamily}\def\familyfortitles{\sffamily}}
+\def\nousesffamily{\def\familyforhf{}\def\familyfortitles{}}
+\ifthenelse{\equal{\sffamilyOption}{true}}{\usesffamily}{\nousesffamily}
+
+\AtBeginDocument{
+\abovedisplayskip=9pt plus 3pt minus 6pt
+\abovedisplayshortskip=0pt plus 3pt
+\belowdisplayskip=9pt plus 3pt minus 6pt
+\belowdisplayshortskip=5pt plus 3pt minus 4pt
+}
+
+\ifthenelse{\equal{\seccolorOption}{true}}{\useseccolor}{\nouseseccolor}
+
+\ifthenelse{\equal{\ltcolortheme}{auto}}{\AtEndPreamble{
+\ifthenelse{\equal{\insertmatiere}{Chimie}\or\equal{\insertmatiere}{chimie}\or\equal{\insertshortmatiere}{Chimie}\or\equal{\insertshortmatiere}{chimie}}{\renewcommand{\ltcolortheme}{blue}}{\renewcommand{\ltcolortheme}{blue}}
+}}{}
+
+\let\hrulefillorig\hrulefill
+\renewcommand{\hrulefill}{\noindent\hrulefillorig}
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
+\RequirePackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\small\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\footnotesize} % Set the abstract itself to small italic text
+
+\renewcommand\labelenumi{\arabic{enumi}.}
+\renewcommand\labelenumii{\alph{enumii}.}
+\renewcommand\labelenumiii{\roman{enumiii}.}
+\renewcommand\labelenumiv{(\arabic{enumiv})}
+\renewcommand\labelitemi{---}
+\renewcommand\labelitemii{--}
+\renewcommand\labelitemiii{$\circ$}
+\renewcommand\labelitemiv{$\cdot$}
+}
+
+\makeatletter
+\@ifclassloaded{beamer}{}{\RequirePackage{enumitem}}
+\makeatother
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
+\setlist[itemize]{noitemsep,nolistsep}
+\setlist[enumerate]{noitemsep,nolistsep}
+}
+
+\makeatletter
+\@ifclassloaded{beamer}{}{\setcounter{secnumdepth}{3}\setcounter{tocdepth}{2}}
+
+\@ifclassloaded{standalone}{\AtBeginDocument{\thispagestyle{empty}}}{
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{2cm}
+\setlength{\evensidemargin}{2cm}
+\setlength{\topmargin}{0.8cm}%.5cm
+\setlength{\headheight}{0.6cm}%.5cm %13.6pt %0.4cm
+\setlength{\headsep}{0.5cm}%.3 cm
+\setlength{\footskip}{1cm}%.8 cm
+\setlength{\textwidth}{\paperwidth -4cm} %17cm
+\setlength{\textheight}{\paperheight -4cm}%-2.8 %-2.6 %3.45 %26.25 cm
+\setlength{\marginparsep}{3pt}
+% Alter some LaTeX defaults for better treatment of figures:
+    % See p.105 of "TeX Unbound" for suggested values.
+    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+    %   General parameters, for ALL pages:
+    \renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    \setcounter{topnumber}{4}
+    \setcounter{bottomnumber}{4}
+    \setcounter{totalnumber}{5}     % 2 may work better
+    \setcounter{dbltopnumber}{5}    % for 2-column pages
+    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+	% remember to use [htp] or [htpb] for placement
+}}
+\makeatother
+
+\input ltstyle_module-LaTeX_template-headers_and_footers.sty
+\input ltstyle_module-LaTeX_template-chapter_part_section.sty
+\input ltstyle_module-LaTeX_template-title_settings.sty

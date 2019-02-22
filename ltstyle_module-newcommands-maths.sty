@@ -1,0 +1,69 @@
+\def\leadsto{\rightsquigarrow}
+
+\def\bm{\boldsymbol}
+\def\mathbf#1{\bm{#1}}
+
+\def\uvecsymb{\vec}
+\def\uvecletter{u}
+\newcommand{\uvec}[1][\uvecletter]{\uvecsymb{#1}}
+
+\def\bvecsymb{\uvecsymb}
+\def\bvecletter{e}
+\newcommand{\bvec}[1][\bvecletter]{\bvecsymb{#1}}
+
+\newcommand{\axis}[2][O]{\ensuremath{(#1#2)}}
+\newcommand{\plane}[3][O]{\ensuremath{(#1#2#3)}}
+\newcommand{\repere}[4][O]{\ensuremath{(#1#2#3#4)}}
+
+\newcommand{\referentiel}[1]{\ensuremath{\mathfrak{#1}}}
+
+\DeclareFontFamily{U}{wncy}{}
+\DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
+\DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathord}{mcy}{"58}
+
+\newcommand{\mend}[1][.]{\unskip{}\,\text{#1}}
+\newcommand{\msep}[1][,]{\mend[#1]\quad}
+
+\def\norm#1{{\mathchoice{\left\Vert #1 \right\Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}}}
+\def\abs#1{{\mathchoice{\left\vert #1 \right\vert}{\vert #1 \vert}{\vert #1 \vert}{\vert #1 \vert}}}
+
+\def\eqdef{\ensuremath{\mathrel{\stackrel{{\rm def}}{=}}}}
+\def\eqexcl{\ensuremath{\mathrel{\stackrel{{\rm !}}{=}}}}
+\def\eqhat{\ensuremath{\mathrel{\widehat{=}}}}
+
+\def\leq{\leqslant}
+\def\geq{\geqslant}
+
+\def\Id{\hbox{\fontfamily{cmr}\selectfont 1\kern-0.35em 1}}
+
+\newcommand{\AN}[1]{\ensuremath{\boxed{\text{A.N. : } #1}}} % applications numériques
+
+\newcommand{\tenp}[2][\myproductsign]{\ensuremath{ #1 10^{#2}}}
+
+\newcommand{\avogadro}{\ensuremath{\mathcal{N}_{\rm A}}}
+\newcommand{\Na}{\avogadro}
+\newcommand{\faraday}{\ensuremath{\mathcal{F}}}
+\newcommand{\boltzmann}{\ensuremath{k_{\rm B}}}
+\newcommand{\kB}{\boltzmann}
+\newcommand{\kBT}{\ensuremath{\kB T}}
+
+\def\pH{{\ensuremath{{\rm pH}}}}
+\def\pOH{{\ensuremath{{\rm pOH}}}}
+\newcommand{\pK}{{\ensuremath{{\rm p}K}}}
+\def\pKa{{\ensuremath{{\rm p}K_{\rm a}}}}
+\def\pKb{{\ensuremath{{\rm p}K_{\rm b}}}}
+\def\pKe{{\ensuremath{{\rm p}K_{\rm e}}}}
+\def\pKs{{\ensuremath{{\rm p}K_{\rm s}}}}
+
+\def\chemactiv{\ensuremath{\mathfrak{a}}}
+
+\newcommand{\Dr}{\Delta_r}
+\newcommand{\Df}{\Delta_f}
+\newcommand{\Drr}[1]{\Dr #1^\circ}
+\newcommand{\Dfr}[1]{\Df #1^\circ}
+
+\newcommand{\cste}{\ensuremath{\text{C}^\text{te}}}
+
+\newcommand{\Average}[1]{\left\langle #1 \right\rangle}
+\newcommand{\average}[1]{\langle #1 \rangle}

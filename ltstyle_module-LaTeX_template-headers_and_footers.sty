@@ -1,0 +1,157 @@
+\RequirePackage{fancyhdr} % Needed to define custom headers/footers
+\RequirePackage{lastpage} % Used to determine the number of pages in the document (for "Page X of Total")
+
+\renewcommand{\headrulewidth}{0.0pt}
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}}{\renewcommand{\footrulewidth}{0.0pt}}{\renewcommand{\footrulewidth}{0.4pt}}}
+
+
+\AtBeginDocument{
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{
+\fancypagestyle{main}{}
+\fancypagestyle{plain}{}
+\fancypagestyle{maintitle}{}
+\fancypagestyle{plaintitle}{}
+}{
+\ifthenelse{\equal{\PackageOption}{book}}
+{
+%\setlength{\textheight}{25cm}
+%\setlength{\voffset}{-1.5cm}
+%\setlength{\hoffset}{-0.5cm}
+\fancypagestyle{main}{
+\makeatletter
+\fancyhead[RE,LO]{\familyforhf }
+\fancyhead[LE]{\familyforhf\small \textbf{\thepage}~~~\leftmark}
+\fancyhead[RO]{\familyforhf\small \rightmark~~~\textbf{\thepage}}
+\makeatother
+\chead{\familyforhf }
+\lfoot{\familyforhf }
+\cfoot{\familyforhf }
+\rfoot{\familyforhf }}
+
+\fancypagestyle{plain}{
+\makeatletter
+\fancyhead[RE,LO]{\familyforhf }
+\fancyhead[LE,RO]{\familyforhf\small \textbf{\thepage}}
+\makeatother
+\chead{\familyforhf }
+\lfoot{\familyforhf }
+\cfoot{\familyforhf }
+\rfoot{\familyforhf }
+}
+
+\fancypagestyle{plaintitle}{
+\makeatletter
+\fancyhead[RE,LO]{\familyforhf }
+\fancyhead[LE,RO]{\familyforhf }
+\makeatother
+\chead{\familyforhf }
+\lfoot{\familyforhf }
+\cfoot{\familyforhf }
+\rfoot{\familyforhf }
+}
+
+\fancypagestyle{maintitle}{
+\makeatletter
+\fancyhead[RE,LO]{\familyforhf }
+\fancyhead[LE,RO]{\familyforhf }
+\makeatother
+\chead{\familyforhf }
+\lfoot{\familyforhf }
+\cfoot{\familyforhf }
+\rfoot{\familyforhf }
+}
+}{
+
+\lfoot{\familyforhf }
+\cfoot{\familyforhf \thepage /\pageref{LastPage}}
+\rfoot{\familyforhf }
+\lhead{\familyforhf }
+\chead{\familyforhf }
+\rhead{\familyforhf }
+
+\fancypagestyle{main}{
+\ifthenelse{\equal{\PackageOption}{none}}
+    {}
+    {\ifthenelse{\equal{\insertclasse}{}}
+        {\lfoot{\familyforhf \insertinstitute}}
+        {\ifthenelse{\equal{\insertinstitute}{}}
+            {\lfoot{\familyforhf \insertclasse}}
+            {\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}}
+        }
+    \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
+        {\ifthenelse{\equal{\insertenseignementtype}{}}
+            {\rfoot{\familyforhf \insertmatiere}}
+            {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}}
+        {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertenseignementtype~\insertenseignementnum}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
+    }
+}
+
+\fancypagestyle{plain}{
+\ifthenelse{\equal{\PackageOption}{none}}
+    {}
+    {\ifthenelse{\equal{\insertclasse}{}}
+        {\lfoot{\familyforhf \insertinstitute}}
+        {\ifthenelse{\equal{\insertinstitute}{}}
+            {\lfoot{\familyforhf \insertclasse}}
+            {\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}}
+        }
+    \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
+        {\ifthenelse{\equal{\insertenseignementtype}{}}
+            {\rfoot{\familyforhf \insertmatiere}}
+            {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}}
+        {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertenseignementtype}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~--~Cours}}{}
+    }
+}
+    
+\fancypagestyle{maintitle}{
+\ifthenelse{\equal{\PackageOption}{none}}
+    {}
+    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    \chead{\familyforhf }
+    \rhead{\familyforhf \insertinstitute}
+    \ifthenelse{\equal{\insertclasse}{}}
+        {\lfoot{\familyforhf \insertinstitute}}
+        {\ifthenelse{\equal{\insertinstitute}{}}
+            {\lfoot{\familyforhf \insertclasse}}
+            {\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}}
+        }
+    \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
+        {\ifthenelse{\equal{\insertenseignementtype}{}}
+            {\rfoot{\familyforhf \insertmatiere}}
+            {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}}
+        {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertenseignementtype~\insertenseignementnum}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
+    }
+}
+    
+\fancypagestyle{plaintitle}{
+\ifthenelse{\equal{\PackageOption}{none}}
+    {}
+    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    \chead{\familyforhf }
+    \rhead{\familyforhf \insertinstitute}
+    \ifthenelse{\equal{\insertclasse}{}}
+        {\lfoot{\familyforhf \insertinstitute}}
+        {\ifthenelse{\equal{\insertinstitute}{}}
+            {\lfoot{\familyforhf \insertclasse}}
+            {\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}}
+        }
+    \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
+        {\ifthenelse{\equal{\insertenseignementtype}{}}
+            {\rfoot{\familyforhf \insertmatiere}}
+            {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}}
+        {\rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertenseignementtype}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~--~Cours}}{}
+    }
+}
+}}
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\pagestyle{main}}
+}

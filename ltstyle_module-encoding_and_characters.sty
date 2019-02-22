@@ -1,0 +1,29 @@
+\makeatletter
+\@ifpackageloaded{babel}{}{\RequirePackage[french]{babel}}
+%\@ifpackagewith{babel}{french}{\ifthenelse{\equal{\PackageOption}{default}}{}{ \frenchbsetup{StandardLists=true,ReduceListSpacing=true}}}{}
+\@ifpackagewith{babel}{french}{}{\def\og{"}\def\fg{\unskip "}}
+\makeatother
+\def\frenchfigurename{{\scshape Figure}}
+\def\frenchtablename{{\scshape Tableau}}
+
+\RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
+\RequirePackage[utf8]{inputenc} % Required for inputting international characters
+\RequirePackage{lmodern} %better characters
+\rmfamily \normalfont %to load T1lmr.fd 
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<->sub*cmr/bx/sc}{}
+
+\RequirePackage{microtype} \emergencystretch=.5em % Improves character and word spacing
+
+%\RequirePackage{bold-extra} %meilleure gestion du gras
+
+\RequirePackage{marvosym}
+\let\origEUR\EUR \def\EUR{\text{\origEUR}} \def\€{\EUR} \def\euro{\EUR}
+\def\sun{\ensuremath{\odot}}
+\let\origSun\Sun
+\def\Sun{\text{\origSun}}
+
+\RequirePackage{pifont}
+
+%\RequirePackage{fix-cm}	 % Custom font sizes - used for the initial letter in the document
+
+\RequirePackage{multicol} % Used for the columns

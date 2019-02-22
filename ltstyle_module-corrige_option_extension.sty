@@ -1,0 +1,67 @@
+%\newcommand{\textederapport}[2][]{\def\inserttextederapporta{#2}\def\inserttextederapportb{#1}}
+%\newcommand{\inserttextederapporta}{}
+%\newcommand{\inserttextederapportb}{}
+
+\newcommand{\doinputnotestableau}{false}
+\newcommand{\doinputnotesresume}{true}
+\newcommand{\doinputnotesgraph}{false}
+\newcommand{\inputnotestableau}{\def\doinputnotestableau{true}}
+\newcommand{\inputnotesresume}{\def\doinputnotesresume{true}}
+\newcommand{\inputnotesgraph}{\def\doinputnotesgraph{true}}
+
+%\newcommand{\notesur}{20}
+%\newcommand{\noteslist}{}
+%\newcommand{\listedesnotes}[1]{\def\noteslist{#1}}
+%\newcommand{\hidebottomnotesdistrib}{0}
+
+\ifthenelse{\equal{\PackageOption}{corrige}}
+{\newcommand{\inputrapportnotes}{
+
+{\fancypagestyle{rapporttitle}{
+\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+\chead{\familyforhf }
+\rhead{\familyforhf \insertinstitute}
+\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{pagenotes}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\fancypagestyle{rapport}{
+\lhead{\familyforhf }
+\chead{\familyforhf }
+\rhead{\familyforhf }
+\lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\cfoot{\familyforhf \thepage /\pageref{pagenotes}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\pagestyle{rapport}
+\thispagestyle{rapporttitle}
+
+\renewcommand{\insertenseignementnum}{\originsertenseignementnum~\IfFileExists{notes-pyplot.pgf}{(notes)}{(remarques)}}
+\def\TitleToUse{\insertenseignementtype~\originsertenseignementnum~--~\IfFileExists{notes-pyplot.pgf}{Distribution des notes}{Remarques sur les copies}}
+\author{}\date{\today}
+\maketitle
+\pagestyle{rapport}
+\thispagestyle{rapporttitle}
+
+{
+\nprounddigits{2}
+
+\begin{center}
+\ifthenelse{\equal{\doinputnotestableau}{false}}{}{\IfFileExists{classement_table.tex}{
+\begin{minipage}{2.5cm}
+\input{classement_table.tex}
+\end{minipage}
+~}{}}
+\begin{minipage}{\linewidth -3cm}
+\ifthenelse{\equal{\doinputnotesresume}{false}}{}{\IfFileExists{recap_table.tex}{\input{recap_table.tex}}{}}
+
+\ifthenelse{\equal{\doinputnotesgraph}{false}}{}{\IfFileExists{notes-pyplot.pgf}{\input{notes-pyplot.pgf}}{}}
+
+\IfFileExists{rapport_corrige_a.tex}{\input{rapport_corrige_a.tex}}{}
+
+\end{minipage}
+\end{center}}
+
+\vfill ~
+
+\IfFileExists{rapport_corrige_b.tex}{\input{rapport_corrige_b.tex}}{}
+
+\label{pagenotes}
+\pagebreak \setcounter{page}{1}}}}
+{\newcommand{\inputrapportnotes}{}}

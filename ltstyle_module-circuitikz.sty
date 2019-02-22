@@ -1,0 +1,49 @@
+\RequirePackage[european,cuteinductors,nosiunitx,betterproportions,straightvoltages]{circuitikz}
+\RequirePackage{schemabloc}
+
+\newcommand{\circuitmeter}[2]{
+\draw [thick, black,fill=white] (#1) circle (0.4cm);
+      \draw (#1) node {\textbf{#2}};
+}
+\newcommand{\amperemeter}[1]{
+\draw [thick, black,fill=white] (#1) circle (0.4cm);
+      \draw (#1) node {\textbf{A}};
+}
+\newcommand{\voltmeter}[1]{
+\draw [thick, black,fill=white] (#1) circle (0.4cm);
+      \draw (#1) node {\textbf{V}};
+}
+\newcommand{\ohmmeter}[1]{
+\draw [thick, black,fill=white] (#1) circle (0.4cm);
+      \draw (#1) node {{\boldmath$\Omega$}};
+}
+
+% cground own design
+\makeatletter
+\pgfdeclareshape{cground}{ 
+\anchor{center}{ 
+    \pgfpointorigin 
+} 
+\behindforegroundpath{       
+    \pgf@circ@res@step=\ctikzvalof{monopoles/chassis/width}\pgf@circ@Rlen 
+ 
+    \pgfscope        
+        \pgfpathmoveto{\pgfpointorigin} 
+        \pgfpathlineto{\pgfpoint{0pt}{-\pgf@circ@res@step}} 
+        \pgfusepath{draw}
+
+        \pgfpathmoveto{\pgfpoint{-1.25\pgf@circ@res@step}{-1.5\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{-\pgf@circ@res@step}{-\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{\pgf@circ@res@step}{-\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{0.75\pgf@circ@res@step}{-1.5\pgf@circ@res@step}}
+        \pgfpathmoveto{\pgfpoint{0pt}{-\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{-0.25\pgf@circ@res@step}{-1.5\pgf@circ@res@step}}
+        \pgfpathmoveto{\pgfpoint{.5\pgf@circ@res@step}{-\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{.25\pgf@circ@res@step}{-1.5\pgf@circ@res@step}}
+        \pgfpathmoveto{\pgfpoint{-.5\pgf@circ@res@step}{-\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{-.75\pgf@circ@res@step}{-1.5\pgf@circ@res@step}}
+        \pgfusepath{draw}                        
+    \endpgfscope 
+    } 
+}
+\makeatother

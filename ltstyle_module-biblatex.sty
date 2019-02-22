@@ -1,0 +1,45 @@
+\ifdefined\backend \else \def\backend{biber}\fi
+
+\makeatletter
+\@ifpackageloaded{biblatex}{}{
+\@ifclassloaded{beamer}
+{\RequirePackage[backend=\backend, natbib=true, style=numeric-comp, sortcites=true,  isbn=false, giveninits=true, abbreviate=true, sorting=\biblatexsorting]{biblatex}}
+{\ifthenelse{\equal{\PackageOption}{default}\and\equal{\isarticle}{true}}{\RequirePackage[backend=\backend, natbib=true, style=numeric-comp, sortcites=true,  isbn=false, giveninits=true, abbreviate=true, sorting=\biblatexsorting]{biblatex}}
+{\RequirePackage[backend=\backend, natbib=true, style=numeric-comp, sortcites=true, refsegment=chapter, isbn=false, giveninits=true, abbreviate=true, sorting=\biblatexsorting]{biblatex}}
+}}
+\makeatother
+\DefineBibliographyStrings{french}{andothers={\finalnamedelim coll\adddot}}
+%\def\newunitpunct{\addcomma\ }
+\renewbibmacro{in:}{}
+\RequirePackage{csquotes}
+
+\urlstyle{tt}
+
+\makeatletter
+\@ifpackagewith{biblatex}{refsegment=part}{\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\AtEndPreamble{\let\origpart\part \renewcommand{\part}{\newrefsegment\origpart}}}}{}
+\@ifpackagewith{biblatex}{refsegment=section}{\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\AtEndPreamble{\let\origsec\section \renewcommand{\section}{\newrefsegment\origsec}}}}{}
+\@ifpackagewith{biblatex}{refsegment=subsection}{\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\AtEndPreamble{\let\origsubsec\subsection \renewcommand{\subsection}{\newrefsegment\origsubsec}}}}{}
+\makeatother
+
+%\renewcommand{\footcite}[1]{\footnote{\cite{#1}\quad\fullcite{#1}.}}
+\renewcommand{\footcite}[1]{\footfullcite{#1}}
+
+\makeatletter
+\def\beamercite#1{\xdef\@thefnmark{}\@footnotetext{\hspace{-1.25em}$\triangleright$\hspace{.75em}\scriptsize\fullcite{#1}.}}
+\makeatother
+
+\newcommand{\citefullcite}[1]{\par\noindent\cite{#1}\quad\fullcite{#1}.}
+\let\origprbib\printbibliography
+\makeatletter
+\@ifclassloaded{article}
+{\newcommand{\printchapterbibliography}{\origprbib[segment=\therefsegment ,heading=bibliography]}}
+{\newcommand{\printchapterbibliography}{\origprbib[segment=\therefsegment ,heading=subbibliography]}}
+\makeatother
+\AtBeginDocument{
+\ifthenelse{\equal{\PackageOption}{livret}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}}{
+\renewcommand{\printbibliography}{\chapter*{\bibname}\origprbib[heading=none]}
+}
+{}
+}
+
+\input ltstyle_module-biblatex_entries.sty

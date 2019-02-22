@@ -1,0 +1,40 @@
+\usepackage{stmaryrd} % rrbracket et llbracket
+\RequirePackage{braket} % kets et bras, mecanique quantique
+
+\def\ketbra#1#2{\dyad{#1}{#2}}
+\def\Ketbra#1#2{\dyad{#1}{#2}}
+\def\braket#1{\langle #1\rangle}
+
+\RequirePackage{slashed}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+%\RequirePackage{amsfonts} % loaded by amssymb
+\RequirePackage{amsthm}
+\RequirePackage{mathrsfs}
+
+\AtEndPreamble{\RequirePackage{esint}\def\oiint{\varoiint}}
+
+%\RequirePackage{psfrag}
+%\RequirePackage{txfonts}
+\RequirePackage{cancel} 
+
+\RequirePackage{variations}
+
+\RequirePackage{physics}
+
+\def\eval#1{\ensuremath{\left. #1 \right|}}
+\newcommand{\evalp}[1]{\ensuremath{\left( #1 \right)}}
+
+\let\origorder\order
+\def\Order{\origorder}
+\def\order#1{\ensuremath{o\!\left( #1 \right)}}
+
+\usepackage{calculator}
+
+\input ltstyle_module-mhchem.sty
+
+\input ltstyle_module-chemfig.sty
+
+\input ltstyle_module-particles.sty
+\input ltstyle_module-feynman_graphs.sty

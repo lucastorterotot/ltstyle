@@ -1,0 +1,12 @@
+\RequirePackage[version=3]{mhchem} % Package for chemical equation typesetting
+%\RequirePackage[version=4]{mhchem} % Package for chemical equation typesetting
+%\newcommand{\sbond}{\bond{1}}
+%\newcommand{\dbond}{\bond{2}}
+%\newcommand{\tbond}{\bond{3}}
+%\newcommand{\sbond}{\ensuremath{-}}
+%\newcommand{\dbond}{\rlap{\protect\raisebox{.2ex}{\ensuremath{-}}}\protect\raisebox{-.2ex}{\ensuremath{-}}}
+%\newcommand{\tbond}{\rlap{\protect\raisebox{.4ex}{\ensuremath{-}}}\rlap{\ensuremath{-}}\protect\raisebox{-.4ex}{\ensuremath{-}}}
+\let\origce\ce
+\renewcommand{\ce}[1]{\ensuremath{\origce{#1}}}
+
+\newcommand{\state}[1]{\down{({\ifthenelse{\equal{#1}{l}}{$\ell$}{#1}})}}

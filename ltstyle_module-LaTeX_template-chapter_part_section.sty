@@ -1,0 +1,298 @@
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\RequirePackage[nobottomtitles]{titlesec}
+\renewcommand{\bottomtitlespace}{.1\baselineskip}
+}
+
+\makeatletter
+
+\ifthenelse{\equal{\PackageOption}{chapter}\and\equal{\isbeamer}{false}}{
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{main}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\laterdef{\@title}{#2}\laterdef{\insertshorttitle}{}
+            \ifthenelse{\equal{\insertenseignementnum}{\!\!}}{
+                    \if@twocolumn
+                      \@topnewpage[\@makeschapterhead{#2}]%
+                    \else
+                      \@makeschapterhead{#2}%
+                      \@afterheading
+                    \fi
+               }{
+                    \ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \setcounter{chapter}{\insertenseignementnum}
+                         \addtocounter{chapter}{-1}
+                         \refstepcounter{chapter}
+                         \typeout{\@chapapp\space\thechapter.}%
+                         %\addcontentsline{toc}{chapter}%
+                         %          {\protect\numberline{\thechapter}#1}%
+                       \else
+                         %\addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      %\addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    %\addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    %\addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}}
+\def\@schapter#1{\@chapter[#1]{#1}}
+
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \LARGE\familyfortitles\bfseries\boldmath \chaptername\space \thechapter\unboldmath
+        \par\nobreak
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \LARGE\familyfortitles \bfseries\boldmath #1\unboldmath\par\nobreak
+    \vskip 40\p@
+  }}
+
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering
+    \normalfont
+    \LARGE\familyfortitles\bfseries ~
+        \par\nobreak
+    \interlinepenalty\@M
+    \LARGE\familyfortitles \bfseries\boldmath  #1\unboldmath\par\nobreak
+    \vskip 40\p@
+  }}
+
+%\def\@schapter#1{\if@twocolumn
+%                   \@topnewpage[\@makeschapterhead{#1}]%
+%                 \else
+%                   \@makeschapterhead{#1}%
+%                   \@afterheading
+%                 \fi}
+
+}{}
+
+
+\ifthenelse{\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}\and\equal{\isbeamer}{false}}{%\renewcommand{\thechapter}{\Roman{chapter}}
+\AtEndPreamble{\renewcommand{\chaptername}{\insertenseignementtype}}
+
+\renewcommand\chapter{\clearpage
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@mymakechapterhead{#2}]%
+                    \else
+                      \@mymakechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\def\@schapter#1{\if@twocolumn
+                   \@topnewpage[\@mymakeschapterhead{#1}]%
+                 \else
+                   \@mymakeschapterhead{#1}%
+                   \@afterheading
+                 \fi}
+\def\@mymakechapterhead#1{
+   \addvspace{4ex}
+  {\parindent \z@ \centering \normalfont
+    \interlinepenalty\@M
+    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype~\thechapter~--~#1\unboldmath\par\nobreak
+    \vskip \baselineskip
+  }}
+\def\@mymakeschapterhead#1{
+   \addvspace{4ex}
+  {\parindent \z@ \centering \normalfont
+    \interlinepenalty\@M
+    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype~--~#1\unboldmath\par\nobreak
+    \vskip \baselineskip
+  }}
+}{}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
+\makeatletter
+\titleformat{\chapter}[display]
+  {\LARGE\centering\familyfortitles\bfseries\boldmath\color{\ltcolorchapter}\ifthenelse{\equal{\PackageOption}{complet}}{\thispagestyle{main}}{}}
+  {\chaptername~\thechapter}
+  {0pt}
+\makeatother
+}
+%unboldmath%
+%\ifthenelse{\equal{\PackageOption}{fiche}\and\equal{\isbeamer}{false}}{\renewcommand{\chapter}[1]{\laterdef{\@title}{#1}\laterdef{\insertshorttitle}{}}}{}
+
+\ifthenelse{\equal{\PackageOption}{livret}\and\equal{\isbeamer}{false}}{%\renewcommand{\thechapter}{\Roman{chapter}}
+
+\renewcommand\chapter{\par
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                   
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                   }
+\def\@schapter#1{\@makeschapterhead{#1}%
+                 \@afterheading
+                 }
+\def\@makechapterhead#1{
+   \addvspace{4ex}
+  {\parindent \z@ \centering \normalfont
+    \interlinepenalty\@M
+    \LARGE \familyfortitles\bfseries\boldmath \thechapter~~#1\unboldmath\par\nobreak
+    \vskip \baselineskip
+  }}
+\def\@makeschapterhead#1{
+   \addvspace{4ex}
+  {\parindent \z@ \centering \normalfont
+    \interlinepenalty\@M
+    \LARGE \familyfortitles\bfseries\boldmath #1\unboldmath\par\nobreak
+    \vskip \baselineskip
+  }}
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Part settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{\def\smallpart{\part}}{
+\renewcommand\part{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \thispagestyle{plain}%
+  \if@twocolumn
+    \onecolumn
+    \@tempswatrue
+  \else
+    \@tempswafalse
+  \fi
+  \null\vfil
+  \secdef\@part\@spart}
+
+\def\@part[#1]#2{%
+    \ifnum \c@secnumdepth >-2\relax
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    \markboth{}{}%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \ifnum \c@secnumdepth >-2\relax
+       \huge\familyfortitles\bfseries\boldmath\color{\ltcolorpart} \partname\nobreakspace\thepart\unboldmath
+       \par
+       \vskip 20\p@
+     \fi
+     \Huge \familyfortitles\bfseries\boldmath\color{\ltcolorpart} #2\unboldmath\par}%
+    \@endpart}
+\def\@spart#1{%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \Huge \familyfortitles\bfseries\boldmath\color{\ltcolorpart} #1\unboldmath\par}%
+    \@endpart}
+\def\@endpart{\vfil\newpage
+%              \if@twoside
+%               \if@openright
+%                \null
+%                \thispagestyle{empty}%
+%                \newpage
+%               \fi
+%              \fi
+              \if@tempswa
+                \twocolumn
+              \fi}
+%}
+\makeatother
+
+
+\makeatletter
+\newcommand\smallpart{%
+   \if@noskipsec \leavevmode \fi
+   \par
+   \addvspace{4ex}%
+   \@afterindentfalse
+   \secdef\@smallpart\@smallspart}
+
+\def\@smallpart[#1]#2{%
+    \ifnum \c@secnumdepth >\m@ne
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    {\parindent \z@ \raggedright
+     \interlinepenalty \@M
+     \normalfont
+     \ifnum \c@secnumdepth >\m@ne
+       \Large\familyfortitles\bfseries\boldmath\color{\ltcolorpart}\partname\nobreakspace\thepart\unboldmath
+       \par\nobreak
+     \fi
+     \LARGE\familyfortitles\bfseries\boldmath\color{\ltcolorpart} #2\unboldmath%
+     \markboth{}{}\par}%
+    \nobreak
+    \vskip 3ex
+    \@afterheading}
+\def\@smallspart#1{%
+    {\parindent \z@ \raggedright
+     \interlinepenalty \@M
+     \normalfont
+     \huge\familyfortitles\bfseries\boldmath\color{\ltcolorpart} #1\unboldmath\par}%
+     \nobreak
+     \vskip 3ex
+     \@afterheading}
+\makeatother
+}
+
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
+\titleformat{\section}
+{\normalfont\Large\familyfortitles\bfseries\boldmath\color{\ltcolorsection}\hyphenpenalty=10000\raggedright}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\familyfortitles\bfseries\boldmath\color{\ltcolorsubsection}\hyphenpenalty=10000\raggedright}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorsubsubsection}\hyphenpenalty=10000\raggedright}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorparagraph}}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorsubparagraph}}{\thesubparagraph}{1em}{}
+}

@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Package ltsyle                                                        %
+%        Author: Lucas Torterotot                                              %
+%        EMail:  lucas.torterotot at gmail.com                                 %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[2014/05/01]
+
+\def\ltstyleversion{0.9.8}
+\def\ltstyleversiondate{06/02/2019}
+
+\ProvidesPackage{ltstyle}%
+        [\ltstyleversiondate\space Paquet ltstyle v \ltstyleversion]
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Package options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\PackageOption}{none}
+\newcommand{\nablaOption}{false}
+\newcommand{\seccolorOption}{false}
+\newcommand{\sffamilyOption}{true}
+\newcommand{\dopagegarde}{false}
+\newcommand{\ltcolortheme}{auto}
+\newcommand{\biblatexsorting}{nty}
+\newcommand{\feynmpmf}{feynmp}
+\def\loadhelvet{false}
+\def\loadavant{false}
+\def\loadmathptmx{false}
+\def\loadmathpazo{false}
+\def\loadutopia{false}
+
+\makeatletter
+\@ifclassloaded{beamer}{\newcommand{\isbeamer}{true}}{\newcommand{\isbeamer}{false}}
+\@ifclassloaded{article}{\newcommand{\isarticle}{true}}{\newcommand{\isarticle}{false}}
+\@ifclassloaded{standalone}{\newcommand{\isstandalone}{true}}{\newcommand{\isstandalone}{false}}
+\makeatother
+
+\input ltstyle_module-package_options.sty
+
+\input ltstyle_module-package_options_fonts.sty
+
+\ExecuteOptions{none}
+\ProcessOptions\relax
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Used Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input ltstyle_module-encoding_and_characters.sty
+\input ltstyle_module-biblatex.sty
+\input ltstyle_module-makeidx.sty
+
+\input ltstyle_module-code_input.sty
+
+\input ltstyle_module-floats.sty
+
+\input ltstyle_module-lettrine.sty
+
+\RequirePackage{xparse}
+
+\input ltstyle_module-tikz_and_pgf.sty
+\input ltstyle_module-circuitikz.sty
+
+\input ltstyle_module-remarque_encadre.sty
+
+\input ltstyle_module-hyperref.sty
+
+\input ltstyle_module-SIunits.sty
+\input ltstyle_module-fonts_adjust.sty
+
+\input ltstyle_module-science_packages.sty
+\input ltstyle_module-esvect.sty
+
+\usepackage{ltstyle_module-edt}
+
+%%%% externalising tikz figures
+
+%\usetikzlibrary{external}
+%\let\nofiles\relax
+%\tikzset{
+%    external/system call={%
+%    pdflatex \tikzexternalcheckshellescape
+%    -halt-on-error --shell-escape
+%    -jobname "\image" "\texsource"}}
+%\tikzexternalize[optimize=false]
+%\tikzexternaldisable
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Defining colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}
+\input ltstyle_module-colors.sty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Defining new commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input ltstyle_module-newcommands.sty
+\input ltstyle_module-newcommands-maths.sty
+\input ltstyle_module-newcommands-maths_functions.sty
+\input ltstyle_module-newcommands-structures_cristallines.sty
+
+\input ltstyle_module-abreviations.sty
+
+\input ltstyle_module-doc_data_commands.sty
+
+\input ltstyle_module-exos_quests_manips_and_co.sty
+\input ltstyle_module-corrige_option_extension.sty
+\input ltstyle_module-colles.sty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Template %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input ltstyle_module-classes_compatibilities.sty
+\input ltstyle_module-LaTeX_template.sty
+\input ltstyle_module-Beamer_template.sty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
