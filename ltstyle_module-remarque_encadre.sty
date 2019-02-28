@@ -78,13 +78,27 @@ breakable]}
 \ifthenelse{\equal{\remarquecouleur}{magenta}}{\def\colorlineremarque{\ltcolormagenta}}{}
 }
 
+\def\makeremarquemarker{
+  \begin{tikzpicture}
+    \path[use as bounding box] (7.25pt,-2.8pt) rectangle +(0,0);
+    \remarquemarker
+  \end{tikzpicture}
+}
+
+\def\remarquemarkerdefault{\fill[\colorlineremarque] (-0.15mm,5pt) arc(90:-90:5pt);}
+\def\remarquemarkerdefault{\fill [white] (0,0) circle (.41\baselineskip)  ; \draw [\colorlineremarque] (.2pt,1pt) node {\ding{118}};}
+\def\remarquemarker{\remarquemarkerdefault}
+
 \makeatletter
 \newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\remarquecontent}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
+\def\remarquemarker{\remarquemarkerdefault}  
+\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{\fill [white] (0,0) circle (.41\baselineskip) ; \draw [\colorlineremarque] (.2pt,0) node {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax};}}{}
 {\@twosidefalse
 \begin{ltremarque}
-\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{\textcolor{\ltcolorred}{\large\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}\ }{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}%\vphantom{My}%\vspace{-.725mm}
+\makeremarquemarker%
+\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{}{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}%\vphantom{My}%\vspace{-.725mm}
 \end{ltremarque}
 }
 }
