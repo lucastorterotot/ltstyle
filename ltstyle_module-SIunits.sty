@@ -33,7 +33,13 @@
 \let\origSI\SI
 \def\emptytest{}
 \def\SI#1#2{{\protect \settowidth{\myunitsepwidth}{\myunitsep}\def\emptytest{#1}\ifx\emptytest\empty\else \def\SIunskip{\hspace*{-\myunitsepwidth}}\fi\ensuremath{\origSI{#1}{#2}}}}
-
+\makeatletter
+\@ifclassloaded{beamer}{
+  \renewcommand{\SIupmath}[2][]{#2}
+  \let\ltstyleSI\SI
+  \def\SI#1#2{\ltstyleSI{#1}{\rm #2}}
+}
+\makeatother
 %\makeatletter
 %\@ifpackagewith{babel}{french}{\renewcommand{\degre}{\degree}}{\newcommand{\degre}{\degree}}%{\ensuremath{^\circ}}
 %\makeatother
