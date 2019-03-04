@@ -80,11 +80,11 @@ breakable]}
 
 \def\makeremarquemarker{\begin{tikzpicture}
     \path[use as bounding box] (7.25pt,-2.8pt) rectangle +(0,0);
-    \remarquemarker
+    \fill [white] (0,0) circle (.41\baselineskip);
+    \draw [\colorlineremarque] (.2pt,1pt) node {\remarquemarker};
 \end{tikzpicture}}
 
-\def\remarquemarkerdefault{\fill[\colorlineremarque] (-0.15mm,5pt) arc(90:-90:5pt);}
-\def\remarquemarkerdefault{\fill [white] (0,0) circle (.41\baselineskip)  ; \draw [\colorlineremarque] (.2pt,1pt) node {\ding{118}};}
+\def\remarquemarkerdefault{\ding{118}}
 \def\remarquemarker{\remarquemarkerdefault}
 
 \makeatletter
@@ -92,7 +92,7 @@ breakable]}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
 \def\remarquemarker{\remarquemarkerdefault}  
-\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{\fill [white] (0,0) circle (.41\baselineskip) ; \draw [\colorlineremarque] (.2pt,0) node {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax};}}{}
+\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}}}{}
 {\@twosidefalse
 \begin{ltremarque}
 \makeremarquemarker%
