@@ -16,3 +16,11 @@ mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
 git clone git@github.com:lucastorterotot/ltstyle.git
 ```
+
+## Usage
+### Guides
+Documentation will be published later.
+
+### Some documents for education
+One can find [here](https://www.dropbox.com/sh/kn9fxcoymh2nzmq/AAD4f_ximo6Pj4Mse9UPJIgSa?dl=0) some documents, written in french, produced with this LaTeX package and [this python package](https://github.com/lucastorterotot/ltLaTeXpyplot).
+
