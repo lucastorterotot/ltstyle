@@ -8,11 +8,18 @@
 
 \newcommand{\donotchangesubtitle}{false}
 \newcommand{\forcesubtitle}{\renewcommand{\donotchangesubtitle}{true}}
+
+\ifthenelse{\equal{\BeamerheaderON}{auto}}
+           {\ifthenelse{\equal{\PackageOption}{none}}
+             {\def\BeamerheaderON{False}}
+             {\def\BeamerheaderON{True}}
+           }
+           {}
  
 \ifthenelse{\equal{\PackageOption}{default}}
     {\usetheme{default}}
-    {\ifthenelse{\equal{\PackageOption}{none}}
-        {\usetheme{Boadilla}}
+    {\usetheme{Boadilla}
+     \ifthenelse{\equal{\BeamerheaderON}{True}}
         {\usetheme{Boadilla}%\usetheme{AnnArbor}\usecolortheme{beaver}\usecolortheme{dolphin}
         \setbeamertemplate{headline}{%
         \leavevmode%
@@ -30,8 +37,8 @@
         }%
         \vskip0pt%
         }        
-        
         }
+        {}
     
 \setbeamertemplate{navigation symbols}{%items présents dans la barre de navigation
 %\insertslidenavigationsymbol
