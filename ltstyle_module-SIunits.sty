@@ -38,13 +38,16 @@
   \renewcommand{\SIupmath}[2][]{#2}
   \let\ltstyleSI\SI
   \def\SI#1#2{\ltstyleSI{#1}{\rm #2}}
-}
+  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{\ensuremath{\rm #2}}}
+  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{\ensuremath{\rm #2}}}
+}{
+  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
+  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
+  }
 \makeatother
 %\makeatletter
 %\@ifpackagewith{babel}{french}{\renewcommand{\degre}{\degree}}{\newcommand{\degre}{\degree}}%{\ensuremath{^\circ}}
 %\makeatother
-\DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{\text{\rm #2}}}
-\DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{\text{\rm #2}}}
 \DeclareTextSymbolDefault{\SImu}{TS1}
 \DeclareTextSymbol{\SImu}{TS1}{181}
 \addprefix{\yocto}{y}
