@@ -71,33 +71,33 @@
 \setbeamertemplate{footline}{%
 \leavevmode%
 \hbox{%
-\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-\usebeamerfont{author in head/foot}\insertshortauthor %nom de l'auteur en bas à gauche
-\end{beamercolorbox}%
-\begin{beamercolorbox}[wd=.43\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-\usebeamerfont{title in head/foot}\insertshorttitle %titre en bas à droite
-\end{beamercolorbox} \hspace{-0.125cm}
-\begin{beamercolorbox}[wd=.07\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-%\usebeamerfont{date in head/foot} %date en bas à droite
-\insertframenumber /\inserttotalframenumber{}\hspace*{2ex} %numéro de la slide tout en bas à droite
-\end{beamercolorbox}}%
-\vskip0pt%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.43\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.07\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}
+    \usebeamertemplate{page number in head/foot}\hspace*{2ex}% \insertframenumber /\inserttotalframenumber{}
+  \end{beamercolorbox}}%
+  \vskip0pt%
 }
 }{
 \setbeamertemplate{footline}{%
 \leavevmode%
 \hbox{%
-\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-\usebeamerfont{author in head/foot}\insertclasse\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\originstitute}{}}{\hfill}{}\origshortinstitute\ifthenelse{\not\equal{\insertmatiere}{}\and\not\equal{\originstitute}{}}{\hfill}{}\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\insertmatiere}{}\and\equal{\originstitute}{}}{\hfill}{}\insertshortmatiere %\insertshortauthor~(\origshortinstitute) %nom de l'auteur en bas à gauche
-\end{beamercolorbox}%
-\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-\usebeamerfont{title in head/foot}\color{black}{\ifthenelse{\equal{\insertenseignementtype}{}}{}{\insertenseignementtype~\insertenseignementnum\hfill}\insertshorttitle} %titre en bas à droite
-\end{beamercolorbox} \hspace{-0.125cm}
-\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-\usebeamerfont{date in head/foot}~\hfill \insertdate \hfill
-~\hfill \insertframenumber /\inserttotalframenumber\hfill~ %numéro de la slide tout en bas à droite
-\end{beamercolorbox}}%
-\vskip0pt%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertclasse\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\originstitute}{}}{\hfill}{}\origshortinstitute\ifthenelse{\not\equal{\insertmatiere}{}\and\not\equal{\originstitute}{}}{\hfill}{}\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\insertmatiere}{}\and\equal{\originstitute}{}}{\hfill}{}\insertshortmatiere
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\color{black}{\ifthenelse{\equal{\insertenseignementtype}{}}{}{\insertenseignementtype~\insertenseignementnum\hfill}\insertshorttitle}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}~\hfill \insertdate \hfill
+    \usebeamertemplate{page number in head/foot}\hspace*{2ex}% \insertframenumber /\inserttotalframenumber{}
+  \end{beamercolorbox}}%
+  \vskip0pt%
 }
 }
 }
