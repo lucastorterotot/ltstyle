@@ -1,52 +1,566 @@
-\DeclareOption{cmr}{\AtBeginDocument{\fontfamily{cmr}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{lmr}{\AtBeginDocument{\fontfamily{lmr}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{pbk}{\AtBeginDocument{\let\mathit\relax\newcommand{\mathit}[1]{{\fontfamily{ppl}\selectfont\textit{#1}}}\fontfamily{pbk}\selectfont\renewcommand{\rmdefault}{pbk}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{bch}{\AtBeginDocument{\fontfamily{bch}\selectfont\renewcommand{\rmdefault}{bch}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{pnc}{\AtBeginDocument{\fontfamily{pnc}\selectfont\renewcommand{\rmdefault}{pnc}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{ppl}{\AtBeginDocument{\let\mathit\relax\def\mathit{\textit}\fontfamily{ppl}\selectfont}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{ptm}{\AtBeginDocument{\fontfamily{ptm}\selectfont}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{pag}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{pag}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{pag}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{phv}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{phv}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{phv}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{pcr}{\AtBeginDocument{\fontfamily{pcr}\selectfont\renewcommand{\rmdefault}{pcr}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{pzc}{\AtBeginDocument{\fontfamily{pzc}\selectfont\renewcommand{\rmdefault}{pzc}\let\mathit\relax\let\mathcal\relax\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{Accanthis}{
+  \AtBeginDocument{
+    \fontfamily{AccanthisADFStdNoThree-LF}\selectfont
+    \renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
 
-\DeclareOption{Utopia}{\AtBeginDocument{\fontfamily{futs}\selectfont\renewcommand{\rmdefault}{futs}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false} \def\loadutopia{true}}
+\DeclareOption{Alegreya}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{AlegreyaSans-LF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{AlegreyaSans-LF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
 
-\DeclareOption{put}{\AtBeginDocument{\fontfamily{put}\selectfont\renewcommand{\rmdefault}{put}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{qcs}{\AtBeginDocument{\fontfamily{qcs}\selectfont\renewcommand{\rmdefault}{qcs}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{fvs}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{fvs}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{fvs}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Biolinum}{\AtBeginDocument{\let\mathit\relax\def\mathit{\textit}\fontfamily{LinuxBiolinumT-OsF}\selectfont\renewcommand{\rmdefault}{LinuxBiolinumT-OsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{Libertine}{\AtBeginDocument{\fontfamily{LinuxLibertineT-OsF}\selectfont\renewcommand{\rmdefault}{LinuxLibertineT-OsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{lmss}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{lmss}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{lmss}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
+\DeclareOption{antp}{
+  \AtBeginDocument{
+    \fontfamily{antp}\selectfont
+    \renewcommand{\rmdefault}{antp}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
 
-\DeclareOption{Accanthis}{\AtBeginDocument{\fontfamily{AccanthisADFStdNoThree-LF}\selectfont\renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Alegreya}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{AlegreyaSans-LF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{AlegreyaSans-LF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{antp}{\AtBeginDocument{\fontfamily{antp}\selectfont\renewcommand{\rmdefault}{antp}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{artemisia}{\AtBeginDocument{\fontfamily{artemisiaeuler}\selectfont\renewcommand{\rmdefault}{artemisiaeuler}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Caladea}{\AtBeginDocument{\fontfamily{Caladea-TLF}\selectfont\renewcommand{\rmdefault}{Caladea-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{Crimson}{\AtBeginDocument{\fontfamily{Crimson-TLF}\selectfont\renewcommand{\rmdefault}{Crimson-TLF}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{DejaVuSans}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{DejaVuSansCondensed-TLF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{DejaVuSansCondensed-TLF}\let\mathit\relax}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{DejaVu}{\AtBeginDocument{\fontfamily{DejaVuSerifCondensed-TLF}\selectfont\renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}\let\mathit\relax}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{Fira}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{FiraSans-TLF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{Fira}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{fla}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{fla}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{fla}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{fnc}{\AtBeginDocument{\fontfamily{fnc}\selectfont\renewcommand{\rmdefault}{fnc}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-%\DeclareOption{futx}{\AtBeginDocument{\fontfamily{futx}\selectfont\renewcommand{\rmdefault}{futx}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{gentium}{\AtBeginDocument{\fontfamily{gentium}\selectfont\renewcommand{\rmdefault}{gentium}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Gillius}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{GilliusADFNoTwoCond-LF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{GilliusADFNoTwoCond-LF}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{jkp}{\AtBeginDocument{\fontfamily{jkp}\selectfont\renewcommand{\rmdefault}{jkp}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{kurier}{\AtBeginDocument{\fontfamily{kurier}\selectfont\renewcommand{\rmdefault}{kurier}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{LibreCaslon}{\AtBeginDocument{\fontfamily{LibreCaslonText-TLF}\selectfont\renewcommand{\rmdefault}{LibreCaslonText-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{mak}{\AtBeginDocument{\fontfamily{mak}\selectfont\renewcommand{\rmdefault}{mak}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{mdput}{\AtBeginDocument{\fontfamily{mdput}\selectfont\renewcommand{\rmdefault}{mdput}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{NimbusSans}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{NimbusSans}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{NimbusSans}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Nimbus}{\AtBeginDocument{\fontfamily{NimbusSerif}\selectfont\renewcommand{\rmdefault}{NimbusSerif}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{ntxlf}{\AtBeginDocument{\fontfamily{ntxlf}\selectfont\renewcommand{\rmdefault}{ntxlf}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{pxss}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{pxss}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{pxss}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{Quattrocento}{\AtBeginDocument{\fontfamily{Quattrocento-TLF}\selectfont\renewcommand{\rmdefault}{Quattrocento-TLF}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{QuattrocentoSans}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{QuattrocentoSans-TLF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{QuattrocentoSans-TLF}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{false} \def\loadmathpazo{true}}
-\DeclareOption{Roboto}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{RobotoCondensed-LF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{RobotoCondensed-LF}}\def\loadavant{true} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{Tempora}{\AtBeginDocument{\fontfamily{Tempora-TOsF}\selectfont\renewcommand{\rmdefault}{Tempora-TOsF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{Universalis}{\def\SIunitfamily{\sf}\AtBeginDocument{\fontfamily{UniversalisADFStd-LF}\selectfont\renewcommand{\rmdefault}{\sfdefault}\def\sfdefault{UniversalisADFStd-LF}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{XCharter}{\AtBeginDocument{\fontfamily{XCharter-TLF}\selectfont\renewcommand{\rmdefault}{XCharter-TLF}}\def\loadavant{false} \def\loadhelvet{false} \def\loadmathptmx{true} \def\loadmathpazo{false}}
-\DeclareOption{yv2}{\AtBeginDocument{\fontfamily{yv2}\selectfont\renewcommand{\rmdefault}{yv2}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{false}}
-\DeclareOption{zpltlf}{\AtBeginDocument{\fontfamily{zpltlf}\selectfont\renewcommand{\rmdefault}{zpltlf}\def\mathit{\textit}}\def\loadavant{false} \def\loadhelvet{true} \def\loadmathptmx{false} \def\loadmathpazo{true}}
+\DeclareOption{artemisia}{
+  \AtBeginDocument{
+    \fontfamily{artemisiaeuler}\selectfont
+    \renewcommand{\rmdefault}{artemisiaeuler}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{bch}{
+  \AtBeginDocument{
+    \fontfamily{bch}\selectfont
+    \renewcommand{\rmdefault}{bch}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Biolinum}{
+  \AtBeginDocument{
+    \let\mathit\relax\def\mathit{\textit}
+    \fontfamily{LinuxBiolinumT-OsF}\selectfont
+    \renewcommand{\rmdefault}{LinuxBiolinumT-OsF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{Caladea}{
+  \AtBeginDocument{
+    \fontfamily{Caladea-TLF}\selectfont
+    \renewcommand{\rmdefault}{Caladea-TLF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{cmr}{
+  \AtBeginDocument{
+    \fontfamily{cmr}\selectfont
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Crimson}{
+  \AtBeginDocument{
+    \fontfamily{Crimson-TLF}\selectfont
+    \renewcommand{\rmdefault}{Crimson-TLF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{DejaVu}{
+  \AtBeginDocument{
+    \fontfamily{DejaVuSerifCondensed-TLF}\selectfont
+    \renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}
+    \let\mathit\relax
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{DejaVuSans}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{DejaVuSansCondensed-TLF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{DejaVuSansCondensed-TLF}
+    \let\mathit\relax
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{Fira}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{FiraSans-TLF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{Fira}
+  }
+  \def\loadavant{true}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{fla}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{fla}
+    \selectfont\renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{fla}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{fnc}{
+  \AtBeginDocument{
+    \fontfamily{fnc}\selectfont
+    \renewcommand{\rmdefault}{fnc}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{fvs}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{fvs}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{fvs}
+  }
+  \def\loadavant{true}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{gentium}{
+  \AtBeginDocument{
+    \fontfamily{gentium}\selectfont
+    \renewcommand{\rmdefault}{gentium}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Gillius}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{GilliusADFNoTwoCond-LF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{GilliusADFNoTwoCond-LF}
+  }
+  \def\loadavant{true}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{jkp}{
+  \AtBeginDocument{
+    \fontfamily{jkp}\selectfont
+    \renewcommand{\rmdefault}{jkp}
+    \def\mathit{\textit}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{kurier}{
+  \AtBeginDocument{
+    \fontfamily{kurier}\selectfont
+    \renewcommand{\rmdefault}{kurier}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Libertine}{
+  \AtBeginDocument{
+    \fontfamily{LinuxLibertineT-OsF}\selectfont
+    \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{LibreCaslon}{
+  \AtBeginDocument{
+    \fontfamily{LibreCaslonText-TLF}\selectfont
+    \renewcommand{\rmdefault}{LibreCaslonText-TLF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{lmr}{
+  \AtBeginDocument{
+    \fontfamily{lmr}\selectfont
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{lmss}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{lmss}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{lmss}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{mak}{
+  \AtBeginDocument{
+    \fontfamily{mak}\selectfont
+    \renewcommand{\rmdefault}{mak}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{mdput}{
+  \AtBeginDocument{
+    \fontfamily{mdput}\selectfont
+    \renewcommand{\rmdefault}{mdput}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Nimbus}{
+  \AtBeginDocument{
+    \fontfamily{NimbusSerif}\selectfont
+    \renewcommand{\rmdefault}{NimbusSerif}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{NimbusSans}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{NimbusSans}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{NimbusSans}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{ntxlf}{
+  \AtBeginDocument{
+    \fontfamily{ntxlf}\selectfont
+    \renewcommand{\rmdefault}{ntxlf}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{pag}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{pag}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{pag}
+  }
+  \def\loadavant{true}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{pbk}{
+  \AtBeginDocument{
+    \let\mathit\relax
+    \newcommand{\mathit}[1]{{\fontfamily{ppl}\selectfont\textit{#1}}}
+    \fontfamily{pbk}\selectfont
+    \renewcommand{\rmdefault}{pbk}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{pcr}{
+  \AtBeginDocument{
+    \fontfamily{pcr}\selectfont
+    \renewcommand{\rmdefault}{pcr}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{phv}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{phv}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{phv}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{pnc}{
+  \AtBeginDocument{
+    \fontfamily{pnc}\selectfont
+    \renewcommand{\rmdefault}{pnc}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{ppl}{
+  \AtBeginDocument{
+    \let\mathit\relax
+    \def\mathit{\textit}
+    \fontfamily{ppl}\selectfont
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{ptm}{
+  \AtBeginDocument{
+    \fontfamily{ptm}\selectfont
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{put}{
+  \AtBeginDocument{
+    \fontfamily{put}\selectfont
+    \renewcommand{\rmdefault}{put}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{pxss}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{pxss}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{pxss}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{pzc}{
+  \AtBeginDocument{
+    \fontfamily{pzc}\selectfont
+    \renewcommand{\rmdefault}{pzc}
+    \let\mathit\relax
+    \let\mathcal\relax
+    \newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{qcs}{
+  \AtBeginDocument{
+    \fontfamily{qcs}\selectfont
+    \renewcommand{\rmdefault}{qcs}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Quattrocento}{
+  \AtBeginDocument{
+    \fontfamily{Quattrocento-TLF}\selectfont
+    \renewcommand{\rmdefault}{Quattrocento-TLF}
+    \def\mathit{\textit}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{QuattrocentoSans}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{QuattrocentoSans-TLF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{QuattrocentoSans-TLF}
+    \def\mathit{\textit}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
+
+\DeclareOption{Roboto}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{RobotoCondensed-LF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{RobotoCondensed-LF}
+  }
+  \def\loadavant{true}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Tempora}{
+  \AtBeginDocument{
+    \fontfamily{Tempora-TOsF}\selectfont
+    \renewcommand{\rmdefault}{Tempora-TOsF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Universalis}{
+  \def\SIunitfamily{\sf}
+  \AtBeginDocument{
+    \fontfamily{UniversalisADFStd-LF}\selectfont
+    \renewcommand{\rmdefault}{\sfdefault}
+    \def\sfdefault{UniversalisADFStd-LF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{Utopia}{
+  \AtBeginDocument{
+    \fontfamily{futs}\selectfont
+    \renewcommand{\rmdefault}{futs}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+  \def\loadutopia{true}
+}
+
+\DeclareOption{XCharter}{
+  \AtBeginDocument{
+    \fontfamily{XCharter-TLF}\selectfont
+    \renewcommand{\rmdefault}{XCharter-TLF}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{yv2}{
+  \AtBeginDocument{
+    \fontfamily{yv2}\selectfont
+    \renewcommand{\rmdefault}{yv2}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{zpltlf}{
+  \AtBeginDocument{
+    \fontfamily{zpltlf}\selectfont
+    \renewcommand{\rmdefault}{zpltlf}
+    \def\mathit{\textit}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{true}
+  \def\loadmathptmx{false}
+  \def\loadmathpazo{true}
+}
