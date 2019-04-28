@@ -1,13 +1,13 @@
-\ifthenelse{\equal{\PackageOption}{chapter}}{\enseignementtype{\chaptername}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{chapitre}}{\enseignementtype{\chaptername}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{complet}}{\enseignementtype{\chaptername}\renewcommand{\insertenseignementnum}{\thechapter}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{colle}}{\enseignementtype{Colle}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Khôlle}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{DM}}{\enseignementtype[DM]{Devoir maison}\renewcommand{\enseignementtype}[1]{}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{DS}}{\enseignementtype[DS]{Devoir surveillé}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{chapter}}{\enseignementtype{\chaptername}}{}
+\ifthenelse{\equal{\PackageOption}{chapitre}}{\enseignementtype{\chaptername}}{}
+\ifthenelse{\equal{\PackageOption}{complet}}{\enseignementtype{\chaptername}\renewcommand{\insertenseignementnum}{\thechapter}}{}
+\ifthenelse{\equal{\PackageOption}{colle}}{\enseignementtype{Colle}}{}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Khôlle}}{}
+\ifthenelse{\equal{\PackageOption}{DM}}{\enseignementtype[DM]{Devoir maison}}{}
+\ifthenelse{\equal{\PackageOption}{DS}}{\enseignementtype[DS]{Devoir surveillé}}{}
 \ifthenelse{\equal{\PackageOption}{controle}}{\enseignementtype[DS]{Devoir surveillé}}{}
-\ifthenelse{\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\enseignementtype{TD}\renewcommand{\enseignementtype}[1]{}}{}
-\ifthenelse{\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\enseignementtype{TP}\renewcommand{\enseignementtype}[1]{}}{}
+\ifthenelse{\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\enseignementtype{TD}}{}
+\ifthenelse{\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\enseignementtype{TP}}{}
 
 \makeatletter
 \newcommand{\TitleToUse}{}
