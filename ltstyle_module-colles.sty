@@ -44,7 +44,7 @@
 \ifthenelse{\equal{\insertshortinstitute}{}}{}{\insertshortinstitute}%
 \ifthenelse{\equal{\insertclasse}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}}{}{\,--\,}\insertclasse}%
 \ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}}{}{\,--\,}g.~\insertenseignementgpcolle}%
-\ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}\insertenseignementtype~\insertenseignementnum}%
+\ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertshortenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}\insertshortenseignementtype~\insertenseignementnum}%
 \ifx\insertdate \empty \else \ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}\and\equal{\insertenseignementnum}{\!\!}}{}{\,--\,}\insertdate\fi}%
 \medskip
 
@@ -74,9 +74,9 @@
 \renewcommand{\collesujet}[4]{
 \refstepcounter{elevecompteur}
 \fancypagestyle{sujet\theelevecompteur}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \fancypagestyle{titlesujet\theelevecompteur}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 
 \pagestyle{sujet\theelevecompteur} \setcounter{page}{1}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlesujet\theelevecompteur}
@@ -100,11 +100,11 @@
 \setcounter{equation}{0}
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\renewcommand{\insertenseignementtype}{Compte-rendu de khôlle}}{\renewcommand{\insertenseignementtype}{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Compte-rendu de khôlle}}{\insertenseignementtype{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}
 \fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype}}
+\cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}
 \pagestyle{rapport}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlerapport}
 
@@ -128,11 +128,11 @@
 
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\renewcommand{\insertenseignementtype}{Corrigé de khôlle}}{\renewcommand{\insertenseignementtype}{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Corrigé de khôlle}}{\insertenseignementtype{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{corrige}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \fancypagestyle{titlecorrige}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \pagestyle{corrige}
 {\setlength{\parindent}{0pt} \maketitle} \thispagestyle{titlecorrige}
 

@@ -10,6 +10,7 @@
 \newcommand{\insertmatiere}{}
 \newcommand{\insertshortmatiere}{\insertmatiere}
 \newcommand{\insertenseignementtype}{}
+\newcommand{\insertshortenseignementtype}{}
 \newcommand{\insertenseignementnum}{}
 \newcommand{\insertenseignementgpcolle}{}
 \newcommand{\insertenseignementduree}{}
@@ -152,6 +153,14 @@
     }
 }
 
+
+
+\def\enseignementtype{\@dblarg\my@enseignementtype}
+\long\def\my@enseignementtype[#1]#2{%
+ \def\insertenseignementtype{#2}
+ \def\insertshortenseignementtype{#1}
+}
+
 \def\sujetsource{\matiere}
 \def\sujetannee#1{
   \let\tmpinsertmatiere\insertmatiere
@@ -187,7 +196,7 @@
 \def\mybeamerinsertshortinstitute{#1}
  }
 }{}
-\newcommand{\enseignementtype}[1]{\renewcommand{\insertenseignementtype}{#1}}
+
 \newcommand{\enseignementnum}[1]{\renewcommand{\insertenseignementnum}{#1}}
 \newcommand{\enseignementgpcolle}[1]{\renewcommand{\insertenseignementgpcolle}{#1}}
 \newcommand{\enseignementduree}[1]{\renewcommand{\insertenseignementduree}{#1}}
