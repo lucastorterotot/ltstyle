@@ -152,6 +152,17 @@
     }
 }
 
+\def\sujetsource{\matiere}
+\def\sujetannee#1{
+  \let\tmpinsertmatiere\insertmatiere
+  \let\tmpinsertshortmatiere\insertshortmatiere
+  \def\insertmatiere{\tmpinsertmatiere~#1}
+  \def\insertshortmatiere{\tmpinsertshortmatiere~#1}
+}
+\def\sujetlvl{\setclasselvl}
+\def\sujetfiliere{\setclassefiliere}
+\def\sujettype{\enseignementtype}
+\def\sujetduree{\enseignementduree}
 \makeatother
 
 \newcommand{\innercover}[1]{\renewcommand{\insertinnercover}{#1}}
