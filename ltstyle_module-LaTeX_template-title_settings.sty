@@ -14,7 +14,7 @@
 \AtBeginDocument{\ifthenelse{\equal{\@title}{}\or\equal{\PackageOption}{complet}}{\renewcommand{\TitleToUse}{\insertenseignementtype~\insertenseignementnum}}{
 \ifthenelse{\equal{\insertenseignementtype}{}}{\renewcommand{\TitleToUse}{\@title}}{\renewcommand{\TitleToUse}{\insertenseignementtype~\insertenseignementnum~--~\@title}}
 }
-\ifthenelse{\equal{\PackageOption}{chapter}\and\equal{\insertenseignementnum}{}}{\renewcommand{\TitleToUse}{\@title}\enseignementtype{Cours}}{}
+\ifthenelse{\equal{\PackageOption}{chapter}\and\equal{\insertenseignementnum}{}}{\renewcommand{\TitleToUse}{\@title}\def\insertenseignementtype{Cours}\def\insertshortenseignementtype{Cours}}{}
 }
 
 \newcommand{\insertclassepagegarde}{\insertlongclasse
