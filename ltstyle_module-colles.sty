@@ -100,7 +100,7 @@
 \setcounter{equation}{0}
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Compte-rendu de khôlle}}{\enseignementtype{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Compte-rendu de khôlle}\def\insertshortenseignementtype{Compte-rendu de khôlle}}{\def\insertenseignementtype{Compte-rendu de colle}\def\insertshortenseignementtype{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}
 \fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
@@ -128,7 +128,7 @@
 
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Corrigé de khôlle}}{\enseignementtype{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Corrigé de khôlle}\def\insertshortenseignementtype{Corrigé de khôlle}}{\def\insertenseignementtype{Corrigé de colle}\def\insertshortenseignementtype{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{corrige}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \fancypagestyle{titlecorrige}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
