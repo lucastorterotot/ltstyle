@@ -91,7 +91,7 @@
     \usebeamerfont{author in head/foot}\insertclasse\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\originstitute}{}}{\hfill}{}\origshortinstitute\ifthenelse{\not\equal{\insertmatiere}{}\and\not\equal{\originstitute}{}}{\hfill}{}\ifthenelse{\not\equal{\insertclasse}{}\and\not\equal{\insertmatiere}{}\and\equal{\originstitute}{}}{\hfill}{}\insertshortmatiere
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\ifthenelse{\equal{\insertenseignementtype}{}}{}{\insertenseignementtype~\insertenseignementnum\hfill}\insertshorttitle
+    \usebeamerfont{title in head/foot}\ifthenelse{\equal{\insertenseignementtype}{}}{}{\insertshortenseignementtype~\insertenseignementnum\hfill}\insertshorttitle
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
     \usebeamerfont{date in head/foot}~\hfill \insertdate \hfill
