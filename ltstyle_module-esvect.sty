@@ -13,3 +13,9 @@
 \newlength{\myveclength}
 
 \renewcommand{\vec}[1]{{\protect \vv{\protect \hphantom{#1}\protect \vphantom{#1}}} \protect \settowidth{\myveclength}{$\protect\vv{#1}$} \protect \mathchoice{\hspace{-\myveclength}}{\hspace{-\myveclength}}{\protect\hphantom{{}^{}}\protect \settowidth{\myveclength}{${}^{\protect \vv{#1}}$}\hspace{-\myveclength}}{\protect\hphantom{{}^{{}^{}}}\protect \settowidth{\myveclength}{${}^{{}^{\protect \vv{#1}}}$}\hspace{-\myveclength}}#1}
+
+\let\posthyperrefvec\vec
+\def\vec#1{#1}
+\AtEndPreamble{\AtBeginDocument{
+    \def\vec{\posthyperrefvec}
+}}
