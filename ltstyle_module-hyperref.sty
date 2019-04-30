@@ -3,7 +3,7 @@
 \@ifpackageloaded{hyperref}{}{
 \definecolor{linkcolor}{rgb}{0,0,0.6} \RequirePackage[colorlinks=true,pdfstartview=FitV,linkcolor= linkcolor,citecolor= linkcolor,urlcolor= linkcolor,hyperindex=true,hyperfigures=false,hypertexnames=false]{hyperref}}
 
-\AtEndPreamble{\makeatletter\hypersetup{pdfauthor={\insertauthor},pdftitle={\@title},pdfsubject={\insertmatiere}}\makeatother}
+\AtEndDocument{\makeatletter\hypersetup{pdfauthor={\insertauthor},pdftitle={\@title},pdfsubject={\insertmatiere}}\makeatother}
 }
 \makeatother
 
