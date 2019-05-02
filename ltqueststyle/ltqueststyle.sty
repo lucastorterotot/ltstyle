@@ -342,7 +342,7 @@
 \def\questseries{}
 }
 
-\DeclareOption{CCP4}{
+\DeclareOption{CCP4}{%CCP-2017-PC-P,CCP-2018-PC-P
 \renewcommand{\exopart}[2][Section]{
 \vspace{\baselineskip}\par
 \setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
@@ -852,7 +852,8 @@ $\bullet~\bullet~\bullet$ #1 $\bullet~\bullet~\bullet$
 
 \DeclareOption{CCP}{\ExecuteOptions{CCP1}}
 
-\DeclareOption{CCP1}{%\queststylereset
+\DeclareOption{CCP1}{%CCP-2016-PC-modelisation, adapted
+%\queststylereset
 \renewcommand{\exopart}[2][partie]{
 \vspace{\baselineskip}
 \setcounter{quest}{0}\refstepcounter{exopart}
