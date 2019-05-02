@@ -1,23 +1,32 @@
 % CCP-2017-PC-modelisation
-\renewcommand{\exopart}[2][Partie]{
+\renewcommand{\exopart}[2][]{
 \vspace{\baselineskip}\par
 \setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
 \begin{center}
-\Large\bfseries\boldmath\familyfortitles
+\LARGE\bfseries\boldmath\familyfortitles
 #1 \theexopart~-~#2
 \unboldmath
 \end{center}
 \vspace{.5\baselineskip}\par
 }
 
-\def\theexopart{\textbf{\Roman{exopart}}}
-\def\theexo{\textbf{\ifnum \arabic{exopart} > 0 \theexopart.\else \fi\arabic{exo}}}
-\def\thesubexo{\textbf{\theexo.\arabic{subexo}}}
+\def\theexopart{\textbf{\Alph{exopart}}}
+\def\theexo{\textbf{\ifnum \arabic{exopart} > 0 \theexopart.\else \fi\Roman{exo}}}
+\def\thesubexo{\textbf{\ifnum \arabic{exo} > 0 \theexo.\else \fi\arabic{subexo}}}
 \def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
 
-\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\paragraph*{{\large\theexo~-~#2}}\ \medskip\par}
-\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{{\large #2}}\ \medskip\par}
-\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{{\large #2}}\ \smallskip\par}
+\renewcommand{\exo}[2][Partie]{
+\vspace{\baselineskip}\par
+\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+#1 \theexo~-~#2
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par
+}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{{\large\thesubexo~-~#2}}\ \medskip\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{{\large #2}}\ \medskip\par}
 
 \def\numquest{\arabic{quest}}
 \def\numsubquest{\arabic{subquest}}
