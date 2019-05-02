@@ -6,50 +6,6 @@
 \newcommand{\rememberquestcount}{\setcounter{quest}{\arabic{questTemp}}}
 \newcommand{\savequestcount}{\setcounter{questTemp}{\arabic{quest}}}
 
-\def\numquest{\arabic{quest}}
-\def\numsubquest{\alph{subquest}}
-\def\numsubsubquest{\roman{subsubquest}}
-\def\numsubsubsubquest{\arabic{subsubsubquest}}
-
-\def\thequest{\numquest}
-\def\thesubquest{\thequest.\numsubquest}
-\def\thesubsubquest{\thesubquest.\numsubsubquest}
-\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
-
-\def\squestindent{\hspace{0.45cm}}
-
-\def\questspar{\par}
-\def\questsskip{\medskip}
-\def\questsindent{}
-\def\questsbox{}
-\def\questsnum{\numquest}
-
-\def\subquestspar{\par}
-\def\subquestsskip{\smallskip}
-\def\subquestsindent{\questsindent\squestindent}
-\def\subquestsbox{}
-\def\subquestsnum{\numsubquest}
-
-\def\subsubquestspar{\par}
-\def\subsubquestsskip{\smallskip}
-\def\subsubquestsindent{\subquestsindent\squestindent}
-\def\subsubquestsbox{}
-\def\subsubquestsnum{\numsubsubquest}
-
-\def\subsubsubquestspar{\par}
-\def\subsubsubquestsskip{\smallskip}
-\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
-\def\subsubsubquestsbox{}
-\def\subsubsubquestsnum{(\numsubsubsubquest)}
-
-\def\queststart{}
-\def\questend{.}
-
-\def\questprevioussep{.}
-
-\def\questshape{}
-\def\questseries{\bfseries}
-
 \def\questpar{\questspar}
 \def\questskip{\questsskip}
 \def\questindent{\questsindent}
@@ -62,9 +18,6 @@
 \def\questspace{\ }%
 }
 \questsmarksreset
-
-%\begin{tikzpicture}[x=.2cm,y=.2cm]\fill[black] (.2,-.2)--(1.2,-.2)--(1.2,.8)--(.2,.8)--cycle ;\draw [fill=white] (0,0)--(1,0)--(1,1)--(0,1)--cycle ; \end{tikzpicture}
-%\begin{tikzpicture}[x=.2cm,y=.2cm]\fill[black] (.7,.3) circle (.6) ; \draw [fill=white] (.5,.5) circle (.6) ; \end{tikzpicture}
 
 % d : default ; e : uniquement enonce ; c : uniquement corrige ; a : numéroter le tout % i : invisible
 % a
@@ -128,8 +81,3 @@
 \def\questnum{\subsubsubquestsnum}%
 \refstepcounter{subsubsubquest}%
 \questsmarksset{#1}\questsmark{\questmark}\questsmarksreset}
-
-%\renewcommand{\quest}[1][d]{\refstepcounter{quest}\ifthenelse{\equal{#1}{i}}{}{\ifthenelse{\equal{#1}{e}\and\equal{\enonce{a}}{}}{}{\ifthenelse{\equal{#1}{c}\and\equal{\corrige{a}}{}}{}{\par\medskip\noindent\hspace{0.0cm}\ding{111}~{\bfseries\arabic{quest}}.\ifthenelse{\equal{#1}{d}}{~}{}}}}}
-%\renewcommand{\subquest}[1][d]{\refstepcounter{subquest}\par\smallskip\noindent\hspace{0.5cm}\ding{109}~{\bfseries\alph{subquest}}.\ifthenelse{\equal{#1}{d}}{~}{}}
-%\renewcommand{\subsubquest}[1][d]{\refstepcounter{subsubquest}\par\noindent\hspace{1.0cm}{\tiny \ding{111}}~{\bfseries\roman{subsubquest}}.\ifthenelse{\equal{#1}{d}}{~}{}}
-%\renewcommand{\subsubsubquest}[1][d]{\refstepcounter{subsubsubquest}\par\noindent\hspace{1.5cm}{\tiny \ding{109}}~{\bfseries(\arabic{subsubsubquest})}\ifthenelse{\equal{#1}{d}}{~}{}}

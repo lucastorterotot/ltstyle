@@ -1,0 +1,93 @@
+\makeatletter
+\def\letterexopart#1{
+    \def\theexopart{\arabic{exopart}}
+    \ifnum\theexopart<21
+        {\ifcase\theexopart \or Premi\`ere\or Deuxi\`eme\or
+            Troisi\`eme\or Quatri\`eme\or Cinqui\`eme\or Sixi\`eme\or
+            Septi\`eme\or Huiti\`eme\or Neuvi\`eme\or Dixi\`eme\or Onzi\`eme\or
+            Douzi\`eme\or Treizi\`eme\or Quatorzi\`eme\or Quinzi\`eme\or
+            Seizi\`eme\or Dix-septi\`eme\or Dix-huiti\`eme\or Dix-neuvi\`eme\or
+            Vingti\`eme\fi}\def\theexopart{\unskip} #1%
+    \else
+        \uppercase{#1}%
+    \fi}%
+\def\Letterexopart#1{
+    \def\theexopart{\arabic{exopart}}
+    \ifnum\theexopart<21
+        {\ifcase\theexopart \or PREMIÈRE\or DEUXIÈME\or
+            TROISIÈME\or QUATRIÈME\or CINQUIÈME\or SIXIÈME\or
+            SEPTIÈME\or HUITIÈME\or NEUVIÈME\or DIXIÈME\or ONZIÈME\or
+            DOUZIÈME\or TREIZIÈME\or QUATORZIÈME\or QUINZIÈME\or
+            SEIZIÈME\or DIX-SEPTIÈME\or DIX-HUITIÈME\or DIX-NEUVIÈME\or
+            VINGTIÈME\fi}\def\theexopart{\unskip} #1%
+    \else
+        \uppercase{#1}%
+    \fi}%
+
+\ifdefined\exopart \else \def\exopart{}\fi
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+     
+\makeatother
+
+\def\theexo{\arabic{exo}}
+\def\thesubexo{\theexo.\arabic{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.45cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent\squestindent}
+\def\subquestsbox{}
+\def\subquestsnum{\numsubquest}
+
+\def\subsubquestspar{\subquestspar}
+\def\subsubquestsskip{\subquestsskip}
+\def\subsubquestsindent{\subquestsindent\squestindent}
+\def\subsubquestsbox{}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\subsubquestspar}
+\def\subsubsubquestsskip{\subsubquestsskip}
+\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
+\def\subsubsubquestsbox{}
+\def\subsubsubquestsnum{(\numsubsubsubquest)}
+
+\def\queststart{}
+\def\questend{.}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\ifdefined\sujetcompletend \else \def\sujetcompletend{}\fi
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+\LARGE\bfseries\familyfortitles #1
+\end{center}}

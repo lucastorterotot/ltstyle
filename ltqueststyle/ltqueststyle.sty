@@ -21,18 +21,7 @@
 
 \input ltstyle_module-package_options_fonts.sty
 
-\def\queststylereset{\renewcommand{\exopart}[2][partie]{
-\vspace{\baselineskip}\par
-\refstepcounter{exopart}
-\begin{center}
-\Large\bfseries\boldmath\familyfortitles
-{\letterexopart##1 \theexopart}
-\par\nobreak
-{##2}\unboldmath
-\end{center}
-\vspace{\baselineskip}\par
-}
-\input ltqueststyle-default.sty}
+\DeclareOption{default}{\input ltqueststyle-default.sty}
 
 \DeclareOption{Agreg}{\ExecuteOptions{Agreg1}}
 \DeclareOption{Agreg1}{\input ltqueststyle-Agreg1.sty}

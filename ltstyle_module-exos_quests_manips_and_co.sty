@@ -18,65 +18,17 @@
 \enonceON
 \corrigeOFF
 
-\input ltstyle_module-quests.sty
-\input ltstyle_module-manips.sty
 
 \newcounter{exopart}
-
-\makeatletter
-\def\letterexopart#1{
-    \def\theexopart{\arabic{exopart}}
-    \ifnum\theexopart<21
-        {\ifcase\theexopart \or Premi\`ere\or Deuxi\`eme\or
-            Troisi\`eme\or Quatri\`eme\or Cinqui\`eme\or Sixi\`eme\or
-            Septi\`eme\or Huiti\`eme\or Neuvi\`eme\or Dixi\`eme\or Onzi\`eme\or
-            Douzi\`eme\or Treizi\`eme\or Quatorzi\`eme\or Quinzi\`eme\or
-            Seizi\`eme\or Dix-septi\`eme\or Dix-huiti\`eme\or Dix-neuvi\`eme\or
-            Vingti\`eme\fi}\def\theexopart{\unskip} #1%
-    \else
-        \uppercase{#1}%
-    \fi}%
-\def\Letterexopart#1{
-    \def\theexopart{\arabic{exopart}}
-    \ifnum\theexopart<21
-        {\ifcase\theexopart \or PREMIÈRE\or DEUXIÈME\or
-            TROISIÈME\or QUATRIÈME\or CINQUIÈME\or SIXIÈME\or
-            SEPTIÈME\or HUITIÈME\or NEUVIÈME\or DIXIÈME\or ONZIÈME\or
-            DOUZIÈME\or TREIZIÈME\or QUATORZIÈME\or QUINZIÈME\or
-            SEIZIÈME\or DIX-SEPTIÈME\or DIX-HUITIÈME\or DIX-NEUVIÈME\or
-            VINGTIÈME\fi}\def\theexopart{\unskip} #1%
-    \else
-        \uppercase{#1}%
-    \fi}%
-
-\newcommand{\exopart}[2][partie]{
-\vspace{\baselineskip}\par
-\refstepcounter{exopart}
-\begin{center}
-\Large\bfseries\boldmath\familyfortitles
-{\letterexopart#1 \theexopart}
-\par\nobreak
-{#2}\unboldmath
-\end{center}
-\vspace{\baselineskip}\par
-}
-
-
-%\parindent \z@ \raggedright
-%     \interlinepenalty \@M
-%     \normalfont
-%     \Large\bfseries\boldmath \partname\nobreakspace\thepart\unboldmath
-%       \par\nobreak
-%     \huge \bfseries\boldmath #2\unboldmath%
-%     \markboth{}{}\par
-     
-\makeatother
-
 \newcounter{exo}
 \newcounter{subexo}[exo]
 \newcounter{subsubexo}[subexo]
-\def\thesubexo{\theexo.\arabic{subexo}}
-\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\input ltstyle_module-exos_quests_manips_and_co-style.sty
+
+\input ltstyle_module-quests.sty
+\input ltstyle_module-manips.sty
+
 \makeatletter
 \@ifclassloaded{article}{\newcounter{chapter}}{}
 \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{\@addtoreset{exo}{chapter}}{}
@@ -105,19 +57,7 @@
 \ifthenelse{\equal{\PackageOption}{corrige}}{\enonceOFF\corrigeON}{\enonceON\corrigeOFF}
 
 \ifthenelse{\equal{\isbeamer}{true}}{}{
-%\newcounter{exobis}%[part]
-%\def\qdc{\setcounter{quest}{0}\section*{Question de cours}}
 \renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{#1 \theexo~~~#2}}
-%\newcounter{subexobis}[exobis]
-\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{#1 \thesubexo ~~~#2}}
-%\newcounter{subsubexobis}[subexobis]
-\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{#1 \thesubsubexo ~~~#2}}
-%\renewcommand\labelenumi{\bfseries\theenumi .}
-%\renewcommand\labelenumii{\bfseries\theenumii .}
-%\renewcommand\labelenumiii{\bfseries\theenumiii .}
-%\renewcommand\labelenumiv{\bfseries(\arabic{enumiv})}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{#1 \thesubexo~~~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{#1 \thesubsubexo~~~#2}}
 }}{}
-
-\newcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
-\LARGE\bfseries\familyfortitles #1
-\end{center}}
