@@ -1,0 +1,70 @@
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{\letterexopart#1 \theexopart}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo~#2}}
+\renewcommand{\subexo}[2][\!\!]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\itshape\thesubexo~--~~#2}\ }
+\renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{\itshape\thesubsubexo~--~~#2}\ }
+
+\def\numquest{\ifnum \arabic{subexo} > 0 \thesubexo.\else\ifnum \arabic{exo} > 0 \theexo.\fi\fi \arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest.\numsubquest}
+\def\thesubsubquest{\thesubquest.\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest.\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{}
+\def\subquestsnum{\normalfont\itshape\numsubquest}
+
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{}
+\def\subsubquestsnum{\normalfont\itshape\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{}
+\def\subsubsubquestsnum{\normalfont\itshape\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{}
+\def\questend{)}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip
+\begin{center}
+\hrule\vspace{1mm}
+$\bullet~\bullet~\bullet$ #1 $\bullet~\bullet~\bullet$
+\vspace{1mm}\hrule
+\end{center}}

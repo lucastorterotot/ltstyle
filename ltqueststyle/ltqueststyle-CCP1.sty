@@ -1,0 +1,72 @@
+%CCP-2016-PC-modelisation, adapted
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}
+\setcounter{quest}{0}\refstepcounter{exopart}
+\begin{center}
+\Large\bfseries\boldmath\familyfortitles
+{{\letterexopart#1 \theexopart}}
+\par\nobreak
+{#2}\unboldmath
+\end{center}
+\vspace{\baselineskip}
+}
+
+\def\theexopart{\textbf{\arabic{exopart}}}
+\def\theexo{\textbf{\Roman{exo}}}
+\def\thesubexo{\textbf{\theexo.\arabic{subexo}}}
+\def\thesubsubexo{\textbf{\thesubexo.\alph{subsubexo}}}
+
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo.~#2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo~#2}}
+
+%\def\numquest{\ifnum\arabic{subexo}>0\thesubexo.\else\theexo\fi\arabic{quest}}
+
+\def\numquest{\ifnum \arabic{exopart}>0 \arabic{exopart}.\fi \arabic{quest}}
+%\def\numquest{\arabic{exopart}.\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\queststart\numquest}}
+\def\thesubquest{\textbf{\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{\textbf{)}}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
+\Large\bfseries\familyfortitles\slshape #1
+\end{center}}

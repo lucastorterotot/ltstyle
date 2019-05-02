@@ -1,0 +1,71 @@
+\renewcommand{\exopart}[2][partie]{
+\vspace{\baselineskip}\par
+\refstepcounter{exopart}
+\begin{center}
+\shabox{\begin{minipage}{10.9cm}
+\begin{center}
+\bfseries\boldmath {\Large\uppercase{\Letterexopart#1 \theexopart}}\\ \LARGE \uppercase{#2}\unboldmath
+\end{center}
+\end{minipage}}
+\end{center}
+\vspace{\baselineskip}\par
+}
+
+\def\theexo{\Alph{exo}}
+\def\thesubexo{\theexo.\arabic{subexo}}
+\def\thesubsubexo{\thesubexo.\roman{subsubexo}}
+
+\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\familyfortitles #1 \theexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \begin{center}\bfseries\familyfortitles #1 \thesubexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo}\begin{center}\bfseries\familyfortitles #1 \thesubsubexo~/~{#2} \end{center}\par}
+
+\def\numquest{\Alph{exo}\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{(\alph{subsubquest})}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\numquest}
+\def\thesubquest{\thequest\numsubquest}
+\def\thesubsubquest{\thesubquest\numsubsubquest}
+\def\thesubsubsubquest{\thesubsubquest~\numsubsubsubquest}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest\numsubquest}
+
+\def\subsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{}\def\questprevioussep{}}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{)}\def\questprevioussep{~}}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\subsubquestsnum~\numsubsubsubquest}
+
+\def\queststart{}
+\def\eTaquestend{.}
+\def\questend{\eTaquestend}
+
+\def\questprevioussep{}
+
+\def\eTaunderline{\underline}
+
+\def\questshape{\bfseries\eTaunderline}
+\def\questseries{}
+
+\renewcommand{\sujetcompletend}[1][Fin de l'épreuve]{\bigskip\begin{center}
+\Large\bfseries\familyfortitles #1
+\end{center}}

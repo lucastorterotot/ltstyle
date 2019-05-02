@@ -1,0 +1,54 @@
+\def\theexo{\Roman{exo}}
+\def\thesubexo{\theexo.\Alph{subexo}}
+\def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
+\renewcommand{\exo}[2][]{\setcounter{exo}{\thesection}\refstepcounter{section}\refstepcounter{exo} \section*{\theexo.~---~#2}}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \subsection*{\thesubexo.~---~#2}}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{\thesubsubexo.~---~#2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\numquest}}
+\def\thesubquest{\textbf{\thequest.\numsubquest}}
+\def\thesubsubquest{\textbf{\thesubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\thesubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.45cm}}
+
+\def\questspar{\par}
+\def\questsskip{\smallskip}
+\def\questsindent{}
+\def\questsbox{\ding{111}\hspace{2.5mm}}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\par}
+\def\subquestsskip{\smallskip}
+\def\subquestsindent{\questsindent\squestindent}
+\def\subquestsbox{\ding{109}\hspace{2.5mm}}
+\def\subquestsnum{\numsubquest}
+
+\def\subsubquestspar{\par}
+\def\subsubquestsskip{\smallskip}
+\def\subsubquestsindent{\subquestsindent\squestindent}
+\def\subsubquestsbox{{\tiny\questsbox}}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\par}
+\def\subsubsubquestsskip{\smallskip}
+\def\subsubsubquestsindent{\subsubquestsindent\squestindent}
+\def\subsubsubquestsbox{{\tiny\subquestsbox}}
+\def\subsubsubquestsnum{(\numsubsubsubquest)}
+
+\def\queststart{}
+\def\questend{\hspace{1.25mm}---}
+
+\def\questprevioussep{.}
+
+\def\questshape{}
+\def\questseries{\bfseries}
+
+\renewcommand{\sujetcompletend}[1][FIN DE L'ÉPREUVE]{\bigskip\begin{center}
+\large\bfseries\familyfortitles #1
+\end{center}}
