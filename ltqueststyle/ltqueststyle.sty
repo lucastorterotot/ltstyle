@@ -424,8 +424,11 @@
 \def\questseries{}
 
 \renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
-\LARGE\bfseries\familyfortitles #1
+\Large\bfseries\familyfortitles #1
 \end{center}}
+
+\renewcommand{\sffamily}{}
+
 }
 
 \DeclareOption{ENS}{\ExecuteOptions{ENS1}}
