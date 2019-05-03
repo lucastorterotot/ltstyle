@@ -3,7 +3,7 @@
 \vspace{\baselineskip}\par
 \setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
 \begin{center}
-\LARGE\bfseries\boldmath\familyfortitles
+\Large\bfseries\boldmath\familyfortitles
 #1 \theexopart~-~#2
 \unboldmath
 \end{center}
@@ -19,14 +19,14 @@
 \vspace{\baselineskip}\par
 \setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
 \begin{center}
-\Large\bfseries\boldmath\familyfortitles
+\large\bfseries\boldmath\familyfortitles
 #1 \theexo~-~#2
 \unboldmath
 \end{center}
 \vspace{.5\baselineskip}\par
 }
-\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{{\large\thesubexo~-~#2}}\ \medskip\par}
-\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{{\large #2}}\ \medskip\par}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\thesubexo~-~#2}\ \medskip\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{#2}\ \medskip\par}
 
 \def\numquest{\arabic{quest}}
 \def\numsubquest{\arabic{subquest}}
