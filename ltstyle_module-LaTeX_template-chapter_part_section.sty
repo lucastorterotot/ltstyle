@@ -285,14 +285,15 @@
 }
 
 \ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{
-\titleformat{\section}
+\titleformat{\section}[block]
 {\normalfont\Large\familyfortitles\bfseries\boldmath\color{\ltcolorsection}\hyphenpenalty=10000\raggedright}{\thesection}{1em}{}
-\titleformat{\subsection}
+\titleformat{\subsection}[block]
 {\normalfont\large\familyfortitles\bfseries\boldmath\color{\ltcolorsubsection}\hyphenpenalty=10000\raggedright}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}
+\titleformat{\subsubsection}[block]
 {\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorsubsubsection}\hyphenpenalty=10000\raggedright}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}[runin]
 {\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorparagraph}}{\theparagraph}{1em}{}
 \titleformat{\subparagraph}[runin]
 {\normalfont\normalsize\familyfortitles\bfseries\boldmath\color{\ltcolorsubparagraph}}{\thesubparagraph}{1em}{}
+
 }
