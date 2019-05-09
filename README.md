@@ -14,7 +14,7 @@ sudo apt-get install texlive-full
 ```
 mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
-git clone git@github.com:lucastorterotot/ltstyle.git
+git clone git@github.com:lucastorterotot/ltstyle.git --origin lucas
 ```
 
 ## Usage
