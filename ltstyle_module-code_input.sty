@@ -43,6 +43,34 @@
 }
 }
 
+% Bash style for highlighting
+\newcommand\bashstyle{\lstset{
+language=bash,
+stringstyle=\color{\codecolortheme lstcolstr},
+showstringspaces=false,
+alsoletter={1234567890},
+keywordsprefix=$ ,
+keywordstyle=\color{\codecolortheme lstcolbashvar},
+emph={alias,bg,bind,builtin,caller,command,compgen,compopt,%
+      complete,coproc,declare,disown,dirs,enable,fc,fg,help,history,%
+      jobs,let,local,logout,mapfile,pushd,popd,readarray,select,%
+      suspend,shopt,source,typeset,unalias,%
+      awk,break,case,cat,cd,continue,do,done,elif,else,%
+      env,esac,exec,exit,expr,false,fi,for,function,%
+      history,if,in,kill,login,nice,nohup,ps,%
+      return,sed,then,trap,true,%
+      until,while},
+emphstyle=\color{\codecolortheme lstcolkw}\bfseries,
+emph={[2] set, echo, printf, times, type, ulimit, wait, echo, eval, export, getopts, hash, newgrp, pwd, read, readonly, set, shift, test, times, type, ulimit, umask, unset, wait, ls,basename,dirname,grep,bash,sleep, mkdir, touch, mv, cp, rm chmod},
+emphstyle=[2]\color{\codecolortheme lstcolemp}\bfseries,
+emph={[3] python, pdflatex, biber, makeindex},
+emphstyle=[3]\color{\codecolortheme lstcolemp},
+%morecomment=[s]{"""}{"""},
+commentstyle=\color{\codecolortheme lstcolcom}\slshape,
+morestring=[b]',
+morestring=[b]",
+}}
+
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
 language=Python,
@@ -104,6 +132,22 @@ texcsstyle=*[2]\bf\color{\codecolortheme lstcolemp2}\ttfamily,
 frame=tb,                         % Any extra options here
 }}
 
+
+% Bash environment
+\lstnewenvironment{bash}[1][]
+{
+\bashstyle
+\lstset{#1}
+}
+{}
+
+% Bash for external files
+\newcommand\inputbash[2][]{{
+\bashstyle
+\lstinputlisting[language = bash, #1]{#2}}}
+
+% Bash for inline
+\newcommand\inlinebash[1]{{\bashstyle\lstinline!#1!}}
 
 % Python environment
 \lstnewenvironment{python}[1][]
