@@ -130,12 +130,22 @@ breakable]}
 
 \makeatletter
 \@ifclassloaded{beamer}{
+
+\def\makeremarquemarker{\begin{tikzpicture}
+    \path[use as bounding box] (-8.4pt,.15*\baselineskip) rectangle +(0,0);
+    \draw [\colorlineremarque] (.2pt,1pt) node {\remarquemarker};
+\end{tikzpicture}}
+
+\def\bcremarquemarker{\begingroup\makeremarquemarker\endgroup}
 \renewcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
+\def\remarquemarker{\remarquemarkerdefault}  
+\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}}}{}
 {\@twosidefalse
-\begin{ltremarque}[margeG=0.5,margeD=0,barre = line, couleurBarre=\colorlineremarque, noborder = true, epBarre=1.5,logo=, marge=0 ]{}
-\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{\textcolor{\ltcolorred}{\large\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}\ }{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}\vphantom{My}%\vspace{-.725mm}
-\end{ltremarque}
+\begin{bclogo}[margeG=0.5,margeD=0, logo=\bcremarquemarker, couleurBarre=\colorlineremarque, noborder = true, epBarre=1.5, marge=0 ]{}
+\vspace{-.552\baselineskip}
+\ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{}{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}%\vphantom{My}%\vspace{-.725mm}
+\end{bclogo}
 }
 }
 
