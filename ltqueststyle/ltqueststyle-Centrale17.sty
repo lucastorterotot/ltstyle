@@ -71,3 +71,9 @@ $\bullet~\bullet~\bullet$ #1 $\bullet~\bullet~\bullet$
 \end{center}}
 
 \renewcommand{\familyfortitles}{}
+
+\makeatletter
+\@addtoreset {equation}{exo}
+\renewcommand\theequation
+  {\ifnum \c@exo>\z@ \theexo.\fi \@arabic\c@equation}
+\makeatother
