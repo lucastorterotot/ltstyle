@@ -29,6 +29,10 @@ colframe=\colorlineremarque, enhanced jigsaw, opacityback = 0,
 breakable]}
 {\end{tcolorbox}}
 
+\newenvironment*{barremargegaucheenv}{%
+\noindent\begin{tcolorbox}[enhanced, borderline west={0.6mm}{-3mm}{\colorlineremarque}, blank, breakable]}
+{\end{tcolorbox}}
+
 \makeatletter
 \@ifclassloaded{beamer}{
 \renewenvironment*{ltremarque}[2][]{%
@@ -89,6 +93,16 @@ breakable]}
 \def\remarquemarker{\remarquemarkerdefault}
 
 \makeatletter
+
+\newcommand{\barremargegauche}[2][black]{\smallskip\par\def\remarquecouleur{#1}\remarquecouleurchooser{#1}
+{\@twosidefalse
+\begin{barremargegaucheenv}
+%\def\quest{\noindent\refstepcounter{questb}\textbf{Q~\arabic{questb}.}\qquad}
+#2
+\end{barremargegaucheenv}
+}
+}
+
 \newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\remarquecontent}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
