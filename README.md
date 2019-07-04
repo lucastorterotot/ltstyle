@@ -1,7 +1,7 @@
 # ltstyle LaTeX package
 A LaTeX configuration.
 
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
 
