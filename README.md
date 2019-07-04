@@ -4,6 +4,7 @@ A LaTeX configuration.
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
+[![TeX Version](https://img.shields.io/badge/TeX-3.14159265-informational.svg)](https://www.tug.org/texlive/)
 
 ## Introduction
 
