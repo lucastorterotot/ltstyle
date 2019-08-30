@@ -67,3 +67,7 @@
 \renewcommand{\sujetcompletend}[1][Fin de l'énoncé]{\bigskip\begin{center}
 \bfseries #1
 \end{center}}
+
+\ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi
+\renewcommand{\sujetcompletexoend}[1][Fin de la partie]{\sujetcompletend[#1 \theexo]}
+

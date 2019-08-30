@@ -91,3 +91,6 @@
 \renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
 \LARGE\bfseries\familyfortitles #1
 \end{center}}
+
+\ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi
+\renewcommand{\sujetcompletexoend}[1][FIN DE LA PARTIE]{\sujetcompletend[#1 \theexo]}

@@ -66,3 +66,6 @@
 \renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
 $\star$\hspace{5mm}$\star$\\$\star$
 \end{center}}
+
+\ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi
+\renewcommand{\sujetcompletexoend}[1][]{}
