@@ -3,17 +3,39 @@
 \newcommand{\corrige}[1]{}
 \newcommand{\ifenonce}[1]{}
 \newcommand{\ifcorrige}[1]{}
+\newcommand{\ifnotenonce}[1]{}
+\newcommand{\ifnotcorrige}[1]{}
 \newcommand{\onlyenonce}[1]{}
 \newcommand{\onlyshortenonce}[1]{\ignorespaces}
 \newcommand{\onlycorrige}[1]{}
 
 %%%%
 
-\def\enonceON{\renewcommand{\enonce}[1]{##1\par}\renewcommand{\ifenonce}[1]{##1}\renewcommand{\onlycorrige}[1]{\ignorespaces}}
-\def\corrigeON{\renewcommand{\corrige}[1]{\small ##1\normalsize\par}\renewcommand{\ifcorrige}[1]{##1}\renewcommand{\onlyenonce}[1]{\ignorespaces}}
+\def\enonceON{
+  \renewcommand{\enonce}[1]{##1\par}
+  \renewcommand{\ifenonce}[1]{##1}
+  \renewcommand{\ifnotenonce}[1]{\ignorespaces}
+  \renewcommand{\onlycorrige}[1]{\ignorespaces}
+}
+\def\corrigeON{
+  \renewcommand{\corrige}[1]{\small ##1\normalsize\par}
+  \renewcommand{\ifcorrige}[1]{##1}
+  \renewcommand{\ifnotcorrige}[1]{\ignorespaces}
+  \renewcommand{\onlyenonce}[1]{\ignorespaces}
+}
 \def\corrigeONblue{\corrigeON}
-\def\enonceOFF{\renewcommand{\enonce}[1]{\ignorespaces}\renewcommand{\ifenonce}[1]{\ignorespaces}\renewcommand{\onlycorrige}[1]{\ifcorrige{##1}}}
-\def\corrigeOFF{\renewcommand{\corrige}[1]{\ignorespaces}\renewcommand{\ifcorrige}[1]{\ignorespaces}\renewcommand{\onlyenonce}[1]{\ifenonce{##1}}}
+\def\enonceOFF{
+  \renewcommand{\enonce}[1]{\ignorespaces}
+  \renewcommand{\ifenonce}[1]{\ignorespaces}
+  \renewcommand{\ifnotenonce}[1]{##1}
+  \renewcommand{\onlycorrige}[1]{\ifcorrige{##1}}
+}
+\def\corrigeOFF{
+  \renewcommand{\corrige}[1]{\ignorespaces}
+  \renewcommand{\ifcorrige}[1]{\ignorespaces}
+  \renewcommand{\ifnotcorrige}[1]{##1}
+  \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}
+}
 
 \enonceON
 \corrigeOFF
