@@ -35,7 +35,7 @@
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
 
-\def\outref#1#2#3{\ifthenelse{\equal{\ref{#2}}{??}}{}{#1\ref{#2}#3}}
+\def\ifref#1#2#3{\ifthenelse{\equal{\ref{#1}}{??}}{#3}{#2}}
 
 %\makeatletter
 %\def\@newl@bel#1#2#3{%
