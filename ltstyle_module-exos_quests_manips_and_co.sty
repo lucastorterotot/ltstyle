@@ -53,7 +53,25 @@
 
 \makeatletter
 \@ifclassloaded{article}{\newcounter{chapter}}{}
-\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{\@addtoreset{exo}{chapter}}{}
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{book}}
+           {\ifthenelse{\equal{\ContinuousExoNumbering}{False}}
+             {\@addtoreset{exo}{chapter}}
+             {}
+           }
+           {}
+\AtEndPreamble{\ifthenelse{\equal{\ExoResetsCounters}{True}}
+           {
+             \@addtoreset {equation}{exo}
+             \renewcommand \theequation
+                           {\@arabic\c@equation}
+             \@addtoreset {figure}{exo}
+             \renewcommand \thefigure
+                           {\ifnum \c@exo>\z@ \theexo.\fi \@arabic\c@figure}
+             \@addtoreset {table}{exo}
+             \renewcommand \thetable
+                           {\ifnum \c@exo>\z@ \theexo.\fi \@arabic\c@table}
+           }
+           {}}
 \makeatother
 
 \newcommand{\exo}[2][Exercice]{\setcounter{quest}{0}\refstepcounter{exo}
