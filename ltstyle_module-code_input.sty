@@ -6,6 +6,18 @@
 \usepackage{cprotect} % permet de mettre du code dans une commande :
 % \cprotect\commande{blah}
 
+\makeatletter
+\@ifclassloaded{beamer}{
+\lstset{
+    xleftmargin=1.25em,   % espace a gauche
+    xrightmargin=0em,  % espace a droite
+    aboveskip=\topsep, % espace au-dessus
+    belowskip=\topsep, % espace en-dessous
+    frame=single,
+    breaklines,
+    %breakindent=1.5em,
+}
+}{
 \lstset{
     xleftmargin=0em,   % espace a gauche
     xrightmargin=0em,  % espace a droite
@@ -15,6 +27,8 @@
     breaklines,
     %breakindent=1.5em,
 }
+}
+\makeatother
 
 \AtBeginDocument{
   \lstset{
