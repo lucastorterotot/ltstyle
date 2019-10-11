@@ -103,7 +103,9 @@ breakable]}
 }
 }
 
-\newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\remarquecontent}
+\newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}
+
+  \remarquecontent}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
 \def\remarquemarker{\remarquemarkerdefault}  
