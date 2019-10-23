@@ -1,3 +1,8 @@
+\def\upperleftlogos{}
+\def\upperrightlogos{}
+\def\lowerleftlogos{}
+\def\lowerrightlogos{}
+
 \makeatletter
 \@ifclassloaded{beamer}{\ifthenelse{\equal{\PackageOption}{book}}{\renewcommand{\PackageOption}{default}}{}}{}
 \makeatother
@@ -17,28 +22,39 @@
            {}
  
 \ifthenelse{\equal{\PackageOption}{default}}
-    {\usetheme{default}}
-    {\usetheme{Boadilla}
-     \ifthenelse{\equal{\BeamerheaderON}{True}}
-        {\usetheme{Boadilla}%\usetheme{AnnArbor}\usecolortheme{beaver}\usecolortheme{dolphin}
-        \setbeamertemplate{headline}{%
-        \leavevmode%
-        \hbox{%
-        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,right]{author in head/foot}%
-        \usebeamerfont{author in head/foot}\secname\qquad{}
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,left]{title in head/foot}%
-        \usebeamerfont{title in head/foot}\qquad\subsecname
-        \end{beamercolorbox} \hspace{-0.125cm}
-%        \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-%        \usebeamerfont{date in head/foot}~\hfill \today \hfill
-%        ~\hfill \insertframenumber /\inserttotalframenumber\hfill~ %numéro de la slide tout en bas à droite
-%        \end{beamercolorbox}
-        }%
-        \vskip0pt%
-        }        
-        }
-        {}
+           {\usetheme{default}}
+           {\usetheme{Boadilla}
+             \ifthenelse{\equal{\BeamerheaderON}{True}}
+                        {\usetheme{Boadilla}%\usetheme{AnnArbor}\usecolortheme{beaver}\usecolortheme{dolphin}
+                          \ifthenelse{\equal{\BeamerlogosON}{True}}
+                          {\setbeamertemplate{headline}{%
+                              \leavevmode%
+                              \hbox{%
+                                \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex]{author in head/foot}%
+                                  \usebeamerfont{author in head/foot}\quad\upperleftlogos\hfill\secname\quad{}
+                                \end{beamercolorbox}%
+                                \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex]{title in head/foot}%
+                                  \usebeamerfont{title in head/foot}\quad\subsecname\hfill\upperrightlogos\quad{}
+                                \end{beamercolorbox} \hspace{-0.125cm}
+                              }%
+                              \vskip0pt%
+                            }
+                          }
+                          {\setbeamertemplate{headline}{%
+                              \leavevmode%
+                              \hbox{%
+                                \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,right]{author in head/foot}%
+                                  \usebeamerfont{author in head/foot}\secname\qquad{}
+                                \end{beamercolorbox}%
+                                \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.96ex,dp=1ex,left]{title in head/foot}%
+                                  \usebeamerfont{title in head/foot}\qquad\subsecname
+                                \end{beamercolorbox} \hspace{-0.125cm}
+                              }%
+                              \vskip0pt%
+                            }
+                          }
+                          }
+                          {}
     
 \setbeamertemplate{navigation symbols}{%items présents dans la barre de navigation
 %\insertslidenavigationsymbol
