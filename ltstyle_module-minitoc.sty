@@ -1,0 +1,24 @@
+\usepackage{minitoc}
+\makeatletter
+% create AtBeginChapter analog to AtBeginDocument
+\def\AtBeginChapter{\g@addto@macro\@beginchapterhook}
+
+\@onlypreamble\AtBeginChapter
+
+\let\old@makechapterhead\@makechapterhead
+\def\@makechapterhead#1{\old@makechapterhead{#1}\@beginchapterhook}
+
+\ifx\@beginchapterhook\@undefined
+  \let\@beginchapterhook\@empty
+\fi
+\makeatother
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\DoMiniToc}{True}}
+           {\AtBeginChapter{\minitoc}}
+           {}
+\makeatletter
+\@ifpackagewith{babel}{french}{
+  \mtcselectlanguage{french}
+}{}
+\makeatother
+
+\AtBeginDocument{\dominitoc}
