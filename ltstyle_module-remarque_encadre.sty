@@ -103,7 +103,9 @@ breakable]}
 }
 }
 
-\newcommand*\remarque[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}
+\newcommand*\remarque[1][\ltcolortheme]{
+
+  \vspace{4pt plus 1pt minus 2pt}\def\remarquecouleur{#1}
 
   \remarquecontent}
 \newcommand*\remarquecontent[2][]{%
