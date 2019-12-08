@@ -71,7 +71,7 @@
 \newcommand{\gluon}{{\ensuremath{g}}}
 \newcommand{\Gluon}{\gluon}
 
-%% Higgs
+%% Higgs SM and MSSM particles
 \newcommand{\higgs}{\ensuremath{h}}
 \newcommand{\Higgs}{\ensuremath{H}}
 \newcommand{\higgsboson}{\higgs}
@@ -342,10 +342,136 @@
 \newcommand{\Omegabaryonplusb}{\antiOmegabaryonplusb}
 \newcommand{\antiOmegabaryonminusb}{\antiOmegabaryonplusb}
 
+% MSSM particles
+\def\sparticlehat{\tilde}
+%% sfermions
+\newcommand{\sfermion}{{\ensuremath{\sparticlehat{\fermion}}}}
+%%% squarks
+\newcommand{\squark}{{\ensuremath{\sparticlehat{\quark}}}}
+\newcommand{\squarku}{{\ensuremath{\sparticlehat{\quarku}}}}
+\newcommand{\squarkd}{{\ensuremath{\sparticlehat{\quarkd}}}}
+\newcommand{\squarkc}{{\ensuremath{\sparticlehat{\quarkc}}}}
+\newcommand{\squarks}{{\ensuremath{\sparticlehat{\quarks}}}}
+\newcommand{\squarkt}{{\ensuremath{\sparticlehat{\quarkt}}}}
+\newcommand{\squarkb}{{\ensuremath{\sparticlehat{\quarkb}}}}
+%%% sleptons
+\newcommand{\slepton}{{\ensuremath{\sparticlehat{\lepton}}}}
+\newcommand{\sLepton}{{\ensuremath{\sparticlehat{\Lepton}}}}
+\newcommand{\sele}{{\ensuremath{\sparticlehat{\ele}}}}
+\def\smu{\ensuremath{\sparticlehat{\mu}}}
+\def\stau{\ensuremath{\sparticlehat{\tau}}}
+\def\snu{\ensuremath{\sparticlehat{\nu}}}
+\newcommand{\selectron}{{\ensuremath{\sele^-}}}
+\newcommand{\smuon}{{\ensuremath{\smu^-}}}
+\newcommand{\sleptau}{{\ensuremath{\stau^-}}}
+\newcommand{\stauleptonminus}{\sleptau}
+\newcommand{\shadron}{{\ensuremath{\sparticlehat{\rm h}}}}
+\newcommand{\sneutrino}{{\ensuremath{\snu}}}
+\newcommand{\snuele}{{\ensuremath{\sneutrino_\ele}}}
+\newcommand{\snumu}{{\ensuremath{\sneutrino_\mu}}}
+\newcommand{\snutau}{{\ensuremath{\sneutrino_\tau}}}
+%% antisfermions
+\newcommand{\antisfermion}{{\ensuremath{\bar{\sfermion}}}}
+%%% squarks
+\newcommand{\antisquark}{{\ensuremath{\bar{\squark}}}}
+\newcommand{\antisquarku}{{\ensuremath{\bar{\squarku}}}}
+\newcommand{\antisquarkd}{{\ensuremath{\bar{\squarkd}}}}
+\newcommand{\antisquarkc}{{\ensuremath{\bar{\squarkc}}}}
+\newcommand{\antisquarks}{{\ensuremath{\bar{\squarks}}}}
+\newcommand{\antisquarkt}{{\ensuremath{\bar{\squarkt}}}}
+\newcommand{\antisquarkb}{{\ensuremath{\bar{\squarkb}}}}
+%%% sleptons
+\newcommand{\antiselectron}{{\ensuremath{\sele^+}}}
+\newcommand{\spositron}{\antiselectron}
+\newcommand{\antisele}{\antiselectron}
+\newcommand{\selepm}{{\ensuremath{\sele^\pm}}}
+\newcommand{\selemp}{{\ensuremath{\sele^\mp}}}
+\newcommand{\antismuon}{{\ensuremath{\smu^+}}}
+\newcommand{\smupm}{{\ensuremath{\smu^\pm}}}
+\newcommand{\smump}{{\ensuremath{\smu^\mp}}}
+\newcommand{\antisleptau}{{\ensuremath{\stau^+}}}
+\newcommand{\antistau}{\antisleptau}
+\newcommand{\stauleptonplus}{\antisleptau}
+\newcommand{\staupm}{{\ensuremath{\stau^\pm}}}
+\newcommand{\staump}{{\ensuremath{\stau^\mp}}}
+\newcommand{\antisneutrino}{{\ensuremath{\bar{\sneutrino}}}}
+\newcommand{\antisnuele}{{\ensuremath{\antisneutrino_\ele}}}
+\newcommand{\antisnumu}{{\ensuremath{\antisneutrino_\mu}}}
+\newcommand{\antisnutau}{{\ensuremath{\antisneutrino_\tau}}}
+%% s bosons
+\newcommand{\sphoton}{{\ensuremath{\sparticlehat{\photon}}}}
+\newcommand{\Wbosonnull}{{\ensuremath{\Wboson^0}}}
+\newcommand{\sWboson}{{\ensuremath{\sparticlehat{\Wboson}}}}
+\newcommand{\sWbosonnull}{{\ensuremath{\sWboson^0}}}
+\newcommand{\sWbosonplus}{{\ensuremath{\sWboson^+}}}
+\newcommand{\sWbosonminus}{{\ensuremath{\sWboson^-}}}
+\newcommand{\sWbosonpm}{{\ensuremath{\sWboson^\pm}}}
+\newcommand{\sWbosonmp}{{\ensuremath{\sWboson^\mp}}}
+\newcommand{\sZboson}{{\ensuremath{\sparticlehat{\Zboson}}}}
+\newcommand{\sZbosonnull}{{\ensuremath{\sZboson^0}}}
+\newcommand{\sgluon}{{\ensuremath{\sparticlehat{\gluon}}}}
+\newcommand{\sGluon}{\sgluon}
+
+\newcommand{\Bboson}{{\ensuremath{B}}}
+\newcommand{\sBboson}{{\ensuremath{\sparticlehat{\Bboson}}}}
+\newcommand{\Bbosonnull}{{\ensuremath{\Bboson^0}}}
+\newcommand{\sBbosonnull}{{\ensuremath{\sBoson^0}}}
+
+\newcommand{\photino}{\sphoton}
+\newcommand{\Wino}{\sWboson}
+\newcommand{\Winotr}{{\ensuremath{\sWboson^3}}}
+\newcommand{\Winonull}{\sWbosonnull}
+\newcommand{\Winoplus}{\sWbosonplus}
+\newcommand{\Winominus}{\sWbosonminus}
+\newcommand{\Winopm}{\sWbosonpm}
+\newcommand{\Winomp}{\sWbosonmp}
+\newcommand{\Zino}{\sZboson}
+\newcommand{\Zinonull}{\sZbosonnull}
+\newcommand{\Bino}{\sBboson}
+\newcommand{\Binonull}{\sBbosonnull}
+\newcommand{\gluino}{\sgluon}
+\newcommand{\Gluino}{\gluino}
+
+%% Higgsinos
+\newcommand{\shiggs}{{\ensuremath{\sparticlehat{\higgs}}}}
+\newcommand{\shiggsboson}{\shiggs}
+\newcommand{\shiggsplus}{{\ensuremath{\shiggs^+}}}
+\newcommand{\shiggsminus}{{\ensuremath{\shiggs^-}}}
+\newcommand{\shiggspm}{{\ensuremath{\shiggs^\pm}}}
+\newcommand{\shiggsmp}{{\ensuremath{\shiggs^\mp}}}
+\newcommand{\shiggsnull}{{\ensuremath{\hsiggs^0}}}
+\newcommand{\shiggsnulla}{{\ensuremath{\shiggs^0_1}}}
+\newcommand{\shiggsnullb}{{\ensuremath{\shiggs^0_2}}}
+
+\newcommand{\higgsino}{\shiggs}
+\newcommand{\higgsinoplus}{\shiggsplus}
+\newcommand{\higgsinominus}{\shiggsminus}
+\newcommand{\higgsinopm}{\shiggspm}
+\newcommand{\higgsinomp}{\shiggsmp}
+\newcommand{\higgsinonull}{\shiggsnull}
+\newcommand{\higgsinonulla}{\shiggsnulla}
+\newcommand{\higgsinonullb}{\shiggsnullb}
+
+%% Neutralinos
+\newcommand{\neutralino}{{\ensuremath{\sparticlehat{\chi}^0}}}
+\newcommand{\neutralinoa}{{\ensuremath{\neutralino_1}}}
+\newcommand{\neutralinob}{{\ensuremath{\neutralino_2}}}
+\newcommand{\neutralinoc}{{\ensuremath{\neutralino_3}}}
+\newcommand{\neutralinod}{{\ensuremath{\neutralino_4}}}
+
+%% Charginos
+\newcommand{\chargino}{{\ensuremath{\sparticlehat{\chi}^\pm}}}
+\newcommand{\charginoplus}{{\ensuremath{\sparticlehat{\chi}^+}}}
+\newcommand{\charginominus}{{\ensuremath{\sparticlehat{\chi}^-}}}
+\newcommand{\charginoa}{{\ensuremath{\chargino_1}}}
+\newcommand{\charginob}{{\ensuremath{\chargino_2}}}
+
 % Other
 \newcommand{\anyon}{{\ensuremath{\mathfrak{a}}}}
 \newcommand{\tachyon}{{\ensuremath{\mathfrak{t}}}}
 \newcommand{\graviton}{{\ensuremath{\mathfrak{g}}}} % G ?
+\newcommand{\sgraviton}{{\ensuremath{\sparticlehat{\graviton}}}}
+\newcommand{\gravitino}{\sgraviton}
 
 % Some software programs (alphabetized)
 \newcommand{\ACERMC}{\textsc{AcerMC}}
