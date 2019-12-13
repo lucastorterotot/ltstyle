@@ -1,0 +1,71 @@
+\makeatletter
+
+\newcommand{\HPmarker}{{($\mathcal{H\!P}$)}}
+
+\newcommand{\PrintHP}[2][True]{\ifthenelse{\equal{#1}{#2}}{}{\HPmarker}}
+
+\newcommand{\IsHPLvlFilChecker}[5][\IsHPLvlFilresult]{\ignorespaces%
+\InListChecker[\LvlInOKLvls]{\classelvl}{#2}%
+\NotInListChecker[\LvlInKOLvls]{\classelvl}{#3}%
+\InListChecker[\FilInOKLvls]{\classefiliere}{#4}%
+\NotInListChecker[\FilInKOLvls]{\classefiliere}{#5}%
+\ifthenelse{%
+  \equal{\LvlInOKLvls}{True}%
+  \and%
+  \equal{\LvlInKOLvls}{True}%
+  \and%
+  \equal{\FilInOKLvls}{True}%
+  \and%
+  \equal{\FilInKOLvls}{True}%
+}%
+{\def#1{True}}%
+{\def#1{False}}%
+}
+
+\newcommand{\DualIsHPLvlFilChecker}[6][\IsHPLvlFilresult]{%
+\IsHPLvlFilChecker[#2]#3%
+\IsHPLvlFilChecker[#4]#5%
+\ifthenelse{%
+  \equal{#2}{True}%
+  #6%
+  \equal{#4}{True}%
+}%
+{\def#1{True}}%
+{\def#1{False}}%
+}
+
+\newcommand{\DualOrIsHPLvlFilChecker}[5][\IsHPLvlFilresult]{\DualIsHPLvlFilChecker[#1]{#2}{#3}{#4}{#5}{\or}}
+
+\newcommand{\DualAndIsHPLvlFilChecker}[5][\IsHPLvlFilresult]{\DualIsHPLvlFilChecker[#1]{#2}{#3}{#4}{#5}{\and}}
+
+\newcommand{\PrintIsHPLvlFil}[4]{\ignorespaces%
+\IsHPLvlFilChecker[\IsHPLvlFilresult]{#1}{#2}{#3}{#4}%
+\PrintHP{\IsHPLvlFilresult}%
+}
+
+\newcommand{\PrintDualOrIsHPLvlFil}[2]{\ignorespaces%
+\DualOrIsHPLvlFilChecker{\IsDualOrHPLvlFilresultA}{#1}{\IsDualOrHPLvlFilresultB}{#2}
+\PrintHP{\IsHPLvlFilresult}%
+}
+
+\newcommand{\PrintDualAndIsHPLvlFil}[2]{\ignorespaces%
+\DualAndIsHPLvlFilChecker{\IsDualAndHPLvlFilresultA}{#1}{\IsDualAndHPLvlFilresultB}{#2}
+\PrintHP{\IsHPLvlFilresult}%
+}
+
+\newcommand{\InputIfIsHPLvlFil}[5]{\ignorespaces%
+\IsHPLvlFilChecker[\IsHPLvlFilresult]{#2}{#3}{#4}{#5}%
+\ifthenelse{\equal{\IsHPLvlFilresult}{True}}{\input{#1}}{}%
+}
+
+\newcommand{\InputIfDualOrIsHPLvlFil}[3]{\ignorespaces%
+\DualOrIsHPLvlFilChecker{\IsDualOrHPLvlFilresultA}{#2}{\IsDualOrHPLvlFilresultB}{#3}
+\ifthenelse{\equal{\IsHPLvlFilresult}{True}}{\input{#1}}{}%
+}
+
+\newcommand{\InputIfDualAndIsHPLvlFil}[3]{\ignorespaces%
+\DualAndIsHPLvlFilChecker{\IsDualOrHPLvlFilresultA}{#2}{\IsDualOrHPLvlFilresultB}{#3}
+\ifthenelse{\equal{\IsHPLvlFilresult}{True}}{\input{#1}}{}%
+}
+
+\makeatother
