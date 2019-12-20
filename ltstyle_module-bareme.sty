@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jean-Côme Charpentier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ltExoBaremeColor{ltcolorgray4}
+\def\ltExoBaremeSize{\footnotesize}
+
+\usepackage{xlop}
+%\usepackage{calc}
+
+\makeatletter
+\@ifpackagewith{babel}{french}{
+  \opset{decimalsepsymbol={,}}
+}{
+  \opset{decimalsepsymbol={.}}
+}
+\makeatother
+
+\newlength{\fulllinewidth}
+\AtBeginDocument{\setlength{\fulllinewidth}{\linewidth}}
+\newlength{\brouillon}
+
+\newif\ifBaremeDetail
+\BaremeDetailtrue
+
+\newif\ifBaremeShow
+\BaremeShowtrue
+
+\newcounter{exobareme}
+
+\newcommand*\FranPt[1]{%
+   \ifBaremeDetail
+     \num{#1} pt%
+     \ifdim#1pt<2pt % singulier lorsque < 2 et pas pluriel lorsque > 1
+     \else
+       s%
+     \fi
+   \fi
+}
+
+\makeatletter
+
+\newcommand{\BaremeEspace@Marge}{5pt}
+\newcommand{\BaremeEspaceMarge}[1]{\renewcommand{\BaremeEspace@Marge}{#1}}
+
+\newcommand*{\brm}[1]{%
+   % (\BaremeEspace@Marge == 0pt) => au ras de la marge gauche
+   % (\BaremeEspace@Marge >0pt) => plus à l'intérieur de la marge gauche
+   \immediate\write\@auxout{%
+     \string\opadd*{#1}%
+                   {total\the\c@exobareme}%
+                   {total\the\c@exobareme}%
+   }%
+   \hbox to 0pt{\hss\color{\ltExoBaremeColor}\ltExoBaremeSize\FranPt{#1}\hskip2em}
+   \ignorespaces%
+}
+
+\newcommand\total[1]{%
+   \@ifundefined{Op@total#1}{recompilez}%
+   {%
+     \opunzero{total#1}% on ne sait jamais
+     \opprint{total#1}~%
+     \opcmp{total#1}{2}%
+     \ifopge points\else point\fi
+   }%
+}
+
+\def\ExoBaremeMake{%
+  \stepcounter{exobareme}%
+  \immediate\write\@auxout{%
+    \string\opcopy{0}{total\the\c@exobareme}%
+  }%
+}
+
+\def\ExoBaremeWrite{%
+  \ifBaremeShow
+  \hfill{\color{\ltExoBaremeColor}\ltExoBaremeSize\total{\the\c@exobareme}}%
+  \fi
+}
+
+\makeatother
