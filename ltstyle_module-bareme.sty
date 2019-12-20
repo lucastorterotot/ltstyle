@@ -51,12 +51,17 @@
                    {total\the\c@exobareme}%
                    {total\the\c@exobareme}%
    }%
+   \immediate\write\@auxout{%
+     \string\opadd*{#1}%
+                   {exototbareme}%
+                   {exototbareme}%
+   }%
    \hbox to 0pt{\hss\color{\ltExoBaremeColor}\ltExoBaremeSize\FranPt{#1}\hskip2em}
    \ignorespaces%
 }
 
 \newcommand\total[1]{%
-   \@ifundefined{Op@total#1}{recompilez}%
+   \@ifundefined{Op@total#1}{\todo{recompilez}}%
    {%
      \opunzero{total#1}% on ne sait jamais
      \opprint{total#1}~%
@@ -78,4 +83,22 @@
   \fi
 }
 
+\def\ExoTotBaremeMake{%
+  \immediate\write\@auxout{%
+    \string\opcopy{0}{exototbareme}%
+  }%
+}
+
+\def\ExoTotBaremeWrite{
+   \@ifundefined{Op@exototbareme}{\todo{recompilez}}%
+   {%
+     \opunzero{exototbareme}% on ne sait jamais
+     \opprint{exototbareme}~%
+     \opcmp{exototbareme}{2}%
+     \ifopge points\else point\fi
+   }%
+}
+
 \makeatother
+
+\AtBeginDocument{\ExoTotBaremeMake}
