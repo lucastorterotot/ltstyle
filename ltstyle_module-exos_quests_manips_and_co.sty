@@ -51,6 +51,8 @@
 
 \input ltstyle_module-manips.sty
 
+\input ltstyle_module-bareme.sty
+
 \makeatletter
 \@ifclassloaded{article}{\newcounter{chapter}}{}
 \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{book}}
@@ -74,8 +76,8 @@
            {}}
 \makeatother
 
-\newcommand{\exo}[2][Exercice]{\setcounter{quest}{0}\refstepcounter{exo}
-\subsubsection*{#1 \theexo~~~#2}}
+\newcommand{\exo}[2][Exercice]{\ExoBaremeMake\setcounter{quest}{0}\refstepcounter{exo}
+\subsubsection*{#1 \theexo~~~#2\ExoBaremeWrite}}
 
 \newcommand{\subexo}[2][Exercice]{\refstepcounter{subexo}
 \subsubsection*{#1 \thesubexo~~~#2}}

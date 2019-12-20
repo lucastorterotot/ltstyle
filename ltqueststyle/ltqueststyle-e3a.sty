@@ -16,7 +16,7 @@
 \def\thesubexo{\theexo.\arabic{subexo}}
 \def\thesubsubexo{\thesubexo.\roman{subsubexo}}
 
-\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\familyfortitles #1 \theexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\exo}[2][]{\ExoBaremeMake\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\familyfortitles #1 \theexo~/~\uppercase{#2} \end{center}\ExoBaremeWrite\par}
 \renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \begin{center}\bfseries\familyfortitles #1 \thesubexo~/~\uppercase{#2} \end{center}\par}
 \renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo}\begin{center}\bfseries\familyfortitles #1 \thesubsubexo~/~{#2} \end{center}\par}
 

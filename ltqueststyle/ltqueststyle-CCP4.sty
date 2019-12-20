@@ -15,7 +15,7 @@
 \def\thesubexo{\textbf{\Roman{subexo}}}
 \def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
 
-\renewcommand{\exo}[2][Problème]{\vspace{\baselineskip}\par
+\renewcommand{\exo}[2][Problème]{\ExoBaremeMake\vspace{\baselineskip}\par
 \setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
 \begin{center}
 \LARGE\bfseries\boldmath\familyfortitles
@@ -23,6 +23,7 @@
 #2
 \unboldmath
 \end{center}
+\ExoBaremeWrite
 \vspace{.5\baselineskip}\par}
 \renewcommand{\subexo}[2][Partie]{\vspace{\baselineskip}\par
 \setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo}

@@ -15,7 +15,7 @@
 \def\thesubexo{\theexo.\Alph{subexo}}
 \def\thesubsubexo{\thesubexo.\arabic{subsubexo}}
 
-\renewcommand{\exo}[2][]{\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo~#2}}
+\renewcommand{\exo}[2][]{\ExoBaremeMake\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\section*{\theexo~#2\ExoBaremeWrite}}
 \renewcommand{\subexo}[2][\!\!]{\setcounter{quest}{0}\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\itshape\thesubexo~--~~#2}\ }
 \renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{\itshape\thesubsubexo~--~~#2}\ }
 

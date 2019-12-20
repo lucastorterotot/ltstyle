@@ -16,6 +16,7 @@
 \def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
 
 \renewcommand{\exo}[2][Partie]{
+\ExoBaremeMake
 \vspace{\baselineskip}\par
 \setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
 \begin{center}
@@ -23,6 +24,7 @@
 #1 \theexo~-~#2
 \unboldmath
 \end{center}
+\ExoBaremeWrite
 \vspace{.5\baselineskip}\par
 }
 \renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\thesubexo~-~#2}\ \medskip\par}
