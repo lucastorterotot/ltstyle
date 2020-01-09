@@ -34,9 +34,9 @@
 %\let\grad\relax
 %\let\div\relax
 %\let\curl\relax
-\RenewDocumentCommand\grad{d()}{\operatorname{\vec{{\rm grad}}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\grad{d()}{\vec{\operatorname{{\rm grad}}}\IfValueT{##1}{\parentheses*{##1}}}
 \RenewDocumentCommand\div{d()}{\operatorname{{\rm div}}\IfValueT{##1}{\parentheses*{##1}}}
-\RenewDocumentCommand\curl{d()}{\operatorname{\vec{{\rm rot}}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\curl{d()}{\vec{\operatorname{{\rm rot}}}\IfValueT{##1}{\parentheses*{##1}}}
 \def\rot{\curl}%
 }
 
