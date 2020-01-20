@@ -9,6 +9,27 @@
   \ifx\@title\empty \def\pdftitle{\TitleToUse} \else \def\pdftitle{\@title}\fi
   \hypersetup{pdfauthor={\insertauthor},pdftitle={\pdftitle},pdfsubject={\insertmatiere}}
   \makeatother
+  \ifthenelse{\equal{\ltcolortheme}{red}}
+             {\hypersetup{linkcolor=Firebrick3, citecolor=Firebrick3, urlcolor=Firebrick3}}
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{orange}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}} % FIX
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{green}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}} % FIX
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{cyan}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}} % FIX
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{blue}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}}
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{violet}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}} % FIX
+             {}
+  \ifthenelse{\equal{\ltcolortheme}{magenta}}
+             {\hypersetup{linkcolor=DeepSkyBlue4, citecolor=DeepSkyBlue4, urlcolor=DeepSkyBlue4}} % FIX
+             {}
 }}
 
 }
