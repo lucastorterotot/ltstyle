@@ -12,7 +12,9 @@
 \ifthenelse{\equal{\seccolorOption}{true}}{\useseccolor}{\nouseseccolor}
 
 \ifthenelse{\equal{\ltcolortheme}{auto}}{\AtEndPreamble{
-\ifthenelse{\equal{\insertmatiere}{Chimie}\or\equal{\insertmatiere}{chimie}\or\equal{\insertshortmatiere}{Chimie}\or\equal{\insertshortmatiere}{chimie}}{\renewcommand{\ltcolortheme}{blue}}{\renewcommand{\ltcolortheme}{blue}}
+\renewcommand{\ltcolortheme}{blue}
+\ifthenelse{\equal{\insertmatiere}{Chimie}\or\equal{\insertmatiere}{chimie}\or\equal{\insertshortmatiere}{Chimie}\or\equal{\insertshortmatiere}{chimie}}{\renewcommand{\ltcolortheme}{green}}{}
+\ifthenelse{\equal{\insertmatiere}{Physique}\or\equal{\insertmatiere}{physique}\or\equal{\insertshortmatiere}{Physique}\or\equal{\insertshortmatiere}{physique}}{\renewcommand{\ltcolortheme}{blue}}{}
 }}{}
 
 \let\hrulefillorig\hrulefill
