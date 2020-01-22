@@ -1,0 +1,10 @@
+\AtBeginDocument{
+  \def\ltcolorthemeA{\ltcolortheme}
+  \ifthenelse{\equal{\ltcolorthemeA}{red}\or\equal{\ltcolorthemeA}{magenta}}
+             {
+               \def\ltcolorthemeB{blue}
+             }
+             {
+               \def\ltcolorthemeB{red}
+             }
+}
