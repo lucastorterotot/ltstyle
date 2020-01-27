@@ -26,6 +26,7 @@
 \newcommand{\inputdeuxiemedecouv}{false}
 \newcommand{\inputtroisiemedecouv}{false}
 \newcommand{\inputquatriemedecouv}{false}
+\newcommand{\insertabstract}{}
 
 \newcounter{debutanneescol}
 \newcounter{finanneescol}
@@ -95,6 +96,11 @@
 \long\def\my@publisher[#1]#2{%
   \def\insertpublisher{#2}%
   \def\insertshortpublisher{#1}%
+}
+
+\def\Abstract#1{
+  \def\insertabstract{#1}%
+  \def\abstractwithtitle{true}%
   }
 
 \def\matiere{\@dblarg\my@matiere}

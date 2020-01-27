@@ -183,6 +183,16 @@
 \end{minipage}
 }{}
 
+\ifthenelse{\equal{\abstractwithtitle}{true}}{
+\vspace{\baselineskip}
+
+\begin{minipage}{0.9\linewidth}
+  \small
+  \ifthenelse{\equal{\abstractname}{}}{}{\paragraph{\small\abstractname}}
+  \emph{\insertabstract}
+\end{minipage}
+}{}
+
 \end{center}
 
 }
