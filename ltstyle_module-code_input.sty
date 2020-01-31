@@ -161,7 +161,7 @@ frame=tb,                         % Any extra options here
 \lstinputlisting[language = bash, #1]{#2}}}
 
 % Bash for inline
-\newcommand\inlinebash[1]{{\bashstyle\lstinline!#1!}}
+\newcommand\inlinebash[1]{{\bashstyle\lstinline@#1@}}
 
 % Python environment
 \lstnewenvironment{python}[1][]
@@ -177,7 +177,7 @@ frame=tb,                         % Any extra options here
 \lstinputlisting[language = Python, #1]{#2}}}
 
 % Python for inline
-\newcommand\inlinepython[1]{{\pythonstyle\lstinline!#1!}}
+\newcommand\inlinepython[1]{{\pythonstyle\lstinline@#1@}}
 
 % C++ environment
 \lstnewenvironment{C++}[1][]
@@ -193,7 +193,7 @@ frame=tb,                         % Any extra options here
 \lstinputlisting[language = C++, #1]{#2}}}
 
 % C++ for inline
-\newcommand\inlinecpp[1]{{\cppstyle\lstinline!#1!}}
+\newcommand\inlinecpp[1]{{\cppstyle\lstinline@#1@}}
 
 % LaTeX environment
 \lstnewenvironment{latex}[1][]
