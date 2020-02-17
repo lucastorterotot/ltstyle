@@ -2,7 +2,10 @@
 
 \makeatletter
 \@ifclassloaded{book}
-    {\let\frontmatterorig\frontmatter \renewcommand{\frontmatter}{\frontmatterorig\pagestyle{plain}}
+    {\ifthenelse{\equal{\PackageOption}{default}}
+                {}
+                {\renewcommand{\PackageOption}{book}}
+    \let\frontmatterorig\frontmatter \renewcommand{\frontmatter}{\frontmatterorig\pagestyle{plain}}
     \let\mainmatterorig\mainmatter \renewcommand{\mainmatter}{\mainmatterorig\pagestyle{main}}
     \let\backmatterorig\backmatter \renewcommand{\backmatter}{\backmatterorig\pagestyle{plain}}}
     {\newif\if@mainmatter \@mainmattertrue
@@ -80,9 +83,6 @@
 
 \@ifclassloaded{book}%
   {\renewcommand\thesection{\arabic{section}}
-  \ifthenelse{\equal{\PackageOption}{default}}
-      {}
-      {\renewcommand{\PackageOption}{book}}
   
   %\renewcommand\thesection{\arabic{section}}
   
