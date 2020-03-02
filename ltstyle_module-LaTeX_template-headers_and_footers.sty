@@ -27,7 +27,7 @@
 \chead{\familyforhf }
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
-\rfoot{\familyforhf }}
+\rfoot{\familyforhf\rfootTSVP }}
 
 \fancypagestyle{plain}{
 \makeatletter
@@ -37,7 +37,7 @@
 \chead{\familyforhf }
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
-\rfoot{\familyforhf }
+\rfoot{\familyforhf\rfootTSVP }
 }
 
 \fancypagestyle{plaintitle}{
@@ -48,7 +48,7 @@
 \chead{\familyforhf }
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
-\rfoot{\familyforhf }
+\rfoot{\familyforhf\rfootTSVP }
 }
 
 \fancypagestyle{maintitle}{
@@ -59,13 +59,13 @@
 \chead{\familyforhf }
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
-\rfoot{\familyforhf }
+\rfoot{\familyforhf\rfootTSVP }
 }
 }{
 
 \lfoot{\familyforhf }
 \cfoot{\familyforhf \thepage /\pageref{LastPage}}
-\rfoot{\familyforhf }
+\rfoot{\familyforhf\rfootTSVP }
 \lhead{\familyforhf }
 \chead{\familyforhf }
 \rhead{\familyforhf }
@@ -81,11 +81,11 @@
         }
     \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
         {\ifthenelse{\equal{\insertshortenseignementtype}{}}
-            {\rfoot{\familyforhf \insertmatiere}}
-            {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}}
-        {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
-    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertshortenseignementtype~\insertenseignementnum}}{}
-    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
+            {\rfoot{\familyforhf\rfootTSVP \insertmatiere}}
+            {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}}
+        {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf\rfootTSVP \insertshortenseignementtype~\insertenseignementnum}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
     }
 }
 
@@ -100,11 +100,11 @@
         }
     \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
         {\ifthenelse{\equal{\insertshortenseignementtype}{}}
-            {\rfoot{\familyforhf \insertmatiere}}
-            {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}}
-        {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}
-    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertshortenseignementtype}}{}
-    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~--~Cours}}{}
+            {\rfoot{\familyforhf\rfootTSVP \insertmatiere}}
+            {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}}
+        {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf\rfootTSVP \insertshortenseignementtype}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~Cours}}{}
     }
 }
     
@@ -122,11 +122,11 @@
         }
     \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
         {\ifthenelse{\equal{\insertshortenseignementtype}{}}
-            {\rfoot{\familyforhf \insertmatiere}}
-            {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}}
-        {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
-    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertshortenseignementtype~\insertenseignementnum}}{}
-    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
+            {\rfoot{\familyforhf\rfootTSVP \insertmatiere}}
+            {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}}
+        {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf\rfootTSVP \insertshortenseignementtype~\insertenseignementnum}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~\ifthenelse{\equal{\insertmatiere}{}}{}{--}~\chaptername~\thechapter}}{}
     }
 }
     
@@ -144,11 +144,11 @@
         }
     \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{basic}\or\equal{\PackageOption}{chapter}}
         {\ifthenelse{\equal{\insertshortenseignementtype}{}}
-            {\rfoot{\familyforhf \insertmatiere}}
-            {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}}
-        {\rfoot{\familyforhf \insertshortmatiere~--~\insertshortenseignementtype}}
-    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf \insertshortenseignementtype}}{}
-    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf \insertshortmatiere~--~Cours}}{}
+            {\rfoot{\familyforhf\rfootTSVP \insertmatiere}}
+            {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}}
+        {\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
+    \ifthenelse{\equal{\insertmatiere}{}}{\rfoot{\familyforhf\rfootTSVP \insertshortenseignementtype}}{}
+    \ifthenelse{\equal{\PackageOption}{complet}}{\rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~Cours}}{}
     }
 }
 }}

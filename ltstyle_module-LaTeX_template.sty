@@ -60,6 +60,11 @@
 \setlength{\textwidth}{\paperwidth -4cm} %17cm
 \setlength{\textheight}{\paperheight -4cm}%-2.8 %-2.6 %3.45 %26.25 cm
 \setlength{\marginparsep}{3pt}
+\ifthenelse{\equal{\useTSVP}{True}}{
+  \setlength{\textheight}{\paperheight -4cm-\baselineskip}
+  \setlength{\footskip}{1cm+\baselineskip}
+  \def\rfootTSVP{\vspace{-2\baselineskip}\vbox to 1\baselineskip {\TSVPstr}\ignorespaces}
+}{}
 % Alter some LaTeX defaults for better treatment of figures:
     % See p.105 of "TeX Unbound" for suggested values.
     % See pp. 199-200 of Lamport's "LaTeX" book for details.
