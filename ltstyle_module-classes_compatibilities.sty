@@ -122,7 +122,7 @@
 
         \makeatletter
             \ifthenelse{\equal{\PackageOption}{fiche}}
-                {\renewcommand{\chapter}[1]{\laterdef{\@title}{#1}\laterdef{\insertshorttitle}{}}
+                {\renewcommand{\chapter}[2][]{\laterdef{\@title}{#2}\laterdef{\insertshorttitle}{}}
 
 \renewcommand*\l@section[2]{%
   \ifnum \c@tocdepth >\z@
@@ -149,7 +149,7 @@
        }%
        { \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{default}\or\equal{\PackageOption}{book}\or\equal{\isbeamer}{true}\or\equal{\PackageOption}{chapter}}
            {}
-           {\renewcommand{\chapter}[1]{\laterdef{\@title}{#1}\laterdef{\insertshorttitle}{}}}
+           {\renewcommand{\chapter}[2][]{\laterdef{\@title}{#2}\laterdef{\insertshorttitle}{}}}
        }%
         
 %\def\frontmatter{\cleardoublepage\pagenumbering{roman}\pagestyle{plain}}
