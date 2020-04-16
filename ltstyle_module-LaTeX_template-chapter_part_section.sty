@@ -117,14 +117,14 @@
    \addvspace{4ex}
   {\parindent \z@ \centering \normalfont
     \interlinepenalty\@M
-    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype~\thechapter~--~#1\unboldmath\par\nobreak
+    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype~\thechapter\ifx#1\empty\else~--~#1\fi\unboldmath\par\nobreak
     \vskip \baselineskip
   }}
 \def\@mymakeschapterhead#1{
    \addvspace{4ex}
   {\parindent \z@ \centering \normalfont
     \interlinepenalty\@M
-    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype~--~#1\unboldmath\par\nobreak
+    \Large \familyfortitles\bfseries\boldmath \insertenseignementtype\ifx#1\empty\else~--~#1\fi\unboldmath\par\nobreak
     \vskip \baselineskip
   }}
 }{}
