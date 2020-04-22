@@ -108,45 +108,45 @@
 % #1 = nb jour, #2 = start, #3 = end, #4 = text, #5 = name
 \newcommand*\draw@creneau[5]
 {%
-	\draw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
-	(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*#2+2*\cmdPAS@planning@start) 
+	\draw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+	(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*#2+2*\cmdPAS@planning@start-0.02)
 	rectangle +(.9*\textwidth/\val@cnt*.9,-2*#3+2*#2+.06);
-	\node (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+.45*\textwidth/\val@cnt*.9,-2*#2+2*\cmdPAS@planning@start+#2-#3) 
+	\node (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+.45*\textwidth/\val@cnt*.9+0.2,-2*#2+2*\cmdPAS@planning@start+#2-#3-0.02)
 	{\begin{minipage}{\largeur@colonne cm}\centering\noindent #4\end{minipage}};
 }
 \newcommand*\draw@creneau@triangleleft[5]{%
-		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
-		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) -- 
-		(#1*.9*\textwidth/\val@cnt*.95								 ,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) --
-		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06) -- cycle;
-		\node[below right] (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@start) 
+		\filldraw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
+		(#1*.9*\textwidth/\val@cnt*.95+0.2								 ,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06-0.02) -- cycle;
+		\node[below right] (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@start-0.02)
 		{\begin{minipage}{\largeur@colonne cm}#4\end{minipage}};
 }
 \newcommand*\draw@creneau@triangleright[5]{%
-		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
-		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start) -- 
-		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06) -- 
-		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end+.06) -- cycle;
-		\node[above left] (#5) at (#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end) 
+		\filldraw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06-0.02) --
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt+0.2,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end+.06-0.02) -- cycle;
+		\node[above left] (#5) at (#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt+0.2,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@end-0.02)
 		{\begin{minipage}{\largeur@colonne cm}\begin{flushright}#4\end{flushright}\end{minipage}};
 }
 
 \newcommand*\draw@creneau@rectleft[5]{%
-		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt] 
-		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06)
+		\filldraw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06-0.02)
 		rectangle 
-		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.055*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start);
+		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.055*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02);
 		\node (#5) at 
-		(#1*.9*\textwidth/\val@cnt-.675*\textwidth/\val@cnt-.055/2*\textwidth/\val@cnt,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start)
+		(#1*.9*\textwidth/\val@cnt-.675*\textwidth/\val@cnt-.055/2*\textwidth/\val@cnt+0.2,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start-0.02)
 		{\begin{minipage}{\largeur@micolonne cm}\centering#4\end{minipage}};
 }
 \newcommand*\draw@creneau@rectright[5]{%
-		\filldraw[draw=\cmdPAS@creneau@color,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
-		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.035*\textwidth/\val@cnt,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06)
+		\filldraw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
+		(#1*.9*\textwidth/\val@cnt-.45*\textwidth/\val@cnt-.035*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06-0.02)
 		rectangle 
-		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start);
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02);
 		\node (#5) at 
-		(#1*.9*\textwidth/\val@cnt-.225*\textwidth/\val@cnt-.065*\textwidth/\val@cnt,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start)
+		(#1*.9*\textwidth/\val@cnt-.225*\textwidth/\val@cnt-.065*\textwidth/\val@cnt+0.2,-\cmdPAS@creneau@start-\cmdPAS@creneau@end+2*\cmdPAS@planning@start-0.02)
 		{\begin{minipage}{\largeur@micolonne cm}\centering#4\end{minipage}};
 }
 
