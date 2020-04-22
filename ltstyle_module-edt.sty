@@ -117,7 +117,7 @@
 \newcommand*\draw@creneau@triangleleft[5]{%
 		\filldraw[draw=white,ultra thin,fill=\cmdPAS@creneau@color,opacity=\cmdPAS@creneau@opacity, rounded corners=3pt]
 		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
-		(#1*.9*\textwidth/\val@cnt*.95+0.2								 ,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
+		(#1*.9*\textwidth/\val@cnt-.09*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@start+2*\cmdPAS@planning@start-0.02) --
 		(#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,-2*\cmdPAS@creneau@end+2*\cmdPAS@planning@start+.06-0.02) -- cycle;
 		\node[below right] (#5) at (#1*.9*\textwidth/\val@cnt-.9*\textwidth/\val@cnt+0.2,2*\cmdPAS@planning@start-2*\cmdPAS@creneau@start-0.02)
 		{\begin{minipage}{\largeur@colonne cm}#4\end{minipage}};
