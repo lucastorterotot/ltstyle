@@ -738,3 +738,250 @@
 \DeclareFieldFormat*{volume}{\mkbibbold{#1}}
 \DeclareFieldFormat[book]{volume}{T.~\mkbibbold{#1}}
 \renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+
+
+
+% sorting templates
+
+\DeclareSortingTemplate{shorthand}{
+  \sort[final]{
+    \field{sortshorthand}
+  }
+  \sort{
+    \field{shorthand}
+  }
+}
+
+\DeclareSortingTemplate{none}{
+  \sort{\citeorder}
+}
+
+\DeclareSortingTemplate{debug}{
+  \sort{
+    \field{entrykey}
+  }
+}
+
+\DeclareSortingTemplate{nty}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+}
+
+\DeclareSortingTemplate{nyt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+}
+
+\DeclareSortingTemplate{nyvt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+}
+
+\DeclareSortingTemplate{anyt}{
+  \sort{
+    \field{presort}
+  }
+  \sort{
+    \field{labelalpha}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+}
+
+\DeclareSortingTemplate{anyvt}{
+  \sort{
+    \field{presort}
+  }
+  \sort{
+    \field{labelalpha}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+}
+
+\DeclareSortingTemplate{ynt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+}
+
+\DeclareSortingTemplate{ydnt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort{
+    \field{collaboration}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+}
