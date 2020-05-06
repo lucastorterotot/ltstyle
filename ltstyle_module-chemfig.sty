@@ -1,4 +1,10 @@
-\RequirePackage{chemfig} \setatomsep{7mm} \setangleincrement{30} \setcrambond{0.75ex}{0.8pt}{1.45pt} \definesubmol\nobond{-[,0.2,,,draw=none]}
+\RequirePackage{chemfig}
+\setchemfig{atom sep = 7mm}
+\setchemfig{angle increment =30}
+\setchemfig{cram width = 0.75ex}
+\setchemfig{cram dash width = 0.8pt}
+\setchemfig{cram dash sep = 1.45pt}
+\definesubmol\nobond{-[,0.2,,,draw=none]}
 
 \makeatletter
 \newcommand\mylewis[3][1.45ex]{% #1=longueur, #2=atome #3=liste des angles
@@ -8,12 +14,13 @@
 \def\list@angle{#3,}%
 \loop
 \expandafter\grab@angle\list@angle\@nil
-\pgfextractx\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimax{\the\CF@dim}%
-\pgfextracty\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimay{\the\CF@dim}%
-\pgfmathparse{#1*sin(\current@angle)/2}\let\offset@xx\pgfmathresult
-\pgfmathparse{#1*cos(\current@angle)/2}\let\offset@yy\pgfmathresult
-\draw[line width=.4pt,overlay]
-(\CF@dimax-\offset@xx,\CF@dimay+\offset@yy)--(\CF@dimax+\offset@xx,\CF@dimay-\offset@yy);%
+\node[inner sep=0pt,outer sep=0pt]at(0,0){\charge{[circle, extra sep=0pt]\current@angle=\|}{\hphantom{#2}\vphantom{#2}}};%
+%% \pgfextractx\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimax{\the\CF@dim}%
+%% \pgfextracty\CF@dim{\pgfpointanchor{atom@@}\current@angle}\edef\CF@dimay{\the\CF@dim}%
+%% \pgfmathparse{#1*sin(\current@angle)/2}\let\offset@xx\pgfmathresult
+%% \pgfmathparse{#1*cos(\current@angle)/2}\let\offset@yy\pgfmathresult
+%% \draw[line width=.4pt,overlay]
+%% (\CF@dimax-\offset@xx,\CF@dimay+\offset@yy)--(\CF@dimax+\offset@xx,\CF@dimay-\offset@yy);%
 \unless\ifx\@empty\list@angle
 \repeat
 \endtikzpicture
