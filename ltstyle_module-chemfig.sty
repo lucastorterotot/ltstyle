@@ -1,4 +1,12 @@
-\RequirePackage{chemfig} \setatomsep{7mm} \setangleincrement{30} \setcrambond{0.75ex}{0.8pt}{1.45pt} \definesubmol\nobond{-[,0.2,,,draw=none]}
+\RequirePackage{chemfig}
+\setatomsep{7mm}
+\setangleincrement{30}
+\setcrambond{0.75ex}{0.8pt}{1.45pt}
+\definesubmol\nobond{-[,0.2,,,draw=none]}
+
+% Make files made with older version compatible
+
+\newcommand{\chemfigFL}[1]{\chemfig*{#1}}
 
 \makeatletter
 \newcommand\mylewis[3][1.45ex]{% #1=longueur, #2=atome #3=liste des angles
