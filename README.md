@@ -4,7 +4,10 @@ A LaTeX configuration.
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
-[![TeX Version](https://img.shields.io/badge/TeX-3.14159265-informational.svg)](https://www.tug.org/texlive/)
+
+[![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.14159265-2.6-1.40.20&color=blue)](https://www.tug.org/texlive/)
+[![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.53&color=blue)](https://ctan.org/pkg/chemfig)
+[![simplekv Version](https://img.shields.io/static/v1?label=simplekv&message=0.2&color=blue)](https://ctan.org/pkg/simplekv)
 
 ## Introduction
 
@@ -15,13 +18,18 @@ This package has been created to keep my preamble common to all my documents for
 ``` 
 sudo apt-get install texlive-full 
 ```
+If your pdfTeX version is older than the one shown above, consider switching to [the 18.04 branch of this package](https://gitlab.com/lucastorterotot/ltstyle/-/tree/18.04).
 2. Get this package
 ```
 mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
 git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas
 ```
-
+3. Get ChemFig and simplekv packages from Christian Tellechea
+```
+cd ~/texmf/tex/latex
+for p in simplekv chemfig ; do wget http://mirrors.ctan.org/macros/generic/${p}.zip ; unzip ${p}.zip ; rm ${p}.zip ; done
+```
 ## Usage
 ### Guides
 Documentation will be published later.
