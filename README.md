@@ -4,7 +4,9 @@ A LaTeX configuration.
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
-[![TeX Version](https://img.shields.io/badge/TeX-3.14159265-informational.svg)](https://www.tug.org/texlive/)
+
+[![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.14159265-2.6-1.40.18&color=blue)](https://www.tug.org/texlive/)
+[![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.2e&color=blue)](https://ctan.org/pkg/chemfig)
 
 ## Introduction
 
@@ -19,7 +21,7 @@ sudo apt-get install texlive-full
 ```
 mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
-git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas
+git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas -b 18.04
 ```
 
 ## Usage
