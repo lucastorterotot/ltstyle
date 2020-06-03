@@ -19,6 +19,7 @@ This package has been created to keep my preamble common to all my documents for
 sudo apt-get install texlive-full 
 ```
 If your pdfTeX version is older than the one shown above, consider switching to [the 18.04 branch of this package](https://gitlab.com/lucastorterotot/ltstyle/-/tree/18.04).
+
 2. Get this package
 ```
 mkdir -p ~/texmf/tex/latex
