@@ -5,6 +5,7 @@ A LaTeX configuration.
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
 
+[![LaTeX2e Version](https://img.shields.io/static/v1?label=LaTeX2e&message=2017-04-15&color=blue)](https://www.tug.org/texlive/)
 [![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.14159265-2.6-1.40.18&color=blue)](https://www.tug.org/texlive/)
 [![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.2e&color=blue)](https://ctan.org/pkg/chemfig)
 
