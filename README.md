@@ -20,6 +20,7 @@ This package has been created to keep my preamble common to all my documents for
 sudo apt-get install texlive-full 
 ```
 If your LaTeX2e or pdfTeX version are older than these shown above, consider switching to older versions of the package listed below:
+
 -[`18.04`](https://gitlab.com/lucastorterotot/ltstyle/-/tree/18.04) for LaTeX2e 2017-04-15 and pdfTeX 3.14159265-2.6-1.40.18.
 
 2. Get this package
