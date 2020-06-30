@@ -13,9 +13,10 @@
 \ProvidesPackage{ltstyle}%
         [\ltstyleversiondate\space Paquet ltstyle v \ltstyleversion]
 
+\RequirePackage{iftex}
 \RequirePackage{etoolbox}
 \RequirePackage{ifthen}
-\RequirePackage{morewrites}
+\ifLuaTeX \else \RequirePackage{morewrites} \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Package options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
