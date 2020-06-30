@@ -18,6 +18,10 @@
 \makeatother
 \def\frenchfigurename{Figure}
 \def\frenchtablename{Tableau}
+\ifLuaTeX
+  \gappto\captionsfrench{\renewcommand{\figurename}{\frenchfigurename}}
+  \gappto\captionsfrench{\renewcommand{\tablename}{\frenchtablename}}
+\fi
 
 \ifLuaTeX
   \RequirePackage{fontspec}
