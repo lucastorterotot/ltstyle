@@ -1,7 +1,20 @@
 \makeatletter
-\@ifpackageloaded{babel}{}{\RequirePackage[french]{babel}}
-%\@ifpackagewith{babel}{french}{\ifthenelse{\equal{\PackageOption}{default}}{}{ \frenchbsetup{StandardLists=true,ReduceListSpacing=true}}}{}
-\@ifpackagewith{babel}{french}{}{\def\og{"}\def\fg{\unskip "}}
+\@ifpackageloaded{babel}{}{
+  \@ifpackageloaded{polyglossia}{}{
+    \ifLuaTeX
+      \RequirePackage{polyglossia}
+      \setdefaultlanguage{french}
+      \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
+    \else
+      \RequirePackage[french]{babel}
+    \fi
+  }
+}
+\@ifpackageloaded{babel}{
+  \@ifpackagewith{babel}{french}{}{\def\og{"}\def\fg{\unskip "}}
+}{
+  \def\og{"}\def\fg{\unskip "}
+}
 \makeatother
 \def\frenchfigurename{Figure}
 \def\frenchtablename{Tableau}
