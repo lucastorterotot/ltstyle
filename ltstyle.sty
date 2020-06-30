@@ -16,7 +16,7 @@
 \RequirePackage{iftex}
 \RequirePackage{etoolbox}
 \RequirePackage{ifthen}
-\RequirePackage{morewrites}
+\ifLuaTeX \else \RequirePackage{morewrites} \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Package options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
