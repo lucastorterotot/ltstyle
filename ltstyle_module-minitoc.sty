@@ -20,11 +20,6 @@
            {}
 \makeatletter
 \@ifpackageloaded{minitoc}{
-  \ifLuaTeX
-  \makeatletter
-  \renewcommand{\@pnumwidth}{2.5em}% default is 1.55em
-  \makeatother
-  \fi
   \@ifpackagewith{babel}{french}{
     \mtcselectlanguage{french}
 
