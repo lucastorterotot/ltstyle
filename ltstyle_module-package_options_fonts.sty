@@ -484,11 +484,7 @@
 
 \DeclareOption{Roboto}{
   \def\SIunitfamily{\sf}
-  \AtBeginDocument{
-    \fontfamily{RobotoCondensed-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{RobotoCondensed-LF}
-  }
+  \AtEndPreamble{\usepackage[sfdefault,condensed]{roboto}}
   \def\loadavant{true}
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
