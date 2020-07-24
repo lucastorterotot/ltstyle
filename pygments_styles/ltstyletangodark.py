@@ -8,10 +8,9 @@ from pygments.token import Keyword, Name, Comment, String, Error, \
      Number, Operator, Generic, Whitespace, Punctuation, Other, Literal
 
 
-class TangodarkStyle(Style):
+class ltTangodarkStyle(Style):
     """
-    The Crunchy default Style inspired from the color palette from
-    the Tango Icon Theme Guidelines.
+    ltstyle dark theme based on the tango dark palette.
     """
 
     # work in progress...

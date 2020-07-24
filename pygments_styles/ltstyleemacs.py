@@ -14,7 +14,7 @@ from pygments.token import Keyword, Name, Comment, String, Error, \
      Number, Operator, Generic, Whitespace
 
 
-class EmacsStyle(Style):
+class ltEmacsStyle(Style):
     """
     The default style (inspired by Emacs 22).
     """
