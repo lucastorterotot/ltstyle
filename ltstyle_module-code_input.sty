@@ -2,6 +2,8 @@
 
 \RequirePackage{verbatim} % insertion de code
 \RequirePackage{listings} % insertion de code
+\RequirePackage{minted} % insertion de code
+\ifthenelse{\equal{\codecolortheme}{white}}{\usemintedstyle{ltstyleemacs}}{\usemintedstyle{ltstyletangodark}}
 \RequirePackage{upquote}  % insertion de code
 \RequirePackage{algorithm}% insertion de pseudo code
 \RequirePackage{algorithmic}% insertion de pseudo code
@@ -158,13 +160,26 @@ frame=tb,                         % Any extra options here
 {}
 
 % Bash for external files
-\newcommand\inputbash[2][]{{
-\bashstyle
-\lstinputlisting[language = bash, #1]{#2}}}
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inputbash[2][]{{
+                 \inputminted[breaklines, bgcolor=\codecolortheme lstcolbg, #1]{bash}{#2}}}
+           }
+           {
+             \newcommand\inputbash[2][]{{
+                 \bashstyle
+                 \lstinputlisting[language = bash, #1]{#2}}}
+           }
 
 % Bash for inline
-\newcommand\inlinebash[1]{{\bashstyle\lstinline@#1@}}
-
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inlinebash[1]{{\mintinline{bash}{#1}}}
+           }
+           {
+             \newcommand\inlinebash[1]{{\bashstyle\lstinline@#1@}}
+           }
+           
 % Python environment
 \lstnewenvironment{python}[1][]
 {
@@ -174,12 +189,25 @@ frame=tb,                         % Any extra options here
 {}
 
 % Python for external files
-\newcommand\inputpython[2][]{{
-\pythonstyle
-\lstinputlisting[language = Python, #1]{#2}}}
-
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inputpython[2][]{{
+             \inputminted[breaklines, bgcolor=\codecolortheme lstcolbg, #1]{python}{#2}}}
+           }
+           {
+             \newcommand\inputpython[2][]{{
+                 \pythonstyle
+                 \lstinputlisting[language = Python, #1]{#2}}}
+           }
+           
 % Python for inline
-\newcommand\inlinepython[1]{{\pythonstyle\lstinline@#1@}}
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inlinepython[1]{{\mintinline{python}{#1}}}
+           }
+           {
+             \newcommand\inlinepython[1]{{\pythonstyle\lstinline@#1@}}
+           }
 
 % C++ environment
 \lstnewenvironment{C++}[1][]
@@ -190,12 +218,25 @@ frame=tb,                         % Any extra options here
 {}
 
 % C++ for external files
-\newcommand\inputcpp[2][]{{
-\cppstyle
-\lstinputlisting[language = C++, #1]{#2}}}
-
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inputcpp[2][]{{
+                 \inputminted[breaklines, bgcolor=\codecolortheme lstcolbg, #1]{c++}{#2}}}
+           }
+           {
+             \newcommand\inputcpp[2][]{{
+                 \cppstyle
+                 \lstinputlisting[language = C++, #1]{#2}}}
+           }
+           
 % C++ for inline
-\newcommand\inlinecpp[1]{{\cppstyle\lstinline@#1@}}
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inlinecpp[1]{{\mintinline{c++}{#1}}}
+           }
+           {
+             \newcommand\inlinecpp[1]{{\cppstyle\lstinline@#1@}}
+           }
 
 % LaTeX environment
 \lstnewenvironment{latex}[1][]
@@ -206,9 +247,22 @@ frame=tb,                         % Any extra options here
 {}
 
 % LaTeX for external files
-\newcommand\inputlatex[2][]{{
-\latexstyle
-\lstinputlisting[#1]{#2}}}
-
+\ifthenelse{\equal{\useminted}{True}}
+           {
+             \newcommand\inputlatex[2][]{{
+                 \inputminted[breaklines, bgcolor=\codecolortheme lstcolbg, #1]{latex}{#2}}}
+           }
+           {
+             \newcommand\inputlatex[2][]{{
+                 \latexstyle
+                 \lstinputlisting[#1]{#2}}}
+           }
+           
 % LaTeX for inline
-\newcommand\inlinelatex[1]{{\latexstyle\lstinline!#1!}}
+\ifthenelse{\equal{\useminted}{True}}
+           {           
+             \newcommand\inlinelatex[1]{{\mintinline{latex}{#1}}}
+           }
+           {         
+             \newcommand\inlinelatex[1]{{\latexstyle\lstinline!#1!}}
+           }  
