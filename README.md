@@ -24,7 +24,28 @@ mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
 git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas -b 18.04
 ```
-
+3. Install and update Pygments if you want to use minted.
+First, install it with
+```
+pip install Pygments
+```
+Update Pygments with provided themes.
+Find where Pygments is installed:
+```
+python
+>>> import pygments
+>>> pygments.__path__
+```
+Go in `<pygments.__path__>/styles/` and do
+```
+for f in $(ls ~/texmf/tex/latex/ltstyle/pygments_styles/); do ln -sf ~/texmf/tex/latex/ltstyle/pygments_styles/$f $f ; done
+```
+Then, in the `styles/__init__.py`, add for each style lines like for example
+```
+'ltstyletangodark': 'ltstyletangodark::ltTangodarkStyle',
+'ltstyleemacs': 'ltstyleemacs::ltEmacsStyle',
+```
+in the `STYLE_MAP` dictionnary. The last names (`ltTangodarkStyle`, `ltEmacsStyle`) can be found in the styles files from this repository.
 ## Usage
 ### Guides
 Documentation will be published later.
