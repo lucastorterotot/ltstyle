@@ -7,7 +7,7 @@
   \def\ltmintedstyle{ltstyleemacs}
   \ifthenelse{\equal{\codecolortheme}{black}}{\def\ltmintedstyle{ltstyletangodark}}{}
   \usemintedstyle{\ltmintedstyle}
-  \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\arabic{FancyVerbLine}}}
+  \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\color{\codecolortheme lstcolbg}\arabic{FancyVerbLine}}}
   \tcbuselibrary{minted,skins}
 }{}}
 \RequirePackage{upquote}  % insertion de code
@@ -172,12 +172,12 @@ frame=tb,                         % Any extra options here
                        listing engine=minted,
                        minted style=\ltmintedstyle,
                        minted language=#1,
-                       minted options={linenos,numbersep=3mm, breaklines},
+                       minted options={linenos,numbersep=2mm, breaklines},
                        coltext=\codecolortheme lstcoltxt,
                        colback=\codecolortheme lstcolbg,
                        colframe=\codecolortheme lstcolbg,
                        listing only,
-                       left=5mm,
+                       left=0mm,
                        enhanced,
                        overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}}
                      }
@@ -190,12 +190,12 @@ frame=tb,                         % Any extra options here
           listing engine=minted,
           minted style=\ltmintedstyle,
           minted language=#2,
-          minted options={linenos,numbersep=3mm, breaklines, #1},
+          minted options={linenos,numbersep=2mm, breaklines, #1},
           coltext=\codecolortheme lstcoltxt,
           colback=\codecolortheme lstcolbg,
           colframe=\codecolortheme lstcolbg,
           listing only,
-          left=5mm,
+          left=0mm,
           enhanced,
           breakable,
           overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}},
