@@ -2,14 +2,14 @@
 
 \RequirePackage{verbatim} % insertion de code
 \RequirePackage{listings} % insertion de code
-\AtEndPreamble{
+\AtEndPreamble{\ifthenelse{\equal{\useminted}{True}}{
   \RequirePackage{minted} % insertion de code
   \def\ltmintedstyle{ltstyleemacs}
   \ifthenelse{\equal{\codecolortheme}{black}}{\def\ltmintedstyle{ltstyletangodark}}{}
   \usemintedstyle{\ltmintedstyle}
   \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\arabic{FancyVerbLine}}}
   \tcbuselibrary{minted,skins}
-}
+}{}}
 \RequirePackage{upquote}  % insertion de code
 \RequirePackage{algorithm}% insertion de pseudo code
 \RequirePackage{algorithmic}% insertion de pseudo code
