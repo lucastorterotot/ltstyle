@@ -10,3 +10,36 @@
 \renewcommand{\ce}[1]{\ensuremath{\origce{#1}}}
 
 \newcommand{\state}[1]{\down{({\ifthenelse{\equal{#1}{l}}{$\ell$}{#1}})}}
+
+\makeatletter
+\@ifpackageloaded{fontspec}
+                 {
+                   \AtBeginDocument{
+                     \selectchemgreekmapping{fontspec}
+                     \def\chemalpha{\alpha}
+                     \def\chembeta{\beta}
+                     \def\chemgamma{\gamma}
+                     \def\chemdelta{\delta}
+                     \def\chemepsilon{\epsilon}
+                     \def\chemzeta{\zeta}
+                     \def\chemeta{\eta}
+                     \def\chemtheta{\theta}
+                     \def\chemiota{\iota}
+                     \def\chemkappa{\kappa}
+                     \def\chemlambda{\lambda}
+                     \def\chemmu{\mu}
+                     \def\chemnu{\nu}
+                     \def\chemxi{\xi}
+                     \def\chemomikron{o}
+                     \def\chempi{\pi}
+                     \def\chemrho{\rho}
+                     \def\chemsigma{\sigma}
+                     \def\chemtau{\tau}
+                     \def\chemupsilon{\upsilon}
+                     \def\chemphi{\phi}
+                     \def\chemchi{\chi}
+                     \def\chempsi{\psi}
+                   }
+                 }
+                 {}
+\makeatother

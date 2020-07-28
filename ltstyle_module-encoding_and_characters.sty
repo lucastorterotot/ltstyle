@@ -1,6 +1,6 @@
 \ifLuaTeX
-  %\RequirePackage{fontspec}
-  %\setmainfont{Latin Modern Roman}
+  \RequirePackage{fontspec}
+  \setmainfont{Latin Modern Roman}
 \else
   \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
   \RequirePackage[utf8]{inputenc} % Required for inputting international characters
@@ -12,13 +12,13 @@
 \makeatletter
 \@ifpackageloaded{babel}{}{
   \@ifpackageloaded{polyglossia}{}{
-    %% \ifLuaTeX
-    %%   \RequirePackage{polyglossia}
-    %%   \setdefaultlanguage{french}
-    %%   \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
-    %% \else
+    \ifLuaTeX
+      \RequirePackage{polyglossia}
+      \setdefaultlanguage{french}
+      \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
+    \else
       \RequirePackage[french]{babel}
-    %% \fi
+    \fi
   }
 }
 \@ifpackageloaded{babel}{
