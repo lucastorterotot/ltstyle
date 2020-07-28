@@ -49,6 +49,13 @@
 \@ifclassloaded{beamer}{\newcommand{\isbeamer}{true}}{\newcommand{\isbeamer}{false}}
 \@ifclassloaded{article}{\newcommand{\isarticle}{true}}{\newcommand{\isarticle}{false}}
 \@ifclassloaded{standalone}{\newcommand{\isstandalone}{true}}{\newcommand{\isstandalone}{false}}
+\@ifclassloaded{standalone}
+               {
+                 \ifLuaTeX
+                 \RequirePackage{luatex85} % standalone class fix
+                 \fi
+               }
+               {}
 \makeatother
 
 \input ltstyle_module-package_options.sty
