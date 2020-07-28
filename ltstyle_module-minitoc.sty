@@ -27,7 +27,15 @@
   \fi
   \@ifpackagewith{babel}{french}{
     \mtcselectlanguage{french}
-
+  }{}
+  \@ifpackageloaded{polyglossia}
+                   {\AtBeginDocument{
+                       \iflanguage{french}
+                                  {\mtcselectlanguage{french}}
+                                  {}
+                     }
+                   }
+                   {}
 
 \def\minitoc@[#1]{%
 \global\@minitoc@used@true
@@ -97,6 +105,5 @@
 
 
 
-  }{}
 }{}
 \makeatother

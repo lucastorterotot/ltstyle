@@ -13,6 +13,20 @@
 \def\mydecimalsign{.}
 \def\mythousandsep{,}
 }
+\@ifpackageloaded{polyglossia}
+                 {\AtBeginDocument{
+                     \iflanguage{french}
+                                {
+                                  \def\mydecimalsign{,}
+                                  \def\mythousandsep{\,}
+                                }
+                                {
+                                  \def\mydecimalsign{.}
+                                  \def\mythousandsep{,}
+                                }
+                   }
+                 }
+                 {}
 \makeatother
 \def\myproductsign{\!\times\!}
 \def\myunitsep{\usp}
