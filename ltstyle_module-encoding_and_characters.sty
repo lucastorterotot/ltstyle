@@ -1,13 +1,24 @@
+\ifLuaTeX
+  %\RequirePackage{fontspec}
+  %\setmainfont{Latin Modern Roman}
+\else
+  \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
+  \RequirePackage[utf8]{inputenc} % Required for inputting international characters
+  \RequirePackage{lmodern} %better characters
+  \rmfamily \normalfont %to load T1lmr.fd 
+  \DeclareFontShape{T1}{lmr}{bx}{sc}{<->sub*cmr/bx/sc}{}
+\fi
+
 \makeatletter
 \@ifpackageloaded{babel}{}{
   \@ifpackageloaded{polyglossia}{}{
-    \ifLuaTeX
-      \RequirePackage{polyglossia}
-      \setdefaultlanguage{french}
-      \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
-    \else
+    %% \ifLuaTeX
+    %%   \RequirePackage{polyglossia}
+    %%   \setdefaultlanguage{french}
+    %%   \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
+    %% \else
       \RequirePackage[french]{babel}
-    \fi
+    %% \fi
   }
 }
 \@ifpackageloaded{babel}{
@@ -21,16 +32,6 @@
 \ifLuaTeX
   \gappto\captionsfrench{\renewcommand{\figurename}{\frenchfigurename}}
   \gappto\captionsfrench{\renewcommand{\tablename}{\frenchtablename}}
-\fi
-
-\ifLuaTeX
-  \RequirePackage{fontspec}
-\else
-  \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
-  \RequirePackage[utf8]{inputenc} % Required for inputting international characters
-  \RequirePackage{lmodern} %better characters
-  \rmfamily \normalfont %to load T1lmr.fd 
-  \DeclareFontShape{T1}{lmr}{bx}{sc}{<->sub*cmr/bx/sc}{}
 \fi
 
 \RequirePackage{microtype} \emergencystretch=.5em % Improves character and word spacing
