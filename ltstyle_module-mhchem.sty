@@ -8,6 +8,7 @@
 %\newcommand{\tbond}{\rlap{\protect\raisebox{.4ex}{\ensuremath{-}}}\rlap{\ensuremath{-}}\protect\raisebox{-.4ex}{\ensuremath{-}}}
 \let\origce\ce
 \renewcommand{\ce}[1]{\ensuremath{\origce{#1}}}
+\mhchemoptions{text-greek=default, math-greek=default}
 
 \newcommand{\state}[1]{\down{({\ifthenelse{\equal{#1}{l}}{$\ell$}{#1}})}}
 
