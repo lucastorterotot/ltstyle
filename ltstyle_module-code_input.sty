@@ -2,6 +2,14 @@
 
 \RequirePackage{verbatim} % insertion de code
 \RequirePackage{listings} % insertion de code
+\AtEndPreamble{\ifthenelse{\equal{\useminted}{True}}{
+  \RequirePackage{minted} % insertion de code
+  \def\ltmintedstyle{ltstyleemacs}
+  \ifthenelse{\equal{\codecolortheme}{black}}{\def\ltmintedstyle{ltstyletangodark}}{}
+  \usemintedstyle{\ltmintedstyle}
+  \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\color{\codecolortheme lstcolnb}\arabic{FancyVerbLine}}}
+  \tcbuselibrary{minted,skins}
+}{}}
 \RequirePackage{upquote}  % insertion de code
 \RequirePackage{algorithm}% insertion de pseudo code
 \RequirePackage{algorithmic}% insertion de pseudo code
@@ -149,66 +157,66 @@ frame=tb,                         % Any extra options here
 }}
 
 
-% Bash environment
-\lstnewenvironment{bash}[1][]
-{
-\bashstyle
-\lstset{#1}
+\newcommand{\codestyle}[1]{%
+\ifthenelse{\equal{#1}{bash}}{\bashstyle}{}%
+\ifthenelse{\equal{#1}{C++}}{\cppstyle}{}%
+\ifthenelse{\equal{#1}{python}}{\pythonstyle}{}%
+\ifthenelse{\equal{#1}{latex}}{\latexstyle}{}%
 }
-{}
 
-% Bash for external files
-\newcommand\inputbash[2][]{{
-\bashstyle
-\lstinputlisting[language = bash, #1]{#2}}}
+\AtEndPreamble{
+  \ifthenelse{\equal{\useminted}{True}}{
+    \newenvironment{code}[1]
+                   {%
+                     \tcblisting{
+                       listing engine=minted,
+                       minted style=\ltmintedstyle,
+                       minted language=#1,
+                       minted options={linenos,numbersep=2mm, breaklines},
+                       coltext=\codecolortheme lstcoltxt,
+                       colback=\codecolortheme lstcolbg,
+                       colframe=\codecolortheme lstcolbg,
+                       listing only,
+                       left=0mm,
+                       enhanced,
+                       overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}}
+                     }
+                   }
+                   {\endtcblisting}
+                 
+    \newcommand\inputcode[3][]{
+        \color{\codecolortheme lstcoltxt}%
+        \tcbinputlisting{
+          listing engine=minted,
+          minted style=\ltmintedstyle,
+          minted language=#2,
+          minted options={linenos,numbersep=2mm, breaklines, #1},
+          coltext=\codecolortheme lstcoltxt,
+          colback=\codecolortheme lstcolbg,
+          colframe=\codecolortheme lstcolbg,
+          listing only,
+          left=0mm,
+          enhanced,
+          breakable,
+          overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+          listing file=#3}}
 
-% Bash for inline
-\newcommand\inlinebash[1]{{\bashstyle\lstinline@#1@}}
+    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\color{\codecolortheme lstcoltxt}\mintinline{#1}{#2}}}
+  }
+  {
+    \lstnewenvironment{code}[2][]
+                      {
+                        \codestyle{#2}
+                        \lstset{#1}
+                      }
+                      {}
+                      
+    \newcommand\inputcode[3][]{%
+        \color{\codecolortheme lstcoltxt}%
+        \codestyle{#2}%
+        \lstinputlisting[#1]{#3}
+    }
 
-% Python environment
-\lstnewenvironment{python}[1][]
-{
-\pythonstyle
-\lstset{#1}
+    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\color{\codecolortheme lstcoltxt}\codestyle{#1}\lstinline@#2@}}
+  }
 }
-{}
-
-% Python for external files
-\newcommand\inputpython[2][]{{
-\pythonstyle
-\lstinputlisting[language = Python, #1]{#2}}}
-
-% Python for inline
-\newcommand\inlinepython[1]{{\pythonstyle\lstinline@#1@}}
-
-% C++ environment
-\lstnewenvironment{C++}[1][]
-{
-\cppstyle
-\lstset{#1}
-}
-{}
-
-% C++ for external files
-\newcommand\inputcpp[2][]{{
-\cppstyle
-\lstinputlisting[language = C++, #1]{#2}}}
-
-% C++ for inline
-\newcommand\inlinecpp[1]{{\cppstyle\lstinline@#1@}}
-
-% LaTeX environment
-\lstnewenvironment{latex}[1][]
-{
-\latexstyle
-\lstset{#1}
-}
-{}
-
-% LaTeX for external files
-\newcommand\inputlatex[2][]{{
-\latexstyle
-\lstinputlisting[#1]{#2}}}
-
-% LaTeX for inline
-\newcommand\inlinelatex[1]{{\latexstyle\lstinline!#1!}}
