@@ -228,8 +228,13 @@
 
 \DeclareOption{Libertine}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Linux Libertine O}
+    \setsansfont{Linux Biolinum O}
+  \else
     \fontfamily{LinuxLibertineT-OsF}\selectfont
     \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
