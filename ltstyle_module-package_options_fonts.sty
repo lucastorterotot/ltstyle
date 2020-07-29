@@ -407,7 +407,19 @@
 
 \DeclareOption{ptm}{
   \AtBeginDocument{
-    \fontfamily{ptm}\selectfont
+    \ifLuaTeX
+      \setmainfont{XITS}[
+        %% BoldFont = ⟨font name⟩,
+        %% ItalicFont = ⟨font name⟩,
+        %% BoldItalicFont = ⟨font name⟩,
+        SlantedFont = Erewhon Regular Slanted,
+        %% BoldSlantedFont = ⟨font name⟩,
+        %% SmallCapsFont = ⟨font name⟩,
+        %% UprightFont = ⟨font name⟩,
+      ]
+    \else
+      \fontfamily{ptm}\selectfont
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
