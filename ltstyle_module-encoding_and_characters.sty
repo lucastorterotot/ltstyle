@@ -1,5 +1,6 @@
 \ifLuaTeX
   \RequirePackage[no-math]{fontspec}
+  \setmainfont{CMU Serif}
   \usepackage[utf8]{luainputenc}
 \else
   \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
@@ -36,7 +37,7 @@
 
 \RequirePackage{microtype} \emergencystretch=.5em % Improves character and word spacing
 
-%\RequirePackage{bold-extra} %meilleure gestion du gras
+\RequirePackage{bold-extra} %meilleure gestion du gras
 
 \RequirePackage{marvosym}
 \let\origEUR\EUR \def\EUR{\text{\origEUR}} \def\€{\EUR} \def\euro{\EUR}
