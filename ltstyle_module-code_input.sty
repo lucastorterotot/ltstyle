@@ -201,7 +201,7 @@ frame=tb,                         % Any extra options here
           overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}},
           listing file=#3}}
 
-    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\color{\codecolortheme lstcoltxt}\mintinline{#1}{#2}}}
+    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\!\color{\codecolortheme lstcoltxt}\mintinline{#1}{#2}\!}}
   }
   {
     \lstnewenvironment{code}[2][]
@@ -217,6 +217,6 @@ frame=tb,                         % Any extra options here
         \lstinputlisting[#1]{#3}
     }
 
-    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\color{\codecolortheme lstcoltxt}\codestyle{#1}\lstinline@#2@}}
+    \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\!\color{\codecolortheme lstcoltxt}\codestyle{#1}\lstinline@#2@\!}}
   }
 }
