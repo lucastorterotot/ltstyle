@@ -2,6 +2,17 @@
 
 \RequirePackage{verbatim} % insertion de code
 \RequirePackage{listings} % insertion de code
+\makeatletter
+\@ifpackageloaded{tcolorbox}
+                 {}
+                 {
+                   \ifthenelse{\equal{\useminted}{True}}
+                              {
+                                \usepackage[breakable,skins]{tcolorbox}
+                              }
+                              {}
+                 }
+\makeatother
 \AtEndPreamble{\ifthenelse{\equal{\useminted}{True}}{
   \RequirePackage{minted} % insertion de code
   \def\ltmintedstyle{ltstyleemacs}
@@ -179,6 +190,8 @@ frame=tb,                         % Any extra options here
                        listing only,
                        left=0mm,
                        enhanced,
+                       enlarge left by=1em,
+                       width = \textwidth-1em,
                        overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}}
                      }
                    }
@@ -198,6 +211,8 @@ frame=tb,                         % Any extra options here
           left=0mm,
           enhanced,
           breakable,
+          enlarge left by=1em,
+          width = \textwidth-1em,
           overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}},
           listing file=#3}}
 
