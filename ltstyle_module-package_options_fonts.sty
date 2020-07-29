@@ -80,7 +80,11 @@
 
 \DeclareOption{cmr}{
   \AtBeginDocument{
-    \fontfamily{cmr}\selectfont
+    \ifLuaTeX
+      \setmainfont{CMU Serif} % keep default
+    \else
+      \fontfamily{cmr}\selectfont
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -246,7 +250,11 @@
 
 \DeclareOption{lmr}{
   \AtBeginDocument{
-    \fontfamily{lmr}\selectfont
+    \ifLuaTeX
+      \setmainfont{CMU Serif} % keep default
+    \else
+      \fontfamily{lmr}\selectfont
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
