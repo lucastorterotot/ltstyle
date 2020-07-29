@@ -81,7 +81,7 @@
 \DeclareOption{cmr}{
   \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont{CMU Serif} % keep default
+      \setmainfont{CMU Serif}[SlantedFont = Latin Modern Roman Slanted, SlantedFeatures={LetterSpace=-1,WordSpace={.9}}] % keep default
     \else
       \fontfamily{cmr}\selectfont
     \fi
@@ -256,7 +256,7 @@
 \DeclareOption{lmr}{
   \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont{CMU Serif} % keep default
+      \setmainfont{CMU Serif}[SlantedFont = Latin Modern Roman Slanted, SlantedFeatures={LetterSpace=-1,WordSpace={.9}}] % keep default
     \else
       \fontfamily{lmr}\selectfont
     \fi
