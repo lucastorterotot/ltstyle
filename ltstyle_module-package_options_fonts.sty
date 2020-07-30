@@ -638,8 +638,12 @@
 
 \DeclareOption{XCharter}{
   \AtBeginDocument{
-    \fontfamily{XCharter-TLF}\selectfont
-    \renewcommand{\rmdefault}{XCharter-TLF}
+    \ifLuaTeX
+      \setmainfont{XCharter}
+    \else
+      \fontfamily{XCharter-TLF}\selectfont
+      \renewcommand{\rmdefault}{XCharter-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
