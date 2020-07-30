@@ -12,9 +12,14 @@
 \DeclareOption{Alegreya}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{AlegreyaSans-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{AlegreyaSans-LF}
+    \ifLuaTeX
+      \setmainfont[Numbers=Lining]{Alegreya Sans}
+      \setsansfont[Numbers=Lining]{Alegreya Sans}
+    \else
+      \fontfamily{AlegreyaSans-LF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{AlegreyaSans-LF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -69,8 +74,12 @@
 
 \DeclareOption{Caladea}{
   \AtBeginDocument{
-    \fontfamily{Caladea-TLF}\selectfont
-    \renewcommand{\rmdefault}{Caladea-TLF}
+    \ifLuaTeX
+      \setmainfont{Caladea}
+    \else
+      \fontfamily{Caladea-TLF}\selectfont
+      \renewcommand{\rmdefault}{Caladea-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -145,9 +154,14 @@
 \DeclareOption{fla}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Lato}
+    \setsansfont{Lato}
+  \else
     \fontfamily{fla}
     \selectfont\renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{fla}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -169,9 +183,14 @@
 \DeclareOption{fvs}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Bitstream Vera Sans}
+    \setsansfont{Bitstream Vera Sans}
+  \else
     \fontfamily{fvs}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{fvs}
+  \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
@@ -217,8 +236,12 @@
 
 \DeclareOption{kurier}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Kurier}
+  \else
     \fontfamily{kurier}\selectfont
     \renewcommand{\rmdefault}{kurier}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -270,9 +293,14 @@
 \DeclareOption{lmss}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{lmss}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{lmss}
+    \ifLuaTeX
+      \setmainfont{Latin Modern Sans}
+      \setsansfont{Latin Modern Sans}
+    \else
+      \fontfamily{lmss}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{lmss}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -282,8 +310,17 @@
 
 \DeclareOption{mak}{
   \AtBeginDocument{
-    \fontfamily{mak}\selectfont
-    \renewcommand{\rmdefault}{mak}
+    \ifLuaTeX
+      \setmainfont[Scale=0.9]{Kerkis}[
+        BoldFont = Kerkis-Bold,
+        ItalicFont = Kerkis-Italic,
+        BoldItalicFont = Kerkis-BoldItalic,
+        SmallCapsFont = Kerkis-SmallCaps,
+      ]
+    \else
+      \fontfamily{mak}\selectfont
+      \renewcommand{\rmdefault}{mak}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -377,9 +414,14 @@
 \DeclareOption{phv}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Tex Gyre Heros}
+    \setsansfont{TeX Gyre Heros}
+  \else
     \fontfamily{phv}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{phv}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -400,9 +442,15 @@
 
 \DeclareOption{ppl}{
   \AtBeginDocument{
-    \let\mathit\relax
-    \def\mathit{\textit}
-    \fontfamily{ppl}\selectfont
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \let\mathit\relax
+      \def\mathit{\textit}
+      \fontfamily{ppl}\selectfont
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -413,7 +461,7 @@
 \DeclareOption{ptm}{
   \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont{XITS}[
+      \setmainfont{TeX Gyre Termes}[
         %% BoldFont = ⟨font name⟩,
         %% ItalicFont = ⟨font name⟩,
         %% BoldItalicFont = ⟨font name⟩,
@@ -509,7 +557,26 @@
 
 \DeclareOption{Roboto}{
   \def\SIunitfamily{\sf}
-  \AtEndPreamble{\usepackage[sfdefault,condensed]{roboto}}
+  \ifLuaTeX
+    \AtBeginDocument{
+      \setmainfont{Roboto Condensed Regular}[
+        BoldFont = RobotoCondensed-Bold,
+        ItalicFont = RobotoCondensed-Italic,
+        BoldItalicFont = RobotoCondensed-BoldItalic,
+        SlantedFont = RobotoCondensed-Italic,
+        BoldSlantedFont = RobotoCondensed-BoldItalic,
+      ]
+      \setsansfont{Roboto Condensed Regular}[
+        BoldFont = RobotoCondensed-Bold,
+        ItalicFont = RobotoCondensed-Italic,
+        BoldItalicFont = RobotoCondensed-BoldItalic,
+        SlantedFont = RobotoCondensed-Italic,
+        BoldSlantedFont = RobotoCondensed-BoldItalic,
+      ]
+    }
+  \else
+    \AtEndPreamble{\usepackage[sfdefault,condensed]{roboto}}
+  \fi
   \def\loadavant{true}
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
@@ -530,9 +597,18 @@
 \DeclareOption{Universalis}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Universalis ADF Std}[
+      BoldFont = UniversalisADFStd-Bold,
+    ]
+    \setsansfont{Universalis ADF Std}[
+      BoldFont = UniversalisADFStd-Bold,
+    ]
+  \else
     \fontfamily{UniversalisADFStd-LF}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{UniversalisADFStd-LF}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -542,8 +618,14 @@
 
 \DeclareOption{Utopia}{
   \AtBeginDocument{
-    \fontfamily{futs}\selectfont
-    \renewcommand{\rmdefault}{futs}
+    \ifLuaTeX
+      \setmainfont[Scale=.92]{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{futs}\selectfont
+      \renewcommand{\rmdefault}{futs}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -554,8 +636,12 @@
 
 \DeclareOption{XCharter}{
   \AtBeginDocument{
-    \fontfamily{XCharter-TLF}\selectfont
-    \renewcommand{\rmdefault}{XCharter-TLF}
+    \ifLuaTeX
+      \setmainfont{XCharter}
+    \else
+      \fontfamily{XCharter-TLF}\selectfont
+      \renewcommand{\rmdefault}{XCharter-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -576,9 +662,15 @@
 
 \DeclareOption{zpltlf}{
   \AtBeginDocument{
-    \fontfamily{zpltlf}\selectfont
-    \renewcommand{\rmdefault}{zpltlf}
-    \def\mathit{\textit}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{zpltlf}\selectfont
+      \renewcommand{\rmdefault}{zpltlf}
+      \def\mathit{\textit}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
