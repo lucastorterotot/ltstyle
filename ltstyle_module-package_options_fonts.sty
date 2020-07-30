@@ -310,8 +310,17 @@
 
 \DeclareOption{mak}{
   \AtBeginDocument{
-    \fontfamily{mak}\selectfont
-    \renewcommand{\rmdefault}{mak}
+    \ifLuaTeX
+      \setmainfont[Scale=0.9]{Kerkis}[
+        BoldFont = Kerkis-Bold,
+        ItalicFont = Kerkis-Italic,
+        BoldItalicFont = Kerkis-BoldItalic,
+        SmallCapsFont = Kerkis-SmallCaps,
+      ]
+    \else
+      \fontfamily{mak}\selectfont
+      \renewcommand{\rmdefault}{mak}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
