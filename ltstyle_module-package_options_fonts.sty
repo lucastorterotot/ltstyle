@@ -442,9 +442,15 @@
 
 \DeclareOption{ppl}{
   \AtBeginDocument{
-    \let\mathit\relax
-    \def\mathit{\textit}
-    \fontfamily{ppl}\selectfont
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \let\mathit\relax
+      \def\mathit{\textit}
+      \fontfamily{ppl}\selectfont
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
