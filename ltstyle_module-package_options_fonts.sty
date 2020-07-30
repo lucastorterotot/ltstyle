@@ -183,9 +183,14 @@
 \DeclareOption{fvs}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Bitstream Vera Sans}
+    \setsansfont{Bitstream Vera Sans}
+  \else
     \fontfamily{fvs}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{fvs}
+  \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
