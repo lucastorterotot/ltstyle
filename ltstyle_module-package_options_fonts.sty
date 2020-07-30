@@ -620,8 +620,14 @@
 
 \DeclareOption{Utopia}{
   \AtBeginDocument{
-    \fontfamily{futs}\selectfont
-    \renewcommand{\rmdefault}{futs}
+    \ifLuaTeX
+      \setmainfont[Scale=.92]{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{futs}\selectfont
+      \renewcommand{\rmdefault}{futs}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
