@@ -236,8 +236,12 @@
 
 \DeclareOption{kurier}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Kurier}
+  \else
     \fontfamily{kurier}\selectfont
     \renewcommand{\rmdefault}{kurier}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
