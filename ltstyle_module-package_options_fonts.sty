@@ -74,8 +74,12 @@
 
 \DeclareOption{Caladea}{
   \AtBeginDocument{
-    \fontfamily{Caladea-TLF}\selectfont
-    \renewcommand{\rmdefault}{Caladea-TLF}
+    \ifLuaTeX
+      \setmainfont{Caladea}
+    \else
+      \fontfamily{Caladea-TLF}\selectfont
+      \renewcommand{\rmdefault}{Caladea-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
