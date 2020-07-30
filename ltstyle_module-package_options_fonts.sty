@@ -664,9 +664,15 @@
 
 \DeclareOption{zpltlf}{
   \AtBeginDocument{
-    \fontfamily{zpltlf}\selectfont
-    \renewcommand{\rmdefault}{zpltlf}
-    \def\mathit{\textit}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{zpltlf}\selectfont
+      \renewcommand{\rmdefault}{zpltlf}
+      \def\mathit{\textit}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
