@@ -1,6 +1,14 @@
 \AtEndPreamble{
 \ifthenelse{\equal{\loadmathpazo}{true}}{\RequirePackage[sc]{mathpazo}}{} %TODO check compat
-\ifthenelse{\equal{\loadhelvet}{true}}{\RequirePackage[scaled=.95]{helvet}}{} %TODO check compat
+\ifthenelse{\equal{\loadhelvet}{true}}
+           {
+             \ifLuaTeX
+               \setsansfont[Scale=0.95]{TeX Gyre Heros}
+             \else
+               \RequirePackage[scaled=.95]{helvet}
+             \fi
+           }
+           {} %TODO check compat
 \ifthenelse{\equal{\loadavant}{true}}{\RequirePackage{avant}}{} %TODO check compat
 \ifthenelse{\equal{\loadmathptmx}{true}}{\RequirePackage{mathptmx}
 %\DeclareSymbolFont{calletters}{OMS}{cmsy}{m}{n}
