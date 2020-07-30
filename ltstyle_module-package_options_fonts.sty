@@ -293,9 +293,14 @@
 \DeclareOption{lmss}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{lmss}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{lmss}
+    \ifLuaTeX
+      \setmainfont{Latin Modern Sans}
+      \setsansfont{Latin Modern Sans}
+    \else
+      \fontfamily{lmss}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{lmss}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
