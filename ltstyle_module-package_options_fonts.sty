@@ -558,9 +558,26 @@
 \DeclareOption{Roboto}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{RobotoCondensed-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{RobotoCondensed-LF}
+    \ifLuaTeX
+      \setmainfont{Roboto Condensed Regular}[
+        BoldFont = RobotoCondensed-Bold,
+        ItalicFont = RobotoCondensed-Italic,
+        BoldItalicFont = RobotoCondensed-BoldItalic,
+        SlantedFont = RobotoCondensed-Italic,
+        BoldSlantedFont = RobotoCondensed-BoldItalic,
+      ]
+      \setsansfont{Roboto Condensed Regular}[
+        BoldFont = RobotoCondensed-Bold,
+        ItalicFont = RobotoCondensed-Italic,
+        BoldItalicFont = RobotoCondensed-BoldItalic,
+        SlantedFont = RobotoCondensed-Italic,
+        BoldSlantedFont = RobotoCondensed-BoldItalic,
+      ]
+    \else
+      \fontfamily{RobotoCondensed-LF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{RobotoCondensed-LF}
+    \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
