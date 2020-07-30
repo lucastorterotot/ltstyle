@@ -12,9 +12,14 @@
 \DeclareOption{Alegreya}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{AlegreyaSans-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{AlegreyaSans-LF}
+    \ifLuaTeX
+      \setmainfont[Numbers=Lining]{Alegreya Sans}
+      \setsansfont[Numbers=Lining]{Alegreya Sans}
+    \else
+      \fontfamily{AlegreyaSans-LF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{AlegreyaSans-LF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
