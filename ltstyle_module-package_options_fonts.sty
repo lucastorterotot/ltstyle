@@ -599,9 +599,18 @@
 \DeclareOption{Universalis}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Universalis ADF Std}[
+      BoldFont = UniversalisADFStd-Bold,
+    ]
+    \setsansfont{Universalis ADF Std}[
+      BoldFont = UniversalisADFStd-Bold,
+    ]
+  \else
     \fontfamily{UniversalisADFStd-LF}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{UniversalisADFStd-LF}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
