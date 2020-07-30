@@ -414,9 +414,14 @@
 \DeclareOption{phv}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Tex Gyre Heros}
+    \setsansfont{TeX Gyre Heros}
+  \else
     \fontfamily{phv}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{phv}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
