@@ -7,7 +7,7 @@ A LaTeX configuration.
 
 [![LaTeX2e Version](https://img.shields.io/static/v1?label=LaTeX2e&message=2020-02-02&color=blue)](https://www.latex-project.org/)
 [![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.14159265-2.6-1.40.20&color=blue)](https://www.tug.org/texlive/)
-[![LuaTeX Version](https://img.shields.io/static/v1?label=LuaTeX&message=&1.10.0&color=blue)](http://www.luatex.org/)
+[![LuaTeX Version](https://img.shields.io/static/v1?label=LuaTeX&message=1.10.0&color=blue)](http://www.luatex.org/)
 
 [![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.53&color=blue)](https://ctan.org/pkg/chemfig)
 [![simplekv Version](https://img.shields.io/static/v1?label=simplekv&message=0.2&color=blue)](https://ctan.org/pkg/simplekv)
