@@ -430,8 +430,14 @@
 
 \DeclareOption{mdput}{
   \AtBeginDocument{
-    \fontfamily{mdput}\selectfont
-    \renewcommand{\rmdefault}{mdput}
+    \ifLuaTeX
+      \setmainfont[Scale=.95]{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{mdput}\selectfont
+      \renewcommand{\rmdefault}{mdput}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
