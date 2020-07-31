@@ -151,9 +151,26 @@
 
 \DeclareOption{DejaVu}{
   \AtBeginDocument{
-    \fontfamily{DejaVuSerifCondensed-TLF}\selectfont
-    \renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}
-    \let\mathit\relax
+    \ifLuaTeX
+      \setmainfont{Deja Vu Serif Condensed}[
+        BoldFont = DejaVuSerifCondensed-Bold,
+        ItalicFont = DejaVuSerifCondensed-Italic,
+        BoldItalicFont = DejaVuSerifCondensed-BoldItalic,
+        SlantedFont = DejaVuSerifCondensed-Italic,
+        BoldSlantedFont = DejaVuSerifCondensed-BoldItalic,
+      ]
+      \setsansfont{Deja Vu Sans Condensed}[
+        BoldFont = DejaVuSansCondensed-Bold,
+        ItalicFont = DejaVuSansCondensed-Oblique,
+        BoldItalicFont = DejaVuSansCondensed-BoldOblique,
+        SlantedFont = DejaVuSansCondensed-Oblique,
+        BoldSlantedFont = DejaVuSansCondensed-BoldOblique,
+      ]
+    \else
+      \fontfamily{DejaVuSerifCondensed-TLF}\selectfont
+      \renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}
+      \let\mathit\relax
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
