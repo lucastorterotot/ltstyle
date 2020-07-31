@@ -9,7 +9,15 @@
              \fi
            }
            {} %TODO check compat
-\ifthenelse{\equal{\loadavant}{true}}{\RequirePackage{avant}}{} %TODO check compat
+\ifthenelse{\equal{\loadavant}{true}}
+           {
+             \ifLuaTeX
+               \setsansfont{TeX Gyre Adventor}
+             \else
+               \RequirePackage{avant}
+             \fi
+           }
+           {} %TODO check compat
 \ifthenelse{\equal{\loadmathptmx}{true}}{\RequirePackage{mathptmx}
 %\DeclareSymbolFont{calletters}{OMS}{cmsy}{m}{n}
 %\DeclareSymbolFontAlphabet{\mathcal}{calletters}

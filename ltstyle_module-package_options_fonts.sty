@@ -1,7 +1,17 @@
 \DeclareOption{Accanthis}{
   \AtBeginDocument{
-    \fontfamily{AccanthisADFStdNoThree-LF}\selectfont
-    \renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}
+    \ifLuaTeX
+      \setmainfont{AccanthisADFStdNo3-Regular}[
+        BoldFont = AccanthisADFStdNo3-Bold,
+        ItalicFont = AccanthisADFStdNo3-Italic,
+        BoldItalicFont = AccanthisADFStdNo3-BoldItalic,
+        SlantedFont = AccanthisADFStdNo3-Italic,
+        BoldSlantedFont = AccanthisADFStdNo3-BoldItalic,
+      ]
+    \else
+      \fontfamily{AccanthisADFStdNoThree-LF}\selectfont
+      \renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -29,8 +39,12 @@
 
 \DeclareOption{antp}{
   \AtBeginDocument{
-    \fontfamily{antp}\selectfont
-    \renewcommand{\rmdefault}{antp}
+    \ifLuaTeX
+      \setmainfont{Antykwa Poltawskiego}
+    \else
+      \fontfamily{antp}\selectfont
+      \renewcommand{\rmdefault}{antp}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -40,8 +54,18 @@
 
 \DeclareOption{artemisia}{
   \AtBeginDocument{
-    \fontfamily{artemisiaeuler}\selectfont
-    \renewcommand{\rmdefault}{artemisiaeuler}
+    \ifLuaTeX
+      \setmainfont{GFSArtemisia-Regular}[
+        BoldFont = GFSArtemisia-Bold,
+        ItalicFont = GFSArtemisia-Italic,
+        BoldItalicFont = GFSArtemisia-BoldItalic,
+        SlantedFont = GFSArtemisia-Italic,
+        BoldSlantedFont = GFSArtemisia-BoldItalic,
+      ]
+    \else
+      \fontfamily{artemisiaeuler}\selectfont
+      \renewcommand{\rmdefault}{artemisiaeuler}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -51,8 +75,12 @@
 
 \DeclareOption{bch}{
   \AtBeginDocument{
-    \fontfamily{bch}\selectfont
-    \renewcommand{\rmdefault}{bch}
+    \ifLuaTeX
+      \setmainfont{XCharter}
+    \else
+      \fontfamily{bch}\selectfont
+      \renewcommand{\rmdefault}{bch}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -62,9 +90,14 @@
 
 \DeclareOption{Biolinum}{
   \AtBeginDocument{
-    \let\mathit\relax\def\mathit{\textit}
-    \fontfamily{LinuxBiolinumT-OsF}\selectfont
-    \renewcommand{\rmdefault}{LinuxBiolinumT-OsF}
+    \ifLuaTeX
+      \setmainfont{Linux Biolinum O}
+      \setsansfont{Linux Biolinum O}
+    \else
+      \let\mathit\relax\def\mathit{\textit}
+      \fontfamily{LinuxBiolinumT-OsF}\selectfont
+      \renewcommand{\rmdefault}{LinuxBiolinumT-OsF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -103,8 +136,12 @@
 
 \DeclareOption{Crimson}{
   \AtBeginDocument{
-    \fontfamily{Crimson-TLF}\selectfont
-    \renewcommand{\rmdefault}{Crimson-TLF}
+    \ifLuaTeX
+      \setmainfont[Scale=.95]{TeX Gyre Termes}
+    \else
+      \fontfamily{Crimson-TLF}\selectfont
+      \renewcommand{\rmdefault}{Crimson-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -114,9 +151,26 @@
 
 \DeclareOption{DejaVu}{
   \AtBeginDocument{
-    \fontfamily{DejaVuSerifCondensed-TLF}\selectfont
-    \renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}
-    \let\mathit\relax
+    \ifLuaTeX
+      \setmainfont{Deja Vu Serif Condensed}[
+        BoldFont = DejaVuSerifCondensed-Bold,
+        ItalicFont = DejaVuSerifCondensed-Italic,
+        BoldItalicFont = DejaVuSerifCondensed-BoldItalic,
+        SlantedFont = DejaVuSerifCondensed-Italic,
+        BoldSlantedFont = DejaVuSerifCondensed-BoldItalic,
+      ]
+      \setsansfont{Deja Vu Sans Condensed}[
+        BoldFont = DejaVuSansCondensed-Bold,
+        ItalicFont = DejaVuSansCondensed-Oblique,
+        BoldItalicFont = DejaVuSansCondensed-BoldOblique,
+        SlantedFont = DejaVuSansCondensed-Oblique,
+        BoldSlantedFont = DejaVuSansCondensed-BoldOblique,
+      ]
+    \else
+      \fontfamily{DejaVuSerifCondensed-TLF}\selectfont
+      \renewcommand{\rmdefault}{DejaVuSerifCondensed-TLF}
+      \let\mathit\relax
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -127,10 +181,27 @@
 \DeclareOption{DejaVuSans}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{DejaVuSansCondensed-TLF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{DejaVuSansCondensed-TLF}
-    \let\mathit\relax
+    \ifLuaTeX
+      \setmainfont{Deja Vu Sans Condensed}[
+        BoldFont = DejaVuSansCondensed-Bold,
+        ItalicFont = DejaVuSansCondensed-Oblique,
+        BoldItalicFont = DejaVuSansCondensed-BoldOblique,
+        SlantedFont = DejaVuSansCondensed-Oblique,
+        BoldSlantedFont = DejaVuSansCondensed-BoldOblique,
+      ]
+      \setsansfont{Deja Vu Sans Condensed}[
+        BoldFont = DejaVuSansCondensed-Bold,
+        ItalicFont = DejaVuSansCondensed-Oblique,
+        BoldItalicFont = DejaVuSansCondensed-BoldOblique,
+        SlantedFont = DejaVuSansCondensed-Oblique,
+        BoldSlantedFont = DejaVuSansCondensed-BoldOblique,
+      ]
+    \else
+      \fontfamily{DejaVuSansCondensed-TLF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{DejaVuSansCondensed-TLF}
+      \let\mathit\relax
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -141,9 +212,14 @@
 \DeclareOption{Fira}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{FiraSans-TLF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{Fira}
+    \ifLuaTeX
+      \setmainfont{Fira Sans}
+      \setsansfont{Fira Sans}
+    \else
+      \fontfamily{FiraSans-TLF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{Fira}
+    \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
@@ -171,8 +247,12 @@
 
 \DeclareOption{fnc}{
   \AtBeginDocument{
-    \fontfamily{fnc}\selectfont
-    \renewcommand{\rmdefault}{fnc}
+    \ifLuaTeX
+      \setmainfont[Scale=.92]{Tex Gyre Schola}
+    \else
+      \fontfamily{fnc}\selectfont
+      \renewcommand{\rmdefault}{fnc}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -200,8 +280,12 @@
 
 \DeclareOption{gentium}{
   \AtBeginDocument{
-    \fontfamily{gentium}\selectfont
-    \renewcommand{\rmdefault}{gentium}
+    \ifLuaTeX
+      \setmainfont{Gentium Basic}
+    \else
+      \fontfamily{gentium}\selectfont
+      \renewcommand{\rmdefault}{gentium}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -212,9 +296,14 @@
 \DeclareOption{Gillius}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{GilliusADFNoTwoCond-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{GilliusADFNoTwoCond-LF}
+    \ifLuaTeX
+      \setmainfont{GilliusADFNo2-Cond}
+      \setsansfont{GilliusADFNo2-Cond}
+    \else
+      \fontfamily{GilliusADFNoTwoCond-LF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{GilliusADFNoTwoCond-LF}
+    \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
@@ -224,9 +313,13 @@
 
 \DeclareOption{jkp}{
   \AtBeginDocument{
-    \fontfamily{jkp}\selectfont
-    \renewcommand{\rmdefault}{jkp}
-    \def\mathit{\textit}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}
+    \else
+      \fontfamily{jkp}\selectfont
+      \renewcommand{\rmdefault}{jkp}
+      \def\mathit{\textit}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -266,10 +359,17 @@
 }
 
 \DeclareOption{LibreCaslon}{
-  \AtBeginDocument{
-    \fontfamily{LibreCaslonText-TLF}\selectfont
-    \renewcommand{\rmdefault}{LibreCaslonText-TLF}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage{librecaslon}
+      %\setmainfont{Libre Caslon}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{LibreCaslonText-TLF}\selectfont
+      \renewcommand{\rmdefault}{LibreCaslonText-TLF}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
@@ -330,8 +430,14 @@
 
 \DeclareOption{mdput}{
   \AtBeginDocument{
-    \fontfamily{mdput}\selectfont
-    \renewcommand{\rmdefault}{mdput}
+    \ifLuaTeX
+      \setmainfont[Scale=.95]{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{mdput}\selectfont
+      \renewcommand{\rmdefault}{mdput}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -341,8 +447,12 @@
 
 \DeclareOption{Nimbus}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Termes}
+  \else
     \fontfamily{NimbusSerif}\selectfont
     \renewcommand{\rmdefault}{NimbusSerif}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -353,9 +463,14 @@
 \DeclareOption{NimbusSans}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Heros}
+    \setsansfont{TeX Gyre Heros}
+  \else
     \fontfamily{NimbusSans}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{NimbusSans}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -365,8 +480,12 @@
 
 \DeclareOption{ntxlf}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Termes}
+  \else
     \fontfamily{ntxlf}\selectfont
     \renewcommand{\rmdefault}{ntxlf}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -377,9 +496,13 @@
 \DeclareOption{pag}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Adventor}
+  \else
     \fontfamily{pag}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{pag}
+  \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
@@ -389,10 +512,14 @@
 
 \DeclareOption{pbk}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Bonum}
+  \else
+    \fontfamily{pcr}\selectfont
+    \renewcommand{\rmdefault}{pcr}
     \let\mathit\relax
     \newcommand{\mathit}[1]{{\fontfamily{ppl}\selectfont\textit{#1}}}
-    \fontfamily{pbk}\selectfont
-    \renewcommand{\rmdefault}{pbk}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -402,8 +529,12 @@
 
 \DeclareOption{pcr}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{FreeMono}
+  \else
     \fontfamily{pcr}\selectfont
     \renewcommand{\rmdefault}{pcr}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -431,8 +562,12 @@
 
 \DeclareOption{pnc}{
   \AtBeginDocument{
-    \fontfamily{pnc}\selectfont
-    \renewcommand{\rmdefault}{pnc}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Schola}
+    \else
+      \fontfamily{pnc}\selectfont
+      \renewcommand{\rmdefault}{pnc}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -482,8 +617,14 @@
 
 \DeclareOption{put}{
   \AtBeginDocument{
-    \fontfamily{put}\selectfont
-    \renewcommand{\rmdefault}{put}
+    \ifLuaTeX
+      \setmainfont{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{put}\selectfont
+      \renewcommand{\rmdefault}{put}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -494,9 +635,14 @@
 \DeclareOption{pxss}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{pxss}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{pxss}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Heros}
+      \setsansfont{TeX Gyre Heros}
+    \else
+      \fontfamily{pxss}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{pxss}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -506,11 +652,15 @@
 
 \DeclareOption{pzc}{
   \AtBeginDocument{
-    \fontfamily{pzc}\selectfont
-    \renewcommand{\rmdefault}{pzc}
-    \let\mathit\relax
-    \let\mathcal\relax
-    \newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Chorus}
+    \else
+      \fontfamily{pzc}\selectfont
+      \renewcommand{\rmdefault}{pzc}
+      \let\mathit\relax
+      \let\mathcal\relax
+      \newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -520,8 +670,12 @@
 
 \DeclareOption{qcs}{
   \AtBeginDocument{
-    \fontfamily{qcs}\selectfont
-    \renewcommand{\rmdefault}{qcs}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Schola}
+    \else
+      \fontfamily{qcs}\selectfont
+      \renewcommand{\rmdefault}{qcs}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -530,11 +684,17 @@
 }
 
 \DeclareOption{Quattrocento}{
-  \AtBeginDocument{
-    \fontfamily{Quattrocento-TLF}\selectfont
-    \renewcommand{\rmdefault}{Quattrocento-TLF}
-    \def\mathit{\textit}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage[rm,sf]{quattrocento}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{Quattrocento-TLF}\selectfont
+      \renewcommand{\rmdefault}{Quattrocento-TLF}
+      \def\mathit{\textit}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
@@ -543,12 +703,22 @@
 
 \DeclareOption{QuattrocentoSans}{
   \def\SIunitfamily{\sf}
-  \AtBeginDocument{
-    \fontfamily{QuattrocentoSans-TLF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{QuattrocentoSans-TLF}
-    \def\mathit{\textit}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage[rm,sf,sfdefault]{quattrocento}
+    }
+    \AtBeginDocument{
+      \setmainfont{QuattrocentoSans}
+      \setsansfont{QuattrocentoSans}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{QuattrocentoSans-TLF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{QuattrocentoSans-TLF}
+      \def\mathit{\textit}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
@@ -587,8 +757,12 @@
 
 \DeclareOption{Tempora}{
   \AtBeginDocument{
-    \fontfamily{Tempora-TOsF}\selectfont
-    \renewcommand{\rmdefault}{Tempora-TOsF}
+    \ifLuaTeX
+      \setmainfont[Numbers={OldStyle}]{TeX Gyre Termes}
+    \else
+      \fontfamily{Tempora-TOsF}\selectfont
+      \renewcommand{\rmdefault}{Tempora-TOsF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -653,8 +827,18 @@
 
 \DeclareOption{yv2}{
   \AtBeginDocument{
-    \fontfamily{yv2}\selectfont
-    \renewcommand{\rmdefault}{yv2}
+    \ifLuaTeX
+      \setmainfont[Scale=.8, LetterSpace=2,WordSpace={1.3}]{Erewhon Regular}[
+        BoldFont = Erewhon Bold,
+        ItalicFont = Erewhon Italic,
+        BoldItalicFont = Erewhon Bold Italic,
+        SlantedFont = Erewhon Regular Slanted,
+        BoldSlantedFont = Erewhon Bold Slanted,
+      ]
+    \else
+      \fontfamily{yv2}\selectfont
+      \renewcommand{\rmdefault}{yv2}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
