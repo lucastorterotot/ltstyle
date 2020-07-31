@@ -617,8 +617,14 @@
 
 \DeclareOption{put}{
   \AtBeginDocument{
-    \fontfamily{put}\selectfont
-    \renewcommand{\rmdefault}{put}
+    \ifLuaTeX
+      \setmainfont{Heuristica}[
+        SlantedFont = Erewhon Regular Slanted,
+      ]
+    \else
+      \fontfamily{put}\selectfont
+      \renewcommand{\rmdefault}{put}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
