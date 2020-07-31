@@ -562,8 +562,12 @@
 
 \DeclareOption{pnc}{
   \AtBeginDocument{
-    \fontfamily{pnc}\selectfont
-    \renewcommand{\rmdefault}{pnc}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Schola}
+    \else
+      \fontfamily{pnc}\selectfont
+      \renewcommand{\rmdefault}{pnc}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
