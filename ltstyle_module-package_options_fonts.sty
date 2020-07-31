@@ -684,11 +684,17 @@
 }
 
 \DeclareOption{Quattrocento}{
-  \AtBeginDocument{
-    \fontfamily{Quattrocento-TLF}\selectfont
-    \renewcommand{\rmdefault}{Quattrocento-TLF}
-    \def\mathit{\textit}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage[rm,sf]{quattrocento}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{Quattrocento-TLF}\selectfont
+      \renewcommand{\rmdefault}{Quattrocento-TLF}
+      \def\mathit{\textit}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
