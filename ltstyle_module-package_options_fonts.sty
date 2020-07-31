@@ -827,8 +827,18 @@
 
 \DeclareOption{yv2}{
   \AtBeginDocument{
-    \fontfamily{yv2}\selectfont
-    \renewcommand{\rmdefault}{yv2}
+    \ifLuaTeX
+      \setmainfont[Scale=.8, LetterSpace=2,WordSpace={1.3}]{Erewhon Regular}[
+        BoldFont = Erewhon Bold,
+        ItalicFont = Erewhon Italic,
+        BoldItalicFont = Erewhon Bold Italic,
+        SlantedFont = Erewhon Regular Slanted,
+        BoldSlantedFont = Erewhon Bold Slanted,
+      ]
+    \else
+      \fontfamily{yv2}\selectfont
+      \renewcommand{\rmdefault}{yv2}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
