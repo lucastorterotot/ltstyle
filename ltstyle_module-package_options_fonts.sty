@@ -512,10 +512,14 @@
 
 \DeclareOption{pbk}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Bonum}
+  \else
+    \fontfamily{pcr}\selectfont
+    \renewcommand{\rmdefault}{pcr}
     \let\mathit\relax
     \newcommand{\mathit}[1]{{\fontfamily{ppl}\selectfont\textit{#1}}}
-    \fontfamily{pbk}\selectfont
-    \renewcommand{\rmdefault}{pbk}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
