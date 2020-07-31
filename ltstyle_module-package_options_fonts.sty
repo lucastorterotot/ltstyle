@@ -670,8 +670,12 @@
 
 \DeclareOption{qcs}{
   \AtBeginDocument{
-    \fontfamily{qcs}\selectfont
-    \renewcommand{\rmdefault}{qcs}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Schola}
+    \else
+      \fontfamily{qcs}\selectfont
+      \renewcommand{\rmdefault}{qcs}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
