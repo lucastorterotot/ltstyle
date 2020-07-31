@@ -54,8 +54,18 @@
 
 \DeclareOption{artemisia}{
   \AtBeginDocument{
-    \fontfamily{artemisiaeuler}\selectfont
-    \renewcommand{\rmdefault}{artemisiaeuler}
+    \ifLuaTeX
+      \setmainfont{GFSArtemisia-Regular}[
+        BoldFont = GFSArtemisia-Bold,
+        ItalicFont = GFSArtemisia-Italic,
+        BoldItalicFont = GFSArtemisia-BoldItalic,
+        SlantedFont = GFSArtemisia-Italic,
+        BoldSlantedFont = GFSArtemisia-BoldItalic,
+      ]
+    \else
+      \fontfamily{artemisiaeuler}\selectfont
+      \renewcommand{\rmdefault}{artemisiaeuler}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
