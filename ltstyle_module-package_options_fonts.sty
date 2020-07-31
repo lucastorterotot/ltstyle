@@ -136,8 +136,12 @@
 
 \DeclareOption{Crimson}{
   \AtBeginDocument{
-    \fontfamily{Crimson-TLF}\selectfont
-    \renewcommand{\rmdefault}{Crimson-TLF}
+    \ifLuaTeX
+      \setmainfont[Scale=.95]{TeX Gyre Termes}
+    \else
+      \fontfamily{Crimson-TLF}\selectfont
+      \renewcommand{\rmdefault}{Crimson-TLF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
