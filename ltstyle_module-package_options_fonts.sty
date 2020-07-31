@@ -90,9 +90,14 @@
 
 \DeclareOption{Biolinum}{
   \AtBeginDocument{
-    \let\mathit\relax\def\mathit{\textit}
-    \fontfamily{LinuxBiolinumT-OsF}\selectfont
-    \renewcommand{\rmdefault}{LinuxBiolinumT-OsF}
+    \ifLuaTeX
+      \setmainfont{Linux Biolinum O}
+      \setsansfont{Linux Biolinum O}
+    \else
+      \let\mathit\relax\def\mathit{\textit}
+      \fontfamily{LinuxBiolinumT-OsF}\selectfont
+      \renewcommand{\rmdefault}{LinuxBiolinumT-OsF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
