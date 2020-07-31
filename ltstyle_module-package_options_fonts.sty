@@ -652,11 +652,15 @@
 
 \DeclareOption{pzc}{
   \AtBeginDocument{
-    \fontfamily{pzc}\selectfont
-    \renewcommand{\rmdefault}{pzc}
-    \let\mathit\relax
-    \let\mathcal\relax
-    \newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Chorus}
+    \else
+      \fontfamily{pzc}\selectfont
+      \renewcommand{\rmdefault}{pzc}
+      \let\mathit\relax
+      \let\mathcal\relax
+      \newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
