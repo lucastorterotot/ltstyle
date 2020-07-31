@@ -447,8 +447,12 @@
 
 \DeclareOption{Nimbus}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Termes}
+  \else
     \fontfamily{NimbusSerif}\selectfont
     \renewcommand{\rmdefault}{NimbusSerif}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
