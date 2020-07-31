@@ -280,8 +280,12 @@
 
 \DeclareOption{gentium}{
   \AtBeginDocument{
-    \fontfamily{gentium}\selectfont
-    \renewcommand{\rmdefault}{gentium}
+    \ifLuaTeX
+      \setmainfont{Gentium Basic}
+    \else
+      \fontfamily{gentium}\selectfont
+      \renewcommand{\rmdefault}{gentium}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
