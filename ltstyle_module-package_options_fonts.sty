@@ -359,10 +359,17 @@
 }
 
 \DeclareOption{LibreCaslon}{
-  \AtBeginDocument{
-    \fontfamily{LibreCaslonText-TLF}\selectfont
-    \renewcommand{\rmdefault}{LibreCaslonText-TLF}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage{librecaslon}
+      %\setmainfont{Libre Caslon}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{LibreCaslonText-TLF}\selectfont
+      \renewcommand{\rmdefault}{LibreCaslonText-TLF}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
