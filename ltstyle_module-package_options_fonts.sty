@@ -75,8 +75,12 @@
 
 \DeclareOption{bch}{
   \AtBeginDocument{
-    \fontfamily{bch}\selectfont
-    \renewcommand{\rmdefault}{bch}
+    \ifLuaTeX
+      \setmainfont{XCharter}
+    \else
+      \fontfamily{bch}\selectfont
+      \renewcommand{\rmdefault}{bch}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
