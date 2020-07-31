@@ -703,12 +703,22 @@
 
 \DeclareOption{QuattrocentoSans}{
   \def\SIunitfamily{\sf}
-  \AtBeginDocument{
-    \fontfamily{QuattrocentoSans-TLF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{QuattrocentoSans-TLF}
-    \def\mathit{\textit}
-  }
+  \ifLuaTeX
+    \AtEndPreamble{
+      \usepackage[rm,sf,sfdefault]{quattrocento}
+    }
+    \AtBeginDocument{
+      \setmainfont{QuattrocentoSans}
+      \setsansfont{QuattrocentoSans}
+    }
+  \else
+    \AtBeginDocument{
+      \fontfamily{QuattrocentoSans-TLF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{QuattrocentoSans-TLF}
+      \def\mathit{\textit}
+    }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
