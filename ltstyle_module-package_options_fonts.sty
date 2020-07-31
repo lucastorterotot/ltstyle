@@ -313,9 +313,13 @@
 
 \DeclareOption{jkp}{
   \AtBeginDocument{
-    \fontfamily{jkp}\selectfont
-    \renewcommand{\rmdefault}{jkp}
-    \def\mathit{\textit}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Pagella}
+    \else
+      \fontfamily{jkp}\selectfont
+      \renewcommand{\rmdefault}{jkp}
+      \def\mathit{\textit}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
