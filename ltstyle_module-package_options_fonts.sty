@@ -635,9 +635,14 @@
 \DeclareOption{pxss}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{pxss}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{pxss}
+    \ifLuaTeX
+      \setmainfont{TeX Gyre Heros}
+      \setsansfont{TeX Gyre Heros}
+    \else
+      \fontfamily{pxss}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{pxss}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
