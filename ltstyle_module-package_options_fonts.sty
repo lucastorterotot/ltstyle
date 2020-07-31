@@ -39,8 +39,12 @@
 
 \DeclareOption{antp}{
   \AtBeginDocument{
-    \fontfamily{antp}\selectfont
-    \renewcommand{\rmdefault}{antp}
+    \ifLuaTeX
+      \setmainfont{Antykwa Poltawskiego}
+    \else
+      \fontfamily{antp}\selectfont
+      \renewcommand{\rmdefault}{antp}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
