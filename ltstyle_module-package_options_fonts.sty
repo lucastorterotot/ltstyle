@@ -247,8 +247,12 @@
 
 \DeclareOption{fnc}{
   \AtBeginDocument{
-    \fontfamily{fnc}\selectfont
-    \renewcommand{\rmdefault}{fnc}
+    \ifLuaTeX
+      \setmainfont[Scale=.92]{Tex Gyre Schola}
+    \else
+      \fontfamily{fnc}\selectfont
+      \renewcommand{\rmdefault}{fnc}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
