@@ -212,9 +212,14 @@
 \DeclareOption{Fira}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{FiraSans-TLF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{Fira}
+    \ifLuaTeX
+      \setmainfont{Fira Sans}
+      \setsansfont{Fira Sans}
+    \else
+      \fontfamily{FiraSans-TLF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{Fira}
+    \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
