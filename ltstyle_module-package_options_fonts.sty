@@ -496,9 +496,13 @@
 \DeclareOption{pag}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Adventor}
+  \else
     \fontfamily{pag}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{pag}
+  \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
