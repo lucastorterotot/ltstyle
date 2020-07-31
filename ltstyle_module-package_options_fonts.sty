@@ -1,7 +1,17 @@
 \DeclareOption{Accanthis}{
   \AtBeginDocument{
-    \fontfamily{AccanthisADFStdNoThree-LF}\selectfont
-    \renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}
+    \ifLuaTeX
+      \setmainfont{AccanthisADFStdNo3-Regular}[
+        BoldFont = AccanthisADFStdNo3-Bold,
+        ItalicFont = AccanthisADFStdNo3-Italic,
+        BoldItalicFont = AccanthisADFStdNo3-BoldItalic,
+        SlantedFont = AccanthisADFStdNo3-Italic,
+        BoldSlantedFont = AccanthisADFStdNo3-BoldItalic,
+      ]
+    \else
+      \fontfamily{AccanthisADFStdNoThree-LF}\selectfont
+      \renewcommand{\rmdefault}{AccanthisADFStdNoThree-LF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
