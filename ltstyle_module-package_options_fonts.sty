@@ -296,9 +296,14 @@
 \DeclareOption{Gillius}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
-    \fontfamily{GilliusADFNoTwoCond-LF}\selectfont
-    \renewcommand{\rmdefault}{\sfdefault}
-    \def\sfdefault{GilliusADFNoTwoCond-LF}
+    \ifLuaTeX
+      \setmainfont{GilliusADFNo2-Cond}
+      \setsansfont{GilliusADFNo2-Cond}
+    \else
+      \fontfamily{GilliusADFNoTwoCond-LF}\selectfont
+      \renewcommand{\rmdefault}{\sfdefault}
+      \def\sfdefault{GilliusADFNoTwoCond-LF}
+    \fi
   }
   \def\loadavant{true}
   \def\loadhelvet{false}
