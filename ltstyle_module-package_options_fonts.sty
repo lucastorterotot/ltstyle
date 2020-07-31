@@ -757,8 +757,12 @@
 
 \DeclareOption{Tempora}{
   \AtBeginDocument{
-    \fontfamily{Tempora-TOsF}\selectfont
-    \renewcommand{\rmdefault}{Tempora-TOsF}
+    \ifLuaTeX
+      \setmainfont[Numbers={OldStyle}]{TeX Gyre Termes}
+    \else
+      \fontfamily{Tempora-TOsF}\selectfont
+      \renewcommand{\rmdefault}{Tempora-TOsF}
+    \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
