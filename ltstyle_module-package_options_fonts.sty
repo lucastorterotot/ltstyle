@@ -529,8 +529,12 @@
 
 \DeclareOption{pcr}{
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{FreeMono}
+  \else
     \fontfamily{pcr}\selectfont
     \renewcommand{\rmdefault}{pcr}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
