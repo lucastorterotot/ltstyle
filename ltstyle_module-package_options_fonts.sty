@@ -463,9 +463,14 @@
 \DeclareOption{NimbusSans}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{TeX Gyre Heros}
+    \setsansfont{TeX Gyre Heros}
+  \else
     \fontfamily{NimbusSans}\selectfont
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{NimbusSans}
+  \fi
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
