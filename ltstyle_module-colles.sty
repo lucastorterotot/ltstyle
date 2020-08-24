@@ -110,9 +110,9 @@
 
 \renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/20}\par\noindent{Cours (qdc)\quad\qquad/7\hfill (exos)\quad\qquad/3\hfill Savoir-faire\quad\qquad/6\hfill Oral\quad\qquad/4}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill}
 
-{\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles QdC}~~~}
-\def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles QdCs}~~~}
-\renewcommand{\exo}[2][Exercice]{\par\bigskip\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\bfseries\familyfortitles Exo}~~~##2 \endinput\par\vfill}
+{\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdC}~~~}
+\def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdCs}~~~}
+\renewcommand{\exo}[2][Exercice]{\par\bigskip\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries Exo}~~~##2 \endinput\par\vfill}
 \thelistecollesujets
 
 \label{rapport}}
@@ -149,8 +149,8 @@
 
 \newcounter{exocolle}[elevecompteur]
 \def\thesubexo{\arabic{subexo}}
-\def\qdc{\par\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles Question de cours}~~~}
-\def\qdcs{\par\noindent\setcounter{quest}{0}{\large\bfseries\familyfortitles Questions de cours}~~~}
+\def\qdc{\par\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries Question de cours}~~~}
+\def\qdcs{\par\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries Questions de cours}~~~}
 \renewcommand{\exo}[2][]{\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}
 \subsection*{#2}}
 %\newcounter{subexocolle}[exocolle]
