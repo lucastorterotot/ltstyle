@@ -29,7 +29,7 @@
 \vspace{\baselineskip}\par
 \refstepcounter{exopart}
 \begin{center}
-\Large\bfseries\boldmath\familyfortitles
+\Large\familyfortitles\boldmath\bfseries
 {\letterexopart#1 \theexopart}
 \par\nobreak
 {#2}\unboldmath
@@ -89,7 +89,7 @@
 
 \ifdefined\sujetcompletend \else \def\sujetcompletend{}\fi
 \renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
-\LARGE\bfseries\familyfortitles #1
+\LARGE\familyfortitles\bfseries #1
 \end{center}}
 
 \ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi

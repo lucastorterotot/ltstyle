@@ -24,7 +24,7 @@
 \ifthenelse{\equal{\insertlongclasse}{}\or\equal{\insertinstitute}{}}{~}{Année \insertanneescol}}
 
 \newcommand{\insertpagegarde}{\thispagestyle{empty}
-{\setlength{\parindent}{0pt}\Large\bfseries\boldmath\color{\covertextcolor}
+{\setlength{\parindent}{0pt}\Large\boldmath\bfseries\color{\covertextcolor}
 ~
 
 \vspace{0.06\paperheight}
@@ -158,12 +158,12 @@
 %    \def\insertclasse\classeorig}
 
 
-\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TP}}{{\bfseries\boldmath\familyfortitles\huge\vphantom{Àq}\unboldmath\vspace{0.5cm}}}{}}{{\bfseries\boldmath\familyfortitles\huge\insertmatiere\unboldmath\vspace{0.5cm}}}
+\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TP}}{{\familyfortitles\boldmath\bfseries\huge\vphantom{Àq}\unboldmath\vspace{0.5cm}}}{}}{{\familyfortitles\boldmath\bfseries\huge\insertmatiere\unboldmath\vspace{0.5cm}}}
 
 %\ifthenelse{\equal{\PackageOption}{book}}{\thispagestyle{empty} \noindent \insertauthor}{}
-\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}}{}{{\bfseries\boldmath\familyfortitles\LARGE \TitleToUse\unboldmath}}
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}}{}{{\familyfortitles\boldmath\bfseries\LARGE \TitleToUse\unboldmath}}
 
-\ifthenelse{\equal{\insertsubtitle}{}}{}{{\bfseries\boldmath\familyfortitles\large \insertsubtitle\unboldmath}}
+\ifthenelse{\equal{\insertsubtitle}{}}{}{{\familyfortitles\boldmath\bfseries\large \insertsubtitle\unboldmath}}
 
 \ifthenelse{\equal{\PackageOption}{colle}}{Colleur :\!\!}{}
 \ifthenelse{\equal{\PackageOption}{kholle}}{Khôlleur :}{}

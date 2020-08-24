@@ -3,7 +3,7 @@
 \vspace{\baselineskip}\par
 \setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
 \begin{center}
-\LARGE\bfseries\boldmath\familyfortitles
+\LARGE\familyfortitles\boldmath\bfseries
 \uppercase{#1 \theexopart~-~#2}
 \unboldmath
 \end{center}
@@ -18,7 +18,7 @@
 \renewcommand{\exo}[2][Problème]{\ExoBaremeMake\vspace{\baselineskip}\par
 \setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
 \begin{center}
-\LARGE\bfseries\boldmath\familyfortitles
+\LARGE\familyfortitles\boldmath\bfseries
 \uppercase{#1 \theexo}\\
 #2
 \unboldmath
@@ -28,7 +28,7 @@
 \renewcommand{\subexo}[2][Partie]{\vspace{\baselineskip}\par
 \setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo}
 \begin{center}
-\Large\bfseries\boldmath\familyfortitles
+\Large\familyfortitles\boldmath\bfseries
 #1 \thesubexo~--~#2
 \unboldmath
 \end{center}
@@ -81,7 +81,7 @@
 \def\questseries{}
 
 \renewcommand{\sujetcompletend}[1][FIN]{\bigskip\begin{center}
-\Large\bfseries\familyfortitles #1
+\Large\familyfortitles\bfseries #1
 \end{center}}
 
 \ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi
