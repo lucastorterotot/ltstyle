@@ -5,7 +5,7 @@
 \begin{center}
 \shabox{\begin{minipage}{10.9cm}
 \begin{center}
-\bfseries\boldmath {\Large\uppercase{\Letterexopart#1 \theexopart}}\\ \LARGE \uppercase{#2}\unboldmath
+\boldmath\bfseries{\Large\uppercase{\Letterexopart#1 \theexopart}}\\ \LARGE \uppercase{#2}\unboldmath
 \end{center}
 \end{minipage}}
 \end{center}
@@ -16,9 +16,9 @@
 \def\thesubexo{\theexo.\arabic{subexo}}
 \def\thesubsubexo{\thesubexo.\roman{subsubexo}}
 
-\renewcommand{\exo}[2][]{\ExoBaremeMake\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\bfseries\familyfortitles #1 \theexo~/~\uppercase{#2} \end{center}\ExoBaremeWrite\par}
-\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \begin{center}\bfseries\familyfortitles #1 \thesubexo~/~\uppercase{#2} \end{center}\par}
-\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo}\begin{center}\bfseries\familyfortitles #1 \thesubsubexo~/~{#2} \end{center}\par}
+\renewcommand{\exo}[2][]{\ExoBaremeMake\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\familyfortitles\bfseries #1 \theexo~/~\uppercase{#2} \end{center}\ExoBaremeWrite\par}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \begin{center}\familyfortitles\bfseries #1 \thesubexo~/~\uppercase{#2} \end{center}\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo}\begin{center}\familyfortitles\bfseries #1 \thesubsubexo~/~{#2} \end{center}\par}
 
 \def\numquest{\Alph{exo}\arabic{quest}}
 \def\numsubquest{\alph{subquest}}
@@ -68,7 +68,7 @@
 \def\questseries{}
 
 \renewcommand{\sujetcompletend}[1][Fin de l'épreuve]{\bigskip\begin{center}
-\Large\bfseries\familyfortitles #1
+\Large\familyfortitles\bfseries #1
 \end{center}}
 
 \ifdefined\sujetcompletexoend \else \def\sujetcompletexoend{}\fi
