@@ -9,9 +9,11 @@
 \@ifpackagewith{babel}{french}{
 \def\mydecimalsign{,}
 \def\mythousandsep{\,}
+\def\myintervalsep{;}
 }{
 \def\mydecimalsign{.}
 \def\mythousandsep{,}
+\def\myintervalsep{,}
 }
 \@ifpackageloaded{polyglossia}
                  {\AtBeginDocument{
@@ -19,15 +21,18 @@
                                 {
                                   \def\mydecimalsign{,}
                                   \def\mythousandsep{\,}
+                                  \def\myintervalsep{;}
                                 }
                                 {
                                   \def\mydecimalsign{.}
                                   \def\mythousandsep{,}
+                                  \def\myintervalsep{,}
                                 }
                    }
                  }
                  {}
 \makeatother
+\def\isp{\myintervalsep}
 \def\myproductsign{\!\times\!}
 \def\myunitsep{\usp}
 \def\myunitdot{\usk}
