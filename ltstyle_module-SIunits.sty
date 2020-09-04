@@ -16,18 +16,11 @@
 \def\myintervalsep{,}
 }
 \@ifpackageloaded{polyglossia}
-                 {\AtBeginDocument{
-                     \iflanguage{french}
-                                {
-                                  \def\mydecimalsign{,}
-                                  \def\mythousandsep{\,}
-                                  \def\myintervalsep{;}
-                                }
-                                {
-                                  \def\mydecimalsign{.}
-                                  \def\mythousandsep{,}
-                                  \def\myintervalsep{,}
-                                }
+                 {
+                   \AtBeginDocument{
+                     \def\mydecimalsign{\iflanguage{french}{,}{.}}
+                     \def\mythousandsep{\iflanguage{french}{\,}{,}}
+                     \def\myintervalsep{\iflanguage{french}{;}{,}}
                    }
                  }
                  {}
