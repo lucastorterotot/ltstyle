@@ -51,7 +51,3 @@ in the `STYLE_MAP` dictionnary. The last names (`ltTangodarkStyle`, `ltEmacsStyl
 ## Usage
 ### Guides
 Documentation will be published later.
-
-### Some documents for education
-One can find [here](https://www.dropbox.com/sh/kn9fxcoymh2nzmq/AAD4f_ximo6Pj4Mse9UPJIgSa?dl=0) some documents, written in french, produced with this LaTeX package and [this python package](https://gitlab.com/lucastorterotot/ltLaTeXpyplot).
-
