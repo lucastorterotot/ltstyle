@@ -1,7 +1,28 @@
+\makeatletter
+\@ifpackagewith{babel}{french}{
 \newcommand{\cad}{c'est-à-dire}
 \newcommand{\Cad}{C'est-à-dire}
-\newcommand{\ie}{\cad}
-\newcommand{\Ie}{\Cad}
 \newcommand{\eg}{par exemple}
 \newcommand{\Eg}{Par exemple}
+}{
+\newcommand{\cad}{\textit{i.e.}}
+\newcommand{\Cad}{\textit{I.e.}}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\Eg}{\textit{E.g.}}
+}
+
+\@ifpackageloaded{polyglossia}
+                 {
+                   \AtBeginDocument{
+                     \def\cad{\iflanguage{french}{c'est-à-dire}{\textit{i.e.}}}
+                     \def\Cad{\iflanguage{french}{C'est-à-dire}{\textit{I.e.}}}
+                     \def\eg{\iflanguage{french}{par exemple}{\textit{e.g.}}}
+                     \def\Eg{\iflanguage{french}{Par exemple}{\textit{E.g.}}}
+                   }
+                 }
+                 {}
+\makeatother
+
+\newcommand{\ie}{\cad}
+\newcommand{\Ie}{\Cad}
 \def\cf{\seename}
