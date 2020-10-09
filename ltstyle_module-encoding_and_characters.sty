@@ -1,6 +1,19 @@
 \ifLuaTeX
   \RequirePackage[no-math]{fontspec}
-  \setmainfont{CMU Serif}[SlantedFont = LMRomanSlant12-Regular, SlantedFeatures={LetterSpace=-1,WordSpace={.9}}] % get sc font with CMU
+  \setmainfont{CMU Serif}[
+    SlantedFont = LMRomanSlant12-Regular,
+    SlantedFeatures={
+      LetterSpace=-1,
+      WordSpace={.9},
+      SizeFeatures={
+        {Size={-8.4},Font=LMRomanSlant8-Regular},
+        {Size={8.4-9.4},Font=LMRomanSlant9-Regular},
+        {Size={9.4-10.9},Font=LMRomanSlant10-Regular},
+        {Size={10.9-14.4},Font=LMRomanSlant12-Regular},
+        {Size={14.4-},Font=LMRomanSlant17-Regular},
+      }
+    }
+  ]
   \usepackage[utf8]{luainputenc}
 \else
   \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
