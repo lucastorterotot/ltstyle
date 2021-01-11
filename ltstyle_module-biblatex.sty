@@ -25,6 +25,11 @@
 \renewcommand{\footcite}[1]{\footfullcite{#1}}
 
 \makeatletter
+\def\beamerlocalcite#1{{
+    
+    \footnotesize$\triangleright$\hspace{.75em}\scriptsize\fullcite{#1}.
+
+}}
 \def\beamercite#1{\xdef\@thefnmark{}\@footnotetext{\hspace{-1.25em}$\triangleright$\hspace{.75em}\scriptsize\fullcite{#1}.}}
 \makeatother
 
