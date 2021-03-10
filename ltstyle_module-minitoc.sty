@@ -15,7 +15,7 @@
            {
              \usepackage{minitoc}
              \AtBeginDocument{\dominitoc}
-             \AtBeginChapter{\minitoc\bigskip}
+             \AtBeginChapter{\vspace{-\baselineskip}\minitoc\vspace{\baselineskip}\bigskip}
            }
            {}
 \makeatletter
