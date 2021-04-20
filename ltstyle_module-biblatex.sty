@@ -46,5 +46,10 @@
 }
 {}
 }
+\newcommand{\printbibliographyREF}{
+    \chapter*{\bibname}
+    \addcontentsline{toc}{chapter}{\bibname}
+    \origprbib[heading=none]
+}
 
 \input ltstyle_module-biblatex_entries.sty
