@@ -225,7 +225,7 @@
   }{}
 
 \AtBeginDocument{\let\mathit\relax\def\mathit{\textit}}
-\AtBeginDocument{\let\mathcal\relax\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}}
+\AtBeginDocument{\ifLuaTeX \else\let\mathcal\relax\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}\fi}
 %\AtEndPreamble{\let\mathit\relax\let\mathcal\relax}
 %\AtBeginDocument{\newcommand{\mathit}[1]{\textit{#1}}\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}}
 
