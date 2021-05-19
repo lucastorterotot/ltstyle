@@ -819,8 +819,12 @@
 \DeclareOption{Utopia}{
   \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont[Scale=.92]{Heuristica}[
+      \setmainfont{Erewhon}[
+        LetterSpace=-1,
+        WordSpace={.9},
+        BoldFont = Erewhon Bold,
         SlantedFont = Erewhon Regular Slanted,
+        BoldSlantedFont = Erewhon Bold Slanted,
       ]
     \else
       \fontfamily{futs}\selectfont
