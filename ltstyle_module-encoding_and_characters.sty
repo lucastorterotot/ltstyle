@@ -1,5 +1,5 @@
 \ifLuaTeX
-  \RequirePackage[no-math]{fontspec}
+  \RequirePackage{fontspec}
   \setmainfont{CMU Serif}[
     SlantedFont = Latin Modern Roman Slanted,
     SlantedFeatures={
@@ -15,6 +15,7 @@
     }
   ]
   \usepackage[utf8]{luainputenc}
+  %\usepackage{unicode-math}
 \else
   \RequirePackage[T1]{fontenc} % Output font encoding for international characters % codage moderne des caractères sous Latex
   \RequirePackage[utf8]{inputenc} % Required for inputting international characters

@@ -360,6 +360,7 @@
   \ifLuaTeX
     \setmainfont{Linux Libertine O}
     \setsansfont{Linux Biolinum O}
+    %\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
   \else
     \fontfamily{LinuxLibertineT-OsF}\selectfont
     \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
@@ -367,7 +368,34 @@
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
-  \def\loadmathptmx{true}
+  \ifLuaTeX
+    \def\loadmathptmx{false}
+  \else
+    \def\loadmathptmx{true}
+  \fi
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{sourcesanspro}{
+  \AtBeginDocument{
+  \ifLuaTeX
+    \setmainfont{Linux Libertine O}
+    %\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+  \else
+    \fontfamily{LinuxLibertineT-OsF}\selectfont
+    \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
+  \fi
+  }
+  \AtEndPreamble{
+    \usepackage[lining]{sourcesanspro}
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \ifLuaTeX
+    \def\loadmathptmx{false}
+  \else
+    \def\loadmathptmx{true}
+  \fi
   \def\loadmathpazo{false}
 }
 
