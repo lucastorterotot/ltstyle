@@ -356,16 +356,21 @@
 }
 
 \DeclareOption{Libertine}{
-  \AtBeginDocument{
   \ifLuaTeX
-    \setmainfont{Linux Libertine O}
+    \setmainfont{Linux Libertine O}[
+      SlantedFont    = *,
+      SlantedFeatures = {FakeSlant=0.2},
+      BoldSlantedFont = * Bold,
+      BoldSlantedFeatures = {FakeSlant=0.2},
+    ]
     \setsansfont{Linux Biolinum O}
-    %\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+    \AtBeginDocument{\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}}
   \else
+  \AtBeginDocument{
     \fontfamily{LinuxLibertineT-OsF}\selectfont
     \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
-  \fi
   }
+  \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \ifLuaTeX
@@ -376,25 +381,23 @@
   \def\loadmathpazo{false}
 }
 
-\DeclareOption{sourcesanspro}{
-  \AtBeginDocument{
+\DeclareOption{Libertinesourcesanspro}{
   \ifLuaTeX
-    \setmainfont{Linux Libertine O}
-    %\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+    \setmainfont{Linux Libertine O}[
+      SlantedFont    = *,
+      SlantedFeatures = {FakeSlant=0.2},
+      BoldSlantedFont = * Bold,
+      BoldSlantedFeatures = {FakeSlant=0.2},
+    ]
+    \AtBeginDocument{\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}}
   \else
+  \AtBeginDocument{
     \fontfamily{LinuxLibertineT-OsF}\selectfont
     \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
-  \fi
   }
+  \fi
   \AtEndPreamble{
     \usepackage[lining]{sourcesanspro}
-%    \DeclareSymbolFont{numbers}{OT1}{LinuxLibertineT-OsF}{m}{i}
-%    \def\mathnormal{\mathrm}
-%\DeclareSymbolFont{letters}{OT1}{LinuxLibertineT-OsF}{m}{n}
-%\DeclareMathSymbol{1}{\mathrm}{letters}{131}
-%\DeclareMathSymbol{A}{\mathrm}{letters}{131}
-%    \DeclareSymbolFontAlphabet{\mathnormal}{letters}
-%    \SetMathAlphabet{normal}{T1}{LinuxLibertine-O}{m}{n}
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
