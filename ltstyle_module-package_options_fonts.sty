@@ -365,7 +365,15 @@
     ]
     \setsansfont{Linux Biolinum O}
     \def\loadunicodemath{true}
-    \AtBeginDocument{\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}}
+    \AtBeginDocument{
+      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+      \setmathfont[range=frak/{latin,Latin},
+                   Scale=MatchUppercase,
+                   StylisticSet=1,
+                   script-features={},
+                   sscript-features={}
+            ]{MathJax Fraktur}
+    }
   \else
   \AtBeginDocument{
     \fontfamily{LinuxLibertineT-OsF}\selectfont
@@ -391,7 +399,15 @@
       BoldSlantedFeatures = {FakeSlant=0.2},
     ]
     \def\loadunicodemath{true}
-    \AtBeginDocument{\setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}}
+    \AtBeginDocument{
+      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+      \setmathfont[range=frak/{latin,Latin},
+                   Scale=MatchUppercase,
+                   StylisticSet=1,
+                   script-features={},
+                   sscript-features={}
+            ]{MathJax Fraktur}
+    }
   \else
   \AtBeginDocument{
     \fontfamily{LinuxLibertineT-OsF}\selectfont
