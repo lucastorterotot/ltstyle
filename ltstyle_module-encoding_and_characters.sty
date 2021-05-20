@@ -55,6 +55,10 @@
 \RequirePackage{marvosym}
 \let\origEUR\EUR \def\EUR{\text{\origEUR}} \def\€{\EUR} \def\euro{\EUR}
 \def\sun{\ensuremath{\odot}}
+\AtEndPreamble{\AtBeginDocument{
+\let\origsun\sun
+\def\sun{\ensuremath{\odot}}
+}}
 \let\origSun\Sun
 \def\Sun{\text{\origSun}}
 
