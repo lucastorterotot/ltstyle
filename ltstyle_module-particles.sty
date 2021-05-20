@@ -13,14 +13,14 @@
 \newcommand{\lepton}{{\ensuremath{\ell}}}
 \newcommand{\Lepton}{{\ensuremath{\it L}}}
 \newcommand{\ele}{{\ensuremath{\it e}}}
-\AtBeginDocument{
+\AtEndPreamble{\AtBeginDocument{
 \let\origmu\mu
 \def\mu{\ensuremath{\origmu}}
 \let\origtau\tau
 \def\tau{\ensuremath{\origtau}}
 \let\orignu\nu
 \def\nu{\ensuremath{\orignu}}
-}
+}}
 \newcommand{\electron}{{\ensuremath{\ele^-}}}
 \newcommand{\muon}{{\ensuremath{\mu^-}}}
 \newcommand{\leptau}{{\ensuremath{\tau^-}}}
