@@ -28,9 +28,11 @@
 \def\norm#1{{\mathchoice{\left\Vert #1 \right\Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}}}
 \def\abs#1{{\mathchoice{\left\vert #1 \right\vert}{\vert #1 \vert}{\vert #1 \vert}{\vert #1 \vert}}}
 
+\AtBeginDocument{
 \def\eqdef{\ensuremath{\mathrel{\stackrel{\mathrm{def}}{=}}}}
 \def\eqexcl{\ensuremath{\mathrel{\stackrel{\mathrm{!}}{=}}}}
-\def\eqhat{\ensuremath{\mathrel{\widehat{=}}}}
+\def\eqhat{\ensuremath{\mathrel{\eqhathat{=}}}}
+}
 
 \def\leq{\leqslant}
 \def\geq{\geqslant}
