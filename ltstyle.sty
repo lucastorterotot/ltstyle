@@ -18,6 +18,8 @@
 \RequirePackage{ifthen}
 \ifLuaTeX \else \RequirePackage{morewrites} \fi
 
+\input ltstyle_module-encoding_and_characters.sty
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Package options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\PackageOption}{none}
@@ -43,6 +45,7 @@
 \def\loadmathptmx{false}
 \def\loadmathpazo{false}
 \def\loadutopia{false}
+\def\loadunicodemath{false}
 \def\SIunitfamily{\rm}
 \def\useminted{True}
 
@@ -68,7 +71,6 @@
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Used Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input ltstyle_module-encoding_and_characters.sty
 \input ltstyle_module-biblatex.sty
 \input ltstyle_module-makeidx.sty
 
@@ -87,11 +89,12 @@
 
 \input ltstyle_module-hyperref.sty
 
-\input ltstyle_module-SIunits.sty
-\input ltstyle_module-fonts_adjust.sty
-
 \input ltstyle_module-science_packages.sty
 \input ltstyle_module-esvect.sty
+
+\ifthenelse{\equal{\loadunicodemath}{true}}{\ifLuaTeX \RequirePackage{unicode-math} \fi}{} % only place to respect dependencies
+\input ltstyle_module-SIunits.sty
+\input ltstyle_module-fonts_adjust.sty
 
 \usepackage{ltstyle_module-edt}
 
