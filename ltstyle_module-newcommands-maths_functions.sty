@@ -14,7 +14,7 @@
 \NewDocumentCommand\argcosh{d()}{\operatorname{argcosh}\IfValueT{#1}{\parentheses*{#1}}}
 \NewDocumentCommand\argtanh{d()}{\operatorname{argtanh}\IfValueT{#1}{\parentheses*{#1}}}
 
-\def\eexp#1{\ensuremath{{\rm e}^{#1}}}
+\def\eexp#1{\ensuremath{{\mathrm e}^{#1}}}
 
 %\let\Re\relax
 %\let\Im\relax
@@ -34,9 +34,9 @@
 %\let\grad\relax
 %\let\div\relax
 %\let\curl\relax
-\RenewDocumentCommand\grad{d()}{\vec{\operatorname{{\rm grad}}}\IfValueT{##1}{\parentheses*{##1}}}
-\RenewDocumentCommand\div{d()}{\operatorname{{\rm div}}\IfValueT{##1}{\parentheses*{##1}}}
-\RenewDocumentCommand\curl{d()}{\vec{\operatorname{{\rm rot}}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\grad{d()}{\vec{\operatorname{\mathrm{grad}}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\div{d()}{\operatorname{\mathrm{div}}\IfValueT{##1}{\parentheses*{##1}}}
+\RenewDocumentCommand\curl{d()}{\vec{\operatorname{\mathrm{rot}}}\IfValueT{##1}{\parentheses*{##1}}}
 \def\rot{\curl}%
 }
 

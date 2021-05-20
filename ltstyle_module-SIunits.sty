@@ -50,9 +50,9 @@
 \@ifclassloaded{beamer}{
   \renewcommand{\SIupmath}[2][]{#2}
   \let\ltstyleSI\SI
-  \def\SI#1#2{\ltstyleSI{#1}{\rm #2}}
-  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{\ensuremath{\rm #2}}}
-  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{\ensuremath{\rm #2}}}
+  \def\SI#1#2{\ltstyleSI{#1}{\mathrm{#2}}}
+  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{\ensuremath{\mathrm{#2}}}}
+  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{\ensuremath{\mathrm{#2}}}}
 }{
   \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
   \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
