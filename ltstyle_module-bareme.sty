@@ -68,6 +68,11 @@
    \ignorespaces%
 }
 
+\newcommand{\localbrm}[1]{%
+    \ifBaremeShow
+      \ensuremath{\text{\ \textcolor{ltcolorred}{\footnotesize$\blacktriangleright$~\FranPt{#1}} }}
+    \fi}
+
 \newcommand\total[1]{%
    \@ifundefined{Op@total#1}{\todo{recompilez}}%
    {%
