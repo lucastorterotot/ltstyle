@@ -26,6 +26,10 @@ mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
 git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas -b 18.04
 ```
+In case you do not have a `ssh` key you may use `https`:
+```
+git clone https://gitlab.com/lucastorterotot/ltstyle.git --origin lucas -b 18.04
+```
 3. Install and update Pygments if you want to use minted.
 First, install it with
 ```
