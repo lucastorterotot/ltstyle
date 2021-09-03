@@ -292,4 +292,18 @@
     \renewcommand{\insertclassetype}{ATS}
     \renewcommand{\insertlongclassetype}{ATS}
 }{}
+\ifthenelse{\equal{\classelvl}{BTS1}}{
+    \renewcommand{\insertclasselvl}{BTS}
+    \let\BTSinsertclassefiliere\insertclassefiliere
+    \renewcommand{\insertclassefiliere}{\BTSinsertclassefiliere 1}
+    \let\BTSinsertlongclassefiliere\insertlongclassefiliere
+    \renewcommand{\insertlongclassefiliere}{\BTSinsertlongclassefiliere~1}
+}{}
+\ifthenelse{\equal{\classelvl}{BTS2}}{
+    \renewcommand{\insertclasselvl}{BTS}
+    \let\BTSinsertclassefiliere\insertclassefiliere
+    \renewcommand{\insertclassefiliere}{\BTSinsertclassefiliere 2}
+    \let\BTSinsertlongclassefiliere\insertlongclassefiliere
+    \renewcommand{\insertlongclassefiliere}{\BTSinsertlongclassefiliere~2}
+}{}
 }
