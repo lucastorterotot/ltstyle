@@ -58,6 +58,8 @@
   \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
   }
 \makeatother
+\def\SIi#1#2#3{\num{#1}\pm\num{#2}\usp\SI{}{#3}}
+\def\SIii#1#2#3#4{\num{#1}{}^{+\num{#2}}_{-\num{#3}}\usp\SI{}{#4}}
 %\makeatletter
 %\@ifpackagewith{babel}{french}{\renewcommand{\degre}{\degree}}{\newcommand{\degre}{\degree}}%{\ensuremath{^\circ}}
 %\makeatother
