@@ -64,7 +64,7 @@
                    {exototbareme}%
                    {exototbareme}%
    }%
-   \hbox to 0pt{\hss\color{\ltExoBaremeColor}\ltExoBaremeSize\FranPt{#1}\hskip2em}%
+   {\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\raggedleft\color{\ltExoBaremeColor}\ltExoBaremeSize\FranPt{#1}}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
    \ignorespaces%
 }
 
