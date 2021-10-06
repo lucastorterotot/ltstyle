@@ -17,9 +17,12 @@
 %}
 %\penalty500
 
-%\medskip
-%\noindent
-\refstepcounter{elevecompteur}\section*{{\rmfamily\bfseries #1}}
+\par
+\bigskip
+\noindent
+\refstepcounter{elevecompteur}{\Large\bfseries #1}
+\medskip
+
 }
 
 \def\textheightcolleshortsujets{\paperheight -.93cm} % -.93cm ou -1.05cm
@@ -80,7 +83,7 @@
 
 \pagestyle{sujet\theelevecompteur} \setcounter{page}{1}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlesujet\theelevecompteur}
-\section*{\rmfamily\bfseries ##1}\label{elevename\theelevecompteur}
+\par\bigskip\noindent{\Large\bfseries ##1}\label{elevename\theelevecompteur}\medskip
 
 ##2
 
