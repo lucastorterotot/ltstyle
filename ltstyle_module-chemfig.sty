@@ -13,6 +13,8 @@
 \newcommand{\setcrambond}[3]{\setchemfig{cram width = #1, cram dash width = #2, cram dash sep = #3}}
 \newcommand{\chemfigFL}[2][]{\chemfig[fixed length = true, #1]{#2}}
 
+\input chemfig-lewis.tex % retro-compatibility
+
 \makeatletter
 \newcommand\mylewis[3][1.45ex]{% #1=longueur, #2=atome #3=liste des angles
 \tikzpicture[baseline,anchor=base]%
