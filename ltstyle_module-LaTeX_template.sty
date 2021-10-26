@@ -60,11 +60,24 @@
 \setlength{\textwidth}{\paperwidth -4cm} %17cm
 \setlength{\textheight}{\paperheight -4cm}%-2.8 %-2.6 %3.45 %26.25 cm
 \setlength{\marginparsep}{3pt}
-\ifthenelse{\equal{\useTSVP}{True}}{
-  \setlength{\textheight}{\paperheight -4cm-\baselineskip}
-  \setlength{\footskip}{1cm+\baselineskip}
-  \def\rfootTSVP{{\ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{\def\TSVPstr{}}{}\vspace{-2\baselineskip}\vbox to 1\baselineskip {\TSVPstr}\ignorespaces}}
-}{}
+\AtEndPreamble{
+\ifuseTSVP
+  \setlength{\textheight}{\paperheight -4cm-.75\baselineskip}
+  \setlength{\footskip}{1cm+.75\baselineskip}
+
+  \def\rfootTSVP{%
+      \ifthenelse{\equal{\thepage}{\pageref{LastPage}}}{\def\TSVPstr{}}{}%
+      \vspace{-2\baselineskip}
+      \strut\vadjust{%
+          \kern-\dp\strutbox\rlap{%
+              \smash{\parbox[c]{\textwidth}{~\hfill\TSVPstr}}%
+          }%
+          \kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}%
+      }%
+
+  }
+\fi
+}
 % Alter some LaTeX defaults for better treatment of figures:
     % See p.105 of "TeX Unbound" for suggested values.
     % See pp. 199-200 of Lamport's "LaTeX" book for details.
