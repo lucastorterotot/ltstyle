@@ -1,6 +1,4 @@
 \directlua{require("myround.lua")} % Load the externally-stored code
 
 \newcommand\calc[2][0]{% default value of opt. param.: 0
-   \directlua{tex.sprint(math.myround(#2,#1))}}  
-
-\AtBeginDocument{\obeylines}
+   \directlua{tex.sprint(math.myround(#2,#1))}}
