@@ -2,3 +2,5 @@
 
 \newcommand\calc[2][0]{% default value of opt. param.: 0
    \directlua{tex.sprint(math.myround(#2,#1))}}
+
+\newcommand\SIcalc[3][0]{\calc[#1]{#2}\usp\SI{}{#3}}
