@@ -1,0 +1,31 @@
+\usepackage{atbegshi}
+
+\makeatletter
+\newcommand{\discardpages}[1]{% \discardpages{<csv list>}
+  \xdef\discard@pages{#1}% Store pages to discard
+  \AtBeginShipout{% At shipout, decide whether to discard page/not
+    \renewcommand*{\do}[1]{% How to handle each page entry in csv list
+      \ifnum\value{page}=##1\relax%
+        \AtBeginShipoutDiscard% Discard page/not
+        \gdef\do####1{}% Do nothing further
+      \fi%
+    }%
+    \expandafter\docsvlist\expandafter{\discard@pages}% Process list of pages to discard
+  }%
+}
+\newif\ifkeeppage
+\newcommand{\keeppages}[1]{% \keeppages{<csv list>}
+  \xdef\keep@pages{#1}% Store pages to keep
+  \AtBeginShipout{% At shipout, decide whether to discard page/not
+    \keeppagefalse%
+    \renewcommand*{\do}[1]{% How to handle each page entry in csv list
+      \ifnum\value{page}=##1\relax%
+        \keeppagetrue% Page should be kept
+        \gdef\do####1{}% Do nothing further
+      \fi%
+    }%
+    \expandafter\docsvlist\expandafter{\keep@pages}% Process list of pages to keep
+    \ifkeeppage\else\AtBeginShipoutDiscard\fi% Discard page/not
+  }%
+}
+\makeatother
