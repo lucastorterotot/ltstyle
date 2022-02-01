@@ -18,8 +18,8 @@
   \renewcommand{\onlycorrige}[1]{\ignorespaces}
 }
 \def\corrigeON{
-  \renewcommand{\corrige}[1]{\small ##1\normalsize\par}
-  \renewcommand{\ifcorrige}[1]{##1}
+  \renewcommand{\corrige}[1]{{\color{ltcolor\ltcolortheme}\small ##1\normalsize\par}}
+  \renewcommand{\ifcorrige}[1]{{\color{ltcolor\ltcolortheme}##1}}
   \renewcommand{\ifnotcorrige}[1]{\ignorespaces}
   \renewcommand{\onlyenonce}[1]{\ignorespaces}
 }
