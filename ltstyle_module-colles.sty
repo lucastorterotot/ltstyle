@@ -128,22 +128,20 @@
 \setcounter{table}{0}
 \setcounter{equation}{0}
 \enonceON\corrigeONblue
-
-\newpage
-\setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Corrigé de khôlle}\def\insertshortenseignementtype{Corrigé de khôlle}}{\def\insertenseignementtype{Corrigé de colle}\def\insertshortenseignementtype{Corrigé de colle}}\renewcommand{\insertenseignementnum}{\!\!}
-\fancypagestyle{corrige}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
-\fancypagestyle{titlecorrige}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{corrige}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
-\pagestyle{corrige}
-{\setlength{\parindent}{0pt} \maketitle} \thispagestyle{titlecorrige}
+\pagestyle{empty} 
 
 \renewcommand{\collesujet}[2]{
 
-\elevecolle{##1}
+\penalty-1000
+\ifnum \theelevecompteur > 0 \hrulefill \vspace{.25\baselineskip} \fi
 
-##2}
+##2
+
+\vfill
+
+\penalty1000
+
+}
 
 \thelistecollesujets
 
