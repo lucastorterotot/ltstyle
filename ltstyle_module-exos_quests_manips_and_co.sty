@@ -3,6 +3,7 @@
 \newcommand{\corrige}[1]{}
 \newcommand{\ifenonce}[1]{}
 \newcommand{\ifcorrige}[1]{}
+\newcommand{\ifcorrigesimple}[1]{}
 \newcommand{\ifnotenonce}[1]{}
 \newcommand{\ifnotcorrige}[1]{}
 \newcommand{\onlyenonce}[1]{}
@@ -20,6 +21,7 @@
 \def\corrigeON{
   \renewcommand{\corrige}[1]{{\color{\ltcolorcorrige}\small ##1}\par}
   \renewcommand{\ifcorrige}[1]{{\color{\ltcolorcorrige}##1}}
+  \renewcommand{\ifcorrigesimple}[1]{##1}
   \renewcommand{\ifnotcorrige}[1]{\ignorespaces}
   \renewcommand{\onlyenonce}[1]{\ignorespaces}
 }
@@ -33,6 +35,7 @@
 \def\corrigeOFF{
   \renewcommand{\corrige}[1]{\ignorespaces}
   \renewcommand{\ifcorrige}[1]{\ignorespaces}
+  \renewcommand{\ifcorrigesimple}[1]{\ignorespaces}
   \renewcommand{\ifnotcorrige}[1]{##1}
   \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}
 }
