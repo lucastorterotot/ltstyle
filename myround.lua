@@ -26,7 +26,7 @@ function math.myroundcs ( x , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(x))
+      pow = math.floor(math.log10(math.abs(x)))
       if pow > n-1 then
           return math.myroundsc ( x , n )
       end
@@ -40,7 +40,7 @@ function math.myroundsc ( x , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(x))
+      pow = math.floor(math.log10(math.abs(x)))
       x = math.round_int ( x*10^(n-1-pow) ) * 10^(-n+1)
       x = string.format ( "%."..n-1-0*pow.."f" , x )
       if pow > 0 or pow < 0 then
@@ -54,7 +54,7 @@ function myautoSI ( x , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(x))
+      pow = math.floor(math.log10(math.abs(x)))
       pow3 = math.floor(pow / 3)*3
       if n-1-pow+pow3 < 0 then
           pow3 = pow3 + 3 -- if not enough significant numbers
