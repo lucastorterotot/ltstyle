@@ -1,15 +1,15 @@
 \directlua{require("myround.lua")} % Load the externally-stored code
 
 \newcommand\calc[2][0]{% default value of opt. param.: 0
-   \directlua{tex.sprint(math.myround(#2,#1))}}
+   \num{\directlua{tex.sprint(math.myround(#2,#1))}}}
 
 \newcommand\calccs[2][3]{% default value of opt. param.: 3
-   \ensuremath{\directlua{tex.sprint(math.myroundcs(#2,#1))}}}
+   \num{\directlua{tex.sprint(math.myroundcs(#2,#1))}}}
 
 \newcommand\calcsc[2][3]{% default value of opt. param.: 3
-   \ensuremath{\directlua{tex.sprint(math.myroundsc(#2,#1))}}}
+   \num{\directlua{tex.sprint(math.myroundsc(#2,#1))}}}
 
 \newcommand\SIcalc[3][0]{\calc[#1]{#2}\usp\SI{}{#3}}
 \newcommand\SIccs[3][3]{\calccs[#1]{#2}\usp\SI{}{#3}}
 \newcommand\SIcsc[3][3]{\calcsc[#1]{#2}\usp\SI{}{#3}}
-\newcommand\SIauto[3][3]{\ensuremath{\directlua{tex.sprint(myautoSIa(#2,#1))}\usp\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
+\newcommand\SIauto[3][3]{\num{\directlua{tex.sprint(myautoSIa(#2,#1))}}\usp\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}
