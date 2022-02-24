@@ -18,7 +18,7 @@ function math.myround ( x , n )
    else   -- n>0
       x = math.round ( x , n ) -- replace 'x' with rounded version
       x = string.format ( "%."..n.."f" , x )
-      return ( x:gsub ( "%." , "{,}" , 1 ) )
+      return x
    end
 end
 
@@ -32,7 +32,7 @@ function math.myroundcs ( x , n )
       end
       x = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
       x = string.format ( "%."..n-1-pow.."f" , x )
-      return ( x:gsub ( "%." , "{,}" , 1 ) )
+      return x
    end
 end
 
@@ -44,9 +44,9 @@ function math.myroundsc ( x , n )
       x = math.round_int ( x*10^(n-1-pow) ) * 10^(-n+1)
       x = string.format ( "%."..n-1-0*pow.."f" , x )
       if pow > 0 or pow < 0 then
-         x = string.format ("%s%s10^{%s}", x, "\\myproductsign", pow)
+         x = string.format ("%s%s%s", x, "e", pow)
       end
-      return ( x:gsub ( "%." , "{,}" , 1 ) )
+      return x
    end
 end
 
@@ -101,7 +101,7 @@ end
 
 function myautoSIa ( x , n )
     x, prefix = myautoSI ( x , n )
-    return ( x:gsub ( "%." , "{,}" , 1 ) )
+    return x
 end
 
 function myautoSIb ( x , n )
