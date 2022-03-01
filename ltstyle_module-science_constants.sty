@@ -12,17 +12,17 @@
 \newcommand{\NAvalue}{6.02214076e23} % nombre d'Avogadro
 \newcommand{\KCdvalue}{683} % efficacité lumineuse à 540 THz
 
-\newcommand{\hbarvalue}{\hvalue/(2*\pivalue)} % constante de Planck réduite
-\newcommand{\Faradayvalue}{\NAvalue*\evalue} % Faraday
-\newcommand{\RGPvalue}{\NAvalue*\kBvalue} % constante du gaz parfait
-\newcommand{\muzerovalue}{4*\pivalue*1e-7} % perméabilité du vide
-\newcommand{\epsilonzerovalue}{1/(\muzerovalue*\cvalue^2)} % permittivité du vide
+\newcommand{\hbarvalue}{(\hvalue/(2*\pivalue))} % constante de Planck réduite
+\newcommand{\Faradayvalue}{(\NAvalue*\evalue)} % Faraday
+\newcommand{\RGPvalue}{(\NAvalue*\kBvalue)} % constante du gaz parfait
+\newcommand{\muzerovalue}{(4*\pivalue*1e-7)} % perméabilité du vide
+\newcommand{\epsilonzerovalue}{(1/(\muzerovalue*\cvalue^2))} % permittivité du vide
 \newcommand{\eVvalue}{\evalue}
 
 \newcommand{\RHvalue}{1.0973731568508e7} % constante de Rydberg
 \newcommand{\Gvalue}{6.67408e-11} % constante gravitationnelle
-\newcommand{\Wienvalue}{\hvalue*\cvalue/(4.9651*\kBvalue)} % constante de Wien
-\newcommand{\Stefanvalue}{2*\pivalue^5/15*\kBvalue^4/(\hvalue^3*\cvalue^2)} % constante de Stefan-Boltzmann
+\newcommand{\Wienvalue}{(\hvalue*\cvalue/(4.9651*\kBvalue))} % constante de Wien
+\newcommand{\Stefanvalue}{(2*\pivalue^5/15*\kBvalue^4/(\hvalue^3*\cvalue^2))} % constante de Stefan-Boltzmann
 
 \newcommand{\MTerrevalue}{5.972e24} % masse de la Terre
 \newcommand{\RTerrevalue}{6371e3} % rayon de la Terre
@@ -34,11 +34,11 @@
 \newcommand{\uniteastrovalue}{\DTerreSoleilvalue}
 \newcommand{\DTerreLunevalue}{380000e3} % distance Terre-Lune
 \newcommand{\TsurfSoleilvalue}{5770} % température de surface du Soleil
-\newcommand{\anneelumierevalue}{\cvalue*365.25*24*60*60} % distance égale à une année lumière
-\newcommand{\parsecvalue}{648000/\pivalue*\uniteastrovalue}
+\newcommand{\anneelumierevalue}{(\cvalue*365.25*24*60*60)} % distance égale à une année lumière
+\newcommand{\parsecvalue}{(648000/\pivalue*\uniteastrovalue)}
 
 \newcommand{\Patmvalue}{1013.25e2} % pression atmosphérique au niveau de la mer
-\newcommand{\VmGPvalue}{\RGPvalue*273.15/\Patmvalue} % volume molaire du gaz parfait
+\newcommand{\VmGPvalue}{(\RGPvalue*273.15/\Patmvalue)} % volume molaire du gaz parfait
 
 \newcommand{\Melectronvalue}{9.109383556994248e-31} % masse de l'électron
 \newcommand{\Mprotonvalue}{1.672621897144883e-27} % masse du proton
