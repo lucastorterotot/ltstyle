@@ -23,6 +23,30 @@
 \RequirePackage{variations}
 
 \RequirePackage{physics}
+\DeclareDocumentCommand\Derivative{ s o m g g d() }
+{ % Particular derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% g: optional (y in d^2f/dxdy)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#6}
+		{\fractype{\mathrm{D} \IfNoValueTF{#2}{}{^{#2}}}{\mathrm{D} #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\mathrm{D} \IfNoValueTF{#2}{}{^{#2}}}{\mathrm{D} #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#6\argclose)}
+	}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\mathrm{D} \IfNoValueTF{#2}{}{^{#2}} #3}{\mathrm{D} #4\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\mathrm{D}^2 #3}{\mathrm{D} #4 \mathrm{D} #5}}
+	}
+}
+\DeclareDocumentCommand\Dv{}{\Derivative} % Shorthand for \derivative
 
 \def\eval#1{\ensuremath{\left. #1 \right|}}
 \newcommand{\evalp}[1]{\ensuremath{\left( #1 \right)}}
