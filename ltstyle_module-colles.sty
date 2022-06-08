@@ -1,3 +1,14 @@
+\newcommand{\baremecolledata}{}
+\newcommand{\baremecolle}[1]{\def\baremecolledata{#1}}
+\makeatletter
+\newcommand{\printbaremecolle}{%
+\def\baremecolletype{textinit}
+\@for\next:=\baremecolledata\do{%
+    \ifthenelse{\equal{\baremecolletype}{text}}{\hfill\def\baremecolletype{value}}{\ifthenelse{\equal{\baremecolletype}{value}}{\quad\qquad\def\baremecolletype{text}\collebrm{\next}/}{\def\baremecolletype{value}}}%
+\next%
+}%
+}
+\makeatother
 \newcommand{\collesujets}{}
 \newcommand{\colleshortsujets}{}
 \newcommand{\collecorriges}{}
@@ -111,7 +122,7 @@
 \pagestyle{rapport}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlerapport}
 
-\renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/20}\par\noindent{Cours (qdc)\quad\qquad/7\hfill (exos)\quad\qquad/3\hfill Savoir-faire\quad\qquad/6\hfill Oral\quad\qquad/4}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill}
+\renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/20}\par\noindent{\printbaremecolle}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill}
 
 {\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdC}~~~}
 \def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdCs}~~~}
