@@ -2,7 +2,7 @@
 \newcommand{\baremecolle}[1]{\def\baremecolledata{#1}}
 \makeatletter
 \newcommand{\printbaremecolle}{%
-\def\baremecolletype{textinit}
+\def\baremecolletype{textinit}%
 \@for\next:=\baremecolledata\do{%
     \ifthenelse{\equal{\baremecolletype}{text}}{\hfill\def\baremecolletype{value}}{\ifthenelse{\equal{\baremecolletype}{value}}{\quad\qquad\def\baremecolletype{text}\collebrm{\next}/}{\def\baremecolletype{value}}}%
 \next%
