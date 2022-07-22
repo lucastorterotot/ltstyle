@@ -219,19 +219,21 @@
 \newcommand{\editionsettings}[1]{\renewcommand{\inserteditionsettings}{#1}}
 
 \AtEndPreamble{
+\newif\ifclasselvlpostbac
+\classelvlpostbactrue
 \ifthenelse{\equal{\classelvl}{Inge1}\and\equal{\ingeclasslvlmode}{regular}}{\renewcommand{\insertclasselvl}{Ingé 1A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 \ifthenelse{\equal{\classelvl}{Inge1}\and\equal{\ingeclasslvlmode}{shifted}}{\renewcommand{\insertclasselvl}{Ingé 3A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 \ifthenelse{\equal{\classelvl}{Inge2}\and\equal{\ingeclasslvlmode}{regular}}{\renewcommand{\insertclasselvl}{Ingé 2A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 \ifthenelse{\equal{\classelvl}{Inge2}\and\equal{\ingeclasslvlmode}{shifted}}{\renewcommand{\insertclasselvl}{Ingé 4A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 \ifthenelse{\equal{\classelvl}{Inge3}\and\equal{\ingeclasslvlmode}{regular}}{\renewcommand{\insertclasselvl}{Ingé 3A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 \ifthenelse{\equal{\classelvl}{Inge3}\and\equal{\ingeclasslvlmode}{shifted}}{\renewcommand{\insertclasselvl}{Ingé 5A}\renewcommand{\insertclassetype}{\insertclasselvl\ \insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{6}}{\renewcommand{\insertclasselvl}{6\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{5}}{\renewcommand{\insertclasselvl}{5\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{4}}{\renewcommand{\insertclasselvl}{4\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{3}}{\renewcommand{\insertclasselvl}{3\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{2}}{\renewcommand{\insertclasselvl}{2\up{de}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{1}}{\renewcommand{\insertclasselvl}{1\up{re}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
-\ifthenelse{\equal{\classelvl}{0}\or\equal{\classelvl}{T}}{\renewcommand{\classelvl}{T}\renewcommand{\insertclasselvl}{T\up{le}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{6}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{6\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{5}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{5\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{4}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{4\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{3}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{3\up{e}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{2}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{2\up{de}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{1}}{\classelvlpostbacfalse\renewcommand{\insertclasselvl}{1\up{re}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
+\ifthenelse{\equal{\classelvl}{0}\or\equal{\classelvl}{T}}{\classelvlpostbacfalse\renewcommand{\classelvl}{T}\renewcommand{\insertclasselvl}{T\up{le}}\renewcommand{\insertclassetype}{\insertclasselvl\insertclassefiliere}\renewcommand{\insertlongclassetype}{\insertclasselvl\ \insertlongclassefiliere}}{}
 
      \ifthenelse{\equal{\classefiliere}{BCPST1}}{\renewcommand{\classefiliere}{BCPST}\renewcommand{\classelvl}{SUP}}{}
      \ifthenelse{\equal{\classefiliere}{TPC1}}{\renewcommand{\classefiliere}{TPC}\renewcommand{\classelvl}{SUP}}{}
