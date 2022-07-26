@@ -74,6 +74,7 @@ breakable]}
 }{}
 \ifthenelse{\equal{\remarquecouleur}{}}{\def\colorlineremarque{ltcolor\ltcolortheme}}{\def\colorlineremarque{\remarquecouleur}} %couleur par defaut ou non
 \ifthenelse{\equal{\remarquecouleur}{thm}}{\def\colorlineremarque{ltcolor\ltcolorimportant}}{} 
+\ifthenelse{\equal{\remarquecouleur}{experience}}{\def\colorlineremarque{ltcolor\ltcolorthemeC}}{} 
 \ifthenelse{\equal{\remarquecouleur}{red}\or\equal{\remarquecouleur}{rouge}}{\def\colorlineremarque{ltcolorred}}{} 
 \ifthenelse{\equal{\remarquecouleur}{orange}}{\def\colorlineremarque{ltcolororange}}{} 
 \ifthenelse{\equal{\remarquecouleur}{yellow}\or\equal{\remarquecouleur}{jaune}}{\def\colorlineremarque{ltcoloryellow}}{} 
@@ -192,3 +193,5 @@ breakable]}
 \def\theorem{}
 \renewcommand*\theorem[2][]{\encadreepais[thm][#1]{#2}}
 \def\theoreme{\theorem}
+
+\newcommand*\experience[2][]{\encadreepais[experience][\Pointinghand~#1]{#2}}
