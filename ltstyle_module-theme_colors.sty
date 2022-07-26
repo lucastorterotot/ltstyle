@@ -1,12 +1,15 @@
 \AtBeginDocument{
   \def\ltcolorthemeA{\ltcolortheme}
+  \def\ltcolorthemeB{red}
+  \def\ltcolorthemeC{green}
+  \def\ltcolorimportant{\ltcolorthemeB}
   \ifthenelse{\equal{\ltcolorthemeA}{red}\or\equal{\ltcolorthemeA}{magenta}}
              {
                \def\ltcolorthemeB{blue}
                \def\ltcolorimportant{yellow}
-             }
+             }{}
+  \ifthenelse{\equal{\ltcolorthemeA}{green}}
              {
-               \def\ltcolorthemeB{red}
-               \def\ltcolorimportant{\ltcolorthemeB}
-             }
+               \def\ltcolorthemeC{blue}
+             }{}
 }
