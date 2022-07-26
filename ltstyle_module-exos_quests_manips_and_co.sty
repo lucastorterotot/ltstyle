@@ -101,3 +101,11 @@
   \ifthenelse{\equal{\PackageOption}{corrige}}{\enonceOFF\corrigeON}{\enonceON\corrigeOFF}
   \ifthenelse{\equal{\isbeamer}{true}}{}{\input ltqueststyle-default.sty}
 }{}
+
+
+\newcommand{\inputexo}[2][Exercice d'application]{{%
+    \def\remarquemarker{\Pointinghand}%
+    \renewcommand{\exo}[2][]{##2\endinput}%
+    \remarque[\ltcolorthemeC][#1]{%
+        \input{#2}}
+        }}
