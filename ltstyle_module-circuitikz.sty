@@ -5,17 +5,14 @@
 \draw [thick, black,fill=white] (#1) circle (0.4cm);
       \draw (#1) node {\textbf{#2}};
 }
-\newcommand{\amperemeter}[1]{
-\draw [thick, black,fill=white] (#1) circle (0.4cm);
-      \draw (#1) node {\textbf{A}};
+\newcommand{\amperemeter}[2][A]{
+    \circuitmeter{#2}{#1}
 }
-\newcommand{\voltmeter}[1]{
-\draw [thick, black,fill=white] (#1) circle (0.4cm);
-      \draw (#1) node {\textbf{V}};
+\newcommand{\voltmeter}[2][V]{
+    \circuitmeter{#2}{#1}
 }
-\newcommand{\ohmmeter}[1]{
-\draw [thick, black,fill=white] (#1) circle (0.4cm);
-      \draw (#1) node {{\boldmath$\Omega$}};
+\newcommand{\ohmmeter}[2][{\boldmath$\Omega$}]{
+    \circuitmeter{#2}{#1}
 }
 
 % cground own design
