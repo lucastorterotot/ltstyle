@@ -5,9 +5,9 @@ A LaTeX configuration.
 [![GitHub last commit](https://img.shields.io/github/last-commit/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/commits)
 [![GitHub](https://img.shields.io/github/license/lucastorterotot/ltstyle.svg)](https://gitlab.com/lucastorterotot/ltstyle/blob/master/LICENSE)
 
-[![LaTeX2e Version](https://img.shields.io/static/v1?label=LaTeX2e&message=2020-02-02&color=blue)](https://www.latex-project.org/)
-[![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.14159265-2.6-1.40.20&color=blue)](https://www.tug.org/texlive/)
-[![LuaTeX Version](https://img.shields.io/static/v1?label=LuaTeX&message=1.10.0&color=blue)](http://www.luatex.org/)
+[![LaTeX2e Version](https://img.shields.io/static/v1?label=LaTeX2e&message=2021-11-15&color=blue)](https://www.latex-project.org/)
+[![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.141592653-2.6-1.40.22&color=blue)](https://www.tug.org/texlive/)
+[![LuaHBTeX Version](https://img.shields.io/static/v1?label=LuaTeX&message=1.14.0&color=blue)](http://www.luatex.org/)
 
 [![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.53&color=blue)](https://ctan.org/pkg/chemfig)
 [![simplekv Version](https://img.shields.io/static/v1?label=simplekv&message=0.2&color=blue)](https://ctan.org/pkg/simplekv)
@@ -23,6 +23,7 @@ sudo apt-get install texlive-full
 ```
 If your LaTeX2e or pdfTeX version are older than these shown above, consider switching to older versions of the package listed below:
 
+-[`20.04`](https://gitlab.com/lucastorterotot/ltstyle/-/tree/20.04) for LaTeX2e 2020-02-02 and pdfTeX 3.14159265-2.6-1.40.20.
 -[`18.04`](https://gitlab.com/lucastorterotot/ltstyle/-/tree/18.04) for LaTeX2e 2017-04-15 and pdfTeX 3.14159265-2.6-1.40.18.
 
 2. Get this package
