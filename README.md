@@ -29,11 +29,11 @@ If your LaTeX2e or pdfTeX version are older than these shown above, consider swi
 ```
 mkdir -p ~/texmf/tex/latex
 cd ~/texmf/tex/latex
-git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas
+git clone git@gitlab.com:lucastorterotot/ltstyle.git --origin lucas -b 20.04
 ```
 In case you do not have a `ssh` key you may use `https`:
 ```
-git clone https://gitlab.com/lucastorterotot/ltstyle.git --origin lucas
+git clone https://gitlab.com/lucastorterotot/ltstyle.git --origin lucas -b 20.04
 ```
 3. Get ChemFig and simplekv packages from Christian Tellechea
 ```
