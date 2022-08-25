@@ -9,6 +9,7 @@ A LaTeX configuration.
 [![pdfTeX Version](https://img.shields.io/static/v1?label=pdfTeX&message=3.141592653-2.6-1.40.22&color=blue)](https://www.tug.org/texlive/)
 [![LuaHBTeX Version](https://img.shields.io/static/v1?label=LuaTeX&message=1.14.0&color=blue)](http://www.luatex.org/)
 
+[![minted Version](https://img.shields.io/static/v1?label=minted&message=2.5&color=orange)](https://github.com/gpoore/minted.git)
 [![ChemFig Version](https://img.shields.io/static/v1?label=ChemFig&message=1.53&color=blue)](https://ctan.org/pkg/chemfig)
 [![simplekv Version](https://img.shields.io/static/v1?label=simplekv&message=0.2&color=blue)](https://ctan.org/pkg/simplekv)
 
@@ -41,8 +42,12 @@ git clone https://gitlab.com/lucastorterotot/ltstyle.git --origin lucas
 cd ~/texmf/tex/latex
 for p in simplekv chemfig ; do wget http://mirrors.ctan.org/macros/generic/${p}.zip ; unzip ${p}.zip ; rm ${p}.zip ; done
 ```
-4. Install and update Pygments if you want to use minted.
-First, install it with
+4. Install both minted and Pygments if you want to use minted.
+First, install minted with
+```
+git clone https://github.com/gpoore/minted.git -b v2.5
+```
+Then Pygments with
 ```
 pip install Pygments
 ```
