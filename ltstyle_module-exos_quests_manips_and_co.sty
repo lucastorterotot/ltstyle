@@ -102,8 +102,12 @@
   \ifthenelse{\equal{\isbeamer}{true}}{}{\input ltqueststyle-default.sty}
 }{}
 
-
+\def\inputexosfilename{liste-exos_de_cours.tex}
+\AtEndPreamble{\newwrite\inputexosfile}
+\AtBeginDocument{\immediate\openout\inputexosfile=\inputexosfilename}
+\AtEndDocument{\AtEndDocument{\immediate\closeout\inputexosfile}}
 \newcommand{\inputexo}[2][Exercice d'application]{{%
+    \immediate\write\inputexosfile{input{#2}}
     \def\remarquemarker{\Pointinghand}%
     \renewcommand{\exo}[2][]{##2\endinput}%
     \remarque[\ltcolorthemeC][#1]{%
