@@ -1,4 +1,7 @@
 \def\chaptername{Chapter}
+\ifthenelse{\equal{\isbeamer}{true}}
+           {\newcommand{\chapter}[2][]{\title{#2}}}
+           {}
 
 \makeatletter
 \@ifclassloaded{book}
@@ -147,7 +150,7 @@
                 {}
         
        }%
-       { \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{default}\or\equal{\PackageOption}{book}\or\equal{\isbeamer}{true}\or\equal{\PackageOption}{chapter}}
+       { \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{default}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{chapter}}
            {}
            {\renewcommand{\chapter}[2][]{\laterdef{\@title}{#2}\laterdef{\insertshorttitle}{}}}
        }%
