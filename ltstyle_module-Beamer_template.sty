@@ -66,7 +66,7 @@
 }
 
 \AtBeginDocument{
-\ifthenelse{\equal{\PackageOption}{default}}{}{
+\ifthenelse{\equal{\PackageOption}{default}\or\equal{\PackageOption}{chapter}}{}{
 \let\originstitute\mybeamerinsertinstitute
 \let\origshortinstitute\mybeamerinsertshortinstitute
 \ifthenelse{\equal{\insertclasse}{}}
