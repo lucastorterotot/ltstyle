@@ -17,8 +17,8 @@
 \def\thesubsubexo{\textbf{\Alph{exo}.\arabic{subexo}.\arabic{subsubexo}-}}
 
 \renewcommand{\exo}[2][Problème]{\ExoBaremeMake\vspace{\baselineskip}\par\setcounter{quest}{0}\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}\begin{center}\large\familyfortitles\boldmath\bfseries #1 \theexo~: #2\end{center}\ExoBaremeWrite\vspace{\baselineskip}\par}
-\renewcommand{\subexo}[2][\!\!]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{#1 \Alph{exo}.\arabic{subexo}-~#2}\ \medskip\par}
-\renewcommand{\subsubexo}[2][\!\!]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{#1 \Alph{exo}.\arabic{subexo}.\arabic{subsubexo}-~#2}\ \medskip\par}
+\renewcommand{\subexo}[2][\!\!]{\setcounter{quest}{0}\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{#1 \Alph{exo}.\arabic{subexo}-~#2}\ \medskip\par}
+\renewcommand{\subsubexo}[2][\!\!]{\setcounter{quest}{0}\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subparagraph*{#1 \Alph{exo}.\arabic{subexo}.\arabic{subsubexo}-~#2}\ \medskip\par}
 
 \def\numquest{\ifnum \arabic{subexo}>0 \Alph{exo}.\arabic{subexo}.\else \ifnum \arabic{exo}>0 \theexo .\fi \fi \arabic{quest}}
 \def\numsubquest{\arabic{subquest}}
