@@ -70,7 +70,7 @@
 
 \newcommand{\localbrm}[2][]{%
     \ifBaremeDetail
-      \textcolor{ltcolorred}{\text{\ \footnotesize$\blacktriangleright$~\FranPt{#2}} #1}%
+      \textcolor{ltcolorred}{\text{\ \footnotesize$\blacktriangleright$~\FranPt{#2}\ifthenelse{\equal{#1}{}}{}{ #1}}}%
     \fi}
 
 \newcommand\total[1]{%
