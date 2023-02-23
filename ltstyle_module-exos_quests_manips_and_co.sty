@@ -122,12 +122,14 @@
   \ifthenelse{\equal{\isbeamer}{true}}{}{\input ltqueststyle-default.sty}
 }{}
 
+\newif\ifListeExoCours
 \def\inputexosfilename{liste-exos_de_cours.tex}
 \AtEndPreamble{\newwrite\inputexosfile}
-\AtBeginDocument{\immediate\openout\inputexosfile=\inputexosfilename}
-\AtEndDocument{\AtEndDocument{\immediate\closeout\inputexosfile}}
+\AtEndPreamble{\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}}{\ListeExoCourstrue}{\ListeExoCoursfalse}}
+\AtBeginDocument{\ifListeExoCours\immediate\openout\inputexosfile=\inputexosfilename\fi}
+\AtEndDocument{\AtEndDocument{\ifListeExoCours\immediate\closeout\inputexosfile\fi}}
 \newcommand{\inputexo}[2][Exercice d'application]{{%
-    \immediate\write\inputexosfile{input{#2}}
+    \ifListeExoCours\immediate\write\inputexosfile{input{#2}}\fi
     \def\remarquemarker{\Pointinghand}%
     \renewcommand{\exo}[2][]{##2\endinput}%
     \remarque[\ltcolorthemeC][#1]{%
