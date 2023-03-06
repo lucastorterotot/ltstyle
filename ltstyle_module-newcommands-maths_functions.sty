@@ -42,5 +42,6 @@
 
 \ifthenelse{\equal{\nablaOption}{true}}{\usenabla}{\nousenabla}
 
+\RenewDocumentCommand\dim{d()}{\operatorname{dim}\IfValueT{#1}{\parentheses*{#1}}}
 \NewDocumentCommand\sinc{d()}{\operatorname{sinc}\IfValueT{#1}{\parentheses*{#1}}}
 \NewDocumentCommand\sign{d()}{\operatorname{sign}\IfValueT{#1}{\parentheses*{#1}}}
