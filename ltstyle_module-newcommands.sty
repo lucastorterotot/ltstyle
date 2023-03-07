@@ -49,6 +49,8 @@
 \def\doup#1#2{\ensuremath{_{#1\hphantom{#2}}^{\hphantom{#1}#2}}}
 \def\updo#1#2{\ensuremath{^{#1\hphantom{#2}}_{\hphantom{#1}#2}}}
 
+\def\trm#1{\text{\rm #1}}
+
 \makeatletter
 \newcommand{\laterdef}[2]{% 
   \protected@write\@auxout{}{\gdef\string#1{#2}}} %command to define variables later
