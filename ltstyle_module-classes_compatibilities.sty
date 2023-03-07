@@ -1,6 +1,7 @@
 \def\chaptername{Chapter}
 \ifthenelse{\equal{\isbeamer}{true}}
-           {\newcommand{\chapter}[2][]{\title{#2}}}
+           {\newcommand{\chapter}[2][]{\title{#2}}
+           \def\textrm#1{\text{\rm #1}}}
            {}
 
 \makeatletter
