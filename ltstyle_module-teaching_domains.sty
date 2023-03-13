@@ -1,0 +1,69 @@
+\newcounter{teachingdomain}
+\setcounter{teachingdomain}{0}
+
+\def\setteachingdomain#1{%
+    \setcounter{teachingdomain}{#1}%
+    \addtocounter{teachingdomain}{-1}%
+    \stepcounter{teachingdomain}%
+}
+
+\makeatletter
+\def\GetTeachingDomain{%
+\ifnum \c@teachingdomain = 1 $\phi$g%
+\else\ifnum \c@teachingdomain = 100 $\varphi$%
+\else\ifnum \c@teachingdomain = 101 $\varphi$%
+\else\ifnum \c@teachingdomain = 102 $\varphi$%
+\else\ifnum \c@teachingdomain = 103 CP%
+\else\ifnum \c@teachingdomain = 104 SL%
+\else\ifnum \c@teachingdomain = 105 Él%
+\else\ifnum \c@teachingdomain = 106 EM%
+\else\ifnum \c@teachingdomain = 107 La%
+\else\ifnum \c@teachingdomain = 108 Mé%
+\else\ifnum \c@teachingdomain = 109 MN%
+\else\ifnum \c@teachingdomain = 110 MF%
+\else\ifnum \c@teachingdomain = 111 MP%
+\else\ifnum \c@teachingdomain = 112 MS%
+\else\ifnum \c@teachingdomain = 113 MQ%
+\else\ifnum \c@teachingdomain = 114 On%
+\else\ifnum \c@teachingdomain = 115 OG%
+\else\ifnum \c@teachingdomain = 116 OO%
+\else\ifnum \c@teachingdomain = 117 RR%
+\else\ifnum \c@teachingdomain = 118 SA%
+\else\ifnum \c@teachingdomain = 119 Th%
+\else\ifnum \c@teachingdomain = 120 RI%
+\else\ifnum \c@teachingdomain = 200 $\chi$%
+\else\ifnum \c@teachingdomain = 201 $\chi$%
+\else\ifnum \c@teachingdomain = 202 $\chi$%
+\else\ifnum \c@teachingdomain = 203 AB%
+\else\ifnum \c@teachingdomain = 204 AS%
+\else\ifnum \c@teachingdomain = 205 AM%
+\else\ifnum \c@teachingdomain = 206 Or%
+\else\ifnum \c@teachingdomain = 207 An%
+\else\ifnum \c@teachingdomain = 208 CM%
+\else\ifnum \c@teachingdomain = 209 CC%
+\else\ifnum \c@teachingdomain = 210 Cr%
+\else\ifnum \c@teachingdomain = 211 É$\chi$%
+\else\ifnum \c@teachingdomain = 212 SA%
+\else\ifnum \c@teachingdomain = 213 Th%
+\else\ifnum \c@teachingdomain = 300 I%
+\else\ifnum \c@teachingdomain = 400 M%
+\else\ifnum \c@teachingdomain = 500 ADM%
+\else ?%
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\def\GetTeachingDomainFull{\GetTeachingDomain}
+
+\@addtoreset {chapter}{teachingdomain}
+\@addtoreset {enseignementnumvalue}{teachingdomain}
+\renewcommand\insertenseignementnum
+{\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue>\z@ \@arabic\c@enseignementnumvalue\fi}
+
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TPs}\equal{\PackageOption}{TDs}}{
+    \let\basechap\chapter
+    \def\chapter{%
+        \clearpage\stepcounter{enseignementnumvalue}%
+        \basechap}
+}{}
+
+\def\teachingdomainpart{\part{\GetTeachingDomainFull}}
+\makeatother
