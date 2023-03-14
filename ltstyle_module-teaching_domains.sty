@@ -39,6 +39,10 @@
 \else\ifnum \c@teachingdomain = 123 T%
 \else\ifnum \c@teachingdomain = 124 RI%
 \else\ifnum \c@teachingdomain = 125 TS%
+\else\ifnum \c@teachingdomain = 126 PS%
+\else\ifnum \c@teachingdomain = 127 EN%
+\else\ifnum \c@teachingdomain = 128 PT%
+\else\ifnum \c@teachingdomain = 129 BM%
 \else\ifnum \c@teachingdomain = 200 $\chi$%
 \else\ifnum \c@teachingdomain = 201 $\chi$%
 \else\ifnum \c@teachingdomain = 202 $\chi$%
@@ -52,12 +56,12 @@
 \else\ifnum \c@teachingdomain = 210 Cr%
 \else\ifnum \c@teachingdomain = 211 É$\chi$%
 \else\ifnum \c@teachingdomain = 212 SA%
-\else\ifnum \c@teachingdomain = 213 Th%
+\else\ifnum \c@teachingdomain = 213 T$\chi$%
 \else\ifnum \c@teachingdomain = 300 I%
 \else\ifnum \c@teachingdomain = 400 M%
 \else\ifnum \c@teachingdomain = 500 ADM%
 \else ?%
-\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
 
 \def\GetTeachingDomainFull{%
 \ifnum \c@teachingdomain = 1 {Physique}%
@@ -87,6 +91,10 @@
 \else\ifnum \c@teachingdomain = 123 {Thermodynamique}%
 \else\ifnum \c@teachingdomain = 124 {Physique des rayonnements ionisants}%
 \else\ifnum \c@teachingdomain = 125 {Traitement du signal}%
+\else\ifnum \c@teachingdomain = 126 {Physique statistique}%
+\else\ifnum \c@teachingdomain = 127 {Électronique}%
+\else\ifnum \c@teachingdomain = 128 {Phénomènes de transport}%
+\else\ifnum \c@teachingdomain = 129 {Bilans macroscopiques}%
 \else\ifnum \c@teachingdomain = 200 {Chimie}%
 \else\ifnum \c@teachingdomain = 201 {Bases de la chimie}%
 \else\ifnum \c@teachingdomain = 202 {Autres}%
@@ -105,7 +113,7 @@
 \else\ifnum \c@teachingdomain = 400 {Mathématiques}%
 \else\ifnum \c@teachingdomain = 500 {Analyse Diagnostic Maintenance}%
 \else ?%
-\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
 
 \@addtoreset {chapter}{teachingdomain}
 \@addtoreset {enseignementnumvalue}{teachingdomain}
