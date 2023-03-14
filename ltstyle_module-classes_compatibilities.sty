@@ -28,7 +28,7 @@
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}#1}%
+                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
@@ -179,7 +179,7 @@
 %                         \refstepcounter{chapter}%
 %                         \typeout{\@chapapp\space\thechapter.}%
 %                         \addcontentsline{toc}{chapter}%
-%                                   {\protect\numberline{\thechapter}#1}%
+%                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
 %                       \else
 %                         \addcontentsline{toc}{chapter}{#1}%
 %                       \fi
@@ -264,7 +264,7 @@
 %                         \refstepcounter{chapter}%
 %                         \typeout{\@chapapp\space\thechapter.}%
 %                         \addcontentsline{toc}{chapter}%
-%                                   {\protect\numberline{\thechapter}#1}%
+%                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
 %                       \else
 %                         \addcontentsline{toc}{chapter}{#1}%
 %                       \fi
