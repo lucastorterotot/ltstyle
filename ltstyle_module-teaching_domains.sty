@@ -1,0 +1,128 @@
+\newcounter{teachingdomain}
+\setcounter{teachingdomain}{0}
+\newif\ifteachingdomainused
+\teachingdomainusedfalse
+
+\def\setteachingdomain#1{%
+    \setcounter{teachingdomain}{#1}%
+    \addtocounter{teachingdomain}{-1}%
+    \stepcounter{teachingdomain}%
+    \teachingdomainusedtrue%
+}
+
+\makeatletter
+\def\GetTeachingDomain{%
+\ifnum \c@teachingdomain = 1 $\phi$g%
+\else\ifnum \c@teachingdomain = 100 $\varphi$%
+\else\ifnum \c@teachingdomain = 101 $\varphi$%
+\else\ifnum \c@teachingdomain = 102 $\varphi$%
+\else\ifnum \c@teachingdomain = 103 CP%
+\else\ifnum \c@teachingdomain = 104 SL%
+\else\ifnum \c@teachingdomain = 105 Él%
+\else\ifnum \c@teachingdomain = 106 EM%
+\else\ifnum \c@teachingdomain = 107 I%
+\else\ifnum \c@teachingdomain = 108 La%
+\else\ifnum \c@teachingdomain = 109 M%
+\else\ifnum \c@teachingdomain = 110 MC%
+\else\ifnum \c@teachingdomain = 111 MF%
+\else\ifnum \c@teachingdomain = 112 MP%
+\else\ifnum \c@teachingdomain = 113 MS%
+\else\ifnum \c@teachingdomain = 114 MQ%
+\else\ifnum \c@teachingdomain = 115 Q%
+\else\ifnum \c@teachingdomain = 116 On%
+\else\ifnum \c@teachingdomain = 117 OG%
+\else\ifnum \c@teachingdomain = 118 OO%
+\else\ifnum \c@teachingdomain = 119 RR%
+\else\ifnum \c@teachingdomain = 120 S%
+\else\ifnum \c@teachingdomain = 121 SA%
+\else\ifnum \c@teachingdomain = 122 Th%
+\else\ifnum \c@teachingdomain = 123 T%
+\else\ifnum \c@teachingdomain = 124 RI%
+\else\ifnum \c@teachingdomain = 200 $\chi$%
+\else\ifnum \c@teachingdomain = 201 $\chi$%
+\else\ifnum \c@teachingdomain = 202 $\chi$%
+\else\ifnum \c@teachingdomain = 203 AB%
+\else\ifnum \c@teachingdomain = 204 AS%
+\else\ifnum \c@teachingdomain = 205 AM%
+\else\ifnum \c@teachingdomain = 206 Or%
+\else\ifnum \c@teachingdomain = 207 An%
+\else\ifnum \c@teachingdomain = 208 CM%
+\else\ifnum \c@teachingdomain = 209 CC%
+\else\ifnum \c@teachingdomain = 210 Cr%
+\else\ifnum \c@teachingdomain = 211 É$\chi$%
+\else\ifnum \c@teachingdomain = 212 SA%
+\else\ifnum \c@teachingdomain = 213 Th%
+\else\ifnum \c@teachingdomain = 300 I%
+\else\ifnum \c@teachingdomain = 400 M%
+\else\ifnum \c@teachingdomain = 500 ADM%
+\else ?%
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\def\GetTeachingDomainFull{%
+\ifnum \c@teachingdomain = 1 {Physique}%
+\else\ifnum \c@teachingdomain = 100 {Physique}%
+\else\ifnum \c@teachingdomain = 101 {Bases des sciences physiques}%
+\else\ifnum \c@teachingdomain = 102 {Autres}%
+\else\ifnum \c@teachingdomain = 103 {Conversion de puissance}%
+\else\ifnum \c@teachingdomain = 104 {Dynamique des systèmes linéaires}%
+\else\ifnum \c@teachingdomain = 105 {Électricité}%
+\else\ifnum \c@teachingdomain = 106 {Électromagnétisme}%
+\else\ifnum \c@teachingdomain = 107 {Induction}%
+\else\ifnum \c@teachingdomain = 108 {Lasers}%
+\else\ifnum \c@teachingdomain = 109 {Mécanique}%
+\else\ifnum \c@teachingdomain = 110 {Mécanique classique}%
+\else\ifnum \c@teachingdomain = 111 {Mécanique des fluides}%
+\else\ifnum \c@teachingdomain = 112 {Mécanique du point}%
+\else\ifnum \c@teachingdomain = 113 {Mécanique du solide}%
+\else\ifnum \c@teachingdomain = 114 {Mécanique quantique}%
+\else\ifnum \c@teachingdomain = 115 {Mécanique quantique}%
+\else\ifnum \c@teachingdomain = 116 {Ondes}%
+\else\ifnum \c@teachingdomain = 117 {Optique géometrique}%
+\else\ifnum \c@teachingdomain = 118 {Optique ondulatoire}%
+\else\ifnum \c@teachingdomain = 119 {Relativité restreinte}%
+\else\ifnum \c@teachingdomain = 120 {Signaux}%
+\else\ifnum \c@teachingdomain = 121 {Physique subatomique}%
+\else\ifnum \c@teachingdomain = 122 {Thermodynamique}%
+\else\ifnum \c@teachingdomain = 123 {Thermodynamique}%
+\else\ifnum \c@teachingdomain = 124 {Physique des rayonnements ionisants}%
+\else\ifnum \c@teachingdomain = 200 {Chimie}%
+\else\ifnum \c@teachingdomain = 201 {Bases de la chimie}%
+\else\ifnum \c@teachingdomain = 202 {Autres}%
+\else\ifnum \c@teachingdomain = 203 {Acides et bases}%
+\else\ifnum \c@teachingdomain = 204 {Analyse spectrale}%
+\else\ifnum \c@teachingdomain = 205 {Atomes et molécules}%
+\else\ifnum \c@teachingdomain = 206 {Chimie organique}%
+\else\ifnum \c@teachingdomain = 207 {Chimie analytique}%
+\else\ifnum \c@teachingdomain = 208 {Cinétique et mécanismes}%
+\else\ifnum \c@teachingdomain = 209 {Cinétique et catalyse}%
+\else\ifnum \c@teachingdomain = 210 {Cristallographie}%
+\else\ifnum \c@teachingdomain = 211 {Électrochimie}%
+\else\ifnum \c@teachingdomain = 212 {Solutions aqueuses}%
+\else\ifnum \c@teachingdomain = 213 {Thermodynamique chimique}%
+\else\ifnum \c@teachingdomain = 300 {Informatique}%
+\else\ifnum \c@teachingdomain = 400 {Mathématiques}%
+\else\ifnum \c@teachingdomain = 500 {Analyse Diagnostic Maintenance}%
+\else ?%
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\@addtoreset {chapter}{teachingdomain}
+\@addtoreset {enseignementnumvalue}{teachingdomain}
+\renewcommand\insertenseignementnum
+{\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue>\z@ \@arabic\c@enseignementnumvalue\fi}
+
+\AtEndDocument{%
+    \ifteachingdomainused%
+        \laterdef{\TOCchapterTeaDomNegFix}{-3em}%
+        \laterdef{\TOCchapterTeaDomPosFix}{2em}%
+    \fi%
+}
+
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TPs}\equal{\PackageOption}{TDs}}{
+    \let\basechap\chapter
+    \def\chapter{%
+        \clearpage\stepcounter{enseignementnumvalue}%
+        \basechap}
+}{}
+
+\def\teachingdomainpart{\part{\GetTeachingDomainFull}}
+\makeatother

@@ -5,17 +5,8 @@
 
 \ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{}{\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}}{\renewcommand{\footrulewidth}{0.0pt}}{\renewcommand{\footrulewidth}{0.4pt}}}
 
-\AtEndPreamble{
-    \AtBeginDocument{
-        \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}
-        {
-            \ifdefined\insertenseignementnum \else {\def\insertenseignementnum{\!\!}} \fi
-            \ifthenelse{\equal{\insertenseignementnum}{\!\!}}
-            {\def\insertenseignementnum{\ifthenelse{\equal{\thechapter}{0}}{\!\!}{\thechapter}}}
-            {}
-        }{}
-    }
-}
+\ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}
+{\def\thechapter{\insertenseignementnum}}{}
 
 \AtBeginDocument{
 \ifthenelse{\equal{\PackageOption}{default}\or\equal{\isbeamer}{true}}{

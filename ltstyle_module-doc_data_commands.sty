@@ -11,7 +11,9 @@
 \newcommand{\insertshortmatiere}{\insertmatiere}
 \newcommand{\insertenseignementtype}{}
 \newcommand{\insertshortenseignementtype}{}
-\newcommand{\insertenseignementnum}{}
+\newcounter{enseignementnumvalue}
+\setcounter{enseignementnumvalue}{0}
+\newcommand{\insertenseignementnum}{\arabic{enseignementnumvalue}}
 \newcommand{\insertenseignementgpcolle}{}
 \newcommand{\insertenseignementduree}{}
 \newcommand{\insertenseignementmodalites}{}
@@ -211,7 +213,7 @@
  }
 }{}
 
-\newcommand{\enseignementnum}[1]{\renewcommand{\insertenseignementnum}{#1}}
+\newcommand{\enseignementnum}[1]{\setcounter{enseignementnumvalue}{#1}}
 \newcommand{\enseignementgpcolle}[1]{\renewcommand{\insertenseignementgpcolle}{#1}}
 \newcommand{\enseignementduree}[1]{\renewcommand{\insertenseignementduree}{#1}}
 \newcommand{\enseignementmodalites}[1]{\renewcommand{\insertenseignementmodalites}{#1}}

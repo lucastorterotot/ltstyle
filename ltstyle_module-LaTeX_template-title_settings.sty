@@ -1,6 +1,6 @@
 \ifthenelse{\equal{\PackageOption}{chapter}}{\enseignementtype{\chaptername}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{chapitre}}{\enseignementtype{\chaptername}\relaxenseignementtype}{}
-\ifthenelse{\equal{\PackageOption}{complet}}{\enseignementtype{\chaptername}\renewcommand{\insertenseignementnum}{\thechapter}\relaxenseignementtype}{}
+\ifthenelse{\equal{\PackageOption}{complet}}{\enseignementtype{\chaptername}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{colle}}{\enseignementtype{Colle}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Khôlle}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{DM}}{\enseignementtype[DM]{Devoir maison}\relaxenseignementtype}{}
@@ -73,7 +73,11 @@
 
 \makeatother
 
-\AtBeginDocument{\ifthenelse{\equal{\insertenseignementnum}{}\or\equal{\insertenseignementtype}{}}{\renewcommand{\insertenseignementnum}{\!\!}}{}}
+\AtBeginDocument{\ifthenelse{\equal{\insertenseignementnum}{}\or\equal{\insertenseignementtype}{}}{
+    \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TPs}\equal{\PackageOption}{TDs}}{}{
+        \renewcommand{\insertenseignementnum}{\!\!}
+    }
+}{}}
 
 \ifthenelse{\equal{\PackageOption}{livret}}{\renewcommand{\insertenseignementnum}{\!\!}\renewcommand{\enseignementnum}[1]{}}{}
 
