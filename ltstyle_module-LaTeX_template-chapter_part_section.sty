@@ -21,12 +21,14 @@
                }{
                     \ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
-                         \setcounter{chapter}{\insertenseignementnum}
+                         \setcounter{chapter}{\arabic{enseignementnumvalue}}
                          \addtocounter{chapter}{-1}
+                         \addtocounter{enseignementnumvalue}{-1}
                          \refstepcounter{chapter}
+                         \refstepcounter{enseignementnumvalue}
                          \typeout{\@chapapp\space\thechapter.}%
                          %\addcontentsline{toc}{chapter}%
-                         %          {\protect\numberline{\thechapter}#1}%
+                         %          {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
                        \else
                          %\addcontentsline{toc}{chapter}{#1}%
                        \fi
@@ -91,7 +93,7 @@
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}#1}%
+                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
@@ -137,7 +139,7 @@
 \makeatletter
 \titleformat{\chapter}[display]
   {\LARGE\centering\familyfortitles\bfseries\boldmath\color{\ltcolorchapter}\ifthenelse{\equal{\PackageOption}{complet}}{\thispagestyle{main}}{}}
-  {\chaptername~\thechapter}
+  {\chaptername~\insertenseignementnum}
   {0pt}
 \makeatother
 }
@@ -155,7 +157,7 @@
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}#1}%
+                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
