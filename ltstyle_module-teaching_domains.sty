@@ -127,6 +127,38 @@
     \fi%
 }
 
+\@ifclassloaded{book}
+{
+    \AtBeginDocument{
+        \def\thechapter{\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \@arabic\c@chapter}
+        \def\insertenseignementnum{\thechapter}
+    }
+
+% To add TOCchapterTeaDomNegFix and TOCchapterTeaDomPosFix in books
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter\hspace{\TOCchapterTeaDomNegFix}}\hspace{\TOCchapterTeaDomPosFix}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+}
+{}
+
 \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{TPs}\equal{\PackageOption}{TDs}}{
     \let\basechap\chapter
     \def\chapter{%
