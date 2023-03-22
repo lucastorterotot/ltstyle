@@ -36,6 +36,16 @@ function math.myroundcs ( x , n )
    end
 end
 
+function math.myroundcsi ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    x_r = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
+    if x_r < x * 0.95 then
+        return math.myroundcs ( x + 10^(pow) , n )
+    else
+        return math.myroundcs ( x , n )
+    end
+end
+
 function math.myroundsc ( x , n )
    if n<1 then
       n = 1
@@ -48,6 +58,16 @@ function math.myroundsc ( x , n )
       end
       return x
    end
+end
+
+function math.myroundsci ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    x_r = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
+    if x_r < x * 0.95 then
+        return math.myroundsc ( x + 10^(pow) , n )
+    else
+        return math.myroundsc ( x , n )
+    end
 end
 
 function myautoSI ( x , n )
@@ -112,7 +132,32 @@ function myautoSIa ( x , n )
     return x
 end
 
+function myautoSIai ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    x_r = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
+    if x_r < x * 0.95 then
+        return myautoSIa ( x + 10^(pow) , n )
+    else
+        return myautoSIa ( x , n )
+    end
+end
+
 function myautoSIb ( x , n )
     x, prefix = myautoSI ( x , n )
     return prefix
+end
+
+function myautoSIaUnc ( u , x , n )
+    x_bis, prefix = myautoSI ( x , n+5 )
+    return math.myroundsci(u / x * x_bis, n)
+end
+
+function myNcsByUnc ( x, u )
+    pow_x = math.floor(math.log10(math.abs(x)))
+    pow_u = math.floor(math.log10(math.abs(u)))
+    N = pow_x - pow_u + 1
+    if N < 1 then
+        N = 1
+    end
+    return N
 end
