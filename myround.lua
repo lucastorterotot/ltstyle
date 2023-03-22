@@ -76,6 +76,10 @@ function myautoSI ( x , n )
           prefix = "\\zetta"
       elseif pow3 == 24 then
           prefix = "\\yotta"
+      elseif pow3 == 27 then
+          prefix = "\\ronna"
+      elseif pow3 == 30 then
+          prefix = "\\quetta"
       elseif pow3 == -3 then
           prefix = "\\milli"
       elseif pow3 == -6 then
@@ -92,6 +96,10 @@ function myautoSI ( x , n )
           prefix = "\\zepto"
       elseif pow3 == -24 then
           prefix = "\\yocto"
+      elseif pow3 == -27 then
+          prefix = "\\ronto"
+      elseif pow3 == -30 then
+          prefix = "\\quecto"
       end
       x = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-pow3-n+1)
       x = string.format ( "%."..n-1-pow+pow3.."f" , x )
