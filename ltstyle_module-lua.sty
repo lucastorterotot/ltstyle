@@ -25,7 +25,19 @@
 \newcommand\SIcsci[3][1]{\calcsci[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIautoi[3][1]{\num{\directlua{tex.sprint(myautoSIai(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
 
-% to get normalized values printing given computed unc
-\newcommand\SIiccs[4][1]{\ensuremath{(\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
-\newcommand\SIicsc[4][1]{\ensuremath{(\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
-\newcommand\SIiauto[4][1]{\ensuremath{(\num{\directlua{tex.sprint(myautoSIa(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoSIaUnc(#3, #2, #1))}})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
+% to get normalized values printing given computed unc with (a pm b) unit
+\newcommand\SIipmccs[4][1]{\ensuremath{(\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIipmcsc[4][1]{\ensuremath{(\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIipmauto[4][1]{\ensuremath{(\num{\directlua{tex.sprint(myautoSIa(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoSIaUnc(#3, #2, #1))}})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
+
+% to get normalized values printing given computed unc with a (b) unit
+\newcommand\SIiparccs[4][2]{\ensuremath{\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\,(\calccsi[#1]{#3*10^(#1-1-math.floor(math.log10(math.abs(#3))))})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIiparcsc[4][2]{\ensuremath{\num{\directlua{tex.sprint(myautoSIa(#2*10^(-math.floor(math.log10(math.abs(#2)))),myNcsByUnc(#2,#3)-1+#1))}}\,(\calccsi[#1]{#3*10^(#1-1-math.floor(math.log10(math.abs(#3))))})%
+\ifthenelse{\equal{\directlua{tex.sprint(math.floor(math.log10(math.abs(#2))))}}{0}}{}{\times10^\directlua{tex.sprint(math.floor(math.log10(math.abs(#2))))}}%
+\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIiparauto[4][2]{\ensuremath{\num{\directlua{tex.sprint(myautoSIa(#2,myNcsByUnc(#2,#3)-1+#1))}}\,(\calccsi[#1]{#3*10^(#1-1-math.floor(math.log10(math.abs(#3))))})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
+
+% set default
+\def\SIiccs{\SIipmccs}
+\def\SIicsc{\SIipmcsc}
+\def\SIiauto{\SIipmauto}
