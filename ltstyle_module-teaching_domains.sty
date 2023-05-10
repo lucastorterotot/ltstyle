@@ -118,7 +118,7 @@
 \@addtoreset {chapter}{teachingdomain}
 \@addtoreset {enseignementnumvalue}{teachingdomain}
 \renewcommand\insertenseignementnum
-{\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue>\z@ \@arabic\c@enseignementnumvalue\fi}
+{\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue<\z@\else\@arabic\c@enseignementnumvalue\fi}
 
 \AtEndDocument{%
     \ifteachingdomainused%
