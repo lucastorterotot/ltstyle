@@ -23,7 +23,10 @@ function math.myround ( x , n )
 end
 
 function math.ODGpow ( x )
-    pow = math.round_int(math.log10(math.abs(x)))
+    pow = math.floor(math.log10(math.abs(x)))
+    if x*10^(-pow) >= 5 then
+        pow = pow + 1
+    end
     return pow
 end
 
