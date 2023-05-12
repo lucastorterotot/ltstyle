@@ -15,10 +15,16 @@
 \newcommand\calcsci[2][1]{% default value of opt. param.: 1, special rounding for uncs
    \num{\directlua{tex.sprint(math.myroundsci(#2,#1))}}}
 
+\newcommand\calcODG[1]{%
+    \def\odgpow{\directlua{tex.sprint(math.ODGpow(#1))}}%
+    \ifthenelse{\equal{\odgpow}{0}}{\num{1}}{\num{e\directlua{tex.sprint(math.ODGpow(#1))}}}}
+
 \newcommand\SIcalc[3][0]{\calc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIccs[3][3]{\calccs[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIcsc[3][3]{\calcsc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIauto[3][3]{\num{\directlua{tex.sprint(myautoSIa(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
+\newcommand\SIODG[2]{\calcODG{#1}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#2}}}
+\newcommand\SIODGauto[2]{\calcODG{\directlua{tex.sprint(myautoSIa(#1,3))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#1,3))}#2}}}
 
 % to compute uncs
 \newcommand\SIccsi[3][1]{\calccsi[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}

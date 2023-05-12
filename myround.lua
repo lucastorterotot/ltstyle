@@ -22,6 +22,11 @@ function math.myround ( x , n )
    end
 end
 
+function math.ODGpow ( x )
+    pow = math.round_int(math.log10(math.abs(x)))
+    return pow
+end
+
 function math.myroundcs ( x , n )
    if n<1 then
       n = 1
