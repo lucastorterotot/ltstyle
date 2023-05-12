@@ -17,7 +17,7 @@
 
 \newcommand\calcODG[1]{%
     \def\odgpow{\directlua{tex.sprint(math.ODGpow(#1))}}%
-    \ifthenelse{\equal{\odgpow}{0}}{\num{1}}{\num{e\directlua{tex.sprint(math.ODGpow(#1))}}}}
+    \ifthenelse{\equal{\odgpow}{0}}{\num{1}}{\ifthenelse{\equal{\odgpow}{1}}{\num{10}}{\num{e\directlua{tex.sprint(math.ODGpow(#1))}}}}}
 
 \newcommand\SIcalc[3][0]{\calc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIccs[3][3]{\calccs[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
