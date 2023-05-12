@@ -1,13 +1,12 @@
 \newcounter{teachingdomain}
 \setcounter{teachingdomain}{0}
-\newif\ifteachingdomainused
-\teachingdomainusedfalse
 
 \def\setteachingdomain#1{%
     \setcounter{teachingdomain}{#1}%
     \addtocounter{teachingdomain}{-1}%
     \stepcounter{teachingdomain}%
-    \teachingdomainusedtrue%
+    \laterdef{\TOCchapterTeaDomNegFix}{-3em}%
+    \laterdef{\TOCchapterTeaDomPosFix}{2em}%
 }
 
 \makeatletter
@@ -43,6 +42,7 @@
 \else\ifnum \c@teachingdomain = 127 EN%
 \else\ifnum \c@teachingdomain = 128 PT%
 \else\ifnum \c@teachingdomain = 129 BM%
+\else\ifnum \c@teachingdomain = 130 Os%
 \else\ifnum \c@teachingdomain = 200 $\chi$%
 \else\ifnum \c@teachingdomain = 201 $\chi$%
 \else\ifnum \c@teachingdomain = 202 $\chi$%
@@ -61,7 +61,7 @@
 \else\ifnum \c@teachingdomain = 400 M%
 \else\ifnum \c@teachingdomain = 500 ADM%
 \else ?%
-\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
 
 \def\GetTeachingDomainFull{%
 \ifnum \c@teachingdomain = 1 {Physique}%
@@ -95,6 +95,7 @@
 \else\ifnum \c@teachingdomain = 127 {Électronique}%
 \else\ifnum \c@teachingdomain = 128 {Phénomènes de transport}%
 \else\ifnum \c@teachingdomain = 129 {Bilans macroscopiques}%
+\else\ifnum \c@teachingdomain = 130 {Oscillateurs}%
 \else\ifnum \c@teachingdomain = 200 {Chimie}%
 \else\ifnum \c@teachingdomain = 201 {Bases de la chimie}%
 \else\ifnum \c@teachingdomain = 202 {Autres}%
@@ -113,19 +114,12 @@
 \else\ifnum \c@teachingdomain = 400 {Mathématiques}%
 \else\ifnum \c@teachingdomain = 500 {Analyse Diagnostic Maintenance}%
 \else ?%
-\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
 
 \@addtoreset {chapter}{teachingdomain}
 \@addtoreset {enseignementnumvalue}{teachingdomain}
 \renewcommand\insertenseignementnum
 {\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue<\z@\else\@arabic\c@enseignementnumvalue\fi}
-
-\AtEndDocument{%
-    \ifteachingdomainused%
-        \laterdef{\TOCchapterTeaDomNegFix}{-3em}%
-        \laterdef{\TOCchapterTeaDomPosFix}{2em}%
-    \fi%
-}
 
 \@ifclassloaded{book}
 {
