@@ -1,13 +1,12 @@
 \newcounter{teachingdomain}
 \setcounter{teachingdomain}{0}
-\newif\ifteachingdomainused
-\teachingdomainusedfalse
 
 \def\setteachingdomain#1{%
     \setcounter{teachingdomain}{#1}%
     \addtocounter{teachingdomain}{-1}%
     \stepcounter{teachingdomain}%
-    \teachingdomainusedtrue%
+    \laterdef{\TOCchapterTeaDomNegFix}{-3em}%
+    \laterdef{\TOCchapterTeaDomPosFix}{2em}%
 }
 
 \makeatletter
@@ -119,13 +118,6 @@
 \@addtoreset {enseignementnumvalue}{teachingdomain}
 \renewcommand\insertenseignementnum
 {\ifnum \c@teachingdomain>\z@ \GetTeachingDomain.\fi \ifnum \c@enseignementnumvalue<\z@\else\@arabic\c@enseignementnumvalue\fi}
-
-\AtEndDocument{%
-    \ifteachingdomainused%
-        \laterdef{\TOCchapterTeaDomNegFix}{-3em}%
-        \laterdef{\TOCchapterTeaDomPosFix}{2em}%
-    \fi%
-}
 
 \@ifclassloaded{book}
 {
