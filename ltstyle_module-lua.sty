@@ -6,13 +6,13 @@
 \newcommand\calccs[2][3]{% default value of opt. param.: 3
    \num{\directlua{tex.sprint(math.myroundcs(#2,#1))}}}
 
-\newcommand\calccsi[2][1]{% default value of opt. param.: 1, special rounding for uncs
+\newcommand\calccsi[2][2]{% default value of opt. param.: 2, special rounding for uncs
    \num{\directlua{tex.sprint(math.myroundcsi(#2,#1))}}}
 
 \newcommand\calcsc[2][3]{% default value of opt. param.: 3
    \num{\directlua{tex.sprint(math.myroundsc(#2,#1))}}}
 
-\newcommand\calcsci[2][1]{% default value of opt. param.: 1, special rounding for uncs
+\newcommand\calcsci[2][2]{% default value of opt. param.: 2, special rounding for uncs
    \num{\directlua{tex.sprint(math.myroundsci(#2,#1))}}}
 
 \newcommand\calcODG[1]{%
@@ -27,14 +27,14 @@
 \newcommand\SIODGauto[2]{\calcODG{\directlua{tex.sprint(myautoSIa(#1,3))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#1,3))}#2}}}
 
 % to compute uncs
-\newcommand\SIccsi[3][1]{\calccsi[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
-\newcommand\SIcsci[3][1]{\calcsci[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
-\newcommand\SIautoi[3][1]{\num{\directlua{tex.sprint(myautoSIai(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
+\newcommand\SIccsi[3][2]{\calccsi[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
+\newcommand\SIcsci[3][2]{\calcsci[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
+\newcommand\SIautoi[3][2]{\num{\directlua{tex.sprint(myautoSIai(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
 
 % to get normalized values printing given computed unc with (a pm b) unit
-\newcommand\SIipmccs[4][1]{\ensuremath{(\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
-\newcommand\SIipmcsc[4][1]{\ensuremath{(\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
-\newcommand\SIipmauto[4][1]{\ensuremath{(\num{\directlua{tex.sprint(myautoSIa(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoSIaUnc(#3, #2, #1))}})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
+\newcommand\SIipmccs[4][2]{\ensuremath{(\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIipmcsc[4][2]{\ensuremath{(\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
+\newcommand\SIipmauto[4][2]{\ensuremath{(\num{\directlua{tex.sprint(myautoSIa(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoSIaUnc(#3, #2, #1))}})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
 
 % to get normalized values printing given computed unc with a (b) unit
 \newcommand\SIiparccs[4][2]{\ensuremath{\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\,(\calccsi[#1]{#3*10^(#1-1-math.floor(math.log10(math.abs(#3))))})\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#4}}}}
