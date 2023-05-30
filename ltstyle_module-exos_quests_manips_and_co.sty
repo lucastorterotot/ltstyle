@@ -129,9 +129,10 @@
 \AtBeginDocument{\ifListeExoCours\immediate\openout\inputexosfile=\inputexosfilename\fi}
 \AtEndDocument{\AtEndDocument{\ifListeExoCours\immediate\closeout\inputexosfile\fi}}
 \newcommand{\inputexo}[2][Exercice d'application]{{%
+    \refstepcounter{exo}%
     \ifListeExoCours\immediate\write\inputexosfile{input{#2}}\fi
     \def\remarquemarker{\Pointinghand}%
     \renewcommand{\exo}[2][]{##2\endinput}%
-    \remarque[\ltcolorthemeC][#1]{%
+    \remarque[\ltcolorthemeC][#1 \theexo]{%
         \input{#2}}
         }}
