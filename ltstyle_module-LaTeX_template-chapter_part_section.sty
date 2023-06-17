@@ -11,14 +11,7 @@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{\laterdef{\@title}{#2}\laterdef{\insertshorttitle}{}
-            \ifthenelse{\equal{\insertenseignementnum}{\!\!}}{
-                    \if@twocolumn
-                      \@topnewpage[\@makeschapterhead{#2}]%
-                    \else
-                      \@makeschapterhead{#2}%
-                      \@afterheading
-                    \fi
-               }{
+            \ifthenelse{\equal{\insertenseignementnum}{\!\!}}{\def\chaptername{\insertenseignementtype}}{}
                     \ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
                          \setcounter{chapter}{\arabic{enseignementnumvalue}}
@@ -43,7 +36,7 @@
                     \else
                       \@makechapterhead{#2}%
                       \@afterheading
-                    \fi}}
+                    \fi}
 \def\@schapter#1{\@chapter[#1]{#1}}
 
 \def\@makechapterhead#1{%
