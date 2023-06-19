@@ -124,6 +124,15 @@
  \def\insertclasse{#2}
  }
 
+\def\relaxauthor{
+    \def\author{\@dblarg\my@author}
+    \long\def\my@author[##1]##2{%
+        %\authororig{#2}%
+        %\def\insertauthor{#2}%
+        %\def\insertshortauthor{#1}%
+    }
+}
+
 \def\relaxclasselvl{
     \renewcommand{\setclasselvl}[1]{}
 }
