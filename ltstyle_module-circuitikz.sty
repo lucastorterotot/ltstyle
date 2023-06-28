@@ -43,4 +43,137 @@
     \endpgfscope 
     } 
 }
+
+\pgfdeclareshape{en amp}
+{
+    \savedmacro{\ctikzclass}{\edef\ctikzclass{amplifiers}}
+    \saveddimen{\scaledRlen}{\pgfmathsetlength{\pgf@x}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}}
+    \anchor{center}{\pgfpointorigin}
+    \savedanchor\northwest{%
+        \pgfmathsetlength{\pgf@circ@scaled@Rlen}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}
+        \pgf@y=\ctikzvalof{tripoles/en amp/height}\pgf@circ@scaled@Rlen
+        \pgf@y=.35\pgf@y
+        \pgf@x=-\ctikzvalof{tripoles/en amp/width}\pgf@circ@scaled@Rlen
+        \pgf@x=.5\pgf@x
+    }
+    \anchor{south}{
+        \northwest
+        \pgf@y=-\pgf@y
+        \pgf@x=0pt
+    }
+    \anchor{north}{
+        \northwest
+        \pgf@x=0pt
+    }
+    \savedanchor\left{%
+        \pgf@y=0pt
+    }
+    \anchor{leftedge}
+    {
+        \left
+        \pgf@x = \ctikzvalof{tripoles/en amp/port width}\pgf@x
+    }
+    \savedanchor\inOneFixed{%
+        \pgfmathsetlength{\pgf@circ@scaled@Rlen}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}
+        \pgf@y=\ctikzvalof{tripoles/en amp/height}\pgf@circ@scaled@Rlen
+        \pgf@y=.35\pgf@y
+        \pgf@y=\ctikzvalof{tripoles/op amp/input height}\pgf@y
+        \pgf@x=-\ctikzvalof{tripoles/en amp/width}\pgf@circ@scaled@Rlen
+        \pgf@x=.5\pgf@x
+    }
+    \anchor{in up}{
+        \inOneFixed
+    }
+    \anchor{in down}{
+        \inOneFixed
+        \pgf@y=-\pgf@y
+    }
+    \savedanchor\inOne{%
+        \pgfmathsetlength{\pgf@circ@scaled@Rlen}{\ctikzvalof{\ctikzclass/scale}\pgf@circ@Rlen}
+        \pgf@y=\ctikzvalof{tripoles/en amp/height}\pgf@circ@scaled@Rlen
+        \pgf@y=.35\pgf@y
+        \pgf@y=\ctikzvalof{tripoles/op amp/input height}\pgf@y
+        \pgf@x=-\ctikzvalof{tripoles/en amp/width}\pgf@circ@scaled@Rlen
+        \pgf@x=.5\pgf@x
+    \ifpgf@circuit@oa@iplusup\pgf@y=-\pgf@y\fi
+    }
+    \anchor{-}{
+        \inOne
+    }
+    \anchor{+}{
+        \inOne
+        \pgf@y=-\pgf@y
+    }
+    \anchor{up}{
+        \northwest
+        \pgf@x=0pt
+    }
+    \anchor{down}{
+        \northwest
+        \pgf@x=0pt
+        \pgf@y=-\pgf@y
+    }
+    \anchor{out}{
+        \northwest
+        \pgf@y=0pt
+        \pgf@x=-\pgf@x
+    }
+    \anchor{west}{
+        \left
+    }
+    \anchor{east}{
+        \left
+        \pgf@x=-\pgf@x
+    }
+    \anchor{south west}{ \northwest \pgf@y=-\pgf@y }
+    \anchor{north east}{ \northwest \pgf@x=-\pgf@x }
+    \anchor{north west}{ \northwest }
+    \anchor{south east}{ \northwest \pgf@x=-\pgf@x \pgf@y=-\pgf@y }
+    \anchor{text}{\pgfpoint{-.5\wd\pgfnodeparttextbox}{\dimexpr.5\dp\pgfnodeparttextbox-.5\ht\pgfnodeparttextbox}}
+
+    \backgroundpath{
+        \pgfsetcolor{\ctikzvalof{color}}
+        \northwest
+        \pgf@circ@res@up = \pgf@y
+        \pgf@circ@res@down = -\pgf@y
+        \pgf@circ@res@right = -\pgf@x
+        \pgf@circ@res@left = \pgf@x
+        \pgf@circ@scaled@Rlen=\scaledRlen
+
+        \pgfscope
+            \pgf@circ@setlinewidth{tripoles}{\pgflinewidth}
+            \pgfpathmoveto{\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}{\pgf@circ@res@down}}
+            \pgfpathlineto{\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}{\pgf@circ@res@up}}
+            \pgfpathlineto{\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@right}{\pgf@circ@res@up}}
+            \pgfpathlineto{\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@right}{\pgf@circ@res@down}}
+            \pgfpathclose
+            \pgf@circ@draworfill
+        \endpgfscope
+
+        \pgfpathmoveto{\pgfpoint
+            {\pgf@circ@res@left}
+            {\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@up}}
+        \pgfpathlineto{\pgfpoint
+            {\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}
+            {\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@up}}
+        \pgftext[left, at=\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}{\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@up}]{\ctikzvalof{tripoles/en amp/font} \ifpgf@circuit@oa@iplusup$+$\else$-$\fi}
+
+        \pgfpathmoveto{\pgfpoint
+            {\pgf@circ@res@left}
+            {\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@down}}
+        \pgfpathlineto{\pgfpoint
+            {\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}
+            {\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@down}}
+        \pgftext[left, at=\pgfpoint{\ctikzvalof{tripoles/en amp/port width}\pgf@circ@res@left}{\ctikzvalof{tripoles/op amp/input height}\pgf@circ@res@down}]{\ctikzvalof{tripoles/en amp/font} \ifpgf@circuit@oa@iplusup$-$\else$+$\fi}
+
+        \pgfpathmoveto{\pgfpoint{\pgf@circ@res@right}{0pt}}
+        \pgfpathlineto{\pgfpoint{.7\pgf@circ@res@right}{0pt}}
+        \pgfsetrectcap
+        \pgfusepath{draw}
+
+
+        \pgftext[top, x=.3\pgf@x, y=-.5ex, at=\pgfpoint{0pt}{\pgf@circ@res@up}]{\hbox{\ctikzvalof{tripoles/en amp/font2}\ctikzvalof{tripoles/en amp/text}}}
+    }
+}
+
 \makeatother
