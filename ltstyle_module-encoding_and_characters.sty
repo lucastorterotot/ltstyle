@@ -26,13 +26,7 @@
 \makeatletter
 \@ifpackageloaded{babel}{}{
   \@ifpackageloaded{polyglossia}{}{
-    \ifLuaTeX
-      \RequirePackage{polyglossia}
-      \setdefaultlanguage{french}
-      \AtBeginDocument{\def\og{«~}\def\fg{\unskip »}}
-    \else
       \RequirePackage[french]{babel}
-    \fi
   }
 }
 \@ifpackageloaded{babel}{
