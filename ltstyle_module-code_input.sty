@@ -17,7 +17,7 @@
   \RequirePackage{minted} % insertion de code
   \def\ltmintedstyle{ltstyleemacs}
   \ifthenelse{\equal{\codecolortheme}{black}}{\def\ltmintedstyle{ltstyletangodark}}{}
-  \usemintedstyle{\ltmintedstyle}
+  \usemintedstyle{ltstyleemacs} % fix because ltmintedstyle command is not interpreted
   \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\color{\codecolortheme lstcolnb}\arabic{FancyVerbLine}}}
   \tcbuselibrary{minted,skins}
 }{}}
@@ -181,7 +181,7 @@ frame=tb,                         % Any extra options here
                    {%
                      \tcblisting{
                        listing engine=minted,
-                       minted style=\ltmintedstyle,
+                       minted style=ltstyleemacs, % fix because ltmintedstyle command is not interpreted
                        minted language=#1,
                        minted options={linenos,numbersep=2mm, breaklines},
                        coltext=\codecolortheme lstcoltxt,
@@ -201,7 +201,7 @@ frame=tb,                         % Any extra options here
         \color{\codecolortheme lstcoltxt}%
         \tcbinputlisting{
           listing engine=minted,
-          minted style=\ltmintedstyle,
+          minted style=ltstyleemacs, % fix because ltmintedstyle command is not interpreted
           minted language=#2,
           minted options={linenos,numbersep=2mm, breaklines, #1},
           coltext=\codecolortheme lstcoltxt,
