@@ -24,7 +24,7 @@
 \newcommand\SIcsc[3][3]{\calcsc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIauto[3][3]{\num{\directlua{tex.sprint(myautoSIa(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
 \newcommand\SIODG[2]{\calcODG{#1}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#2}}}
-\newcommand\SIODGauto[2]{\calcODG{\directlua{tex.sprint(myautoSIa(#1,3))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#1,3))}#2}}}
+\newcommand\SIODGauto[2]{\calcODG{\directlua{tex.sprint(myautoSIa(#1,2))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#1,2))}#2}}}
 
 % to compute uncs
 \newcommand\SIccsi[3][2]{\calccsi[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}

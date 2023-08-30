@@ -157,7 +157,11 @@ end
 
 function myautoSIaUnc ( u , x , n )
     x_bis, prefix = myautoSI ( x , n+5 )
-    return math.myroundsci(u / x * x_bis, n)
+    if math.floor(math.log10(math.abs(u/x*x_bis))) < -5 then
+        return math.myroundsci(u / x * x_bis, n)
+    else
+        return math.myroundcsi(u / x * x_bis, n)
+    end
 end
 
 function myNcsByUnc ( x, u )
