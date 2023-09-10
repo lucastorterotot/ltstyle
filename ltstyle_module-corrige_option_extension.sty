@@ -22,18 +22,18 @@
 \chead{\familyforhf }
 \rhead{\familyforhf \insertinstitute}
 \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{pagenotes}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{LastPage}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \fancypagestyle{rapport}{
 \lhead{\familyforhf }
 \chead{\familyforhf }
 \rhead{\familyforhf }
 \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
-\cfoot{\familyforhf \thepage /\pageref{pagenotes}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
+\cfoot{\familyforhf \thepage /\pageref{LastPage}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \pagestyle{rapport}
 \thispagestyle{rapporttitle}
 
-\renewcommand{\insertenseignementnum}{\originsertenseignementnum~\IfFileExists{notes-pyplot.pgf}{(notes)}{(remarques)}}
-\def\TitleToUse{\insertenseignementtype~\originsertenseignementnum~--~\IfFileExists{notes-pyplot.pgf}{Distribution des notes}{Remarques sur les copies}}
+\AtEndPreamble{\renewcommand{\insertenseignementnum}{\originsertenseignementnum~\IfFileExists{notes-pyplot.pdf}{(notes)}{(remarques)}}}
+\def\TitleToUse{\insertenseignementtype~\originsertenseignementnum~--~\IfFileExists{notes-pyplot.pdf}{Distribution des notes}{Remarques sur les copies}}
 \author{}
 \maketitle
 \pagestyle{rapport}
@@ -59,7 +59,5 @@
 \end{center}}
 
 \IfFileExists{rapport_corrige_b.tex}{\input{rapport_corrige_b.tex}}{}
-
-\label{pagenotes}
-\pagebreak \setcounter{page}{1}}}}
+}}}
 {\newcommand{\inputrapportnotes}{}}
