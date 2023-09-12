@@ -89,7 +89,7 @@
 \ifthenelse{\equal{\insertshortinstitute}{}}{}{\insertshortinstitute}%
 \ifthenelse{\equal{\insertclasse}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}}{}{\,--\,}\insertclasse}%
 \ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}}{}{\,--\,}g.~\insertenseignementgpcolle}%
-\ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertshortenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}\insertshortenseignementtype~\insertenseignementnum}%
+\ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertshortenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}Sem.~\insertenseignementnum}%
 \ifx\insertdate \empty \else \ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}\and\equal{\insertenseignementnum}{\!\!}}{}{\,--\,}\insertdate\fi}%
 \medskip
 
@@ -145,7 +145,7 @@
 \setcounter{equation}{0}
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Compte-rendu de khôlle}\def\insertshortenseignementtype{Compte-rendu de khôlle}}{\def\insertenseignementtype{Compte-rendu de colle}\def\insertshortenseignementtype{Compte-rendu de colle}}\renewcommand{\insertenseignementnum}{\!\!}
+\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Compte-rendu de khôlle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de khôlle -- Sem.~\arabic{enseignementnumvalue}}}{\def\insertenseignementtype{Compte-rendu de colle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de colle -- Sem.~\arabic{enseignementnumvalue}}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
 \fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
