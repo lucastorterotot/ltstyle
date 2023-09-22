@@ -90,7 +90,7 @@
 \ifthenelse{\equal{\insertclasse}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}}{}{\,--\,}\insertclasse}%
 \ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}}{}{\,--\,}g.~\insertenseignementgpcolle}%
 \ifthenelse{\equal{\insertenseignementnum}{\!\!}\or\equal{\insertshortenseignementtype}{}}{}{\ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}}{}{\,--\,}Sem.~\insertenseignementnum}%
-\ifx\insertdate \empty \else \ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}\and\equal{\insertenseignementnum}{\!\!}}{}{\,--\,}\insertdate\fi}%
+\ifx\insertdate \empty \else \ifthenelse{\equal{\insertshortinstitute}{}\and\equal{\insertclasse}{}\and\equal{\insertenseignementgpcolle}{}\and\equal{\insertenseignementnum}{\!\!}}{}{: }\insertdate\fi}%
 \medskip
 
 %\penalty1000
