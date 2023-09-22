@@ -45,15 +45,15 @@
 \newcommand{\elevecolle}[1]{} %used for colles and kholles
 
 \newcounter{elevecompteur}
-\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
-    \AtEndPreamble{\AtBeginDocument{
+\def\EnableColleSpecialLabels{%
         \let\defaultlabel\label
-        \def\label#1{\defaultlabel{\arabic{elevecompteur}-#1}}
+        \renewcommand{\label}[1]{\defaultlabel{\arabic{elevecompteur}-##1}}
         \let\defaultref\ref
-        \def\ref#1{\defaultref{\arabic{elevecompteur}-#1}}
-        \AtBeginEnvironment{equation}{\def\label#1{\defaultlabel{\arabic{elevecompteur}-#1}}}
-    }}
+        \renewcommand{\ref}[1]{\defaultref{\arabic{elevecompteur}-##1}}
+        \AtBeginEnvironment{equation}{\renewcommand{\label}[1]{\defaultlabel{\arabic{elevecompteur}-##1}}}
+}
 
+\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
 \renewcommand{\elevecolle}[1]{%\penalty-500
 %{\setlength{\parindent}{0pt}\hrulefill%\rule{0.25\linewidth}{0pt}\rule{0.5\linewidth}{0.5pt}\rule{0.25\linewidth}{0pt}
 %}
@@ -70,6 +70,7 @@
 \def\textheightcolleshortsujets{\paperheight -1.175cm}
 
 \renewcommand{\colleshortsujets}{
+\EnableColleSpecialLabels
 \renewcommand{\brm}[1]{\!\!\ignorespaces}
 \renewcommand{\exonocite}[1]{}
 \renewcommand{\exocite}[1]{}
@@ -110,6 +111,7 @@
 \newpage}}
 
 \renewcommand{\collesujets}{
+\EnableColleSpecialLabels
 \renewcommand{\exonocite}[1]{}
 \renewcommand{\exocite}[1]{}
 \setcounter{figure}{0}
@@ -165,6 +167,7 @@
 }
 
 \renewcommand{\collecorriges}{
+\EnableColleSpecialLabels
 \renewcommand{\exonocite}[1]{}
 \renewcommand{\exocite}[1]{}
 \setcounter{figure}{0}
