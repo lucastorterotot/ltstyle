@@ -46,12 +46,13 @@
 
 \newcounter{elevecompteur}
 \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
-%    \AtEndPreamble{\AtBeginDocument{
-%        \let\defaultlabel\label
-%        \def\label#1{\defaultlabel{\arabic{elevecompteur}-\partchaptersectionexoquest-#1}}
-%        \let\defaultref\ref
-%        \def\ref#1{\defaultref{\arabic{elevecompteur}-\partchaptersectionexoquest-#1}}
-%    }}
+    \AtEndPreamble{\AtBeginDocument{
+        \let\defaultlabel\label
+        \def\label#1{\defaultlabel{\arabic{elevecompteur}-#1}}
+        \let\defaultref\ref
+        \def\ref#1{\defaultref{\arabic{elevecompteur}-#1}}
+        \AtBeginEnvironment{equation}{\def\label#1{\defaultlabel{\arabic{elevecompteur}-#1}}}
+    }}
 
 \renewcommand{\elevecolle}[1]{%\penalty-500
 %{\setlength{\parindent}{0pt}\hrulefill%\rule{0.25\linewidth}{0pt}\rule{0.5\linewidth}{0.5pt}\rule{0.25\linewidth}{0pt}
