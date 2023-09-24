@@ -43,6 +43,15 @@
 \enonceON
 \corrigeOFF
 
+\newcommand{\exoappliicone}{\Writinghand}
+\newcommand{\todotdicone}{\Pointinghand}
+
+\def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
+
+\def\todotdcurrentMARKER{}
+\def\todotd{\def\todotdcurrentMARKER{\exoMARKERinmargin{\todotdicone}}}
+\def\exoappli{\def\todotdcurrentMARKER{\exoMARKERinmargin{\exoappliicone}}}
+
 \newcounter{exopart}
 \newcounter{exo}
 \newcounter{subexo}[exo]
@@ -80,7 +89,7 @@
 \makeatother
 
 \newcommand{\exo}[2][Exercice]{\ExoBaremeMake\setcounter{quest}{0}\refstepcounter{exo}
-\subsubsection*{#1 \theexo~~~#2\ExoBaremeWrite}}
+\subsubsection*{\todotdcurrentMARKER #1 \theexo~~~#2\ExoBaremeWrite}\def\todotdcurrentMARKER{}}
 
 \newcommand{\subexo}[2][Exercice]{\refstepcounter{subexo}
 \subsubsection*{#1 \thesubexo~~~#2}}
@@ -128,10 +137,11 @@
 \AtEndPreamble{\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}}{\ListeExoCourstrue}{\ListeExoCoursfalse}}
 \AtBeginDocument{\ifListeExoCours\immediate\openout\inputexosfile=\inputexosfilename\fi}
 \AtEndDocument{\AtEndDocument{\ifListeExoCours\immediate\closeout\inputexosfile\fi}}
+\def\inputexoappli#1{\exoappli\input{#1}}
 \newcommand{\inputexo}[2][Exercice d'application]{{%
     \refstepcounter{exo}%
-    \ifListeExoCours\immediate\write\inputexosfile{input{#2}}\fi
-    \def\remarquemarker{\Pointinghand}%
+    \ifListeExoCours\immediate\write\inputexosfile{inputexoappli{#2}}\fi
+    \def\remarquemarker{\exoappliicone}%
     \renewcommand{\exo}[2][]{##2\endinput}%
     \remarque[\ltcolorthemeC][#1 \theexo]{%
         \input{#2}}
