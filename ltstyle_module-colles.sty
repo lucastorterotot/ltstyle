@@ -50,7 +50,8 @@
         \renewcommand{\label}[1]{\defaultlabel{\arabic{elevecompteur}-##1}}
         \let\defaultref\ref
         \renewcommand{\ref}[1]{\defaultref{\arabic{elevecompteur}-##1}}
-        \AtBeginEnvironment{equation}{\renewcommand{\label}[1]{\defaultlabel{\arabic{elevecompteur}-##1}}}
+        \renewcommand{\eqref}[1]{(\defaultref{##1})} % problems with equation environment
+        \makeatother
 }
 
 \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
