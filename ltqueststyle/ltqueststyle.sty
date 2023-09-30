@@ -40,13 +40,14 @@
 \DeclareOption{CCP2}{\input ltqueststyle-CCP2.sty}
 \DeclareOption{CCP3}{\input ltqueststyle-CCP3.sty}
 \DeclareOption{CCP4}{\input ltqueststyle-CCP4.sty}
+\DeclareOption{CCP5}{\input ltqueststyle-CCP5.sty}
 
 \DeclareOption{e3a}{\input ltqueststyle-e3a.sty}
 
 \newcounter{randomf} \newcounter{randomq}
 \def\randomfOption{\ifcase\therandomf\or lmr\or Libertinesourcesanspro\or mak\or ppl\or zpltlf\or Libertine\or ptm\or Xcharter\or Utopia\or Caladea\or Roboto\or lmss\or Alegreya\or fla\or kurier\or Universalis\or fvs\or phv\fi}
-\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or Mines\or Centrale\or Centrale17\or e3a\or ENS1\or ENS2\or Agreg1\fi}
-\def\randomfmax{18} \def\randomqmax{12}
+\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or CCP5\or Mines\or Centrale\or Centrale17\or e3a\or ENS1\or ENS2\or Agreg1\fi}
+\def\randomfmax{18} \def\randomqmax{13}
 \addtocounter{randomf}{0} % offset
 \addtocounter{randomf}{\the\day}
 \addtocounter{randomf}{\the\day}
