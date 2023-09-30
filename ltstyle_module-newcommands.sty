@@ -26,6 +26,37 @@
 \newcommand{\KObox}{\CrossedBox}
 \newcommand{\Obox}{\HollowBox}
 
+\newcommand{\ofg}[1]{\og #1 \fg}
+
+\newcounter{doc}
+\newcounter{figsave}
+\def\doccaption{}
+\AtEndPreamble{
+    \let\origcaption\caption
+    \def\doccaption#1{%
+        \setcounter{figure}{\arabic{doc}}%
+        \origcaption{#1}
+        \refstepcounter{doc}%
+        }
+}
+\newenvironment*{doc}{%
+\noindent\begin{tcolorbox}[grow to left by=-1mm, width=\linewidth-2mm,
+bottomrule = 0.4pt,toprule = 0.4pt,rightrule = 0.4pt,leftrule = 0.4pt,
+bottom=.1mm, top=.1mm, left=1mm, right=1mm,
+sharp corners = all,
+colframe=black, enhanced jigsaw, opacityback = 0]%
+\begin{figure}[H]%
+    \setcounter{figsave}{\arabic{figure}}%
+    \def\caption{\doccaption}%
+    \def\figurename{Document}%
+    \def\frenchfigurename{Document}%
+}
+{\def\caption{\origcaption}%
+\end{figure}%
+\setcounter{figure}{\arabic{figsave}}%
+\end{tcolorbox}%
+}
+
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
