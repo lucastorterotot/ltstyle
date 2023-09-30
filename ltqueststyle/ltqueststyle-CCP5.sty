@@ -1,0 +1,78 @@
+% CCINP-2021-MP-P
+\renewcommand{\exopart}[2][]{
+\vspace{\baselineskip}\par
+\setcounter{section}{0}\setcounter{exo}{\thesection}\refstepcounter{exopart}
+\begin{center}
+\Large\familyfortitles\boldmath\bfseries
+#1 \theexopart~-~#2
+\unboldmath
+\end{center}
+\vspace{.5\baselineskip}\par
+}
+
+\def\theexopart{\textbf{\Alph{exopart}}}
+\def\theexo{\textbf{\ifnum \arabic{exopart} > 0 \theexopart.\else \fi\Roman{exo}}}
+\def\thesubexo{\textbf{\ifnum \arabic{exo} > 0 \theexo.\else \fi\arabic{subexo}}}
+\def\thesubsubexo{\textbf{\thesubexo.\arabic{subsubexo}}}
+
+\renewcommand{\exo}[2][Partie]{
+\ExoBaremeMake
+\vspace{\baselineskip}\par
+\setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
+\begin{center}
+\large\familyfortitles\boldmath\bfseries
+#1 \theexo~-~#2
+\unboldmath
+\end{center}
+\ExoBaremeWrite
+\vspace{.5\baselineskip}\par
+}
+\renewcommand{\subexo}[2][]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \paragraph*{\thesubexo~-~#2}\ \medskip\par}
+\renewcommand{\subsubexo}[2][]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \paragraph*{#2}\ \medskip\par}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\alph{subquest}}
+\def\numsubsubquest{\roman{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{Q\queststart\numquest}}
+\def\thesubquest{\textbf{Q\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{Q\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{Q\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.65cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{Q\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\squestindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\squestindent\squestindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\squestindent\squestindent\squestindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numsubsubsubquest}
+
+\def\queststart{}
+\def\questend{\textbf{\ifnum \arabic{subquest} > 0 )\else .\quad\fi}}
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries}
+\def\questseries{}
+
+\renewcommand{\familyfortitles}{}
+\setlength{\parindent}{0pt}
