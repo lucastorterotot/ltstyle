@@ -49,15 +49,19 @@
 \end{minipage}
 ~}{}}
 \begin{minipage}{\linewidth -3cm}
-\ifthenelse{\equal{\doinputnotesresume}{false}}{}{\IfFileExists{recap_table.tex}{\input{recap_table.tex}}{}}
+\ifthenelse{\equal{\doinputnotesresume}{false}}{}{\IfFileExists{recap_table.tex}{{\small\input{recap_table.tex}}}{}}
 
 \ifthenelse{\equal{\doinputnotesgraph}{false}}{}{\IfFileExists{notes-pyplot.pgf}{\input{notes-pyplot.pgf}}{}}
 
+{\small
 \IfFileExists{rapport_corrige_a.tex}{\input{rapport_corrige_a.tex}}{}
+}
 
 \end{minipage}
 \end{center}}
 
+{\small
 \IfFileExists{rapport_corrige_b.tex}{\input{rapport_corrige_b.tex}}{}
+}
 }}}
 {\newcommand{\inputrapportnotes}{}}
