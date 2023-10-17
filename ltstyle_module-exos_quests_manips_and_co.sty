@@ -1,14 +1,20 @@
 %%%% INIT
 \newcommand{\enonce}[1]{}
 \newcommand{\corrige}[1]{}
+\newcommand{\minicorrige}[1]{}
+\newcommand{\minicorrquest}{}
 \newcommand{\ifenonce}[1]{}
 \newcommand{\ifcorrige}[1]{}
 \newcommand{\ifcorrigesimple}[1]{}
+\newcommand{\ifminicorrige}[1]{}
+\newcommand{\ifminicorrigesimple}[1]{}
 \newcommand{\ifnotenonce}[1]{}
 \newcommand{\ifnotcorrige}[1]{}
+\newcommand{\ifnotminicorrige}[1]{}
 \newcommand{\onlyenonce}[1]{}
 \newcommand{\onlyshortenonce}[1]{\ignorespaces}
 \newcommand{\onlycorrige}[1]{}
+\newcommand{\onlyminicorrige}[1]{}
 
 %%%%
 
@@ -25,6 +31,13 @@
   \renewcommand{\ifnotcorrige}[1]{\ignorespaces}%
   \renewcommand{\onlyenonce}[1]{\ignorespaces}%
 }
+\def\minicorrigeON{%
+  \renewcommand{\minicorrige}[1]{\footnotesize\minicorrquest\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} ##1\normalsize\color{tmpcol}\par}%
+  \renewcommand{\ifminicorrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}##1\color{tmpcol}}%
+  \renewcommand{\ifminicorrigesimple}[1]{##1}%
+  \renewcommand{\ifnotminicorrige}[1]{\ignorespaces}%
+  \renewcommand{\onlyenonce}[1]{\ignorespaces}%
+}
 \def\corrigeONblue{\corrigeON}
 \def\enonceOFF{%
   \renewcommand{\enonce}[1]{\ignorespaces}%
@@ -39,9 +52,17 @@
   \renewcommand{\ifnotcorrige}[1]{##1}%
   \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}%
 }
+\def\minicorrigeOFF{%
+  \renewcommand{\minicorrige}[1]{\ignorespaces}%
+  \renewcommand{\ifminicorrige}[1]{\ignorespaces}%
+  \renewcommand{\ifminicorrigesimple}[1]{\ignorespaces}%
+  \renewcommand{\ifnotminicorrige}[1]{##1}%
+  \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}%
+}
 
 \enonceON
 \corrigeOFF
+\minicorrigeOFF
 
 \newcommand{\exoappliicone}{\Writinghand}
 \newcommand{\todotdicone}{\Pointinghand}
