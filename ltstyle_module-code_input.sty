@@ -197,7 +197,7 @@ frame=tb,                         % Any extra options here
                    }
                    {\endtcblisting}
                  
-    \newcommand\inputcode[3][]{
+    \newcommand\inputcode[3][]{{
         \color{\codecolortheme lstcoltxt}%
         \tcbinputlisting{
           listing engine=minted,
@@ -214,7 +214,7 @@ frame=tb,                         % Any extra options here
           enlarge left by=1em,
           width = \textwidth-1em,
           overlay={\begin{tcbclipinterior}\fill[\codecolortheme lstcolbg](frame.south west)rectangle([xshift=5mm]frame.north west);\end{tcbclipinterior}},
-          listing file=#3}}
+              listing file=#3}}}
 
     \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\!\color{\codecolortheme lstcoltxt}\mintinline{#1}{#2}\!}}
   }
@@ -226,11 +226,11 @@ frame=tb,                         % Any extra options here
                       }
                       {}
                       
-    \newcommand\inputcode[3][]{%
+    \newcommand\inputcode[3][]{{%
         \color{\codecolortheme lstcoltxt}%
         \codestyle{#2}%
         \lstinputlisting[#1]{#3}
-    }
+    }}
 
     \newcommand\inlinecode[2]{\colorbox{\codecolortheme lstcolbg}{\!\color{\codecolortheme lstcoltxt}\codestyle{#1}\lstinline@#2@\!}}
   }
