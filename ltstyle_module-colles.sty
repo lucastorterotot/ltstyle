@@ -49,8 +49,8 @@
         \let\defaultlabel\label
         \renewcommand{\label}[1]{\defaultlabel{\arabic{elevecompteur}-##1}}
         \let\defaultref\ref
-        \renewcommand{\ref}[1]{\defaultref{\arabic{elevecompteur}-##1}}
-        \renewcommand{\eqref}[1]{(\defaultref{##1})} % problems with equation environment
+        \renewcommand{\ref}[1]{\ifref{\arabic{elevecompteur}-##1}{\defaultref{\arabic{elevecompteur}-##1}}{\defaultref{##1}}}
+        \renewcommand{\eqref}[1]{(\ifref{\arabic{elevecompteur}-##1}{\defaultref{\arabic{elevecompteur}-##1}}{\defaultref{##1}})} % problems with equation environment
         \makeatother
 }
 
