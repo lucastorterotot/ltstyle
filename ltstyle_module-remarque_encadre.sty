@@ -114,7 +114,7 @@ breakable]}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
 {\@twosidefalse
-\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}}}{}
+\ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{\danger}}{}
 \begin{ltremarque}
 \makeremarquemarker%
 \ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{}{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}%\vphantom{My}%\vspace{-.725mm}
