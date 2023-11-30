@@ -98,7 +98,7 @@ breakable]}
 \makeatletter
 
 \newcommand{\barremargegauche}[2][black]{\smallskip\par\def\remarquecouleur{#1}\remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{barremargegaucheenv}
 %\def\quest{\noindent\refstepcounter{questb}\textbf{Q~\arabic{questb}.}\qquad}
 #2
@@ -113,7 +113,7 @@ breakable]}
   \remarquecontent}
 \newcommand*\remarquecontent[2][]{%
 \remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{\danger}}{}
 \begin{ltremarque}
 \makeremarquemarker%
@@ -125,7 +125,7 @@ breakable]}
 \newcommand*\encadreepais[1][\ltcolortheme]{\smallskip\def\remarquecouleur{#1}\encadreepaiscontent}
 \newcommand*\encadreepaiscontent[2][]{%
 \remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{ltencadreepais}
 \ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
 \end{ltencadreepais}
@@ -135,7 +135,7 @@ breakable]}
 \newcommand*\encadrefin[1][black]{\smallskip\def\remarquecouleur{#1}\encadrefincontent}
 \newcommand*\encadrefincontent[2][]{%
 \remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{ltencadrefin}
 \ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
 \end{ltencadrefin}
@@ -161,7 +161,7 @@ breakable]}
 \remarquecouleurchooser{#1}
 \def\remarquemarker{\remarquemarkerdefault}  
 \ifthenelse{\equal{#1}{danger}}{\def\remarquemarker{{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}}}{}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{bclogo}[margeG=0.5,margeD=0, logo=\bcremarquemarker, couleurBarre=\colorlineremarque, noborder = true, epBarre=1.5, marge=0 ]{}
 \vspace{-.9175\baselineskip}
 \ifthenelse{\equal{#1}{red}\or\equal{#1}{blue}\or\equal{#1}{green}\or\equal{#1}{black}\or\equal{#1}{white}\or\equal{#1}{NB}}{}{\ifthenelse{\equal{#1}{danger}}{}{\textbf{#1}\ifthenelse{\equal{#1}{}}{}{\ \ \ }}}\textsl{#2}\vphantom{ÀQ,ypqfgj}
@@ -171,7 +171,7 @@ breakable]}
 
 \renewcommand*\encadreepaiscontent[2][]{%
 \remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{ltremarque}[margeG=0.77,margeD=0.77,avecBarre = false,arrondi = .2, epBord=1.5,logo= , marge = 6, couleurBord=\colorlineremarque ]{}
 \ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
 \end{ltremarque}
@@ -180,7 +180,7 @@ breakable]}
 
 \renewcommand*\encadrefincontent[2][]{%
 \remarquecouleurchooser{#1}
-{\@twosidefalse
+{%\@twosidefalse
 \begin{ltremarque}[margeG=0.77,margeD=0.77,avecBarre = false,arrondi = 0.0, epBord=0.4,logo= , marge = 6, couleurBord=\colorlineremarque ]{}
 \ifthenelse{\equal{#1}{}}{}{\textbf{#1}\ \ \ }#2
 \end{ltremarque}
