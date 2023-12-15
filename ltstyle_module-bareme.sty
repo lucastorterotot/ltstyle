@@ -51,7 +51,9 @@
 \newcommand{\BaremeEspace@Marge}{5pt}
 \newcommand{\BaremeEspaceMarge}[1]{\renewcommand{\BaremeEspace@Marge}{#1}}
 
+\def\usedbrm{false}
 \newcommand*{\brm}[1]{%
+    \laterdef{\usedbrm}{true}
    % (\BaremeEspace@Marge == 0pt) => au ras de la marge gauche
    % (\BaremeEspace@Marge >0pt) => plus à l'intérieur de la marge gauche
    \immediate\write\@auxout{%
