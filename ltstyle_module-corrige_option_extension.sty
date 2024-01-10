@@ -61,7 +61,11 @@
 \end{center}}
 
 {\small
-\IfFileExists{rapport_corrige_b.tex}{\input{rapport_corrige_b.tex}}{}
+\IfFileExists{rapport_corrige_b.tex}{
+\setlength{\columnseprule}{0.01cm}
+\begin{multicols}{2}
+\input{rapport_corrige_b.tex}
+\end{multicols}}{}
 }
 }}}
 {\newcommand{\inputrapportnotes}{}}
