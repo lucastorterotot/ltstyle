@@ -19,3 +19,42 @@
 \AtEndPreamble{\AtBeginDocument{
     \def\vec{\posthyperrefvec}
 }}
+
+
+\newlength{\myullength}
+
+\let\origunderline\underline
+\def\underline#1{%
+\origunderline{#1%
+\ifthenelse{\equal{#1}{Y}}{\!}{}%
+}}
+
+\newcommand{\getuladjust}[2][+]{%
+\ifthenelse{\equal{#2}{B}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{C}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{D}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{E}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{F}}{\hspace{#1 .3em}}{}%
+\ifthenelse{\equal{#2}{G}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{H}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{I}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{J}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{K}}{\hspace{#1 .15em}}{}%
+\ifthenelse{\equal{#2}{L}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{M}}{\hspace{#1 .15em}}{}%
+\ifthenelse{\equal{#2}{N}}{\hspace{#1 .15em}}{}%
+\ifthenelse{\equal{#2}{O}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{P}}{\hspace{#1 .3em}}{}%
+\ifthenelse{\equal{#2}{Q}}{\hspace{#1 .05em}}{}%
+\ifthenelse{\equal{#2}{R}}{\hspace{#1 .05em}}{}%
+\ifthenelse{\equal{#2}{S}}{\hspace{#1 .1em}}{}%
+\ifthenelse{\equal{#2}{T}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{U}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{V}}{\hspace{#1 .3em}}{}%
+\ifthenelse{\equal{#2}{W}}{\hspace{#1 .2em}}{}%
+\ifthenelse{\equal{#2}{X}}{\hspace{#1 .12em}}{}%
+\ifthenelse{\equal{#2}{Y}}{\hspace{#1 .3em}}{}%
+\ifthenelse{\equal{#2}{Z}}{\hspace{#1 .15em}}{}%
+}
+
+\renewcommand{\underline}[1]{\origunderline{\hphantom{#1}\getuladjust[-]{#1}} \protect \settowidth{\myullength}{${#1}$} \protect \mathchoice{\hspace{-\myullength}\getuladjust{#1}}{\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{}}\protect \settowidth{\myullength}{${}^{{#1}}$}\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{{}^{}}}\protect \settowidth{\myullength}{${}^{{}^{{#1}}}$}\hspace{-\myullength}\getuladjust{#1}}#1}
