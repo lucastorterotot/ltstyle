@@ -32,25 +32,25 @@
 
 \def\squestindent{\hspace{0.0cm}}
 
-\def\questspar{\par\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\questspar{\par\def\eTaorigunderline{\origunderline}\def\eTaquestend{.}\def\questprevioussep{}}
 \def\questsskip{\medskip}
 \def\questsindent{}
 \def\questsbox{}
 \def\questsnum{\numquest}
 
-\def\subquestspar{\questspar\def\eTaunderline{\underline}\def\eTaquestend{.}\def\questprevioussep{}}
+\def\subquestspar{\questspar\def\eTaorigunderline{\origunderline}\def\eTaquestend{.}\def\questprevioussep{}}
 \def\subquestsskip{\questsskip}
 \def\subquestsindent{\questsindent}
 \def\subquestsbox{\questsbox}
 \def\subquestsnum{\numquest\numsubquest}
 
-\def\subsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{}\def\questprevioussep{}}
+\def\subsubquestspar{\questspar\def\eTaorigunderline{}\def\eTaquestend{}\def\questprevioussep{}}
 \def\subsubquestsskip{\questsskip}
 \def\subsubquestsindent{\questsindent}
 \def\subsubquestsbox{\questsbox}
 \def\subsubquestsnum{\numsubsubquest}
 
-\def\subsubsubquestspar{\questspar\def\eTaunderline{}\def\eTaquestend{)}\def\questprevioussep{~}}
+\def\subsubsubquestspar{\questspar\def\eTaorigunderline{}\def\eTaquestend{)}\def\questprevioussep{~}}
 \def\subsubsubquestsskip{\questsskip}
 \def\subsubsubquestsindent{\questsindent}
 \def\subsubsubquestsbox{\questsbox}
@@ -62,9 +62,9 @@
 
 \def\questprevioussep{}
 
-\def\eTaunderline{\underline}
+\def\eTaorigunderline{\origunderline}
 
-\def\questshape{\bfseries\eTaunderline}
+\def\questshape{\bfseries\eTaorigunderline}
 \def\questseries{}
 
 \renewcommand{\sujetcompletend}[1][Fin de l'épreuve]{\bigskip\begin{center}
