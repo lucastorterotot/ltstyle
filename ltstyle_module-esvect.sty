@@ -24,10 +24,6 @@
 \newlength{\myullength}
 
 \let\origunderline\underline
-\def\underline#1{%
-\origunderline{#1%
-\ifthenelse{\equal{#1}{Y}}{\!}{}%
-}}
 
 \newcommand{\getuladjust}[2][+]{%
 \ifthenelse{\equal{#2}{B}}{\hspace{#1 .1em}}{}%
@@ -57,4 +53,4 @@
 \ifthenelse{\equal{#2}{Z}}{\hspace{#1 .15em}}{}%
 }
 
-\renewcommand{\underline}[1]{\origunderline{\hphantom{#1}\getuladjust[-]{#1}} \protect \settowidth{\myullength}{${#1}$} \protect \mathchoice{\hspace{-\myullength}\getuladjust{#1}}{\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{}}\protect \settowidth{\myullength}{${}^{{#1}}$}\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{{}^{}}}\protect \settowidth{\myullength}{${}^{{}^{{#1}}}$}\hspace{-\myullength}\getuladjust{#1}}#1}
+\renewcommand{\underline}[1]{\ifmmode\origunderline{\hphantom{#1}\getuladjust[-]{#1}} \protect \settowidth{\myullength}{${#1}$} \protect \mathchoice{\hspace{-\myullength}\getuladjust{#1}}{\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{}}\protect \settowidth{\myullength}{${}^{{#1}}$}\hspace{-\myullength}\getuladjust{#1}}{\protect\hphantom{{}^{{}^{}}}\protect \settowidth{\myullength}{${}^{{}^{{#1}}}$}\hspace{-\myullength}\getuladjust{#1}}#1\else\origunderline{#1}\fi}
