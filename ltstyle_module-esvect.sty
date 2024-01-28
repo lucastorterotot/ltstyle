@@ -24,10 +24,6 @@
 \newlength{\myullength}
 
 \let\origunderline\underline
-\def\underline#1{%
-\origunderline{#1%
-\ifthenelse{\equal{#1}{Y}}{\!}{}%
-}}
 
 \newcommand{\getuladjust}[2][+]{%
 \ifthenelse{\equal{#2}{B}}{\hspace{#1 .1em}}{}%
