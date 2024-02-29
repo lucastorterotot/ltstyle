@@ -26,7 +26,7 @@
 \fancyhead[LE]{\familyforhf\small \textbf{\thepage}~~~\leftmark}
 \fancyhead[RO]{\familyforhf\small \rightmark~~~\textbf{\thepage}}
 \makeatother
-\chead{\familyforhf }
+\chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
 \rfoot{\familyforhf\rfootTSVP }}
@@ -36,7 +36,7 @@
 \fancyhead[RE,LO]{\familyforhf }
 \fancyhead[LE,RO]{\familyforhf\small \textbf{\thepage}}
 \makeatother
-\chead{\familyforhf }
+\chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
 \rfoot{\familyforhf\rfootTSVP }
@@ -47,7 +47,7 @@
 \fancyhead[RE,LO]{\familyforhf }
 \fancyhead[LE,RO]{\familyforhf }
 \makeatother
-\chead{\familyforhf }
+\chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
 \rfoot{\familyforhf\rfootTSVP }
@@ -58,7 +58,7 @@
 \fancyhead[RE,LO]{\familyforhf }
 \fancyhead[LE,RO]{\familyforhf }
 \makeatother
-\chead{\familyforhf }
+\chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
 \lfoot{\familyforhf }
 \cfoot{\familyforhf }
 \rfoot{\familyforhf\rfootTSVP }
@@ -69,7 +69,7 @@
 \cfoot{\familyforhf \thepage /\pageref{LastPage}}
 \rfoot{\familyforhf\rfootTSVP }
 \lhead{\familyforhf }
-\chead{\familyforhf }
+\chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
 \rhead{\familyforhf }
 
 \fancypagestyle{main}{
@@ -113,8 +113,8 @@
 \fancypagestyle{maintitle}{
 \ifthenelse{\equal{\PackageOption}{none}}
     {}
-    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
-    \chead{\familyforhf }
+    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    \chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
     \rhead{\familyforhf \insertinstitute}
     \ifthenelse{\equal{\insertclasse}{}}
         {\lfoot{\familyforhf \insertinstitute}}
@@ -135,8 +135,8 @@
 \fancypagestyle{plaintitle}{
 \ifthenelse{\equal{\PackageOption}{none}}
     {}
-    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
-    \chead{\familyforhf }
+    {\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    \chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
     \rhead{\familyforhf \insertinstitute}
     \ifthenelse{\equal{\insertclasse}{}}
         {\lfoot{\familyforhf \insertinstitute}}
