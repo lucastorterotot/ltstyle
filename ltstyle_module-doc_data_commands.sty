@@ -225,7 +225,8 @@
 \newcommand{\enseignementnum}[1]{\setcounter{enseignementnumvalue}{#1}}
 \newcommand{\enseignementgpcolle}[1]{\renewcommand{\insertenseignementgpcolle}{#1}}
 \newcommand{\enseignementduree}[1]{\renewcommand{\insertenseignementduree}{#1}}
-\newcommand{\enseignementmodalites}[1]{\renewcommand{\insertenseignementmodalites}{#1}}
+\def\givenenseignementmodalites{false}
+\newcommand{\enseignementmodalites}[1]{\def\givenenseignementmodalites{true}\renewcommand{\insertenseignementmodalites}{#1}}
 \newcommand{\imgcover}[1]{\renewcommand{\insertimgcover}{#1}}
 \newcommand{\editionsettings}[1]{\renewcommand{\inserteditionsettings}{#1}}
 
