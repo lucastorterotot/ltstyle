@@ -177,7 +177,7 @@
 \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{Groupe~\insertenseignementgpcolle,}}{}
 \ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{}{\@date}
 
-    \ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}}{\ifthenelse{\equal{\insertenseignementmodalites}{}}{}{\insertenseignementduree
+\ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}}{\insertenseignementduree\ifthenelse{\equal{\givenenseignementmodalites}{false}}{}{
 
 \vspace{\baselineskip}
 
