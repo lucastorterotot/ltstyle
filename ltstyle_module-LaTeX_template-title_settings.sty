@@ -7,7 +7,7 @@
 \ifthenelse{\equal{\PackageOption}{DS}}{\enseignementtype[DS]{Devoir surveillé}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{controle}}{\enseignementtype[DS]{Devoir surveillé}}{}
 \ifthenelse{\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\enseignementtype{TD}\relaxenseignementtype}{}
-\ifthenelse{\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\enseignementtype{TP}\relaxenseignementtype}{}
+\ifthenelse{\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}}{\enseignementtype{TP}\relaxenseignementtype}{}
 
 \makeatletter
 \newcommand{\TitleToUse}{}
@@ -54,7 +54,7 @@
 
 \noindent {\ifthenelse{\equal{\inputinnercover}{true}}{\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}}{}{\renewcommand{\thanks}[1]{}}}{}\bfseries \Large \insertshortauthor}
 
-%\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{\@thanks\let\thanks\relax}{}
+%\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}}{\@thanks\let\thanks\relax}{}
 
 \vfill\insertimgcover\vfill
 
@@ -162,7 +162,7 @@
 %    \def\insertclasse\classeorig}
 
 
-\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TP}}{{\familyfortitles\boldmath\bfseries\huge\vphantom{Àq}\unboldmath\vspace{0.5cm}}}{}}{{\familyfortitles\boldmath\bfseries\huge\insertmatiere\unboldmath\vspace{0.5cm}}}
+\ifthenelse{\equal{\PackageOption}{none}\or\equal{\PackageOption}{book}\or\equal{\insertmatiere}{}}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}}{{\familyfortitles\boldmath\bfseries\huge\vphantom{Àq}\unboldmath\vspace{0.5cm}}}{}}{{\familyfortitles\boldmath\bfseries\huge\insertmatiere\unboldmath\vspace{0.5cm}}}
 
 %\ifthenelse{\equal{\PackageOption}{book}}{\thispagestyle{empty} \noindent \insertauthor}{}
 \ifthenelse{\equal{\PackageOption}{complet}\or\equal{\PackageOption}{book}}{}{{\familyfortitles\boldmath\bfseries\LARGE \TitleToUse\unboldmath}}
@@ -171,13 +171,13 @@
 
 \ifthenelse{\equal{\PackageOption}{colle}}{Colleur :\!\!}{}
 \ifthenelse{\equal{\PackageOption}{kholle}}{Khôlleur :}{}
-\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{book}}{}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{\insertshortauthor}{\insertauthor}}
+\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{book}}{}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{\insertshortauthor}{\insertauthor}}
 
 
 \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{Groupe~\insertenseignementgpcolle,}}{}
 \ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{}{\@date}
 
-\ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{TP}}{\insertenseignementduree
+    \ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}}{\ifthenelse{\equal{\insertenseignementmodalites}{}}{}{\insertenseignementduree
 
 \vspace{\baselineskip}
 
@@ -185,7 +185,7 @@
 
 \emph{\insertenseignementmodalites}
 \end{minipage}
-}{}
+}}{}
 
 \ifthenelse{\equal{\abstractwithtitle}{true}}{
 \vspace{\baselineskip}
@@ -213,17 +213,17 @@
   %\global\let\date\relax
   %\global\let\and\relax
 }
-\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPs}}{
+\ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{
 \ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{plain}}{\pagestyle{main}}
 \toccontents \gdef\tableofcontents{}
 
-\ifthenelse{\equal{\PackageOption}{TP}}{\bigskip\bigskip}{\vfill\ifthenelse{\equal{\PackageOption}{TDs}}{}{
+\vfill\ifthenelse{\equal{\PackageOption}{TDs}}{}{
 \begin{footnotesize}
 \begin{flushright}
 \today
 \end{flushright}
 \end{footnotesize}}
-\newpage}}{}
+\newpage}{}
 \ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{main}}{}
 
 \ifthenelse{\equal{\PackageOption}{book}\and\equal{\inputinnercover}{true}}{
