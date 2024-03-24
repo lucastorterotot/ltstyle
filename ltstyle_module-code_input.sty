@@ -167,12 +167,30 @@ texcsstyle=*[2]\bf\color{\codecolortheme lstcolemp2}\ttfamily,
 frame=tb,                         % Any extra options here
 }}
 
+% Arduino style for highlighting
+\newcommand\arduinostyle{\lstset{
+language=arduino,
+stringstyle=\color{\codecolortheme lstcolstr},
+showstringspaces=false,
+alsoletter={1234567890},
+otherkeywords={::},
+keywordstyle=\color{\codecolortheme lstcolkw}\bfseries,
+%emph={include},
+emphstyle=\color{\codecolortheme lstcolemp}\bfseries,
+emph={[2]std,true,false},
+emphstyle=[2]\color{\codecolortheme lstcolemp2},
+emph={[3]void, int, bool, char, double, float, unsigned, string, short, long, signed, unsigned, wchar_t, also},
+emphstyle=[3]\color{\codecolortheme lstcolemp3},
+%upquote=true,
+commentstyle=\color{\codecolortheme lstcolcom}\slshape,
+}}
 
 \newcommand{\codestyle}[1]{%
 \ifthenelse{\equal{#1}{bash}}{\bashstyle}{}%
 \ifthenelse{\equal{#1}{C++}}{\cppstyle}{}%
 \ifthenelse{\equal{#1}{python}}{\pythonstyle}{}%
 \ifthenelse{\equal{#1}{latex}}{\latexstyle}{}%
+\ifthenelse{\equal{#1}{arduino}}{\arduinostyle}{}%
 }
 
 \AtEndPreamble{
