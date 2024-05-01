@@ -23,8 +23,62 @@
 \DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathord}{mcy}{"58}
 
+\newlength{\mathtxtskip}
+\AtBeginDocument{\mathtxtskip=1.2em plus 0em minus .7em}
+
 \newcommand{\mend}[1][.]{\unskip{}\,\text{#1}}
-\newcommand{\msep}[1][,]{\mend[#1]\quad}
+\newcommand{\msep}[1][,]{\mend[#1]\hspace{\mathtxtskip}}
+
+\newcommand{\mlt}[1]{\text{#1}\hspace{\mathtxtskip}} % math left text
+\newcommand{\mct}[1]{\hspace{\mathtxtskip}\text{#1}\hspace{\mathtxtskip}} % math center text
+\newcommand{\mrt}[1]{\hspace{\mathtxtskip}\text{#1}} % math right text
+
+\def\mlAinsi{\mlt{Ainsi,}}
+\def\mlainsi{\mlt{ainsi}}
+\def\mcainsi{\mct{ainsi}}
+\def\mlAlors{\mlt{Alors,}}
+\def\mlalors{\mlt{alors}}
+\def\mcalors{\mct{alors}}
+\def\mlAvec{\mlt{Avec}}
+\def\mlavec{\mlt{avec}}
+\def\mcavec{\mct{avec}}
+\def\mlcad{\mlt{\cad}}
+\def\mccad{\mct{\cad}}
+\def\mlcar{\mlt{car}}
+\def\mccar{\mct{car}}
+\def\mlComme{\mlt{Comme}}
+\def\mlcomme{\mlt{comme}}
+\def\mccomme{\mct{comme}}
+\def\mlDonc{\mlt{Donc,}}
+\def\mldonc{\mlt{donc}}
+\def\mcdonc{\mct{donc}}
+\def\mlEnfin{\mlt{Enfin,}}
+\def\mlenfin{\mlt{enfin}}
+\def\mcenfin{\mct{enfin}}
+\def\mlet{\mlt{et}}
+\def\mcet{\mct{et}}
+\def\mlie{\mlt{\ie}}
+\def\mcie{\mct{\ie}}
+\def\mlOr{\mlt{Or,}}
+\def\mlor{\mlt{or}}
+\def\mcor{\mct{or}}
+\def\mlPour{\mlt{Pour}}
+\def\mlpour{\mlt{pour}}
+\def\mcpour{\mct{pour}}
+\def\mlSachant{\mlt{Sachant}}
+\def\mlsachant{\mlt{sachant}}
+\def\mcsachant{\mct{sachant}}
+\def\mlSelon{\mlt{Selon}}
+\def\mlselon{\mlt{selon}}
+\def\mcselon{\mct{selon}}
+\def\mlSi{\mlt{Si}}
+\def\mlsi{\mlt{si}}
+\def\mcsi{\mct{si}}
+\def\mlSoit{\mlt{Soit}}
+\def\mlsoit{\mlt{soit}}
+\def\mcsoit{\mct{soit}}
+\def\mlvu{\mlt{vu}}
+\def\mcvu{\mct{vu}}
 
 \def\norm#1{{\mathchoice{\left\Vert #1 \right\Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}{\Vert #1 \Vert}}}
 \def\abs#1{{\mathchoice{\left\vert #1 \right\vert}{\vert #1 \vert}{\vert #1 \vert}{\vert #1 \vert}}}
@@ -37,12 +91,15 @@
 
 \def\leq{\leqslant}
 \def\geq{\geqslant}
+\def\permil{\text{\textperthousand}}
 
 \def\Id{\hbox{\fontfamily{cmr}\selectfont 1\kern-0.35em 1}}
 
 \newcommand{\AN}[1]{\ensuremath{\boxed{\text{A.N. : } #1}}} % applications numériques
 
 \newcommand{\pa}[1]{\left( #1 \right)}
+\newcommand{\paa}[1]{\left\{ #1 \right\}}
+\newcommand{\pac}[1]{\left[ #1 \right]}
 
 \newcommand{\im}{\ensuremath{\mathrm{i}}}
 \newcommand{\jim}{\ensuremath{\mathrm{j}}}
