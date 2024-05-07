@@ -26,6 +26,7 @@
 \renewcommand{\abstractnamefont}{\normalfont\small\bfseries} % Set the "Abstract" text to bold
 \renewcommand{\abstracttextfont}{\normalfont\footnotesize} % Set the abstract itself to small italic text
 
+\AtBeginDocument{
 \renewcommand\labelenumi{\arabic{enumi}.}
 \renewcommand\labelenumii{\alph{enumii}.}
 \renewcommand\labelenumiii{\roman{enumiii}.}
@@ -34,6 +35,7 @@
 \renewcommand\labelitemii{--}
 \renewcommand\labelitemiii{$\circ$}
 \renewcommand\labelitemiv{$\cdot$}
+}
 }
 
 \makeatletter
