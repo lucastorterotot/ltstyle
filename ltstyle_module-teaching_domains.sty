@@ -9,6 +9,8 @@
     \laterdef{\TOCchapterTeaDomPosFix}{2em}%
 }
 
+\ifthenelse{\equal{\isbeamer}{true}}{\def\setteachingdomain#1{\setcounter{teachingdomain}{#1}}}{}
+
 \makeatletter
 \def\GetTeachingDomain{%
 \ifnum \c@teachingdomain = 1 $\phi$g%
