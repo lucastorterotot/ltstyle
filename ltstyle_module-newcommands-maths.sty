@@ -113,8 +113,30 @@
 \newcommand{\kB}{\boltzmann}
 \newcommand{\kBT}{\ensuremath{\kB T}}
 
-\newcommand{\mom}{\ensuremath{\mathcal{M}}}
-\newcommand{\vmom}{\vec{\mom}}
+\newcommand{\defaultmompoint}{O}
+\newcommand{\defaultmomaxis}{\Delta}
+\newcommand{\momcletter}{L}
+
+\newcommand{\smom}{\mathcal{M}}
+\newcommand{\svmom}{\vec{\smom}}
+
+\newcommand*\momc[1][]{\def\momaxis{#1}\ifx\momaxis\empty\def\momaxis{\defaultmomaxis}\fi\ensuremath{\momcletter_{/\momaxis}}}
+\newcommand*\vmomc[1][]{\def\mompoint{#1}\ifx\mompoint\empty\def\mompoint{\defaultmompoint}\fi\ensuremath{\vec{\momcletter}_{/\mompoint}}}
+
+\newcommand*\momi[1][]{\def\momaxis{#1}\ifx\momaxis\empty\def\momaxis{\defaultmomaxis}\fi\momiF}
+\newcommand*\momiF[1][]{\ensuremath{\smom_{#1/\momaxis}}}
+
+\newcommand*\vmomi[1][]{\def\mompoint{#1}\ifx\mompoint\empty\def\mompoint{\defaultmompoint}\fi\vmomiF}
+\newcommand*\vmomiF[1][]{\ensuremath{\svmom_{#1/\mompoint}}}
+
+\newcommand*\momp[1][]{\def\momaxis{#1}\ifx\momaxis\empty\def\momaxis{\defaultmomaxis}\fi\mompF}
+\newcommand*\mompF[1][]{\ensuremath{\smom_{/\momaxis}\ifx&#1&\else \left(#1\right) \fi}}
+
+\newcommand*\vmomp[1][]{\def\mompoint{#1}\ifx\mompoint\empty\def\mompoint{\defaultmompoint}\fi\vmompF}
+\newcommand*\vmompF[1][]{\ensuremath{\svmom_{/\mompoint}\ifx&#1& \else \left(#1\right) \fi}}
+
+\def\mom{\momi}
+\def\vmom{\vmomi}
 
 \newcommand{\vstar}{{\ensuremath{v^*}}}
 
