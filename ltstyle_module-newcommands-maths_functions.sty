@@ -12,9 +12,9 @@
 
 \RenewDocumentCommand\arg{d()}{\operatorname{arg}\IfValueT{#1}{\parentheses*{#1}}}
 
-\RenewDocumentCommand\sinh{d()}{\operatorname{sh}\IfValueT{#1}{\parentheses*{#1}}}
-\RenewDocumentCommand\cosh{d()}{\operatorname{ch}\IfValueT{#1}{\parentheses*{#1}}}
-\RenewDocumentCommand\tanh{d()}{\operatorname{th}\IfValueT{#1}{\parentheses*{#1}}}
+\RenewDocumentCommand\sinh{od()}{\operatorname{sh}\IfNoValueTF{#1}{\parentheses*{#2}}{^{#1}\parentheses*{#2}}}
+\RenewDocumentCommand\cosh{od()}{\operatorname{ch}\IfNoValueTF{#1}{\parentheses*{#2}}{^{#1}\parentheses*{#2}}}
+\RenewDocumentCommand\tanh{od()}{\operatorname{th}\IfNoValueTF{#1}{\parentheses*{#2}}{^{#1}\parentheses*{#2}}}
 \NewDocumentCommand\argsinh{d()}{\operatorname{argsh}\IfValueT{#1}{\parentheses*{#1}}}
 \NewDocumentCommand\argcosh{d()}{\operatorname{argch}\IfValueT{#1}{\parentheses*{#1}}}
 \NewDocumentCommand\argtanh{d()}{\operatorname{argth}\IfValueT{#1}{\parentheses*{#1}}}
