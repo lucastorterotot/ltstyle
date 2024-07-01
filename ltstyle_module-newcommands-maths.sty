@@ -24,7 +24,11 @@
 \DeclareMathSymbol{\Sha}{\mathord}{mcy}{"58}
 
 \newlength{\mathtxtskip}
-\AtBeginDocument{\mathtxtskip=1.2em plus 0em minus .7em}
+\newlength{\mathfill}
+\AtBeginDocument{
+    \mathtxtskip=1.2em plus 0em minus .7em
+    \mathfill=\linewidth plus 0em minus \linewidth
+}
 
 \newcommand{\mend}[1][.]{\unskip{}\,\text{#1}}
 \newcommand{\msep}[1][,]{\mend[#1]\hspace{\mathtxtskip}}
@@ -32,6 +36,13 @@
 \newcommand{\mlt}[1]{\text{#1}\hspace{\mathtxtskip}} % math left text
 \newcommand{\mct}[1]{\hspace{\mathtxtskip}\text{#1}\hspace{\mathtxtskip}} % math center text
 \newcommand{\mrt}[1]{\hspace{\mathtxtskip}\text{#1}} % math right text
+
+\newcommand{\mhfill}{\hspace{\mathfill}}
+\newcommand{\mHF}{\mhfill}
+
+\newcommand{\mLt}[1]{\text{#1}\mhfill} % math left text
+\newcommand{\mCt}[1]{\mhfill\text{#1}\mhfill} % math center text
+\newcommand{\mRt}[1]{\mhfill\text{#1}} % math right text
 
 \def\mlAinsi{\mlt{Ainsi,}}
 \def\mlainsi{\mlt{ainsi}}
