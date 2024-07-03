@@ -1,0 +1,57 @@
+\newcounter{timingmin}
+
+% setting timing counter
+\newcommand{\resettiming}{\setcounter{timingmin}{0}}
+\newcommand{\addtiming}[2][0]{\addtocounter{timingmin}{#2}\tikz{\foreach \k in {0,...,#1}{\addtocounter{timingmin}{60}}}}
+\newcommand{\settiming}[2][0]{\setcounter{timingmin}{#2}\tikz{\foreach \k in {0,...,#1}{\addtocounter{timingmin}{60}}}}
+
+% obtain timing value
+\newcommand{\gettiming}{\arabic{timingmin}}
+
+\newcommand{\gettimingH}{\calc{math.floor(\gettiming/60)}}
+\newcommand{\gettimingM}{\calc{\gettiming-math.floor(\gettiming/60)*60}}
+
+% tikz version
+\newcommand{\gettimingHtikz}{(floor(\gettiming/60))}
+\newcommand{\gettimingMtikz}{(\gettiming-floor(\gettiming/60)*60)}
+
+% timing printers
+\newcommand\dclock[3][1]{% digital clock, date
+\fbox{\hh{#2}{#3}}
+}
+\newcommand\dclockt[3][1]{% digital clock, time
+\fbox{#2\usp h #3}
+}
+\newcommand\aclock[3][1]{% analog clock
+\begin{tikzpicture}[scale=#1*.25,line cap=round,line width=#1*.25*3pt]
+\filldraw [fill=Goldenrod!20] (0,0) circle (2cm);
+\foreach \angle / \label in
+{0/3, 30/2, 60/1, 90/12, 120/11, 150/10, 180/9,
+210/8, 240/7, 270/6, 300/5, 330/4}
+{
+\draw[line width=#1*.25*1pt] (\angle:1.8cm) -- (\angle:2cm);
+}
+\foreach \angle in {0,90,180,270}
+\draw[line width=#1*.25*2pt] (\angle:1.6cm) -- (\angle:2cm);
+\draw[rotate=90,line width=#1*.25*2.5pt] (0,0) -- ({-#2*30-#3*30/60}:.8cm); % hours
+\draw[rotate=90,line width=#1*.25*1.5pt] (0,0) -- ({-#3*6}:1.5cm); % minutes
+\path [fill=black] (0,0) circle (3pt);
+\path [fill=red] (0,0) circle (1.5pt);
+%
+\end{tikzpicture}%
+}
+
+\newcommand{\showtimingaclock}[1][1]{\aclock[#1]{\gettimingHtikz}{\gettimingMtikz}}
+\newcommand{\showtimingdclock}{\dclock{\gettimingH}{\gettimingM}}
+\newcommand{\showtimingdclockt}{\dclockt{\gettimingH}{\gettimingM}}
+
+\def\showtimingmargindefault{\showtimingdclockt}
+\newcommand{\showtimingmargin}[1][\showtimingmargindefault]{%
+{\strut\vadjust{\kern-\dp\strutbox\vspace{.25\baselineskip}\llap{\smash{\parbox[b]{\marginparwidth}{\raggedleft\footnotesize#1$\to$}}\kern\marginparsep\vspace{-9.5pt}\vspace{.75\baselineskip}}}}%
+\ignorespaces%
+}
+\newcommand{\showtimingaclockmargin}{\showtimingmargin[\showtimingaclock[.75]]}
+\newcommand{\showtimingdclockmargin}{\showtimingmargin[\showtimingdclock}
+\newcommand{\showtimingdclocktmargin}{\showtimingmargin[\showtimingdclockt}
+
+\newcommand{\showtiming}{\showtimingmargin}
