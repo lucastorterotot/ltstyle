@@ -169,7 +169,7 @@ colframe=black, enhanced jigsaw, opacityback = 0]%
 \makeatletter
 \@ifpackageloaded{polyglossia}%
         {\newcommand{\nospace}[1]{\nofrench@punctuation#1\french@punctuation}}
-        {\newcommand{\nospace}[1]{\string#1}}%
+        {\newcommand{\nospace}[1]{{\NoAutoSpacing#1}}}%
           % !! double {{}} pour cantonner l'effet à l'argument #1 !!
 \makeatother
 
