@@ -25,7 +25,7 @@
   \renewcommand{\onlycorrige}[1]{\ignorespaces}%
 }
 \def\corrigeON{%
-  \renewcommand{\corrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small ##1\normalsize\color{tmpcol}\par}%
+  \renewcommand{\corrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small ##1\par\color{tmpcol}\normalsize}%
   \renewcommand{\ifcorrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}##1\color{tmpcol}}%
   \renewcommand{\ifcorrigesimple}[1]{##1}%
   \renewcommand{\ifnotcorrige}[1]{\ignorespaces}%
