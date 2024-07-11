@@ -45,7 +45,7 @@
 \newlength{\myunitsepwidth}
 \let\origSI\SI
 \def\emptytest{}
-\def\SI#1#2{{\protect \settowidth{\myunitsepwidth}{\myunitsep}\def\emptytest{#1}\ifx\emptytest\empty\else \def\SIunskip{\hspace*{-\myunitsepwidth}}\fi\ensuremath{\origSI{#1}{#2}}}}
+\def\SI#1#2{{\protect \settowidth{\myunitsepwidth}{\myunitsep}\def\emptytest{#1}\ifx\emptytest\empty\else \def\SIunskip{\hspace*{-\myunitsepwidth}}\fi\ensuremath{\origSI{#1}{\SIunitfamily #2}}}}
 \makeatletter
 \@ifclassloaded{beamer}{
   \renewcommand{\SIupmath}[2][]{#2}
