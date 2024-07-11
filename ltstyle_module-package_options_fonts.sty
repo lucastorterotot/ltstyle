@@ -74,18 +74,12 @@
 }
 
 \DeclareOption{bch}{
-  \AtBeginDocument{
-    \ifLuaTeX
-      \setmainfont{XCharter}
-    \else
-      \fontfamily{bch}\selectfont
-      \renewcommand{\rmdefault}{bch}
-    \fi
-  }
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \def\loadmathptmx{true}
-  \def\loadmathpazo{false}
+	\AtEndPreamble{
+		\usepackage[bitstream-charter]{mathdesign}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{Biolinum}{
@@ -871,19 +865,13 @@
   \AtEndPreamble{\RequirePackage[adobe-utopia]{mathdesign}}
 }
 
-\DeclareOption{XCharter}{
-  \AtBeginDocument{
-    \ifLuaTeX
-      \setmainfont{XCharter}
-    \else
-      \fontfamily{XCharter-TLF}\selectfont
-      \renewcommand{\rmdefault}{XCharter-TLF}
-    \fi
-  }
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \def\loadmathptmx{true}
-  \def\loadmathpazo{false}
+\DeclareOption{XCharter}{% same as bch
+	\AtEndPreamble{
+		\usepackage[bitstream-charter]{mathdesign}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{yv2}{
