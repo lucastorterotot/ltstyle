@@ -580,6 +580,15 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{noto}{
+    \AtEndPreamble{
+        \usepackage{notomath}
+    }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
+}
+
 \DeclareOption{ntxlf}{
   \AtBeginDocument{
   \ifLuaTeX
