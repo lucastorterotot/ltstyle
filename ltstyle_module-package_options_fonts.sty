@@ -864,6 +864,21 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{ScholaX}{
+    \AtEndPreamble{
+        \usepackage[p,osf]{scholax}
+        % T1 and textcomp are loaded by package. Change that here, if you want
+        % load sans and typewriter packages here, if needed
+        \usepackage{amsmath,amsthm}% must be loaded before newtxmath
+        % amssymb should not be loaded
+        \usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}% need to scale up math package
+        % vvarbb selects the STIX version of blackboard bold.
+    }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
+}
+
 \DeclareOption{Tempora}{
   \AtBeginDocument{
     \ifLuaTeX
