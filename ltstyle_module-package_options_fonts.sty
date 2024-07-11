@@ -356,32 +356,10 @@
 }
 
 \DeclareOption{Libertine}{
-  \ifLuaTeX
-    \setmainfont{Linux Libertine O}[
-      SlantedFont    = *,
-      SlantedFeatures = {FakeSlant=0.2},
-      BoldSlantedFont = * Bold,
-      BoldSlantedFeatures = {FakeSlant=0.2},
-    ]
-    \setsansfont{Linux Biolinum O}
-    \def\loadunicodemath{true}
-    \AtBeginDocument{
-      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
-      \def\eqhathat{\hat}
-    }
-  \else
-  \AtBeginDocument{
-    \fontfamily{LinuxLibertineT-OsF}\selectfont
-    \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
-  }
-  \fi
+  \def\loadlibertine{true}
   \def\loadavant{false}
   \def\loadhelvet{false}
-  \ifLuaTeX
-    \def\loadmathptmx{false}
-  \else
-    \def\loadmathptmx{true}
-  \fi
+  \def\loadmathptmx{false}
   \def\loadmathpazo{false}
 }
 
