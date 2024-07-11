@@ -74,18 +74,12 @@
 }
 
 \DeclareOption{bch}{
-  \AtBeginDocument{
-    \ifLuaTeX
-      \setmainfont{XCharter}
-    \else
-      \fontfamily{bch}\selectfont
-      \renewcommand{\rmdefault}{bch}
-    \fi
-  }
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \def\loadmathptmx{true}
-  \def\loadmathpazo{false}
+	\AtEndPreamble{
+		\usepackage[bitstream-charter]{mathdesign}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{Biolinum}{
@@ -341,6 +335,9 @@
 }
 
 \DeclareOption{kurier}{
+	\AtEndPreamble{
+		\usepackage[math]{kurier}
+	}
   \AtBeginDocument{
   \ifLuaTeX
     \setmainfont{Kurier}
@@ -356,39 +353,11 @@
 }
 
 \DeclareOption{Libertine}{
-  \ifLuaTeX
-    \setmainfont{Linux Libertine O}[
-      SlantedFont    = *,
-      SlantedFeatures = {FakeSlant=0.2},
-      BoldSlantedFont = * Bold,
-      BoldSlantedFeatures = {FakeSlant=0.2},
-    ]
-    \setsansfont{Linux Biolinum O}
-    \def\loadunicodemath{true}
-    \AtBeginDocument{
-      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
-      \setmathfont[range=frak/{latin,Latin},
-                   Scale=MatchUppercase,
-                   StylisticSet=1,
-                   script-features={},
-                   sscript-features={}
-            ]{MathJax Fraktur}
-      \def\eqhathat{\hat}
-    }
-  \else
-  \AtBeginDocument{
-    \fontfamily{LinuxLibertineT-OsF}\selectfont
-    \renewcommand{\rmdefault}{LinuxLibertineT-OsF}
+  \AtEndPreamble{
+    \usepackage{libertine}
+    \usepackage{libertinust1math}
+    \let\degree\relax
   }
-  \fi
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \ifLuaTeX
-    \def\loadmathptmx{false}
-  \else
-    \def\loadmathptmx{true}
-  \fi
-  \def\loadmathpazo{false}
 }
 
 \DeclareOption{Libertinesourcesanspro}{
@@ -881,7 +850,7 @@
     \ifLuaTeX
       \setmainfont{Erewhon}[
         LetterSpace=-1,
-        WordSpace={.9},
+        WordSpace={.95},
         BoldFont = Erewhon Bold,
         SlantedFont = Erewhon Regular Slanted,
         BoldSlantedFont = Erewhon Bold Slanted,
@@ -891,6 +860,9 @@
       \renewcommand{\rmdefault}{futs}
     \fi
   }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
@@ -899,19 +871,13 @@
   \AtEndPreamble{\RequirePackage[adobe-utopia]{mathdesign}}
 }
 
-\DeclareOption{XCharter}{
-  \AtBeginDocument{
-    \ifLuaTeX
-      \setmainfont{XCharter}
-    \else
-      \fontfamily{XCharter-TLF}\selectfont
-      \renewcommand{\rmdefault}{XCharter-TLF}
-    \fi
-  }
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \def\loadmathptmx{true}
-  \def\loadmathpazo{false}
+\DeclareOption{XCharter}{% same as bch
+	\AtEndPreamble{
+		\usepackage[bitstream-charter]{mathdesign}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{yv2}{
