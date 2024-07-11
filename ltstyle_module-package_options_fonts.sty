@@ -91,6 +91,19 @@
 	}
 }
 
+\DeclareOption{BaskervilleF}{
+	\AtEndPreamble{
+		\usepackage{baskervillef}
+		\usepackage[varqu,varl,var0]{inconsolata}
+		\usepackage[scale=.95,type1]{cabin}
+		\usepackage[baskerville,vvarbb]{newtxmath}
+		\usepackage[cal=boondoxo]{mathalfa}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
+}
+
 \DeclareOption{bch}{
 	\AtEndPreamble{
 		\usepackage[bitstream-charter]{mathdesign}
