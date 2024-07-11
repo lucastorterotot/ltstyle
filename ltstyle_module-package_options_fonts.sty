@@ -376,6 +376,19 @@
   \def\loadmathpazo{true}
 }
 
+\DeclareOption{kerkis}{
+    \AtEndPreamble{
+        \usepackage{kmath,kerkis}
+    }
+    \def\loadunicodemath{true}
+    \AtBeginDocument{
+        \ifLuaTeX
+        \setmainfont{Kerkis}
+        \setmathfont{Kerkis}
+        \fi
+    }
+}
+
 \DeclareOption{kurier}{
 	\AtEndPreamble{
 		\usepackage[math]{kurier}
