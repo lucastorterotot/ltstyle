@@ -356,11 +356,11 @@
 }
 
 \DeclareOption{Libertine}{
-  \def\loadlibertine{true}
-  \def\loadavant{false}
-  \def\loadhelvet{false}
-  \def\loadmathptmx{false}
-  \def\loadmathpazo{false}
+  \AtEndPreamble{
+    \usepackage{libertine}
+    \usepackage{libertinust1math}
+    \let\degree\relax
+  }
 }
 
 \DeclareOption{Libertinesourcesanspro}{
