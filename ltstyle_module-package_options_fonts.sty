@@ -79,6 +79,18 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{Baskervald}{
+	\AtEndPreamble{
+		\usepackage[lf]{Baskervaldx} % lining figures
+		\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+		\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+		\renewcommand*\oldstylenums[1]{\textosf{#1}}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
+}
+
 \DeclareOption{bch}{
 	\AtEndPreamble{
 		\usepackage[bitstream-charter]{mathdesign}
