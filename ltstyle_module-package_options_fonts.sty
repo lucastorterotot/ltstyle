@@ -52,6 +52,12 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{arev}{
+	\AtEndPreamble{
+		\usepackage{arev}
+	}
+}
+
 \DeclareOption{artemisia}{
   \AtBeginDocument{
     \ifLuaTeX
