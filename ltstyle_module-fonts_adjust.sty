@@ -1,10 +1,5 @@
 \AtEndPreamble{
 \ifthenelse{\equal{\loadmathpazo}{true}}{\RequirePackage[sc]{mathpazo}}{} %TODO check compat
-\ifthenelse{\equal{\loadlibertine}{true}}{
-    \usepackage{libertine}
-    \usepackage{libertinust1math}
-    \let\degree\relax
-}{}
 \ifthenelse{\equal{\loadhelvet}{true}}
            {
              \ifLuaTeX
