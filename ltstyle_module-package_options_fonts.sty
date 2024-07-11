@@ -335,6 +335,9 @@
 }
 
 \DeclareOption{kurier}{
+	\AtEndPreamble{
+		\usepackage[math]{kurier}
+	}
   \AtBeginDocument{
   \ifLuaTeX
     \setmainfont{Kurier}
