@@ -52,6 +52,12 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{arev}{
+	\AtEndPreamble{
+		\usepackage{arev}
+	}
+}
+
 \DeclareOption{artemisia}{
   \AtBeginDocument{
     \ifLuaTeX
@@ -71,6 +77,31 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+}
+
+\DeclareOption{Baskervald}{
+	\AtEndPreamble{
+		\usepackage[lf]{Baskervaldx} % lining figures
+		\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+		\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+		\renewcommand*\oldstylenums[1]{\textosf{#1}}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
+}
+
+\DeclareOption{BaskervilleF}{
+	\AtEndPreamble{
+		\usepackage{baskervillef}
+		\usepackage[varqu,varl,var0]{inconsolata}
+		\usepackage[scale=.95,type1]{cabin}
+		\usepackage[baskerville,vvarbb]{newtxmath}
+		\usepackage[cal=boondoxo]{mathalfa}
+	}
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{bch}{
@@ -318,6 +349,17 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{iwona}{
+    \AtEndPreamble{
+        \usepackage[math]{iwona}
+    }
+  \AtBeginDocument{
+    \ifLuaTeX
+      \setmainfont{Iwona}
+    \fi
+  }
+}
+
 \DeclareOption{jkp}{
   \AtBeginDocument{
     \ifLuaTeX
@@ -332,6 +374,19 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+}
+
+\DeclareOption{kerkis}{
+    \AtEndPreamble{
+        \usepackage{kmath,kerkis}
+    }
+    \def\loadunicodemath{true}
+    \AtBeginDocument{
+        \ifLuaTeX
+        \setmainfont{Kerkis}
+        \setmathfont{Kerkis}
+        \fi
+    }
 }
 
 \DeclareOption{kurier}{
@@ -529,6 +584,15 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+}
+
+\DeclareOption{noto}{
+    \AtEndPreamble{
+        \usepackage{notomath}
+    }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{ntxlf}{
@@ -804,6 +868,21 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+}
+
+\DeclareOption{ScholaX}{
+    \AtEndPreamble{
+        \usepackage[p,osf]{scholax}
+        % T1 and textcomp are loaded by package. Change that here, if you want
+        % load sans and typewriter packages here, if needed
+        \usepackage{amsmath,amsthm}% must be loaded before newtxmath
+        % amssymb should not be loaded
+        \usepackage[scaled=1.075,ncf,vvarbb]{newtxmath}% need to scale up math package
+        % vvarbb selects the STIX version of blackboard bold.
+    }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
 }
 
 \DeclareOption{Tempora}{
