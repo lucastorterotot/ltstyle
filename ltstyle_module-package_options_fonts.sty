@@ -349,6 +349,17 @@
   \def\loadmathpazo{false}
 }
 
+\DeclareOption{iwona}{
+    \AtEndPreamble{
+        \usepackage[math]{iwona}
+    }
+  \AtBeginDocument{
+    \ifLuaTeX
+      \setmainfont{Iwona}
+    \fi
+  }
+}
+
 \DeclareOption{jkp}{
   \AtBeginDocument{
     \ifLuaTeX
