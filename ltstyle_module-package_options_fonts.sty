@@ -847,7 +847,7 @@
     \ifLuaTeX
       \setmainfont{Erewhon}[
         LetterSpace=-1,
-        WordSpace={.9},
+        WordSpace={.95},
         BoldFont = Erewhon Bold,
         SlantedFont = Erewhon Regular Slanted,
         BoldSlantedFont = Erewhon Bold Slanted,
@@ -857,6 +857,9 @@
       \renewcommand{\rmdefault}{futs}
     \fi
   }
+	\AtBeginDocument{
+		\def\mathsf{}
+	}
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
