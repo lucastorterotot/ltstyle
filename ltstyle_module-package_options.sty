@@ -3,7 +3,7 @@
 \DeclareOption{chapter}{\renewcommand{\PackageOption}{chapter}\renewcommand{\seccolorOption}{true}\renewcommand{\dopagegarde}{true}}
 \DeclareOption{chapitre}{\ExecuteOptions{chapter}}
 \DeclareOption{colle}{\renewcommand{\PackageOption}{colle}\renewcommand{\seccolorOption}{false}}
-\DeclareOption{kholle}{\renewcommand{\PackageOption}{kholle}\renewcommand{\seccolorOption}{false}}
+\DeclareOption{kholle}{\ExecuteOptions{colle}}
 \DeclareOption{complet}{\renewcommand{\PackageOption}{complet}\renewcommand{\seccolorOption}{true}\renewcommand{\dopagegarde}{true}}
 \DeclareOption{cours}{\ExecuteOptions{complet}}
 \DeclareOption{chapitres}{\ExecuteOptions{complet}}
