@@ -2,7 +2,6 @@
 \ifthenelse{\equal{\PackageOption}{chapitre}}{\enseignementtype{\chaptername}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{complet}}{\enseignementtype{\chaptername}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{colle}}{\enseignementtype{Colle}\relaxenseignementtype}{}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\enseignementtype{Khôlle}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{DM}}{\enseignementtype[DM]{Devoir maison}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{DS}}{\enseignementtype[DS]{Devoir surveillé}\relaxenseignementtype}{}
 \ifthenelse{\equal{\PackageOption}{controle}}{\enseignementtype[DS]{Devoir surveillé}}{}
@@ -170,11 +169,10 @@
 \ifthenelse{\equal{\insertsubtitle}{}}{}{{\familyfortitles\boldmath\bfseries\large \insertsubtitle\unboldmath}}
 
 \ifthenelse{\equal{\PackageOption}{colle}}{Colleur :\!\!}{}
-\ifthenelse{\equal{\PackageOption}{kholle}}{Khôlleur :}{}
-\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{book}}{}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{\insertshortauthor}{\insertauthor}}
+\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{book}}{}{\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{colle}\or\equal{\PackageOption}{corrige}}{\insertshortauthor}{\insertauthor}}
 
 
-\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{Groupe~\insertenseignementgpcolle,}}{}
+\ifthenelse{\equal{\PackageOption}{colle}}{\ifthenelse{\equal{\insertenseignementgpcolle}{}}{}{Groupe~\insertenseignementgpcolle,}}{}
 \ifthenelse{\equal{\PackageOption}{chapter}\or\equal{\PackageOption}{complet}\or\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{book}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TPs}}{}{\@date}
 
 \ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}}{\insertenseignementduree\ifthenelse{\equal{\givenenseignementmodalites}{false}}{}{
@@ -203,7 +201,7 @@
   \@thanks
   \setcounter{footnote}{0}%
   \global\let\thanks\relax
-  \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}\or\equal{\PackageOption}{corrige}}{}{\global\let\maketitle\relax}
+  \ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{corrige}}{}{\global\let\maketitle\relax}
   \global\let\@thanks\@empty
   %\global\let\@author\@empty
   %\global\let\@date\@empty

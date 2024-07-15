@@ -42,7 +42,7 @@
 
 \newcommand{\collesujet}[4]{}
 
-\newcommand{\elevecolle}[1]{} %used for colles and kholles
+\newcommand{\elevecolle}[1]{} %used for colles
 
 \newcounter{elevecompteur}
 \def\EnableColleSpecialLabels{%
@@ -54,7 +54,7 @@
         \makeatother
 }
 
-\ifthenelse{\equal{\PackageOption}{colle}\or\equal{\PackageOption}{kholle}}{
+\ifthenelse{\equal{\PackageOption}{colle}}{
 \renewcommand{\elevecolle}[1]{%\penalty-500
 %{\setlength{\parindent}{0pt}\hrulefill%\rule{0.25\linewidth}{0pt}\rule{0.5\linewidth}{0.5pt}\rule{0.25\linewidth}{0pt}
 %}
@@ -150,7 +150,7 @@
 \setcounter{equation}{0}
 \newpage
 \setcounter{page}{1}
-\ifthenelse{\equal{\PackageOption}{kholle}}{\def\insertenseignementtype{Compte-rendu de khôlle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de khôlle -- Sem.~\arabic{enseignementnumvalue}}}{\def\insertenseignementtype{Compte-rendu de colle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de colle -- Sem.~\arabic{enseignementnumvalue}}}\renewcommand{\insertenseignementnum}{\!\!}
+\def\insertenseignementtype{Compte-rendu de colle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de colle -- Sem.~\arabic{enseignementnumvalue}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
 \fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
