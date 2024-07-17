@@ -2,8 +2,8 @@
 
 % setting timing counter
 \newcommand{\resettiming}{\setcounter{timingmin}{0}}
-\newcommand{\addtiming}[2][0]{\addtocounter{timingmin}{#2}\tikz{\foreach \k in {0,...,#1}{\addtocounter{timingmin}{60}}}}
-\newcommand{\settiming}[2][0]{\setcounter{timingmin}{#2}\tikz{\foreach \k in {0,...,#1}{\addtocounter{timingmin}{60}}}}
+\newcommand{\addtiming}[2][0]{\addtocounter{timingmin}{#2}\ifnum#1>0\tikz{\foreach \k in {1,...,#1}{\addtocounter{timingmin}{60}}}\fi}
+\newcommand{\settiming}[2][0]{\setcounter{timingmin}{#2}\ifnum#1>0\tikz{\foreach \k in {1,...,#1}{\addtocounter{timingmin}{60}}}\fi}
 
 % obtain timing value
 \newcommand{\gettiming}{\arabic{timingmin}}
