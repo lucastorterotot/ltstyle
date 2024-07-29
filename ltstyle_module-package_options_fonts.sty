@@ -917,29 +917,29 @@
 }
 
 \DeclareOption{Utopia}{
-  \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont{Erewhon}[
-        LetterSpace=-1,
-        WordSpace={.95},
-        BoldFont = Erewhon Bold,
-        SlantedFont = Erewhon Regular Slanted,
-        BoldSlantedFont = Erewhon Bold Slanted,
-      ]
-    \else
-      \fontfamily{futs}\selectfont
-      \renewcommand{\rmdefault}{futs}
-    \fi
-  }
-	\AtBeginDocument{
+    \AtBeginDocument{
+        \setmainfont{Erewhon}[
+            LetterSpace=-1,
+            WordSpace={.95},
+            BoldFont = Erewhon Bold,
+            SlantedFont = Erewhon Regular Slanted,
+            BoldSlantedFont = Erewhon Bold Slanted,
+        ]
 		\def\mathsf{}
-	}
+    }
+    \AtEndPreamble{\RequirePackage[adobe-utopia]{mathdesign}}
+    \else
+    \AtBeginDocument{
+        \fontfamily{futs}\selectfont
+        \renewcommand{\rmdefault}{futs}
+        \def\loadutopia{true}
+    }
+    \fi
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
-  %\def\loadutopia{true}
-  \AtEndPreamble{\RequirePackage[adobe-utopia]{mathdesign}}
 }
 
 \DeclareOption{XCharter}{% same as bch
