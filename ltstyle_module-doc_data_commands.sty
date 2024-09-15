@@ -113,9 +113,22 @@
 
 \def\setclassefiliere{\@dblarg\my@setclassefiliere}
 \long\def\my@setclassefiliere[#1]#2{%
- \def\insertlongclassefiliere{#1}
- \def\insertclassefiliere{#2}
- \renewcommand{\classefiliere}{#2}
+ \def\insertlongclassefiliere{#1}%
+ \def\insertclassefiliere{#2}%
+ \ifthenelse{\equal{#2}{PCet}}{\def\insertlongclassefiliere{PC\up{*}}\def\insertclassefiliere{PC\up{*}}}{}%
+ \ifthenelse{\equal{#2}{MPet}}{\def\insertlongclassefiliere{MP\up{*}}\def\insertclassefiliere{MP\up{*}}}{}%
+ \ifthenelse{\equal{#2}{MPIet}}{\def\insertlongclassefiliere{MPI\up{*}}\def\insertclassefiliere{MPI\up{*}}}{}%
+ \ifthenelse{\equal{#2}{PTet}}{\def\insertlongclassefiliere{PT\up{*}}\def\insertclassefiliere{PT\up{*}}}{}%
+ \ifthenelse{\equal{#2}{PSIet}}{\def\insertlongclassefiliere{PSI\up{*}}\def\insertclassefiliere{PSI\up{*}}}{}%
+ \ifthenelse{\equal{#2}{BCPST}\and\equal{\classelvl}{SUP}}{\def\insertlongclassefiliere{BCPST1}\def\insertclassefiliere{BCPST1}}{}%
+ \ifthenelse{\equal{#2}{BCPST}\and\equal{\classelvl}{SPE}}{\def\insertlongclassefiliere{BCPST2}\def\insertclassefiliere{BCPST2}}{}%
+ \ifthenelse{\equal{#2}{TPC}\and\equal{\classelvl}{SUP}}{\def\insertlongclassefiliere{TPC1}\def\insertclassefiliere{TPC1}}{}%
+ \ifthenelse{\equal{#2}{TPC}\and\equal{\classelvl}{SPE}}{\def\insertlongclassefiliere{TPC2}\def\insertclassefiliere{TPC2}}{}%
+ \ifthenelse{\equal{#2}{TB}\and\equal{\classelvl}{SUP}}{\def\insertlongclassefiliere{TB1}\def\insertclassefiliere{TB1}}{}%
+ \ifthenelse{\equal{#2}{TB}\and\equal{\classelvl}{SPE}}{\def\insertlongclassefiliere{TB2}\def\insertclassefiliere{TB2}}{}%
+ \ifthenelse{\equal{#2}{TSI}\and\equal{\classelvl}{SUP}}{\def\insertlongclassefiliere{TSI1}\def\insertclassefiliere{TSI1}}{}%
+ \ifthenelse{\equal{#2}{TSI}\and\equal{\classelvl}{SPE}}{\def\insertlongclassefiliere{TSI2}\def\insertclassefiliere{TSI2}}{}%
+ \renewcommand{\classefiliere}{#2}%
  }
 
 \def\classe{\@dblarg\my@classe}
