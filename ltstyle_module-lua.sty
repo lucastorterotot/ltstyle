@@ -6,11 +6,17 @@
 \newcommand\calccs[2][3]{% default value of opt. param.: 3
    \num{\directlua{tex.sprint(math.myroundcs(#2,#1))}}}
 
+\newcommand\calcps[2][0]{% default value of opt. param.: 0
+   \num{\directlua{tex.sprint(math.myroundps(#2,#1))}}}
+
 \newcommand\calccsi[2][2]{% default value of opt. param.: 2, special rounding for uncs
    \num{\directlua{tex.sprint(math.myroundcsi(#2,#1))}}}
 
 \newcommand\calcsc[2][3]{% default value of opt. param.: 3
    \num{\directlua{tex.sprint(math.myroundsc(#2,#1))}}}
+
+\newcommand\calcscps[2][0]{% default value of opt. param.: 0
+   \num{\directlua{tex.sprint(math.myroundscps(#2,#1))}}}
 
 \newcommand\calcsci[2][2]{% default value of opt. param.: 2, special rounding for uncs
    \num{\directlua{tex.sprint(math.myroundsci(#2,#1))}}}
@@ -21,8 +27,11 @@
 
 \newcommand\SIcalc[3][0]{\calc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIccs[3][3]{\calccs[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
+\newcommand\SIcps[3][0]{\calcps[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIcsc[3][3]{\calcsc[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
+\newcommand\SIcscps[3][0]{\calcscps[#1]{#2}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#3}}}
 \newcommand\SIauto[3][3]{\num{\directlua{tex.sprint(myautoSIa(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#2,#1))}#3}}}
+\newcommand\SIautops[3][0]{\num{\directlua{tex.sprint(myautoSIaps(#2,#1))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIbps(#2,#1))}#3}}}
 \newcommand\SIODG[2]{\calcODG{#1}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{#2}}}
 \newcommand\SIODGauto[2]{\calcODG{\directlua{tex.sprint(myautoSIa(#1,2))}}\usp{\def\SIunskip{\hspace*{-\myunitsepwidth}}\SI{}{\directlua{tex.sprint(myautoSIb(#1,2))}#2}}}
 
