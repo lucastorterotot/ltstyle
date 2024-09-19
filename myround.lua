@@ -44,6 +44,20 @@ function math.myroundcs ( x , n )
    end
 end
 
+function math.myroundps ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    if n > pow then
+        return 0
+    end
+    if n<1 then
+        return math.myround(x, -n)
+    else -- n >= 0
+        x = math.round_int ( x / 10^n )
+        x = string.format ("%s%s%s", x, "e", n)
+        return x
+    end
+end
+
 function math.myroundcsi ( x , n )
     pow = math.floor(math.log10(math.abs(x)))
     x_r = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
@@ -66,6 +80,16 @@ function math.myroundsc ( x , n )
       end
       return x
    end
+end
+
+function math.myroundscps ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    if n > pow then
+        return 0
+    end
+    x = math.round_int ( x / 10^n ) * 10^n / 10^pow
+    x = string.format ("%s%s%s", string.format ( "%."..pow-n.."f" , x ), "e", pow)
+    return x
 end
 
 function math.myroundsci ( x , n )
@@ -135,8 +159,69 @@ function myautoSI ( x , n )
    end
 end
 
+function myautoSIps ( x , n )
+    pow = math.floor(math.log10(math.abs(x)))
+    if n > pow then
+        return 0, ""
+    end
+    pow3 = math.floor(pow / 3)*3
+    if n > pow3 then
+        pow3 = pow3 + 3 -- if not enough significant numbers
+    end
+    prefix = ""
+    if pow3 == 3 then
+        prefix = "\\kilo"
+    elseif pow3 == 6 then
+        prefix = "\\mega"
+    elseif pow3 == 9 then
+        prefix = "\\giga"
+    elseif pow3 == 12 then
+        prefix = "\\tera"
+    elseif pow3 == 15 then
+        prefix = "\\peta"
+    elseif pow3 == 18 then
+        prefix = "\\exa"
+    elseif pow3 == 21 then
+        prefix = "\\zetta"
+    elseif pow3 == 24 then
+        prefix = "\\yotta"
+    elseif pow3 == 27 then
+        prefix = "\\ronna"
+    elseif pow3 == 30 then
+        prefix = "\\quetta"
+    elseif pow3 == -3 then
+        prefix = "\\milli"
+    elseif pow3 == -6 then
+        prefix = "\\micro"
+    elseif pow3 == -9 then
+        prefix = "\\nano"
+    elseif pow3 == -12 then
+        prefix = "\\pico"
+    elseif pow3 == -15 then
+        prefix = "\\femto"
+    elseif pow3 == -18 then
+        prefix = "\\atto"
+    elseif pow3 == -21 then
+        prefix = "\\zepto"
+    elseif pow3 == -24 then
+        prefix = "\\yocto"
+    elseif pow3 == -27 then
+        prefix = "\\ronto"
+    elseif pow3 == -30 then
+        prefix = "\\quecto"
+    end
+    x = math.round_int ( x / 10^n ) * 10^(n-pow3)
+    x = string.format ( "%."..pow3-n.."f" , x )
+    return x, prefix
+end
+
 function myautoSIa ( x , n )
     x, prefix = myautoSI ( x , n )
+    return x
+end
+
+function myautoSIaps ( x , n )
+    x, prefix = myautoSIps ( x , n )
     return x
 end
 
@@ -152,6 +237,11 @@ end
 
 function myautoSIb ( x , n )
     x, prefix = myautoSI ( x , n )
+    return prefix
+end
+
+function myautoSIbps ( x , n )
+    x, prefix = myautoSIps ( x , n )
     return prefix
 end
 
