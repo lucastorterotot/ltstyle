@@ -134,6 +134,8 @@
 \AtBeginDocument{
     \ifthenelse{
         \equal{\PackageOption}{DM}\or\equal{\insertshortenseignementtype}{DM}\or\equal{\insertenseignementtype}{DM}
+        \or
+        \(\(\equal{\PackageOption}{DS}\or\equal{\insertshortenseignementtype}{DS}\or\equal{\insertenseignementtype}{DS}\)\and\(\not\equal{\classelvl}{SPE}\)\)
     }{
         \ifnotcorrige{\ExoSourcefalse}
     }{}
