@@ -125,9 +125,6 @@ function myautoSI ( x1 , n )
    else   -- n>0
       pow1 = math.floor(math.log10(math.abs(x1)))
       pow3 = math.floor(pow1 / 3)*3
-      if n-1-pow1+pow3 < 0 then
-          pow3 = pow3 + 3 -- if not enough significant numbers
-      end
       x2 = math.round_int ( x1*10^(n-1-pow1) ) * 10^(pow1-n+1)
       pow2 = math.floor(math.log10(math.abs(x2)))
       if pow2 == pow1 then
@@ -136,6 +133,9 @@ function myautoSI ( x1 , n )
       else
           xs = math.round_int ( x1*10^(n-1-pow2) ) * 10^(pow2-n+1)
           pows = pow2
+      end
+      if n-1-pows+pow3 < 0 then
+          pow3 = pow3 + 3 -- if not enough significant numbers
       end
       xs = xs * 10^(-pow3)
       prefix = ""
