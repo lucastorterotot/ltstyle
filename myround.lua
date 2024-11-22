@@ -30,17 +30,25 @@ function math.ODGpow ( x )
     return pow
 end
 
-function math.myroundcs ( x , n )
+function math.myroundcs ( x1 , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(math.abs(x)))
-      if pow > n-1 then
-          return math.myroundsc ( x , n )
+      pow1 = math.floor(math.log10(math.abs(x1)))
+      if pow1 > n-1 then
+          return math.myroundsc ( x1 , n )
       end
-      x = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
-      x = string.format ( "%."..n-1-pow.."f" , x )
-      return x
+      x2 = math.round_int ( x1*10^(n-1-pow1) ) * 10^(pow1-n+1)
+      pow2 = math.floor(math.log10(math.abs(x2)))
+      if pow2 == pow1 then
+          xs = x2
+          pows = pow1
+      else
+          xs = math.round_int ( x1*10^(n-1-pow2) ) * 10^(pow2-n+1)
+          pows = pow2
+      end
+      xs = string.format ( "%."..n-1-pows.."f" , xs )
+      return xs
    end
 end
 
@@ -68,17 +76,26 @@ function math.myroundcsi ( x , n )
     end
 end
 
-function math.myroundsc ( x , n )
+function math.myroundsc ( x1 , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(math.abs(x)))
-      x = math.round_int ( x*10^(n-1-pow) ) * 10^(-n+1)
-      x = string.format ( "%."..n-1-0*pow.."f" , x )
-      if pow > 0 or pow < 0 then
-         x = string.format ("%s%s%s", x, "e", pow)
+      pow1 = math.floor(math.log10(math.abs(x1)))
+      x2 = math.round_int ( x1*10^(n-1-pow1) ) * 10^(pow1-n+1)
+      pow2 = math.floor(math.log10(math.abs(x2)))
+      if pow2 == pow1 then
+          xs = x2
+          pows = pow1
+      else
+          xs = math.round_int ( x1*10^(n-1-pow2) ) * 10^(pow2-n+1)
+          pows = pow2
       end
-      return x
+      xs = xs * 10^(-pows)
+      xs = string.format ( "%."..n-1-0*pows.."f" , xs )
+      if pows > 0 or pows < 0 then
+         xs = string.format ("%s%s%s", xs, "e", pows)
+      end
+      return xs
    end
 end
 
@@ -102,15 +119,25 @@ function math.myroundsci ( x , n )
     end
 end
 
-function myautoSI ( x , n )
+function myautoSI ( x1 , n )
    if n<1 then
       n = 1
    else   -- n>0
-      pow = math.floor(math.log10(math.abs(x)))
-      pow3 = math.floor(pow / 3)*3
-      if n-1-pow+pow3 < 0 then
+      pow1 = math.floor(math.log10(math.abs(x1)))
+      pow3 = math.floor(pow1 / 3)*3
+      if n-1-pow1+pow3 < 0 then
           pow3 = pow3 + 3 -- if not enough significant numbers
       end
+      x2 = math.round_int ( x1*10^(n-1-pow1) ) * 10^(pow1-n+1)
+      pow2 = math.floor(math.log10(math.abs(x2)))
+      if pow2 == pow1 then
+          xs = x2
+          pows = pow1
+      else
+          xs = math.round_int ( x1*10^(n-1-pow2) ) * 10^(pow2-n+1)
+          pows = pow2
+      end
+      xs = xs * 10^(-pow3)
       prefix = ""
       if pow3 == 3 then
           prefix = "\\kilo"
@@ -153,9 +180,8 @@ function myautoSI ( x , n )
       elseif pow3 == -30 then
           prefix = "\\quecto"
       end
-      x = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-pow3-n+1)
-      x = string.format ( "%."..n-1-pow+pow3.."f" , x )
-      return x, prefix
+      xs = string.format ( "%."..n-1-pows+pow3.."f" , xs )
+      return xs, prefix
    end
 end
 
