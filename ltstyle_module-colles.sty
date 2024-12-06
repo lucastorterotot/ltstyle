@@ -75,7 +75,7 @@
 \renewcommand{\brm}[1]{\ignorespaces}
 \renewcommand{\exonocite}[1]{}
 \renewcommand{\exocite}[1]{}
-\renewcommand{\exo}[2][Exercice]{\vspace{\baselineskip}\par\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries ##2\par}}
+\renewcommand{\exo}[2][Exercice]{\vspace{\baselineskip}\par\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries\boldmath ##2\unboldmath\par}}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 \setcounter{equation}{0}
@@ -162,7 +162,7 @@
 
 {\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdC}~~~}
 \def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdCs}~~~}
-\renewcommand{\exo}[2][Exercice]{\vspace{2\baselineskip}\par\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries Exo}~~~##2 \endinput\par\vfill}
+\renewcommand{\exo}[2][Exercice]{\vspace{2\baselineskip}\par\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries Exo}~~~##2\endinput\par\vfill}
 \thelistecollesujets
 
 \label{rapport}}
