@@ -248,6 +248,21 @@
 }
 
 \DeclareOption{Fira}{
+  \AtBeginDocument{
+    \ifLuaTeX
+      \setmainfont{XITS}
+      \setsansfont{Fira Sans}
+    \else
+      \fontfamily{Fira-TLF}\selectfont
+    \fi
+  }
+  \def\loadavant{false}
+  \def\loadhelvet{false}
+  \def\loadmathptmx{true}
+  \def\loadmathpazo{false}
+}
+
+\DeclareOption{FiraSans}{
   \def\SIunitfamily{\sf}
   \AtBeginDocument{
     \ifLuaTeX
