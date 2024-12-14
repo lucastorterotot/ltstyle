@@ -18,6 +18,51 @@
 
 %%%%
 
+\newcounter{equationE}
+\newcounter{equationC}
+\newcounter{figureE}
+\newcounter{figureC}
+\newcounter{tableE}
+\newcounter{tableC}
+\def\InCorrigeMarkerStyle{\underline{C}}
+\def\InCorrigeMarker{}
+\let\oldtheequation\theequation
+\def\theequation{\InCorrigeMarker\oldtheequation}
+\let\oldthefigure\thefigure
+\def\thefigure{\InCorrigeMarker\oldthefigure}
+\let\oldthetable\thetable
+\def\thetable{\InCorrigeMarker\oldthetable}
+\def\InCorrigeON{%
+    \def\InCorrigeMarker{\InCorrigeMarkerStyle}%
+    %\addtocounter{equationE}{-\arabic{equationE}}%
+    %\addtocounter{equationE}{\arabic{equation}}%
+    %\addtocounter{equation}{-\arabic{equation}}%
+    %\addtocounter{equation}{\arabic{equationC}}%
+    \addtocounter{figureE}{-\arabic{figureE}}%
+    \addtocounter{figureE}{\arabic{figure}}%
+    \addtocounter{figure}{-\arabic{figure}}%
+    \addtocounter{figure}{\arabic{figureC}}%
+    \addtocounter{tableE}{-\arabic{tableE}}%
+    \addtocounter{tableE}{\arabic{table}}%
+    \addtocounter{table}{-\arabic{table}}%
+    \addtocounter{table}{\arabic{tableC}}%
+    }
+\def\InCorrigeOFF{%
+    \def\InCorrigeMarker{}%
+    %\addtocounter{equationC}{-\arabic{equationC}}%
+    %\addtocounter{equationC}{\arabic{equation}}%
+    %\addtocounter{equation}{-\arabic{equation}}%
+    %\addtocounter{equation}{\arabic{equationE}}%
+    \addtocounter{figureC}{-\arabic{figureC}}%
+    \addtocounter{figureC}{\arabic{figure}}%
+    \addtocounter{figure}{-\arabic{figure}}%
+    \addtocounter{figure}{\arabic{figureE}}%
+    \addtocounter{tableC}{-\arabic{tableC}}%
+    \addtocounter{tableC}{\arabic{table}}%
+    \addtocounter{table}{-\arabic{table}}%
+    \addtocounter{table}{\arabic{tableE}}%
+    }
+
 \def\enonceON{%
   \renewcommand{\enonce}[1]{##1\par}%
   \renewcommand{\ifenonce}[1]{##1}%
@@ -25,9 +70,9 @@
   \renewcommand{\onlycorrige}[1]{\ignorespaces}%
 }
 \def\corrigeON{%
-  \renewcommand{\corrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small ##1\par\color{tmpcol}\normalsize}%
-  \renewcommand{\ifcorrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}##1\color{tmpcol}}%
-  \renewcommand{\ifcorrigesimple}[1]{##1}%
+  \renewcommand{\corrige}[1]{\InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small ##1\par\color{tmpcol}\normalsize\InCorrigeOFF}%
+  \renewcommand{\ifcorrige}[1]{\InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} ##1\color{tmpcol}\InCorrigeOFF}%
+  \renewcommand{\ifcorrigesimple}[1]{\InCorrigeON ##1\InCorrigeOFF}%
   \renewcommand{\ifnotcorrige}[1]{\ignorespaces}%
   \renewcommand{\onlyenonce}[1]{\ignorespaces}%
 }
