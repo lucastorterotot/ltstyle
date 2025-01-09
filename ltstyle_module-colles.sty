@@ -125,7 +125,7 @@
 \refstepcounter{elevecompteur}
 \fancypagestyle{sujet\theelevecompteur}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
-\fancypagestyle{titlesujet\theelevecompteur}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
+\fancypagestyle{titlesujet\theelevecompteur}{ \rhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \lhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse ~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{sujet\theelevecompteur}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 
 \pagestyle{sujet\theelevecompteur} \setcounter{page}{1}
@@ -153,7 +153,7 @@
 \def\insertenseignementtype{Compte-rendu de colle -- Semaine~\arabic{enseignementnumvalue}}\def\insertshortenseignementtype{CR de colle -- Sem.~\arabic{enseignementnumvalue}}\renewcommand{\insertenseignementnum}{\!\!}
 \fancypagestyle{rapport}{ \lhead{\familyforhf } \chead{\familyforhf } \rhead{\familyforhf } \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
-\fancypagestyle{titlerapport}{ \lhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \rhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
+\fancypagestyle{titlerapport}{ \rhead{\familyforhf \insertlongclasse} \chead{\familyforhf } \lhead{\familyforhf \insertinstitute} \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{rapport}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype}}
 \pagestyle{rapport}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlerapport}
