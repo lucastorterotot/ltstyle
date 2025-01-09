@@ -18,7 +18,7 @@
 {\newcommand{\inputrapportnotes}{
 
 {\fancypagestyle{rapporttitle}{
-\rhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+\rhead{\familyforhf \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{\insertanneescol~--~}}{}\insertlongclasse}
 \chead{\familyforhf }
 \lhead{\familyforhf \insertinstitute}
 \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}

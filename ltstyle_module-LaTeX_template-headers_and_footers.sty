@@ -113,7 +113,7 @@
 \fancypagestyle{maintitle}{
 \ifthenelse{\equal{\PackageOption}{none}}
     {}
-    {\rhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    {\rhead{\familyforhf \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{\insertanneescol~--~}}{}\insertlongclasse}
     \chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
     \lhead{\familyforhf \insertinstitute}
     \ifthenelse{\equal{\insertclasse}{}}
@@ -135,7 +135,7 @@
 \fancypagestyle{plaintitle}{
 \ifthenelse{\equal{\PackageOption}{none}}
     {}
-    {\rhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+    {\rhead{\familyforhf \ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{livret}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{corrige}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}\or\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{\insertanneescol~--~}}{}\insertlongclasse}
     \chead{\familyforhf \ifthenelse{\equal{\PackageOption}{TPprof}}{version enseignant}{}}
     \lhead{\familyforhf \insertinstitute}
     \ifthenelse{\equal{\insertclasse}{}}
