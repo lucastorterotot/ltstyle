@@ -18,9 +18,9 @@
 {\newcommand{\inputrapportnotes}{
 
 {\fancypagestyle{rapporttitle}{
-\lhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
+\rhead{\familyforhf \insertlongclasse\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{\ifthenelse{\equal{\insertclasselvl}{}\and\equal{\insertclassefiliere}{}}{}{~~~\insertanneescol}}{}}
 \chead{\familyforhf }
-\rhead{\familyforhf \insertinstitute}
+\lhead{\familyforhf \insertinstitute}
 \lfoot{\familyforhf \insertclasse~--~\insertshortinstitute}
 \cfoot{\familyforhf \thepage /\pageref{LastPage}} \rfoot{\familyforhf\rfootTSVP \insertshortmatiere~--~\insertshortenseignementtype~\insertenseignementnum}}
 \fancypagestyle{rapport}{
