@@ -113,6 +113,8 @@
 
 \newcommand{\exoappliicone}{\Writinghand}
 \newcommand{\todotdicone}{\Pointinghand}
+\RequirePackage{fontawesome}
+\newcommand{\pgrmicone}{\faBook}
 
 \def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
 
@@ -216,3 +218,10 @@
     \remarque[\ltcolorthemeC][#1 \theexo]{%
         \input{#2}}
         }}
+\newcommand{\Pgrmitem}[2][]{{%
+    \def\remarquemarker{\pgrmicone}%
+    \remarque[\ltcolorthemeB][#1]{\sffamily #2}
+    }}
+\newcommand{\pgrmitem}[2][]{{%
+    \color{\ltcolorthemeB}{\pgrmicone}{\sffamily #2}
+    }}
