@@ -223,5 +223,5 @@
     \remarque[\ltcolorthemeB][#1]{\sffamily #2}
     }}
 \newcommand{\pgrmitem}[2][]{{%
-    \color{\ltcolorthemeB}{\pgrmicone}{\sffamily #2}
+    {\color{ltcolor\ltcolorthemeB}{\pgrmicone}} \textbf{#1}\ifthenelse{\equal{#1}{}}{}{\quad}\textsl{\sffamily #2}
     }}
