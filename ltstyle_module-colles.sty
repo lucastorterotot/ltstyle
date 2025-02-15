@@ -68,7 +68,7 @@
 
 }
 
-\def\textheightcolleshortsujets{\paperheight -1.175cm}
+\def\textheightcolleshortsujets{\paperheight -.675cm}
 
 \renewcommand{\colleshortsujets}{
 \EnableColleSpecialLabels
@@ -81,6 +81,7 @@
 \setcounter{equation}{0}
 {\setlength{\topmargin}{0.13cm}
 \setlength{\headheight}{0.0cm}%13.6pt %0.4cm
+\setlength{\voffset}{-3.04cm}
 \setlength{\textheight}{\textheightcolleshortsujets}%3.45 %26.25 cm
 \setlength{\footskip}{0cm}
 \corrigeOFF\enonceON
@@ -109,7 +110,7 @@
 }
 \renewcommand{\onlyshortenonce}[1]{##1}
 
-\newpage\thelistecollesujets
+\newpage~\par\thelistecollesujets
 \newpage}}
 
 \renewcommand{\collesujets}{
