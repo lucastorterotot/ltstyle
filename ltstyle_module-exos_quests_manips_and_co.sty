@@ -113,8 +113,27 @@
 
 \newcommand{\exoappliicone}{\Writinghand}
 \newcommand{\todotdicone}{\Pointinghand}
-\RequirePackage{fontawesome}
-\newcommand{\pgrmicone}{\faBook}
+\newcommand{\pgrmicone}{\colorlet{currentcolor}{.}\tikz{
+\draw (0,0) coordinate (A);
+\draw (A) + (.6em, 0) coordinate (B);
+\draw (A) + (-.05em, .15em) coordinate (D);
+\draw (B) + (-.05em, .15em) coordinate (C);
+
+\foreach \c in {A,B,C,D}{
+\draw (\c) + (.22em, .65em) coordinate (u\c);
+}
+
+\draw [currentcolor, line width=.05em, rounded corners = .08em] ($(A)!.5!(B)$) -- (A) -- (D) -- (C) -- (uC) -- (uD) -- (D) -- (A) -- (B) -- (uB);
+\draw [currentcolor, line width=.05em, fill, rounded corners = .08em] (D) -- (C) -- (uC) -- (uD) -- cycle;
+
+\foreach \k in {1,...,4}{
+\draw ($(uD)!{(\k+1)/10}!(D)$) coordinate (l\k);
+\draw ($(uC)!{(\k+1)/10}!(C)$) coordinate (r\k);
+\draw ($(l\k)!.2!(r\k)$) coordinate (cl\k);
+\draw ($(r\k)!.2!(l\k)$) coordinate (cr\k);
+}
+\fill [white, rounded corners = .02em] (cl1) -- (cr1) -- (cr2) -- (cl2) -- cycle;
+\fill [white, rounded corners = .02em] (cl3) -- (cr3) -- (cr4) -- (cl4) -- cycle;}}
 
 \def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
 
