@@ -1,4 +1,5 @@
 \directlua{require("myround.lua")} % Load the externally-stored code
+\directlua{require("stats.lua")} % Load the externally-stored code
 
 \newcommand\calc[2][0]{% default value of opt. param.: 0
    \num{\directlua{tex.sprint(math.myround(#2,#1))}}}
