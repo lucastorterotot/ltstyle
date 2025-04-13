@@ -53,6 +53,8 @@
 
 \noindent {\ifthenelse{\equal{\inputinnercover}{true}}{\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}}{}{\renewcommand{\thanks}[1]{}}}{}\bfseries \Large \insertshortauthor}
 
+\ifthenelse{\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertglobalchaptertiming}{}}{}{\vspace{\baselineskip}\par\noindent\vspace{\baselineskip}\insertglobalchaptertiming}}{}
+
 %\ifthenelse{\equal{\PackageOption}{fiche}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}\or\equal{\PackageOption}{TP}\or\equal{\PackageOption}{TPprof}\or\equal{\PackageOption}{TPs}}{\@thanks\let\thanks\relax}{}
 
 \vfill\insertimgcover\vfill
@@ -217,9 +219,10 @@
 
 \vfill\ifthenelse{\equal{\PackageOption}{TDs}}{}{
 \begin{footnotesize}
-\begin{flushright}
+\noindent
+\insertglobalchaptertiming
+\hfill~\hfill
 \today
-\end{flushright}
 \end{footnotesize}}
 \newpage}{}
 \ifthenelse{\equal{\PackageOption}{complet}}{\pagestyle{main}}{}
