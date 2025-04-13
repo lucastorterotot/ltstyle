@@ -51,7 +51,10 @@
 \ignorespaces%
 }
 \newcommand{\showtimingaclockmargin}{\showtimingmargin[\showtimingaclock[.75]]}
-\newcommand{\showtimingdclockmargin}{\showtimingmargin[\showtimingdclock}
-\newcommand{\showtimingdclocktmargin}{\showtimingmargin[\showtimingdclockt}
+\newcommand{\showtimingdclockmargin}{\showtimingmargin[\showtimingdclock]}
+\newcommand{\showtimingdclocktmargin}{\showtimingmargin[\showtimingdclockt]}
 
 \newcommand{\showtiming}{\showtimingmargin}
+
+\newcommand{\insertglobalchaptertiming}{}
+\AtEndDocument{\ifnum\value{timingmin} > 0 \laterdef{\insertglobalchaptertiming}{$\sim$ {\def\fbox{}\showtimingdclockt}}\fi}
