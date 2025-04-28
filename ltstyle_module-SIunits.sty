@@ -1,5 +1,9 @@
 %\RequirePackage[squaren,Gray,thickqspace]{SIunits}
 \RequirePackage{sistyle} %TODO check compat
+\AtBeginDocument{
+    \def\qty#1#2{\SI{#1}{#2}}
+    \def\U#1{\SI{}{#1}}
+}
 \SIobeyboldtrue
 \RequirePackage{numprint}
 \def\SIcdot{{\fontfamily{cmr}\cdot}}
