@@ -49,6 +49,7 @@
 \docfigfalse
 \newenvironment*{doc}[1][H]{%
 \ifx#1H\else\docfigtrue\begin{figure}[#1]\fi%
+\ifx#1p\else\docfigtrue\begin{figure}[#1]\fi%
 \noindent\begin{tcolorbox}[grow to left by=-1mm, width=\linewidth-2mm,
 bottomrule = 0.4pt,toprule = 0.4pt,rightrule = 0.4pt,leftrule = 0.4pt,
 bottom=.1mm, top=.1mm, left=1mm, right=1mm,
