@@ -34,6 +34,7 @@
 
 \DeclareOption{Centrale}{\input ltqueststyle-Centrale.sty}
 \DeclareOption{Centrale17}{\input ltqueststyle-Centrale17.sty}
+\DeclareOption{CentraleTSI}{\input ltqueststyle-CentraleTSI.sty}
 
 \DeclareOption{Mines}{\input ltqueststyle-Mines.sty}
 
@@ -50,8 +51,8 @@
 
 \newcounter{randomf} \newcounter{randomq}
 \def\randomfOption{\ifcase\therandomf\or lmr\or bch\or lmss\or zpltlf\or ptm\or lmss\or futs\or kurier\or lmss\or iwona\or noto\or lmss\fi}
-\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or CCP5\or Mines\or Centrale\or Centrale17\or e3a1\or e3a2\or ENS1\or ENS2\or Agreg1\or ATS\fi}
-\def\randomfmax{12} \def\randomqmax{15}
+\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or CCP5\or Mines\or Centrale\or Centrale17\or CentraleTSI\or e3a1\or e3a2\or ENS1\or ENS2\or Agreg1\or ATS\fi}
+\def\randomfmax{12} \def\randomqmax{16}
 \addtocounter{randomf}{0} % offset
 \addtocounter{randomf}{\the\day}
 \addtocounter{randomf}{\the\day}
@@ -70,6 +71,7 @@
 \ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
 \ifnum\therandomf>\randomfmax \addtocounter{randomf}{-\randomfmax} \fi
 
+\ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
 \ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
 \ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
 \ifnum\therandomq>\randomqmax \addtocounter{randomq}{-\randomqmax} \fi
