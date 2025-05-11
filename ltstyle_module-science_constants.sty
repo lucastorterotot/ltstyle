@@ -16,7 +16,7 @@
 \newcommand{\Faradayvalue}{(\NAvalue*\evalue)} % Faraday
 \newcommand{\RGPvalue}{(\NAvalue*\kBvalue)} % constante du gaz parfait
 \newcommand{\muzerovalue}{(4*\pivalue*1e-7)} % perméabilité du vide
-\newcommand{\epsilonzerovalue}{(1/(\muzerovalue*\cvalue^2))} % permittivité du vide
+\newcommand{\epsilonzerovalue}{((1/(\muzerovalue*\cvalue^2)))} % permittivité du vide
 \newcommand{\eVvalue}{\evalue}
 
 \newcommand{\RHvalue}{1.0973731568508e7} % constante de Rydberg
@@ -54,6 +54,6 @@
 \newcommand{\millimetreHgvalue}{133.322} % millimètre de mercure
 \newcommand{\calorievalue}{4.185} % une calorie en joules
 
-\newcommand{\RTlnonF}{\kBvalue*(273.15+25)/\evalue*math.log(10)} % RT/(Na e)*ln(10) = kBT/e*ln(10) value for Nernst
+\newcommand{\RTlnonF}{(\kBvalue*(273.15+25)/\evalue*math.log(10))} % RT/(Na e)*ln(10) = kBT/e*ln(10) value for Nernst
 
 \newcommand{\europarkWh}{0.2276}
