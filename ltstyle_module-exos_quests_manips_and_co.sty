@@ -1,26 +1,20 @@
 %%%% INIT
-\newif\ifENONCE
-\ENONCEtrue
-\newcommand{\enonce}[1]{\ifENONCE #1\par\else\ignorespaces\fi}
-\newif\ifCORRIGE
-\CORRIGEtrue
-\newcommand{\corrige}[1]{\ifCORRIGE \InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small #1\par\color{tmpcol}\normalsize\InCorrigeOFF\else\ignorespaces\fi}
-\newif\ifMINICORRIGE
-\MINICORRIGEtrue
-\newcommand{\minicorrige}[1]{\ifMINICORRIGE \footnotesize\minicorrquest\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} #1\normalsize\color{tmpcol}\par\else\ignorespaces\fi}
+\newcommand{\enonce}[1]{}
+\newcommand{\corrige}[1]{}
+\newcommand{\minicorrige}[1]{}
 \newcommand{\minicorrquest}{}
-\newcommand{\ifenonce}[1]{\ifENONCE #1\else\ignorespaces\fi}
-\newcommand{\ifcorrige}[1]{\ifCORRIGE \InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} #1\color{tmpcol}\InCorrigeOFF\else\ignorespaces\fi}
-\newcommand{\ifcorrigesimple}[1]{\ifCORRIGE \InCorrigeON #1\InCorrigeOFF\else\ignorespaces\fi}
-\newcommand{\ifminicorrige}[1]{\ifMINICORRIGE \protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}#1\color{tmpcol}\fi}
-\newcommand{\ifminicorrigesimple}[1]{\ifMINICORRIGE #1\else\ignorespaces\fi}
-\newcommand{\ifnotenonce}[1]{\ifENONCE \ignorespaces\else #1\fi}
-\newcommand{\ifnotcorrige}[1]{\ifCORRIGE \ignorespaces\else #1\fi}
-\newcommand{\ifnotminicorrige}[1]{\ifMINICORRIGE \ignorespaces\else #1\fi}
-\newcommand{\onlyenonce}[1]{\ifnum \ifCORRIGE 1\else\ifMINICORRIGE 1\else 0\fi\fi= 1 \ignorespaces\else\ifenonce{#1}\fi}
+\newcommand{\ifenonce}[1]{}
+\newcommand{\ifcorrige}[1]{}
+\newcommand{\ifcorrigesimple}[1]{}
+\newcommand{\ifminicorrige}[1]{}
+\newcommand{\ifminicorrigesimple}[1]{}
+\newcommand{\ifnotenonce}[1]{}
+\newcommand{\ifnotcorrige}[1]{}
+\newcommand{\ifnotminicorrige}[1]{}
+\newcommand{\onlyenonce}[1]{}
 \newcommand{\onlyshortenonce}[1]{\ignorespaces}
-\newcommand{\onlycorrige}[1]{\ifnum \ifENONCE 1\else\ifMINICORRIGE 1\else 0\fi\fi= 1 \ignorespaces\else\ifcorrige{#1}\fi}
-\newcommand{\onlyminicorrige}[1]{\ifnum \ifENONCE 1\else\ifCORRIGE 1\else 0\fi\fi= 1 \ignorespaces\else\ifminicorrige{#1}\fi}
+\newcommand{\onlycorrige}[1]{}
+\newcommand{\onlyminicorrige}[1]{}
 
 %%%%
 
@@ -69,12 +63,46 @@
     \addtocounter{table}{\arabic{tableE}}%
     }
 
-\def\enonceON{\ENONCEtrue}
-\def\corrigeON{\CORRIGEtrue}
-\def\minicorrigeON{\MINICORRIGEtrue}
-\def\enonceOFF{\ENONCEfalse}
-\def\corrigeOFF{\CORRIGEfalse}
-\def\minicorrigeOFF{\MINICORRIGEfalse}
+\def\enonceON{%
+  \renewcommand{\enonce}[1]{##1\par}%
+  \renewcommand{\ifenonce}[1]{##1}%
+  \renewcommand{\ifnotenonce}[1]{\ignorespaces}%
+  \renewcommand{\onlycorrige}[1]{\ignorespaces}%
+}
+\def\corrigeON{%
+  \renewcommand{\corrige}[1]{\InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}\small ##1\par\color{tmpcol}\normalsize\InCorrigeOFF}%
+  \renewcommand{\ifcorrige}[1]{\InCorrigeON\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} ##1\color{tmpcol}\InCorrigeOFF}%
+  \renewcommand{\ifcorrigesimple}[1]{\InCorrigeON ##1\InCorrigeOFF}%
+  \renewcommand{\ifnotcorrige}[1]{\ignorespaces}%
+  \renewcommand{\onlyenonce}[1]{\ignorespaces}%
+}
+\def\minicorrigeON{%
+  \renewcommand{\minicorrige}[1]{\footnotesize\minicorrquest\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige} ##1\normalsize\color{tmpcol}\par}%
+  \renewcommand{\ifminicorrige}[1]{\protect\colorlet{tmpcol}{.}\color{\ltcolorcorrige}##1\color{tmpcol}}%
+  \renewcommand{\ifminicorrigesimple}[1]{##1}%
+  \renewcommand{\ifnotminicorrige}[1]{\ignorespaces}%
+  \renewcommand{\onlyenonce}[1]{\ignorespaces}%
+}
+\def\enonceOFF{%
+  \renewcommand{\enonce}[1]{\ignorespaces}%
+  \renewcommand{\ifenonce}[1]{\ignorespaces}%
+  \renewcommand{\ifnotenonce}[1]{##1}%
+  \renewcommand{\onlycorrige}[1]{\ifcorrige{##1}}%
+}
+\def\corrigeOFF{%
+  \renewcommand{\corrige}[1]{\ignorespaces}%
+  \renewcommand{\ifcorrige}[1]{\ignorespaces}%
+  \renewcommand{\ifcorrigesimple}[1]{\ignorespaces}%
+  \renewcommand{\ifnotcorrige}[1]{##1}%
+  \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}%
+}
+\def\minicorrigeOFF{%
+  \renewcommand{\minicorrige}[1]{\ignorespaces}%
+  \renewcommand{\ifminicorrige}[1]{\ignorespaces}%
+  \renewcommand{\ifminicorrigesimple}[1]{\ignorespaces}%
+  \renewcommand{\ifnotminicorrige}[1]{##1}%
+  \renewcommand{\onlyenonce}[1]{\ifenonce{##1}}%
+}
 
 \enonceON
 \corrigeOFF
