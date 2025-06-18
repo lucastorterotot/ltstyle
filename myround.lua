@@ -119,7 +119,7 @@ function math.myroundsci ( x , n )
     end
 end
 
-function myautoSI ( x1 , n )
+function myautoqty ( x1 , n )
    if n<1 then
       n = 1
    else   -- n>0
@@ -185,7 +185,7 @@ function myautoSI ( x1 , n )
    end
 end
 
-function myautoSIps ( x , n )
+function myautoqtyps ( x , n )
     pow = math.floor(math.log10(math.abs(x)))
     if n > pow then
         return 0, ""
@@ -241,38 +241,38 @@ function myautoSIps ( x , n )
     return x, prefix
 end
 
-function myautoSIa ( x , n )
-    x, prefix = myautoSI ( x , n )
+function myautoqtya ( x , n )
+    x, prefix = myautoqty ( x , n )
     return x
 end
 
-function myautoSIaps ( x , n )
-    x, prefix = myautoSIps ( x , n )
+function myautoqtyaps ( x , n )
+    x, prefix = myautoqtyps ( x , n )
     return x
 end
 
-function myautoSIai ( x , n )
+function myautoqtyai ( x , n )
     pow = math.floor(math.log10(math.abs(x)))
     x_r = math.round_int ( x*10^(n-1-pow) ) * 10^(pow-n+1)
     if x_r < x * 0.95 then
-        return myautoSIa ( x + 10^(pow) , n )
+        return myautoqtya ( x + 10^(pow) , n )
     else
-        return myautoSIa ( x , n )
+        return myautoqtya ( x , n )
     end
 end
 
-function myautoSIb ( x , n )
-    x, prefix = myautoSI ( x , n )
+function myautoqtyb ( x , n )
+    x, prefix = myautoqty ( x , n )
     return prefix
 end
 
-function myautoSIbps ( x , n )
-    x, prefix = myautoSIps ( x , n )
+function myautoqtybps ( x , n )
+    x, prefix = myautoqtyps ( x , n )
     return prefix
 end
 
-function myautoSIaUnc ( u , x , n )
-    x_bis, prefix = myautoSI ( x , n+5 )
+function myautoqtyaUnc ( u , x , n )
+    x_bis, prefix = myautoqty ( x , n+5 )
     if math.floor(math.log10(math.abs(u/x*x_bis))) < -5 then
         return math.myroundsci(u / x * x_bis, n)
     else

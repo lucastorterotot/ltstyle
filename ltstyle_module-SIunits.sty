@@ -1,16 +1,19 @@
-%\RequirePackage[squaren,Gray,thickqspace]{SIunits}
-\RequirePackage{sistyle} %TODO check compat
-\AtBeginDocument{
-    \def\qty#1#2{\SI{#1}{#2}}
-    \def\U#1{\SI{}{#1}}
+\RequirePackage{siunitx}
+\AtBeginDocument{\RenewCommandCopy\qty\SI} % compat with physics
+\AtBeginDocument{% backwards compat
+    \def\SI#1#2{\qty{#1}{#2}}
+    \def\U#1{\unit{#1}}
 }
-\SIobeyboldtrue
-\RequirePackage{numprint}
-\def\SIcdot{{\fontfamily{cmr}\cdot}}
+\ifLuaTeX
+    \def\SIcdot{\text{\setmainfont{CMU Serif}\hspace{-.23em}\cdot\hspace{-.23em}}}
+\else
+    \def\SIcdot{{\fontfamily{cmr}\cdot}}
+\fi
 \def\usk{\SIcdot}
 \def\usp{\,}
 \makeatletter
 \@ifpackagewith{babel}{french}{
+\sisetup{locale = FR}
 \def\mydecimalsign{,}
 \def\mythousandsep{\,}
 \def\myintervalsep{;}
@@ -22,6 +25,7 @@
 \@ifpackageloaded{polyglossia}
                  {
                    \AtBeginDocument{
+                     \iflanguage{french}{\sisetup{locale = FR}}{}
                      \def\mydecimalsign{\iflanguage{french}{,}{.}}
                      \def\mythousandsep{\iflanguage{french}{\,}{,}}
                      \def\myintervalsep{\iflanguage{french}{;}{,}}
@@ -31,68 +35,67 @@
 \makeatother
 \def\isp{\myintervalsep}
 \def\myproductsign{\!\times\!}
+\sisetup{
+    exponent-product = \myproductsign,
+    inter-unit-product = \SIcdot,
+    mode = match,
+    propagate-math-font = true,
+    reset-math-version = false,
+}
 \def\myunitsep{\usp}
 \def\myunitdot{\usk}
-\SIdecimalsign{\mydecimalsign}
-\SIthousandsep{\mythousandsep}
-\SIproductsign{\myproductsign}
-\SIunitsep{\myunitsep}
-\SIunitdot{\myunitdot}
-\SIunitspace{\myunitdot}
-\npdecimalsign{\mydecimalsign}
-\npthousandsep{\mythousandsep}
-\npproductsign{\myproductsign}
-\npunitseparator{\myunitsep}
-\def\unit{\SI}
-\makeatletter
-\def\SIunskip{}
-\newlength{\myunitsepwidth}
-\let\origSI\SI
-\def\emptytest{}
-\def\SI#1#2{{\protect \settowidth{\myunitsepwidth}{\myunitsep}\def\emptytest{#1}\ifx\emptytest\empty\else \def\SIunskip{\hspace*{-\myunitsepwidth}}\fi\ensuremath{\origSI{#1}{\SIunitfamily #2}}}}
-\makeatletter
-\@ifclassloaded{beamer}{
-  \renewcommand{\SIupmath}[2][]{#2}
-  \let\ltstyleSI\SI
-  \def\SI#1#2{\ltstyleSI{#1}{\mathrm{#2}}}
-  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{\ensuremath{\mathrm{#2}}}}
-  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{\ensuremath{\mathrm{#2}}}}
-}{
-  \DeclareRobustCommand{\addunit}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
-  \DeclareRobustCommand{\addprefix}[2]{\newcommand{#1}{{\SIunitfamily #2}}}
-  }
-\makeatother
-\def\SIi#1#2#3{\ensuremath{(\num{#1}\pm\num{#2})\usp\SI{}{#3}}}
-\def\SIii#1#2#3#4{\ensuremath{\num{#1}{}^{+\num{#2}}_{-\num{#3}}\usp\SI{}{#4}}}
-%\makeatletter
-%\@ifpackagewith{babel}{french}{\renewcommand{\degre}{\degree}}{\newcommand{\degre}{\degree}}%{\ensuremath{^\circ}}
-%\makeatother
-\DeclareTextSymbolDefault{\SImu}{TS1}
-\DeclareTextSymbol{\SImu}{TS1}{181}
-\addprefix{\quecto}{q}
-\addprefix{\ronto}{r}
-\addprefix{\yocto}{y}
-\addprefix{\zepto}{z}
-\addprefix{\atto}{a}
-\addprefix{\femto}{f}
-\addprefix{\pico}{p}
-\addprefix{\nano}{n}
-\addprefix{\micro}{\mbox{\SImu}}
-\addprefix{\milli}{m}
-\addprefix{\centi}{c}
-\addprefix{\deci}{d}
-\addprefix{\deca}{da}
-\addprefix{\hecto}{h}
-\addprefix{\kilo}{k}
-\addprefix{\mega}{M}
-\addprefix{\giga}{G}
-\addprefix{\tera}{T}
-\addprefix{\peta}{P}
-\addprefix{\exa}{E}
-\addprefix{\zetta}{Z}
-\addprefix{\yotta}{Y}
-\addprefix{\ronna}{R}
-\addprefix{\quetta}{Q}
+\def\qtyu#1#2#3{\ensuremath{(\num{#1}\pm\num{#2})\usp\U{#3}}}
+\def\qtyuu#1#2#3#4{\ensuremath{\num{#1}{}^{+\num{#2}}_{-\num{#3}}\usp\U{#4}}}
+\DeclareTextSymbolDefault{\unitmu}{TS1}
+\DeclareTextSymbol{\unitmu}{TS1}{181}
+\def\quecto{\ensuremath{\mathrm{q}}}
+\DeclareSIPrefix\quecto{q}{-30}
+\def\ronto{\ensuremath{\mathrm{r}}}
+\DeclareSIPrefix\ronto{r}{-27}
+\def\yocto{\ensuremath{\mathrm{y}}}
+\DeclareSIPrefix\yocto{y}{-24}
+\def\zepto{\ensuremath{\mathrm{z}}}
+\DeclareSIPrefix\zepto{z}{-21}
+\def\atto{\ensuremath{\mathrm{a}}}
+\DeclareSIPrefix\atto{a}{-18}
+\def\femto{\ensuremath{\mathrm{f}}}
+\DeclareSIPrefix\femto{f}{-15}
+\def\pico{\ensuremath{\mathrm{p}}}
+\DeclareSIPrefix\pico{p}{-12}
+\def\nano{\ensuremath{\mathrm{n}}}
+\DeclareSIPrefix\nano{n}{-9}
+\def\micro{\mbox{\unitmu}}
+\DeclareSIPrefix\micro{\mbox{\unitmu}}{-6}
+\def\milli{\ensuremath{\mathrm{m}}}
+\DeclareSIPrefix\milli{m}{-3}
+\def\centi{\ensuremath{\mathrm{c}}}
+\DeclareSIPrefix\centi{c}{-2}
+\def\deci{\ensuremath{\mathrm{d}}}
+\DeclareSIPrefix\deci{d}{-1}
+\def\deca{\ensuremath{\mathrm{da}}}
+\DeclareSIPrefix\deca{da}{1}
+\def\hecto{\ensuremath{\mathrm{h}}}
+\DeclareSIPrefix\hecto{h}{2}
+\def\kilo{\ensuremath{\mathrm{k}}}
+\DeclareSIPrefix\kilo{k}{3}
+\def\mega{\ensuremath{\mathrm{M}}}
+\DeclareSIPrefix\mega{M}{6}
+\def\giga{\ensuremath{\mathrm{G}}}
+\DeclareSIPrefix\giga{G}{9}
+\def\tera{\ensuremath{\mathrm{T}}}
+\DeclareSIPrefix\tera{T}{12}
+\def\peta{\ensuremath{\mathrm{P}}}
+\DeclareSIPrefix\peta{P}{15}
+\def\exa{\ensuremath{\mathrm{E}}}
+\DeclareSIPrefix\exa{E}{18}
+\def\zetta{\ensuremath{\mathrm{Z}}}
+\DeclareSIPrefix\zetta{Z}{21}
+\def\yotta{\ensuremath{\mathrm{Y}}}
+\DeclareSIPrefix\yotta{Y}{24}
+\def\ronna{\ensuremath{\mathrm{R}}}
+\DeclareSIPrefix\ronna{R}{27}
+\def\quetta{\ensuremath{\mathrm{Q}}}
+\DeclareSIPrefix\quetta{Q}{30}
 \def\quectod{\ensuremath{10^{-30}}}
 \def\rontod{\ensuremath{10^{-27}}}
 \def\yoctod{\ensuremath{10^{-24}}}
@@ -117,109 +120,61 @@
 \def\yottad{\ensuremath{10^{24}}}
 \def\ronnad{\ensuremath{10^{27}}}
 \def\quettad{\ensuremath{10^{30}}}
-\addunit{\gram}{g}
-\addunit{\metre}{m}
-\def\meter{\metre}
-\addunit{\kilogram}{\kilo\gram}
-\addunit{\second}{s}
-\addunit{\ampere}{A}
-\addunit{\kelvin}{K}
-\addunit{\mole}{mol}
-\addunit{\candela}{cd}
-\addunit{\radian}{rad}
-\addunit{\steradian}{sr}
-\addunit{\hertz}{Hz}
-\addunit{\newton}{N}
-\addunit{\pascal}{Pa}
-\addunit{\joule}{J}
-\addunit{\watt}{W}
-\def\Wh{\watt\hour}
-\def\kWh{\kilo\Wh}
-\addunit{\coulomb}{C}
-\addunit{\volt}{V}
-\addunit{\farad}{F}
-\addunit{\siemens}{S}
-\addunit{\weber}{Wb}
-\addunit{\tesla}{T}
-\addunit{\henry}{H}
-\addunit{\tour}{tr}
+
+\DeclareSIUnit{\Wh}{Wh}
+\DeclareSIUnit{\tour}{tr}
 \AtBeginDocument{
-\let\origarcdeg\arcdeg
-\renewcommand{\arcdeg}{\textrm{\SIunskip\origarcdeg}}
-\addunit{\degree}{\SIunskip\origarcdeg}
-\addunit{\arcminute}{\SIunskip\ensuremath{'}}
-%\def\paminute{\arcminute}
-%\def\pamin{\arcminute}
+\ifx \arcdeg \undefined \def\arcdeg{\ensuremath{{}^{\circ}}}\fi
+\DeclareSIUnit[quantity-product = {}]\degree{\arcdeg}
+\def\degre{\degree}
+\DeclareSIUnit[quantity-product = {}]\arcminute{\ensuremath{'}}
 \def\arcmin{\arcminute}
-\addunit{\arcsecond}{\SIunskip\ensuremath{''}}
-%\def\pasecond{\arcsecond}
-%\def\pasec{\arcsecond}
+\DeclareSIUnit[quantity-product = {}]\arcsecond{\ensuremath{''}}
 \def\arcsec{\arcsecond}
 }
-\def\degre{\degree}
-\def\degC{\origarcdeg\textrm{C}}
-\def\degF{\origarcdeg\textrm{F}}
-\addunit{\lumen}{lm}
-\addunit{\lux}{lx}
-\addunit{\becquerel}{Bq}
-\addunit{\Gray}{Gy}
-\addunit{\sievert}{Sv}
-\addunit{\katal}{kat}
-\addunit{\minute}{min}
-\addunit{\hour}{h}
-\addunit{\dday}{d}
-\addunit{\ton}{t}
-\addunit{\tonne}{t}
-\addunit{\liter}{L}
-\addunit{\neper}{Np}
-\addunit{\bel}{B}
-\addunit{\curie}{Ci}
-\addunit{\rad}{rad}
-\addunit{\arad}{rd}
-\addunit{\rem}{rem}
-\addunit{\roentgen}{R}
-\addunit{\electronvolt}{e\volt}
-\addunit{\eV}{\electronvolt}
-\addunit{\keV}{\kilo\eV}
-\addunit{\MeV}{\mega\eV}
-\addunit{\GeV}{\giga\eV}
-\addunit{\TeV}{\tera\eV}
-\def\clumunit{\text{$c$}}
-\def\hbarunit{\text{$\hbar$}}
-\addunit{\atomicmass}{u}
-\addunit{\atomicmassunit}{u}
-\addunit{\astronomicunit}{ua}
-\addunit{\dalton}{Da}
-\addunit{\are}{a}
-\addunit{\hectare}{\hecto\are}
-\addunit{\barn}{b}
-\addunit{\bbar}{bar}
-\addunit{\atmosphere}{atm}
-\addunit{\mmHg}{\text{mm\,\ce{Hg}}}
-\addunit{\gal}{Gal}
-\addunit{\angstrom}{\mbox{{\AA}}}
-\def\litre{\liter}
-\def\debye{D}
-\addunit{\gauss}{G}
-\addunit{\parsec}{pc}
-\addunit{\jansky}{Jy}
-\addunit{\dyne}{dyn}
-\addunit{\anneelum}{\text{a.l.}}
-\addunit{\calorie}{cal}
-\addunit{\erg}{erg}
-\addunit{\poise}{P}
-\addunit{\poiseuille}{Pl}
-\addunit{\stokes}{St}
-\addunit{\stilb}{sb}
-\addunit{\phot}{ph}
-\addunit{\maxwell}{Mx}
-\addunit{\oersted}{Oe}
-\addunit{\voltampere}{\volt\ampere}
-\addunit{\voltamperereactif}{\voltampere R}
-\addunit{\voltamperedeformant}{\voltampere D}
-\def\VA{\voltampere}
-\def\VAR{\voltamperereactif}
-\def\VAD{\voltamperedeformant}
+\DeclareSIUnit\degC{\ensuremath{{}^{\circ}}C}
+\DeclareSIUnit\degF{\ensuremath{{}^{\circ}}F}
+
+\DeclareSIUnit{\Gray}{Gy}
+\DeclareSIUnit{\dday}{d}
+\DeclareSIUnit{\curie}{Ci}
+\DeclareSIUnit{\rad}{rad}
+\DeclareSIUnit{\arad}{rd}
+\DeclareSIUnit{\rem}{rem}
+\DeclareSIUnit{\roentgen}{R}
+\DeclareSIUnit{\clumunit}{\ensuremath{\it c}}
+\DeclareSIUnit{\hbarunit}{\ensuremath{\hbar}}
+\DeclareSIUnit{\astronomicunit}{ua}
+\DeclareSIUnit{\are}{a}
+\DeclareSIUnit{\bbar}{bar}
+\DeclareSIUnit{\atmosphere}{atm}
+\DeclareSIUnit{\mmHg}{mm\,\ce{Hg}}
+\DeclareSIUnit{\gal}{Gal}
+\DeclareSIUnit{\angstrom}{\mbox{{\AA}}}
+\DeclareSIUnit{\debye}{D}
+\DeclareSIUnit{\gauss}{G}
+\DeclareSIUnit{\parsec}{pc}
+\DeclareSIUnit{\jansky}{Jy}
+\DeclareSIUnit{\dyne}{dyn}
+\DeclareSIUnit{\anneelum}{{a.l.}}
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\erg}{erg}
+\DeclareSIUnit{\poise}{P}
+\DeclareSIUnit{\poiseuille}{Pl}
+\DeclareSIUnit{\stokes}{St}
+\DeclareSIUnit{\stilb}{sb}
+\DeclareSIUnit{\phot}{ph}
+\DeclareSIUnit{\maxwell}{Mx}
+\DeclareSIUnit{\oersted}{Oe}
+\def\uVA{VA}
+\DeclareSIUnit{\voltampere}{\uVA}
+\DeclareSIUnit{\VA}{\uVA}
+\def\uVAR{\uVA R}
+\DeclareSIUnit{\voltamperereactif}{\uVAR}
+\DeclareSIUnit{\VAR}{\uVAR}
+\def\uVAD{\uVA D}
+\DeclareSIUnit{\voltamperedeformant}{\uVAD}
+\DeclareSIUnit{\VAD}{\uVAD}
 
 \def\dimL{\text{\rm\origsffamily L}}
 \def\dimM{\text{\rm\origsffamily M}}
