@@ -4,12 +4,7 @@
     \def\SI#1#2{\qty{#1}{#2}}
     \def\U#1{\unit{#1}}
 }
-\ifLuaTeX
-    \def\SIcdot{\text{\setmainfont{CMU Serif}\hspace{-.23em}\cdot\hspace{-.23em}}}
-\else
-    \def\SIcdot{{\fontfamily{cmr}\cdot}}
-\fi
-\def\usk{\SIcdot}
+\def\usk{{{\cdotp}}}
 \def\usp{\,}
 \makeatletter
 \@ifpackagewith{babel}{french}{
@@ -37,7 +32,7 @@
 \def\myproductsign{\!\times\!}
 \sisetup{
     exponent-product = \myproductsign,
-    inter-unit-product = \SIcdot,
+    inter-unit-product = \usk,
     mode = match,
     propagate-math-font = true,
     reset-math-version = false,
