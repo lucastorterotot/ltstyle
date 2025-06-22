@@ -122,11 +122,11 @@
 \AtBeginDocument{
 \ifx \arcdeg \undefined \def\arcdeg{\ensuremath{{}^{\circ}}}\fi
 \DeclareSIUnit[quantity-product = {}]\degree{\arcdeg}
-\def\degre{\degree}
+\DeclareSIUnit[quantity-product = {}]\degre{\arcdeg}
 \DeclareSIUnit[quantity-product = {}]\arcminute{\ensuremath{'}}
-\def\arcmin{\arcminute}
+\DeclareSIUnit[quantity-product = {}]\arcmin{\ensuremath{'}}
 \DeclareSIUnit[quantity-product = {}]\arcsecond{\ensuremath{''}}
-\def\arcsec{\arcsecond}
+\DeclareSIUnit[quantity-product = {}]\arcsec{\ensuremath{''}}
 }
 \DeclareSIUnit\degC{\ensuremath{{}^{\circ}}C}
 \DeclareSIUnit\degF{\ensuremath{{}^{\circ}}F}
