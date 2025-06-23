@@ -46,9 +46,9 @@
 \newcommand\qtyautoi[3][2]{\qty{\directlua{tex.sprint(myautoqtyai(#2,#1))}}{\directlua{tex.sprint(myautoqtyb(#2,#1))}#3}}
 
 % to get normalized values printing given computed unc with (a pm b) unit
-\newcommand\qtyupmccs[4][2]{\ensuremath{(\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3})\ifthenelse{\equal{#4}{}}{}{\usp}{\U{#4}}}}
-\newcommand\qtyupmcsc[4][2]{\ensuremath{(\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3})\ifthenelse{\equal{#4}{}}{}{\usp}{\U{#4}}}}
-\newcommand\qtyupmauto[4][2]{\ensuremath{(\num{\directlua{tex.sprint(myautoqtya(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoqtyaUnc(#3, #2, #1))}})\ifthenelse{\equal{#4}{}}{}{\usp}{\U{\directlua{tex.sprint(myautoqtyb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
+\newcommand\qtyupmccs[4][2]{\ensuremath{\ifthenelse{\equal{#4}{}}{}{(}\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calccsi[#1]{#3}\ifthenelse{\equal{#4}{}}{}{)\usp\U{#4}}}}
+\newcommand\qtyupmcsc[4][2]{\ensuremath{\ifthenelse{\equal{#4}{}}{}{(}\calcsc[myNcsByUnc(#2,#3)-1+#1]{#2}\pm\calcsci[#1]{#3}\ifthenelse{\equal{#4}{}}{}{)\usp\U{#4}}}}
+\newcommand\qtyupmauto[4][2]{\ensuremath{\ifthenelse{\equal{#4}{}}{}{(}\num{\directlua{tex.sprint(myautoqtya(#2,myNcsByUnc(#2,#3)-1+#1))}}\pm\num{\directlua{tex.sprint(myautoqtyaUnc(#3, #2, #1))}})\ifthenelse{\equal{#4}{}}{}{)\usp\U{\directlua{tex.sprint(myautoqtyb(#2,myNcsByUnc(#2,#3)-1+#1))}#4}}}}
 
 % to get normalized values printing given computed unc with a (b) unit
 \newcommand\qtyuparccs[4][2]{\ensuremath{\calccs[myNcsByUnc(#2,#3)-1+#1]{#2}\,(\calccsi[#1]{#3*10^(#1-1-math.floor(math.log10(math.abs(#3))))})\ifthenelse{\equal{#4}{}}{}{\usp}{\U{#4}}}}
