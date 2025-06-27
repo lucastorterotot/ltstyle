@@ -152,6 +152,29 @@
 \draw [decoration={aspect=.3, segment length=.079em, amplitude=.063em, coil},decorate] (rD) -- (rB);
 }}
 
+\def\drawrouedentee#1#2#3#4#5#6#7{% coordinate / r in / r out / N / delta theta in / delta theta out / theta0
+    \foreach \k in {1,...,#4}{
+        \draw (#1) ++ ({#7 + (\k-1)/#4*360 - #5/2}:{#2}) coordinate (d1);
+        \draw (#1) ++ ({#7 + (\k-1)/#4*360 - #6/2}:{#3}) coordinate (d2);
+        \draw (#1) ++ ({#7 + (\k-1)/#4*360 + #6/2}:{#3}) coordinate (d3);
+        \draw (#1) ++ ({#7 + (\k-1)/#4*360 + #5/2}:{#2}) coordinate (d4);
+        \fill [currentcolor] (d1)
+            -- (d2) arc ({#7 + (\k-1)/#4*360 - #6/2}:{#7 + (\k-1)/#4*360 + #6/2}:{#3})
+            -- (d4) arc ({#7 + (\k-1)/#4*360 + #5/2}:{#7 + (\k-1)/#4*360 - #5/2}:{#2})
+            -- cycle;
+    }
+    \fill [currentcolor] (#1) circle (#2);
+}
+
+\newcommand{\SFicone}{\colorlet{currentcolor}{.}\tikz{% savoir
+\draw (0,0) coordinate (r1);
+\draw (r1) + (-30:.45em) coordinate (r2) ;
+\drawrouedentee{r1}{.22em}{.27em}{8}{25}{12}{27}
+\drawrouedentee{r2}{.18em}{.23em}{7}{30}{15}{10}
+\fill [white] (r1) circle (.11em);
+\fill [white] (r2) circle (.08em);
+}}
+
 \def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
 
 \def\todotdcurrentMARKER{}
