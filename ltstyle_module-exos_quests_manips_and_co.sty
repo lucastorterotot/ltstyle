@@ -134,6 +134,24 @@
 \fill [white, rounded corners = .02em] (cl1) -- (cr1) -- (cr2) -- (cl2) -- cycle;
 \fill [white, rounded corners = .02em] (cl3) -- (cr3) -- (cr4) -- (cl4) -- cycle;}}
 
+\newcommand{\Sicone}{\colorlet{currentcolor}{.}\tikz{% savoir
+\draw (0,0) coordinate (A);
+\draw (A) + (-70:.3em) coordinate (B) ;
+\draw (B) + (-90:.3em) coordinate (C) ;
+\draw (A) + (250:.3em) coordinate (D) ;
+\draw (D) + (-90:.3em) coordinate (E) ;
+\fill let \p1=(A) in let \p2=(B) in [ltcolorgray2, rounded corners = .08em] (E) rectangle (\x2, \y1);
+\fill [ltcoloryellow2] (A) circle (.3em);
+\draw [black, line width=.05em, rounded corners = .08em] ($(C)!.5!(B)$) -- (B) arc (-70:90:.3em);
+\draw [black, line width=.05em, rounded corners = .08em] ($(C)!.5!(B)$) -- (C) -- (E) -- (D) arc (250:90:.3em);
+\foreach \k in {1,...,3}{
+    \draw ($(B)!{(\k-.75)/4}!(C)$) -- ($(D)!{(\k+.25)/4}!(E)$);
+}
+\draw (B) --+ (80:.3em) coordinate (rB);
+\draw (D) --+ (100:.3em) coordinate (rD);
+\draw [decoration={aspect=.3, segment length=.105em, amplitude=.075em, coil},decorate] (rD) -- (rB);
+}}
+
 \def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
 
 \def\todotdcurrentMARKER{}
