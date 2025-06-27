@@ -114,16 +114,16 @@
 \newcommand{\todotdicone}{\Pointinghand}
 \newcommand{\pgrmicone}{\colorlet{currentcolor}{.}\tikz{
 \draw (0,0) coordinate (A);
-\draw (A) + (.6em, 0) coordinate (B);
-\draw (A) + (-.05em, .15em) coordinate (D);
-\draw (B) + (-.05em, .15em) coordinate (C);
+\draw (A) + (.5em, 0) coordinate (B);
+\draw (A) + (-.04em, .13em) coordinate (D);
+\draw (B) + (-.04em, .13em) coordinate (C);
 
 \foreach \c in {A,B,C,D}{
-\draw (\c) + (.22em, .65em) coordinate (u\c);
+\draw (\c) + (.18em, .53em) coordinate (u\c);
 }
 
-\draw [currentcolor, line width=.05em, rounded corners = .08em] ($(A)!.5!(B)$) -- (A) -- (D) -- (C) -- (uC) -- (uD) -- (D) -- (A) -- (B) -- (uB);
-\draw [currentcolor, line width=.05em, fill, rounded corners = .08em] (D) -- (C) -- (uC) -- (uD) -- cycle;
+\draw [currentcolor, line width=.04em, rounded corners = .07em] ($(A)!.5!(B)$) -- (A) -- (D) -- (C) -- (uC) -- (uD) -- (D) -- (A) -- (B) -- (uB);
+\draw [currentcolor, line width=.04em, fill, rounded corners = .07em] (D) -- (C) -- (uC) -- (uD) -- cycle;
 
 \foreach \k in {1,...,4}{
 \draw ($(uD)!{(\k+1)/10}!(D)$) coordinate (l\k);
@@ -131,25 +131,25 @@
 \draw ($(l\k)!.2!(r\k)$) coordinate (cl\k);
 \draw ($(r\k)!.2!(l\k)$) coordinate (cr\k);
 }
-\fill [white, rounded corners = .02em] (cl1) -- (cr1) -- (cr2) -- (cl2) -- cycle;
-\fill [white, rounded corners = .02em] (cl3) -- (cr3) -- (cr4) -- (cl4) -- cycle;}}
+\fill [white, rounded corners = .01em] (cl1) -- (cr1) -- (cr2) -- (cl2) -- cycle;
+\fill [white, rounded corners = .01em] (cl3) -- (cr3) -- (cr4) -- (cl4) -- cycle;}}
 
 \newcommand{\Sicone}{\colorlet{currentcolor}{.}\tikz{% savoir
 \draw (0,0) coordinate (A);
-\draw (A) + (-70:.3em) coordinate (B) ;
-\draw (B) + (-90:.3em) coordinate (C) ;
-\draw (A) + (250:.3em) coordinate (D) ;
-\draw (D) + (-90:.3em) coordinate (E) ;
-\fill let \p1=(A) in let \p2=(B) in [ltcolorgray2, rounded corners = .08em] (E) rectangle (\x2, \y1);
-\fill [ltcoloryellow2] (A) circle (.3em);
-\draw [black, line width=.05em, rounded corners = .08em] ($(C)!.5!(B)$) -- (B) arc (-70:90:.3em);
-\draw [black, line width=.05em, rounded corners = .08em] ($(C)!.5!(B)$) -- (C) -- (E) -- (D) arc (250:90:.3em);
+\draw (A) + (-70:.23em) coordinate (B) ;
+\draw (B) + (-90:.23em) coordinate (C) ;
+\draw (A) + (250:.23em) coordinate (D) ;
+\draw (D) + (-90:.23em) coordinate (E) ;
+\fill let \p1=(A) in let \p2=(B) in [ltcolorgray2, rounded corners = .07em] (E) rectangle (\x2, \y1);
+\fill [ltcoloryellow2] (A) circle (.23em);
+\draw [black, line width=.04em, rounded corners = .07em] ($(C)!.5!(B)$) -- (B) arc (-70:90:.23em);
+\draw [black, line width=.04em, rounded corners = .07em] ($(C)!.5!(B)$) -- (C) -- (E) -- (D) arc (250:90:.23em);
 \foreach \k in {1,...,3}{
     \draw ($(B)!{(\k-.75)/4}!(C)$) -- ($(D)!{(\k+.25)/4}!(E)$);
 }
-\draw (B) --+ (80:.3em) coordinate (rB);
-\draw (D) --+ (100:.3em) coordinate (rD);
-\draw [decoration={aspect=.3, segment length=.105em, amplitude=.075em, coil},decorate] (rD) -- (rB);
+\draw (B) --+ (80:.23em) coordinate (rB);
+\draw (D) --+ (100:.23em) coordinate (rD);
+\draw [decoration={aspect=.3, segment length=.079em, amplitude=.063em, coil},decorate] (rD) -- (rB);
 }}
 
 \def\exoMARKERinmargin#1{\strut\vadjust{\kern-\dp\strutbox\llap{\smash{\parbox[c]{\marginparwidth}{\hfill\hfill#1\hfill~}}\kern\marginparsep\vspace{-9.5pt}\vspace{\baselineskip}}}}
