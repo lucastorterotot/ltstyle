@@ -45,14 +45,16 @@
 \DeclareOption{CCP4}{\input ltqueststyle-CCP4.sty}
 \DeclareOption{CCP5}{\input ltqueststyle-CCP5.sty}
 
+\DeclareOption{ENSTIM}{\input ltqueststyle-ENSTIM.sty}
+
 \DeclareOption{e3a}{\ExecuteOptions{e3a1}}
 \DeclareOption{e3a1}{\input ltqueststyle-e3a1.sty}
 \DeclareOption{e3a2}{\input ltqueststyle-e3a2.sty}
 
 \newcounter{randomf} \newcounter{randomq}
 \def\randomfOption{\ifcase\therandomf\or lmr\or bch\or lmss\or zpltlf\or ptm\or lmss\or futs\or kurier\or lmss\or iwona\or noto\or lmss\fi}
-\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or CCP5\or Mines\or Centrale\or Centrale17\or CentraleTSI\or e3a1\or e3a2\or ENS1\or ENS2\or Agreg1\or ATS\fi}
-\def\randomfmax{12} \def\randomqmax{16}
+\def\randomqOption{\ifcase\therandomq\or default\or CCP1\or CCP2\or CCP3\or CCP4\or CCP5\or ENSTIM\or Mines\or Centrale\or Centrale17\or CentraleTSI\or e3a1\or e3a2\or ENS1\or ENS2\or Agreg1\or ATS\fi}
+\def\randomfmax{12} \def\randomqmax{17}
 \addtocounter{randomf}{0} % offset
 \addtocounter{randomf}{\the\day}
 \addtocounter{randomf}{\the\day}
