@@ -26,3 +26,15 @@
 \tikzset{every picture/.style={color = black}}
 
 \newcommand{\drawressort}[1][1]{\draw[decoration={aspect=0.5, segment length={#1*1.5mm}, amplitude=1mm,coil},decorate]}
+
+\newcommand{\drawhuman}[2][1]{
+    \draw (#2) coordinate (humanhead);
+    \draw let \p1=(humanhead) in
+        [thick] (\x1, {\y1 - .25*#1 cm}) --+ (0, {-.5*#1})
+        [thick] (\x1, {\y1 - .75*#1 cm}) --+ ({-.125*#1}, {-.5*#1})
+        [thick] (\x1, {\y1 - .75*#1 cm}) --+ ({ .125*#1}, {-.5*#1})
+        [thick] (\x1, {\y1 - .45*#1 cm}) --+ ({-.2*#1}, {.1*#1})
+        [thick] (\x1, {\y1 - .45*#1 cm}) --+ ({ .2*#1}, {.1*#1})
+        ;
+    \draw [thick] (#2) circle ({.25*#1}) ;
+}
