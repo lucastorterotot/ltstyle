@@ -1,0 +1,82 @@
+% ENSTIM 2009
+\renewcommand{\exopart}[2][]{
+    \noindent
+    \begin{center}
+        \fbox{\begin{minipage}{.95\linewidth}
+            \centering
+            \huge
+            \MakeUppercase{#2}
+        \end{minipage}}
+    \end{center}
+    \par
+}
+
+\def\theexopart{\textbf{\arabic{exopart}}}
+\def\theexo{\textbf{\arabic{exo}}}
+\def\thesubexo{\textbf{\Alph{subexo}}}
+\def\thesubsubexo{\textbf{\ifnum \arabic{subexo} > 0 \thesubexo\else \fi\arabic{subexo}}}
+
+\renewcommand{\exo}[2][]{
+    \ExoBaremeMake
+    \par
+    \setcounter{exo}{\thesection}\refstepcounter{section} \refstepcounter{exo}
+    \noindent
+    \begin{center}
+        \fbox{\begin{minipage}{.95\linewidth}
+            \centering
+            \Large\bf
+            \MakeUppercase{#2}
+        \end{minipage}}
+    \ExoBaremeWrite
+    \end{center}
+    \par
+}
+\renewcommand{\subexo}[2][Partie]{\setcounter{subexo}{\arabic{subsection}}\refstepcounter{subsection}\refstepcounter{subexo} \section*{#1 \thesubexo: #2}}
+\renewcommand{\subsubexo}[2][Partie]{\setcounter{subsubexo}{\arabic{subsubsection}}\refstepcounter{subsubsection}\refstepcounter{subsubexo} \subsubsection*{#1 \thesubsubexo: #2}}
+
+\def\numquest{\arabic{quest}}
+\def\numsubquest{\arabic{subquest}}
+\def\numsubsubquest{\arabic{subsubquest}}
+\def\numsubsubsubquest{\arabic{subsubsubquest}}
+
+\def\thequest{\textbf{\queststart\numquest}}
+\def\thesubquest{\textbf{\queststart\numquest.\numsubquest}}
+\def\thesubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest}}
+\def\thesubsubsubquest{\textbf{\queststart\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}}
+
+\def\squestindent{\hspace{0.0cm}}
+
+\def\questspar{\par}
+\def\questsskip{\medskip}
+\def\questsindent{}
+\def\questsbox{}
+\def\questsnum{\numquest}
+
+\def\subquestspar{\questspar}
+\def\subquestsskip{\questsskip}
+\def\subquestsindent{\questsindent}
+\def\subquestsbox{\questsbox}
+\def\subquestsnum{\numquest.\numsubquest}
+
+\def\subsubquestspar{\questspar}
+\def\subsubquestsskip{\questsskip}
+\def\subsubquestsindent{\questsindent}
+\def\subsubquestsbox{\questsbox}
+\def\subsubquestsnum{\numquest.\numsubquest.\numsubsubquest}
+
+\def\subsubsubquestspar{\questspar}
+\def\subsubsubquestsskip{\questsskip}
+\def\subsubsubquestsindent{\questsindent}
+\def\subsubsubquestsbox{\questsbox}
+\def\subsubsubquestsnum{\numquest.\numsubquest.\numsubsubquest.\numsubsubsubquest}
+
+\def\queststart{Q}
+\def\questend{.\ \, }
+
+\def\questprevioussep{.}
+
+\def\questshape{\bfseries}
+\def\questseries{}
+
+\renewcommand{\familyfortitles}{}
+\setlength{\parindent}{0pt}
