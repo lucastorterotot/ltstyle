@@ -521,6 +521,7 @@
       \renewcommand{\rmdefault}{\sfdefault}
       \def\sfdefault{lmss}
     \fi
+    \sisetup{mode = text}
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -603,6 +604,7 @@
     }
 	\AtBeginDocument{
 		\def\mathsf{}
+        \sisetup{mode = math}
 	}
 }
 
@@ -712,6 +714,7 @@
       \def\mathit{\textit}
       \fontfamily{ppl}\selectfont
     \fi
+    \sisetup{mode = math}
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
@@ -734,6 +737,7 @@
     \else
       \fontfamily{ptm}\selectfont
     \fi
+    \sisetup{mode = math}
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -751,6 +755,7 @@
     \renewcommand{\rmdefault}{\sfdefault}
     \def\sfdefault{NimbusSans}
   \fi
+    \sisetup{mode = text}
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
@@ -1006,6 +1011,7 @@
       \renewcommand{\rmdefault}{zpltlf}
       \def\mathit{\textit}
     \fi
+    \sisetup{mode = math}
   }
   \def\loadavant{false}
   \def\loadhelvet{true}
