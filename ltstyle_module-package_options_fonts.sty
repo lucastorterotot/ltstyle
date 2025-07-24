@@ -104,12 +104,22 @@
 }
 
 \DeclareOption{bch}{
-	\AtEndPreamble{
-		\usepackage[bitstream-charter]{mathdesign}
-	}
-	\AtBeginDocument{
-		\def\mathsf{}
-	}
+    \AtEndPreamble{
+        \ifLuaTeX \RequirePackage[math-style=TeX]{unicode-math} \fi
+        \AtBeginDocument{\def\mathsf{}}
+        \DeclareSIUnit{\ohm}{Ω}
+    }
+  \AtBeginDocument{
+    \ifLuaTeX
+      \setmainfont{XCharter}
+      \setmathfont[Scale=.9]{DejaVuMathTeXGyre}
+      \def\dimtemp{\ensuremath{\Theta}}
+    \else
+      \fontfamily{bch}\selectfont
+      \renewcommand{\rmdefault}{bch}
+      \def\loadmathptmx{true}
+    \fi
+  }
 }
 
 \DeclareOption{Biolinum}{
