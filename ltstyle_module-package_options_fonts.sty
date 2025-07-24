@@ -971,12 +971,7 @@
 }
 
 \DeclareOption{XCharter}{% same as bch
-	\AtEndPreamble{
-		\usepackage[bitstream-charter]{mathdesign}
-	}
-	\AtBeginDocument{
-		\def\mathsf{}
-	}
+    \ExecuteOptions{bch}
 }
 
 \DeclareOption{yv2}{
