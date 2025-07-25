@@ -169,6 +169,19 @@
 \def\Id{\hbox{\fontfamily{cmr}\selectfont 1\kern-0.35em 1}}
 
 \newcommand{\AN}[1]{\ensuremath{\boxed{\text{A.N. : } #1}}} % applications numériques
+\newcommand{\ANc}[1]{%
+    \ifUseCalto
+    \else
+        {\color{ltcolorviolet}\def\remarquemarker{\OK}%
+        \ifmmode
+            \text{\remarquemarker~\textbf{A.N. avec calculatrice:} $#1$}%
+        \else
+            \remarque[violet][\color{ltcolorviolet}A.N. avec calculatrice:\!\!\!]{\color{ltcolorviolet}$#1$}
+        \fi
+        }%
+    \fi
+} % applications numériques avec calculatrice
+\newcommand{\ANcr}{\ifUseCalto\else\ifmmode\hspace{\mathtxtskip}\fi\fi\ANc}
 
 \newcommand{\pa}[1]{\left( #1 \right)}
 \newcommand{\paa}[1]{\left\{ #1 \right\}}
