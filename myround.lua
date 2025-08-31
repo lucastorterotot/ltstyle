@@ -272,11 +272,11 @@ function myautoqtybps ( x , n )
 end
 
 function myautoqtyaUnc ( u , x , n )
-    x_bis, prefix = myautoqty ( x , n+5 )
+    x_bis = myautoqtyaps ( x , math.floor(math.log10(math.abs(u))) - n + 1 )
     if math.floor(math.log10(math.abs(u/x*x_bis))) < -5 then
-        return math.myroundsci(u / x * x_bis, n)
+        return math.myroundsci(u * 10^(math.round_int(math.log10(math.abs(x_bis/x)))), n)
     else
-        return math.myroundcsi(u / x * x_bis, n)
+        return math.myroundcsi(u * 10^(math.round_int(math.log10(math.abs(x_bis/x)))), n)
     end
 end
 
