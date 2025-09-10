@@ -38,7 +38,7 @@
     \ifthenelse{\equal{\odgpow}{0}}{\qty{1}{#2}}{\ifthenelse{\equal{\odgpow}{1}}{\qty{10}{#2}}{\qty{e\directlua{tex.sprint(math.ODGpow(#1))}}{#2}}}}
 \newcommand\qtyODGauto[2]{%
     \def\odgpow{\directlua{tex.sprint(math.ODGpow(myautoqtya(#1,2)))}}%
-    \ifthenelse{\equal{\odgpow}{0}}{\qty{1}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}{\ifthenelse{\equal{\odgpow}{1}}{\qty{10}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}{\qty{e\directlua{tex.sprint(math.ODGpow(#1))}}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}}}
+    \ifthenelse{\equal{\odgpow}{0}}{\qty{1}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}{\ifthenelse{\equal{\odgpow}{1}}{\qty{10}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}{\qty{e\directlua{tex.sprint(math.ODGpow(myautoqtya(#1,2)))}}{\directlua{tex.sprint(myautoqtyb(#1,2))}#2}}}}
 
 % to compute uncs
 \newcommand\qtyccsi[3][2]{\qty{\directlua{tex.sprint(math.myroundcsi(#2,#1))}}{#3}}
