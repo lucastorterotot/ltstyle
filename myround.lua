@@ -179,7 +179,7 @@ function myautoqty ( x1 , n )
           prefix = "\\ronto"
       elseif pow3 == -30 then
           prefix = "\\quecto"
-      else
+      elseif not pow3 == 0 then
         return math.myroundsc(x1, n), prefix
       end
       xs = string.format ( "%."..n-1-pows+pow3.."f" , xs )
@@ -237,7 +237,7 @@ function myautoqtyps ( x , n )
         prefix = "\\ronto"
     elseif pow3 == -30 then
         prefix = "\\quecto"
-    else
+    elseif not pow3 == 0 then
         return math.myroundps(x, n), prefix
     end
     x = math.round_int ( x / 10^n ) * 10^(n-pow3)
