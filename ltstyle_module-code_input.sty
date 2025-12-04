@@ -18,7 +18,7 @@
   \def\ltmintedstyle{ltstyleemacs}
   \ifthenelse{\equal{\codecolortheme}{black}}{\def\ltmintedstyle{ltstyletangodark}}{}
   \usemintedstyle{ltstyleemacs} % fix because ltmintedstyle command is not interpreted
-  \renewcommand{\theFancyVerbLine}{\sffamily\footnotesize{\color{\codecolortheme lstcolnb}\arabic{FancyVerbLine}}}
+  \renewcommand{\theFancyVerbLine}{\sffamily\tiny{\color{\codecolortheme lstcolnb}\arabic{FancyVerbLine}}}
   \tcbuselibrary{minted,skins}
 }{}}
 \RequirePackage{upquote}  % insertion de code
