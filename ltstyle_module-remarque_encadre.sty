@@ -193,6 +193,25 @@ breakable]}
 \renewcommand*\theorem[2][]{\encadreepais[thm][#1]{#2}}
 \def\theoreme{\theorem}
 
-\newcommand*\experience[2][]{\encadreepais[experience][\Pointinghand~#1]{#2}}
+\newcounter{Nexperience}%[chapter]
+\newcounter{Nexperienceglobal}
+\newcommand*\experience[2][]{\stepcounter{Nexperience}\stepcounter{Nexperienceglobal}\encadreepais[experience][]{\textbf{\TPicone~#1}\ \ \ #2}}
+\def\inserttheNexperienceglobal{}
+\AtEndDocument{\laterdef{\inserttheNexperienceglobal}{\theNexperienceglobal}}
+
+\newcounter{Nuseordi}%[chapter]
+\newcounter{Nuseordiglobal}
+\def\inserttheNuseordiglobal{}
+\AtEndDocument{\laterdef{\inserttheNuseordiglobal}{\theNuseordiglobal}}
+\newcommand{\useordi}{%
+	\stepcounter{Nuseordi}\stepcounter{Nuseordiglobal}%
+	\ordi\ 
+}
+\newcommand{\museordi}{%
+	\manip\useordi
+}
+\newcommand{\fmuseordi}{%
+	\fmanip\useordi
+}
 
 \newcommand*\encadreCRdoc{\encadreepais{Noms:\hfill Date:\hfill Évaluation:\qquad\qquad\vspace{\baselineskip}}}
