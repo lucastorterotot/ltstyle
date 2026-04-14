@@ -9,6 +9,9 @@
     {\ifthenelse{\equal{\PackageOption}{default}}
                 {}
                 {\renewcommand{\PackageOption}{book}}
+    \@addtoreset{Nexos}{chapter}
+    \@addtoreset{Nexperience}{chapter}
+    \@addtoreset{Nuseordi}{chapter}
     \let\frontmatterorig\frontmatter \renewcommand{\frontmatter}{\frontmatterorig\pagestyle{plain}}
     \let\mainmatterorig\mainmatter \renewcommand{\mainmatter}{\mainmatterorig\pagestyle{main}}
     \let\backmatterorig\backmatter \renewcommand{\backmatter}{\backmatterorig\pagestyle{plain}}}

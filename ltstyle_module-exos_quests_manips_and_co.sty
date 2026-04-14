@@ -264,6 +264,11 @@
   \ifthenelse{\equal{\isbeamer}{true}}{}{\input ltqueststyle-default.sty}
 }{}
 
+\newcounter{Nexos}%[chapter]
+\newcounter{Nexosglobal}
+\def\inserttheNexosglobal{}
+\AtEndDocument{\laterdef{\inserttheNexosglobal}{\theNexosglobal}}
+
 \newif\ifListeExoCours
 \def\inputexosfilename{liste-exos_de_cours.tex}
 \AtEndPreamble{\newwrite\inputexosfile}
@@ -272,6 +277,8 @@
 \AtEndDocument{\AtEndDocument{\ifListeExoCours\immediate\closeout\inputexosfile\fi}}
 \def\inputexoappli#1{\exoappli\input{#1}}
 \newcommand{\inputexo}[2][Exercice d'application]{{%
+    \stepcounter{Nexos}%
+    \stepcounter{Nexosglobal}%
     \refstepcounter{exo}%
     \ifListeExoCours\immediate\write\inputexosfile{inputexoappli{#2}}\fi
     \def\remarquemarker{\exoappliicone}%
