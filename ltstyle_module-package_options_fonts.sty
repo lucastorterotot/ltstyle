@@ -523,6 +523,13 @@
     \fi
     \sisetup{mode = text}
   }
+  \AtEndPreamble{
+      \usepackage{sfmath}
+      \def\mathsf#1{#1}
+      \DeclareSymbolFont{stdroman}{OT1}{lmss}{m}{n}
+      \DeclareSymbolFontAlphabet{\mathrm}{stdroman}
+      %\usepackage{cmbright}
+  }
   \def\loadavant{false}
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
