@@ -19,11 +19,10 @@
            }
            {} %TODO check compat
 \ifthenelse{\equal{\loadmathptmx}{true}}{\RequirePackage{mathptmx}
-%\DeclareSymbolFont{calletters}{OMS}{cmsy}{m}{n}
-%\DeclareSymbolFontAlphabet{\mathcal}{calletters}
+\DeclareSymbolFont{calletters}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{calletters}
 \AtBeginDocument{\let\mathit\relax\def\mathit{\textit}
-\let\mathbf\relax\newcommand{\mathbf}[1]{\fontfamily{ptm}\selectfont\textbf{#1}}\let\mathtt\relax\newcommand{\mathtt}[1]{\texttt{#1}}
-\let\mathcal\relax\newcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \text{#1}}}}
+\let\mathbf\relax\newcommand{\mathbf}[1]{\fontfamily{ptm}\selectfont\textbf{#1}}\let\mathtt\relax\newcommand{\mathtt}[1]{\texttt{#1}}}
 }{} %TODO check compat
 }
 \ifthenelse{\equal{\loadutopia}{true}}{\AtEndPreamble{

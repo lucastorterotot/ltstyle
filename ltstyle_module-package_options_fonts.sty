@@ -766,8 +766,12 @@
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
-  \def\loadmathptmx{true}
+  \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \AtEndPreamble{
+      \usepackage{sfmath}
+      \def\mathsf#1{#1}
+  }
 }
 
 \DeclareOption{put}{
@@ -783,8 +787,15 @@
   }
   \def\loadavant{false}
   \def\loadhelvet{false}
-  \def\loadmathptmx{true}
+  \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \AtEndPreamble{
+      \let\danger\relax
+      \usepackage{fourier}
+      %\let\mathcal\relax
+      %\let\origmathcal\mathcal
+      %\renewcommand{\mathcal}[1]{{\fontfamily{pzc}\selectfont \origmathcal{#1}}}
+  }
 }
 
 \DeclareOption{pxss}{
