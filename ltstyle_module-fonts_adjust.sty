@@ -1,4 +1,11 @@
 \AtEndPreamble{
+
+\let\oldgamma\gamma % Optionnel : garde l'ancien gamma sous le nom \oldgamma
+\ifthenelse{\equal{\gammaOption}{true}}{
+    \DeclareSymbolFont{altgreek}{OML}{anttl}{m}{it}
+    \DeclareMathSymbol{\gamma}{\mathord}{altgreek}{"0D}
+}{}
+
 \ifthenelse{\equal{\loadmathpazo}{true}}{\RequirePackage[sc]{mathpazo}}{} %TODO check compat
 \ifthenelse{\equal{\loadhelvet}{true}}
            {
