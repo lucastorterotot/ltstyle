@@ -49,12 +49,14 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{arev}{
 	\AtEndPreamble{
 		\usepackage{arev}
 	}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{artemisia}{
@@ -88,6 +90,7 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{BaskervilleF}{
@@ -110,6 +113,7 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\makeogamma{false}
 }
 
 \DeclareOption{Biolinum}{
@@ -127,6 +131,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{Caladea}{
@@ -142,6 +147,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{cmr}{
@@ -185,6 +191,7 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{DejaVu}{
@@ -214,6 +221,7 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{DejaVuSans}{
@@ -244,6 +252,7 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{Fira}{
@@ -259,6 +268,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{FiraSans}{
@@ -276,6 +286,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{fla}{
@@ -308,6 +319,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{fvs}{
@@ -357,6 +369,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{iwona}{
@@ -368,6 +381,7 @@
       \setmainfont{Iwona}
     \fi
   }
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{jkp}{
@@ -384,6 +398,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{kerkis}{
@@ -415,6 +430,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{Libertine}{
@@ -423,6 +439,7 @@
     \usepackage{libertinust1math}
     \let\degree\relax
   }
+  \def\makeogamma{false}
 }
 
 \DeclareOption{Libertinesourcesanspro}{
@@ -461,6 +478,7 @@
     \def\loadmathptmx{true}
   \fi
   \def\loadmathpazo{false}
+  \def\makeogamma{false}
 }
 
 \DeclareOption{LibreCaslon}{
@@ -479,6 +497,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{lmr}{
@@ -524,6 +543,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \def\makeogamma{false}
 }
 
 \DeclareOption{mak}{
@@ -561,6 +581,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{Nimbus}{
@@ -576,6 +597,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{NimbusSans}{
@@ -602,6 +624,7 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\ogammafont{zchmi}
 }
 
 \DeclareOption{ntxlf}{
@@ -617,6 +640,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{pag}{
@@ -650,6 +674,7 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{pcr}{
@@ -715,6 +740,7 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{ptm}{
@@ -737,6 +763,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{ptmsans}{
@@ -771,6 +798,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{pxss}{
@@ -806,6 +834,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{qcs}{
@@ -821,6 +850,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{Quattrocento}{
@@ -839,6 +869,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{QuattrocentoSans}{
@@ -862,6 +893,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{Roboto}{
@@ -891,6 +923,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{ScholaX}{
@@ -906,6 +939,7 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{Tempora}{
@@ -921,6 +955,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{true}
   \def\loadmathpazo{false}
+  \def\ogammafont{antt}
 }
 
 \DeclareOption{Universalis}{
@@ -968,6 +1003,7 @@
   \def\loadhelvet{false}
   \def\loadmathptmx{false}
   \def\loadmathpazo{false}
+  \def\makeogamma{false}
 }
 
 \DeclareOption{XCharter}{% same as bch
@@ -977,6 +1013,7 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\makeogamma{false}
 }
 
 \DeclareOption{yv2}{
@@ -1016,4 +1053,5 @@
   \def\loadhelvet{true}
   \def\loadmathptmx{false}
   \def\loadmathpazo{true}
+  \def\ogammafont{ntxmi}
 }
