@@ -1,11 +1,4 @@
 \AtEndPreamble{
-
-\let\oldgamma\gamma % Optionnel : garde l'ancien gamma sous le nom \oldgamma
-\ifthenelse{\equal{\gammaOption}{true}}{
-    \DeclareSymbolFont{altgreek}{OML}{anttl}{m}{it}
-    \DeclareMathSymbol{\gamma}{\mathord}{altgreek}{"0D}
-}{}
-
 \ifthenelse{\equal{\loadmathpazo}{true}}{\RequirePackage[sc]{mathpazo}}{} %TODO check compat
 \ifthenelse{\equal{\loadhelvet}{true}}
            {
@@ -249,3 +242,21 @@
 %\AtBeginDocument{\newcommand{\mathtt}[1]{\texttt{#1}}\newcommand{\mathsf}[1]{\textsf{#1}}}
 }{}
 \makeatother
+
+\let\origgamma\gamma % garde le gamma initial sous le nom \origgamma
+% prépare la nouvelle version de gamma
+\DeclareSymbolFont{altgreek}{OML}{\ogammafont}{m}{it}
+\DeclareMathSymbol{\newgamma}{\mathord}{altgreek}{"0D}
+\AtEndPreamble{
+    \def\ogamma{\newgamma}
+    \def\lgamma{\origgamma}
+}
+\AtBeginDocument{
+\ifthenelse{\equal{\gammaOption}{ogamma}}{
+    \def\gamma{\ogamma}
+    \def\vargamma{\lgamma}
+}{
+    \def\gamma{\lgamma}
+    \def\vargamma{\ogamma}
+}
+}
