@@ -104,13 +104,29 @@
 	\AtBeginDocument{
 		\def\mathsf{}
 	}
+  \def\ogammafont{ntxmi}
 }
 
 \DeclareOption{bch}{
+		\def\ogammafont{nxlmi}
+		\DeclareSymbolFont{altgreek}{OML}{\ogammafont}{m}{it}
+		\DeclareMathSymbol{\newgamma}{\mathord}{altgreek}{"0D}
     \AtEndPreamble{
+    	\usepackage{newtxmath}
+    	\let\not\relax
+    	\expandafter\let\csname not=\endcsname\relax
+    	\expandafter\let\csname not<\endcsname\relax
+    	\expandafter\let\csname not>\endcsname\relax
         \ifLuaTeX \RequirePackage[math-style=TeX]{unicode-math} \fi
         \AtBeginDocument{\def\mathsf{}}
         \DeclareSIUnit{\ohm}{Ω}
+		\AtBeginDocument{
+			\let\origgamma\gamma
+			\def\ogamma{\newgamma}
+			\def\lgamma{\origgamma}
+			\def\gamma{\ogamma}
+			\def\vargamma{\lgamma}
+		}
     }
   \AtBeginDocument{
     \ifLuaTeX
