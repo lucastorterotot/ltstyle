@@ -246,6 +246,8 @@
 
 \let\origgamma\gamma % garde le gamma initial sous le nom \origgamma
 % prépare la nouvelle version de gamma
+\def\ogamma{\gamma}\def\lgamma{\gamma}\def\vargamma{\gamma}
+\ifthenelse{\equal{\makeogamma}{true}}{
 \DeclareSymbolFont{altgreek}{OML}{\ogammafont}{m}{it}
 \DeclareMathSymbol{\newgamma}{\mathord}{altgreek}{"0D}
 \AtEndPreamble{
@@ -259,5 +261,10 @@
 }{
     \def\gamma{\lgamma}
     \def\vargamma{\ogamma}
+}
+}
+}{
+\AtBeginDocument{
+\ifx \newgamma \undefined \def\newgamma{\gamma} \fi
 }
 }
