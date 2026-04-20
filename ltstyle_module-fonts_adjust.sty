@@ -243,3 +243,28 @@
 %\AtBeginDocument{\newcommand{\mathtt}[1]{\texttt{#1}}\newcommand{\mathsf}[1]{\textsf{#1}}}
 }{}
 \makeatother
+
+\let\origgamma\gamma % garde le gamma initial sous le nom \origgamma
+% prépare la nouvelle version de gamma
+\def\ogamma{\gamma}\def\lgamma{\gamma}\def\vargamma{\gamma}
+\ifthenelse{\equal{\makeogamma}{true}}{
+\DeclareSymbolFont{altgreek}{OML}{\ogammafont}{m}{it}
+\DeclareMathSymbol{\newgamma}{\mathord}{altgreek}{"0D}
+\AtEndPreamble{
+    \def\ogamma{\newgamma}
+    \def\lgamma{\origgamma}
+}
+\AtBeginDocument{
+\ifthenelse{\equal{\gammaOption}{ogamma}}{
+    \def\gamma{\ogamma}
+    \def\vargamma{\lgamma}
+}{
+    \def\gamma{\lgamma}
+    \def\vargamma{\ogamma}
+}
+}
+}{
+\AtBeginDocument{
+\ifx \newgamma \undefined \def\newgamma{\gamma} \fi
+}
+}
