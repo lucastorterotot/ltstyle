@@ -269,6 +269,23 @@
 \def\inserttheNexosglobal{}
 \AtEndDocument{\laterdef{\inserttheNexosglobal}{\theNexosglobal}}
 
+\newif\ifBrmInfos
+\def\brminfosfilename{brm_infos.txt}
+\AtEndPreamble{\newwrite\brminfosfile}
+\AtBeginDocument{\ifBrmInfos\immediate\openout\brminfosfile=\brminfosfilename\fi}
+\AtEndDocument{\AtEndDocument{%
+\ifBrmInfos\immediate\closeout\brminfosfile\fi}}
+
+\let\origbrm\brm
+\def\brm#1{\ifBrmInfos\immediate\write\brminfosfile{%
+E\arabic{exo}%
+Q\numquest%
+\ifnum \arabic{subquest} > 0 .\numsubquest\fi%
+\ifnum \arabic{subsubquest} > 0 .\numsubsubquest\fi%
+\ifnum \arabic{subsubsubquest} > 0 .\numsubsubsubquest\fi%
+XXTABXX#1%
+}\fi\origbrm{#1}}
+
 \newif\ifListeExoCours
 \def\inputexosfilename{liste-exos_de_cours.tex}
 \AtEndPreamble{\newwrite\inputexosfile}
