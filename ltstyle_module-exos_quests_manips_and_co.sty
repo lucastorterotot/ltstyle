@@ -293,16 +293,18 @@ XXTABXX#1%
 \AtBeginDocument{\ifListeExoCours\immediate\openout\inputexosfile=\inputexosfilename\fi}
 \AtEndDocument{\AtEndDocument{\ifListeExoCours\immediate\closeout\inputexosfile\fi}}
 \def\inputexoappli#1{\exoappli\input{#1}}
+\makeatletter
 \newcommand{\inputexo}[2][Exercice d'application]{{%
     \stepcounter{Nexos}%
     \stepcounter{Nexosglobal}%
     \refstepcounter{exo}%
-    \ifListeExoCours\immediate\write\inputexosfile{inputexoappli{#2}}\fi
+    \ifListeExoCours\immediate\write\inputexosfile{\@backslashchar inputexoappli{#2}}\fi
     \def\remarquemarker{\exoappliicone}%
     \renewcommand{\exo}[2][]{##2\endinput}%
     \remarque[\ltcolorthemeC][#1 \theexo]{%
         \input{#2}}
         }}
+\makeatother
 \newcommand{\Pgrmitem}[2][]{{%
     \def\remarquemarker{\pgrmicone}%
     \remarque[\ltcolorthemeB][#1]{\sffamily #2}
