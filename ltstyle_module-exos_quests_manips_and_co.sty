@@ -259,6 +259,21 @@
 \newcommand{\exoextract}[3][]{\ifExoSource\ (\exofrom[#1]{#2}{#3})\fi}
 \newcommand{\exoinspire}[3][]{\ifExoSource\ (d'après \exofrom[#1]{#2}{#3})\fi}
 
+\newcommand{\exodiff}[2][3]{\colorlet{tmpcol}{.}\ %
+    \tikz{
+        \foreach \k in {1,...,#1}{
+            \draw [tmpcol] ({\k*.6em},0) circle (.25em);
+        }
+        \foreach \k in {1,...,#2}{
+            \fill [tmpcol] ({\k*.6em},0) circle (.25em);
+        }
+    }%
+}
+
+\ifthenelse{\equal{\PackageOption}{TD}\or\equal{\PackageOption}{TDs}}{}{
+    \renewcommand{\exodiff}[2][3]{}
+}
+
 \ifthenelse{\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}\or\equal{\PackageOption}{DM}\or\equal{\PackageOption}{corrige}}{
   \ifthenelse{\equal{\PackageOption}{corrige}}{\enonceOFF\corrigeON}{\enonceON\corrigeOFF}
   \ifthenelse{\equal{\isbeamer}{true}}{}{\input ltqueststyle-default.sty}
