@@ -241,6 +241,10 @@
 \def\givenenseignementmodalites{false}
 \newcommand{\enseignementmodalites}[1]{\def\givenenseignementmodalites{true}\renewcommand{\insertenseignementmodalites}{#1}}
 \newcommand{\imgcover}[1]{\renewcommand{\insertimgcover}{#1}}
+\newif\ifchaptercover
+\chaptercoverfalse
+\AtBeginDocument{\ifthenelse{\equal{\PackageOption}{chapter}}{\chaptercovertrue}{}}
+\newcommand{\chapterimgcover}[1]{\ifchaptercover\laterdef{\insertimgcover}{#1}\fi}
 \newcommand{\editionsettings}[1]{\renewcommand{\inserteditionsettings}{#1}}
 
 \AtEndPreamble{
