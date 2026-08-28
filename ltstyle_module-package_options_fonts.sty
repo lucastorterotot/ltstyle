@@ -823,9 +823,13 @@
 \DeclareOption{put}{
   \AtBeginDocument{
     \ifLuaTeX
-      \setmainfont{Heuristica}[
-        SlantedFont = Erewhon Regular Slanted,
-      ]
+        \setmainfont{Erewhon}[
+            LetterSpace=-2,
+            WordSpace={1.75, 2.5, 2},
+            BoldFont = Erewhon Bold,
+            SlantedFont = Erewhon Regular Slanted,
+            BoldSlantedFont = Erewhon Bold Slanted,
+        ]
     \else
       \fontfamily{put}\selectfont
       \renewcommand{\rmdefault}{put}
