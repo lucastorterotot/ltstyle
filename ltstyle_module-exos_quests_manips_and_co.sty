@@ -24,6 +24,7 @@
 \newcounter{figureC}
 \newcounter{tableE}
 \newcounter{tableC}
+\newcounter{InCorrigedepth}
 \def\InCorrigeMarkerStyle{\underline{C}}
 \def\InCorrigeMarker{}
 %\let\oldtheequation\theequation
@@ -33,6 +34,8 @@
 \let\oldthetable\thetable
 \def\thetable{\InCorrigeMarker\oldthetable}
 \def\InCorrigeON{%
+    \addtocounter{InCorrigedepth}{1}
+    \ifnum \arabic{InCorrigedepth} = 1
     \def\InCorrigeMarker{\InCorrigeMarkerStyle}%
     %\addtocounter{equationE}{-\arabic{equationE}}%
     %\addtocounter{equationE}{\arabic{equation}}%
@@ -46,8 +49,11 @@
     \addtocounter{tableE}{\arabic{table}}%
     \addtocounter{table}{-\arabic{table}}%
     \addtocounter{table}{\arabic{tableC}}%
+    \fi
     }
 \def\InCorrigeOFF{%
+    \addtocounter{InCorrigedepth}{-1}
+    \ifnum \arabic{InCorrigedepth} = 0
     \def\InCorrigeMarker{}%
     %\addtocounter{equationC}{-\arabic{equationC}}%
     %\addtocounter{equationC}{\arabic{equation}}%
@@ -61,6 +67,7 @@
     \addtocounter{tableC}{\arabic{table}}%
     \addtocounter{table}{-\arabic{table}}%
     \addtocounter{table}{\arabic{tableE}}%
+    \fi
     }
 
 \def\enonceON{%
