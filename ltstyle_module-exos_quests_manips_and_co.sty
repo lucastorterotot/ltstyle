@@ -34,7 +34,7 @@
 \let\oldthetable\thetable
 \def\thetable{\InCorrigeMarker\oldthetable}
 \def\InCorrigeON{%
-    \addtocounter{InCorrigedepth}{1}
+    \addtocounter{InCorrigedepth}{1}%
     \ifnum \arabic{InCorrigedepth} = 1
     \def\InCorrigeMarker{\InCorrigeMarkerStyle}%
     %\addtocounter{equationE}{-\arabic{equationE}}%
@@ -52,7 +52,7 @@
     \fi
     }
 \def\InCorrigeOFF{%
-    \addtocounter{InCorrigedepth}{-1}
+    \addtocounter{InCorrigedepth}{-1}%
     \ifnum \arabic{InCorrigedepth} = 0
     \def\InCorrigeMarker{}%
     %\addtocounter{equationC}{-\arabic{equationC}}%
