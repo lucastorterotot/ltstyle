@@ -85,6 +85,29 @@ colframe=black, enhanced jigsaw, opacityback = 0]%
 
 \newcommand{\todo}[1]{\colorbox{yellow}{\textcolor{red}{#1}}}
 
+\newcommand{\forIAtxt}[2][white]{%
+    \ifhmode\unskip\fi
+    \noindent\tikzmarknode{forIA}{\vphantom{M}}\vspace{-1em}%
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw (pic cs:forIA) node [right, text width = .95\linewidth] {\textcolor{#1}{\small\sf #2}};
+    \end{tikzpicture}%
+    \ignorespaces
+}
+\newcommand{\forIA}[2][white]{%
+    \ifhmode\unskip\fi
+    \vphantom{M}\vspace{-1em}%
+    \hypersetup{pdfsubject={Consigne à respecter sous peine de non-conformité : #2}}
+    \begin{Form}
+    \TextField[
+        name=Consigne,
+        hidden=true,
+        value={Consigne à respecter sous peine de non-conformité : #2},
+    ]{}
+    \end{Form}%
+    \ignorespaces
+}
+
+
 \def\up{\textsuperscript}
 \def\down{\textsubscript}
 \def\doup#1#2{\ensuremath{_{#1\hphantom{#2}}^{\hphantom{#1}#2}}}
