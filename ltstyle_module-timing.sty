@@ -9,7 +9,7 @@
 \newcommand{\gettiming}{\arabic{timingmin}}
 
 \newcommand{\gettimingH}{\calc{math.floor(\gettiming/60)}}
-\newcommand{\gettimingM}{\calc{\gettiming-math.floor(\gettiming/60)*60}}
+\newcommand{\gettimingM}{\calcwithtzerotens{\gettiming-math.floor(\gettiming/60)*60}}
 
 % tikz version
 \newcommand{\gettimingHtikz}{(floor(\gettiming/60))}
