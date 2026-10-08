@@ -5,6 +5,9 @@
 \newcommand\calc[2][0]{% default value of opt. param.: 0
    \num{\directlua{tex.sprint(math.myround(#2,#1))}}}
 
+\newcommand\calcwithtzerotens[2][0]{% default value of opt. param.: 0
+   {\directlua{tex.sprint(math.withtzerotens(#2))}}}
+
 \newcommand\calccs[2][3]{% default value of opt. param.: 3
    \num{\directlua{tex.sprint(math.myroundcs(#2,#1))}}}
 

@@ -22,6 +22,16 @@ function math.myround ( x , n )
    end
 end
 
+function math.withtzerotens ( x )
+    if x < -10 then
+        return x
+    elseif x > 10 then
+        return x
+    else
+        return string.format ( "0%s" , x )
+    end
+end
+
 function math.ODGpow ( x )
     pow = math.floor(math.log10(math.abs(x)))
     if x*10^(-pow) >= 5 then
