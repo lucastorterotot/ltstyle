@@ -23,9 +23,9 @@ function math.myround ( x , n )
 end
 
 function math.withtzerotens ( x )
-    if x < -10 then
+    if x > 10 then
         return x
-    elseif x > 10 then
+    elseif x < -10 then
         return x
     else
         return string.format ( "0%s" , x )
