@@ -53,7 +53,7 @@
 
 \noindent {\ifthenelse{\equal{\inputinnercover}{true}}{\ifthenelse{\equal{\PackageOption}{DM}\or\equal{\PackageOption}{DS}\or\equal{\PackageOption}{controle}}{}{\renewcommand{\thanks}[1]{}}}{}\bfseries \Large \insertshortauthor}
 
-\ifthenelse{\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertglobalchaptertiming}{}}{}{\vspace{\baselineskip}\par\noindent\vspace{\baselineskip}\insertglobalchaptertiming}}{}
+\ifthenelse{\equal{\PackageOption}{chapter}}{\ifthenelse{\equal{\insertglobalchaptertiming}{}}{}{\vspace{\baselineskip}\par\noindent\vspace{\baselineskip}\textnormal{\insertglobalchaptertiming}}}{}
 
 \ifref{LastPage}{
 \qquad
