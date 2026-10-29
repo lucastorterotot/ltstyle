@@ -10,7 +10,7 @@
 \renewcommand{\ce}[1]{\ensuremath{\origce{#1}}}
 \mhchemoptions{text-greek=default, math-greek=default}
 
-\newcommand{\state}[1]{\down{({\ifthenelse{\equal{#1}{l}}{$\ell$}{#1}})}}
+\newcommand{\state}[1]{{({\ifthenelse{\equal{#1}{l}}{$\ell$}{#1}})}}
 
 \makeatletter
 \@ifpackageloaded{fontspec}
