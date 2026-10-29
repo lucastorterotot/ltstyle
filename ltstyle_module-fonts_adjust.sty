@@ -244,6 +244,113 @@
 }{}
 \makeatother
 
+% Greek letters it and rm versions
+
+\def\alpharm{\text{\rm\symbol{"03B1}}}
+\def\betarm{\text{\rm\symbol{"03B2}}}
+\def\gammarm{\text{\rm\symbol{"03B3}}}
+\def\deltarm{\text{\rm\symbol{"03B4}}}
+\def\epsilonrm{\text{\rm\symbol{"03F5}}}     % ϵ (epsilon lunaire)
+\def\varepsilonrm{\text{\rm\symbol{"03B5}}}   % ε
+\def\zetarm{\text{\rm\symbol{"03B6}}}
+\def\etarm{\text{\rm\symbol{"03B7}}}
+\def\thetarm{\text{\rm\symbol{"03B8}}}
+\def\varthetarm{\text{\rm\symbol{"03D1}}}
+\def\iotarm{\text{\rm\symbol{"03B9}}}
+\def\kapparm{\text{\rm\symbol{"03BA}}}
+\def\varkapparm{\text{\rm\symbol{"03F0}}}
+\def\lambdarm{\text{\rm\symbol{"03BB}}}
+\def\murm{\text{\rm\symbol{"03BC}}}           % lettre ; préfixe micro : \textmu
+\def\nurm{\text{\rm\symbol{"03BD}}}
+\def\xirm{\text{\rm\symbol{"03BE}}}
+\def\pirm{\text{\rm\symbol{"03C0}}}
+\def\varpirm{\text{\rm\symbol{"03D6}}}
+\def\rhorm{\text{\rm\symbol{"03C1}}}
+\def\varrhorm{\text{\rm\symbol{"03F1}}}
+\def\sigmarm{\text{\rm\symbol{"03C3}}}
+\def\varsigmarm{\text{\rm\symbol{"03C2}}}    % ς (sigma final)
+\def\taurm{\text{\rm\symbol{"03C4}}}
+\def\upsilonrm{\text{\rm\symbol{"03C5}}}
+\def\phirm{\text{\rm\symbol{"03D5}}}         % ϕ
+\def\varphirm{\text{\rm\symbol{"03C6}}}       % φ
+\def\chirm{\text{\rm\symbol{"03C7}}}
+\def\psirm{\text{\rm\symbol{"03C8}}}
+\def\omegarm{\text{\rm\symbol{"03C9}}}
+
+\def\Gammait{\text{\it\symbol{"0393}}}
+\def\Deltait{\text{\it\symbol{"0394}}}
+\def\Thetait{\text{\it\symbol{"0398}}}
+\def\Lambdait{\text{\it\symbol{"039B}}}
+\def\Xiit{\text{\it\symbol{"039E}}}
+\def\Piit{\text{\it\symbol{"03A0}}}
+\def\Sigmait{\text{\it\symbol{"03A3}}}
+\def\Upsilonit{\text{\it\symbol{"03A5}}}
+\def\Phiit{\text{\it\symbol{"03A6}}}
+\def\Psiit{\text{\it\symbol{"03A8}}}
+\def\Omegait{\text{\it\symbol{"03A9}}}
+
+% save default letters
+\let\alphait\alpha
+\let\betait\beta
+\let\gammait\gamma
+\let\deltait\delta
+\let\epsilonit\epsilon
+\let\varepsilonit\varepsilon
+\let\zetait\zeta
+\let\etait\eta
+\let\thetait\theta
+\let\varthetait\vartheta
+\let\iotait\iota
+\let\kappait\kappa
+\let\varkappait\varkappa
+\let\lambdait\lambda
+\let\muit\mu
+\let\nuit\nu
+\let\xiit\xi
+\let\piit\pi
+\let\varpiit\varpi
+\let\rhoit\rho
+\let\varrhoit\varrho
+\let\sigmait\sigma
+\let\varsigmait\varsigma
+\let\tauit\tau
+\let\upsilonit\upsilon
+\let\phiit\phi
+\let\varphiit\varphi
+\let\chiit\chi
+\let\psiit\psi
+\let\omegait\omega
+
+\AtBeginDocument{
+\let\Gammarm\Gamma
+\let\Deltarm\Delta
+\let\Thetarm\Theta
+\let\Lambdarm\Lambda
+\let\Xirm\Xi
+\let\Pirm\Pi
+\let\Sigmarm\Sigma
+\let\Upsilonrm\Upsilon
+\let\Phirm\Phi
+\let\Psirm\Psi
+\let\Omegarm\Omega
+
+% corrections for default it or rm letters
+\def\Gamma{\Gammait}
+\def\delta{\deltarm}
+\def\Theta{\Thetait}
+\def\Lambda{\Lambdait}
+\def\Xi{\Xiit}
+\def\pi{\pirm}
+\def\Pi{\Piit}
+\def\Sigma{\Sigmait}
+\def\Upsilon{\Upsilonit}
+\def\Phi{\Phiit}
+\def\Psi{\Psiit}
+\def\Omega{\Omegait}
+}
+
+% gamma trick
+
 \let\origgamma\gamma % garde le gamma initial sous le nom \origgamma
 % prépare la nouvelle version de gamma
 \def\ogamma{\gamma}\def\lgamma{\gamma}\def\vargamma{\gamma}
