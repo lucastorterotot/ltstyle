@@ -159,12 +159,20 @@
 \pagestyle{rapport}
 {\setlength{\parindent}{0pt} \maketitle}\thispagestyle{titlerapport}
 
-\renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/\colleBaremeMake\colleBaremeWrite}\par\noindent{\printbaremecolle}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill}
+\renewcommand{\collesujet}[4]{\hrule\vspace{1.5mm}\par\noindent{\Large\bfseries ##1 \hfill ##3/\colleBaremeMake\colleBaremeWrite}\par\noindent{\printbaremecolle}\refstepcounter{elevecompteur}\setcounter{exo}{0}\par\noindent ##2\par\noindent ##4\vfill\noindent\tikzmarknode{end\theelevecompteur_\theexocolle}{\vphantom{M}}}
 
 {\def\qdc{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdC}~~~}
 \def\qdcs{\par\bigskip\noindent\setcounter{quest}{0}{\large\familyfortitles\bfseries QdCs}~~~}
-\renewcommand{\exo}[2][Exercice]{\vspace{2\baselineskip}\par\noindent\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}{\large\familyfortitles\bfseries Exo}~~~##2\endinput\par\vfill}
+\renewcommand{\exo}[2][Exercice]{\vspace{2\baselineskip}\par\noindent\tikzmarknode{end\theelevecompteur_\theexocolle}{\vphantom{M}}\setcounter{quest}{0}\refstepcounter{exocolle}\setcounter{exo}{\theexocolle}\tikzmarknode{start\theelevecompteur_\theexocolle}{\vphantom{M}}{\large\familyfortitles\bfseries Exo}~~~##2
+\begin{tikzpicture}[remember picture, overlay]
+    \draw (pic cs:start\theelevecompteur_\theexocolle)+(.5\textwidth,-.75em) coordinate (tmpstart);
+    \draw (pic cs:end\theelevecompteur_\theexocolle)+(.5\textwidth,1em) coordinate (tmpend);
+    \draw [ultra thin, dashed] (tmpstart) -- (tmpend) ;
+\end{tikzpicture}%
+\endinput\par\vfill
+}
 \thelistecollesujets
+\vspace{-1.25em}
 
 \label{rapport}}
 }
